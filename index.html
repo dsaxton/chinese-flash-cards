@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chinese Flash Cards — HSK 1</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.progress {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 6px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.12);
+}
+
+.hanzi {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.pinyin {
+  font-size: 1.4rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.english {
+  font-size: 1.2rem;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.mnemonic {
+  font-size: 0.85rem;
+  color: #777;
+  font-style: italic;
+  margin-bottom: 16px;
+  line-height: 1.5;
+  max-width: 340px;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #bbb;
+  margin-top: 12px;
+}
+
+.speaker-btn {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.speaker-btn:hover {
+  background: #f0f0f0;
+  color: #555;
+}
+
+.difficulty-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.difficulty-buttons button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  transition: opacity 0.15s;
+}
+
+.difficulty-buttons button:hover { opacity: 0.85; }
+
+.btn-hard { background: #e74c3c; }
+.btn-medium { background: #f39c12; }
+.btn-easy { background: #27ae60; }
+
+.done {
+  font-size: 1.3rem;
+  color: #888;
+  text-align: center;
+  padding: 40px;
+}
+
+.done .emoji {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+footer {
+  margin-top: 24px;
+}
+
+.reset-btn {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  color: #999;
+  cursor: pointer;
+}
+
+.reset-btn:hover { border-color: #999; color: #666; }
+
+@media (max-width: 480px) {
+  .card { padding: 36px 24px; }
+  .hanzi { font-size: 56px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Chinese Flash Cards</h1>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div id="app"></div>
+
+<footer>
+  <button class="reset-btn" id="reset-btn">Reset Progress</button>
+</footer>
+
+<script>
+// ---------------------------------------------------------------------------
+// Vocabulary — HSK 1 (143 words with available audio)
+// ---------------------------------------------------------------------------
+const VOCAB = [
+  {hanzi:"爱",pinyin:"ài",english:"to love",mnemonic:"A claw (爫) reaching down to grasp a friend (友) close to your heart — that's love."},
+  {hanzi:"八",pinyin:"bā",english:"eight",mnemonic:"Two strokes splitting apart, like breaking something in half — 8 can be split into two equal parts."},
+  {hanzi:"爸爸",pinyin:"bàba",english:"dad",mnemonic:"爸 = 父 (father) + 巴 (to cling to). A child clinging to their father — dad!"},
+  {hanzi:"杯子",pinyin:"bēizi",english:"cup",mnemonic:"杯 = 木 (wood) + 不 (not). A wooden vessel that's 'not' empty — a cup ready to be filled."},
+  {hanzi:"本",pinyin:"běn",english:"(measure word for books)",mnemonic:"A tree 木 with a line at its root — the root/origin of knowledge is a book."},
+  {hanzi:"不",pinyin:"bù",english:"not; no",mnemonic:"A bird tries to fly up to the sky but hits a ceiling — not going anywhere!"},
+  {hanzi:"菜",pinyin:"cài",english:"vegetable; dish",mnemonic:"艹 (grass/plant) on top + 采 (to pick). Picking plants from the garden — vegetables!"},
+  {hanzi:"茶",pinyin:"chá",english:"tea",mnemonic:"艹 (plant) + 人 (person) + 木 (tree). A person between plants and trees, picking tea leaves."},
+  {hanzi:"吃",pinyin:"chī",english:"to eat",mnemonic:"口 (mouth) + 乞 (to beg). A mouth begging for food — eating!"},
+  {hanzi:"大",pinyin:"dà",english:"big",mnemonic:"A person 人 stretching their arms out wide — as big as possible!"},
+  {hanzi:"的",pinyin:"de",english:"(possessive particle)",mnemonic:"白 (white) + 勺 (spoon). The white spoon is mine — 'of' or possession."},
+  {hanzi:"点",pinyin:"diǎn",english:"o'clock; a little",mnemonic:"A fortune teller 占 uses fire 灬 to divine the exact point in time — o'clock."},
+  {hanzi:"电脑",pinyin:"diànnǎo",english:"computer",mnemonic:"电 (electricity) + 脑 (brain). An electric brain — a computer!"},
+  {hanzi:"电视",pinyin:"diànshì",english:"television",mnemonic:"电 (electricity) + 视 (to view). Electric viewing — television!"},
+  {hanzi:"电影",pinyin:"diànyǐng",english:"movie",mnemonic:"电 (electricity) + 影 (shadow/image). Electric shadows projected on a screen — movies!"},
+  {hanzi:"东西",pinyin:"dōngxi",english:"thing; stuff",mnemonic:"东 (east) + 西 (west). From east to west, everything in between — stuff/things."},
+  {hanzi:"都",pinyin:"dōu",english:"all; both",mnemonic:"者 (one who) lives in the 阝(city). Everyone in the city — all of them."},
+  {hanzi:"读",pinyin:"dú",english:"to read",mnemonic:"讠(words) + 卖 (sell). Selling words to your mind — reading!"},
+  {hanzi:"对不起",pinyin:"duìbuqǐ",english:"sorry",mnemonic:"对 (correct) + 不 (not) + 起 (rise). Can't rise to what's correct — I'm sorry."},
+  {hanzi:"多",pinyin:"duō",english:"many; much",mnemonic:"Two 夕 (evening) moons stacked — so many evenings, so many!"},
+  {hanzi:"多少",pinyin:"duōshao",english:"how many; how much",mnemonic:"多 (many) + 少 (few). How much is it — many or few?"},
+  {hanzi:"儿子",pinyin:"érzi",english:"son",mnemonic:"儿 looks like a little person with legs spread wide, learning to walk — a son. 子 is a child."},
+  {hanzi:"二",pinyin:"èr",english:"two",mnemonic:"Two horizontal lines — simply the number two."},
+  {hanzi:"饭店",pinyin:"fàndiàn",english:"restaurant; hotel",mnemonic:"饭 (cooked rice/meal) + 店 (shop). A shop that serves meals — restaurant!"},
+  {hanzi:"飞机",pinyin:"fēijī",english:"airplane",mnemonic:"飞 (to fly) + 机 (machine). A flying machine — airplane!"},
+  {hanzi:"分钟",pinyin:"fēnzhōng",english:"minute",mnemonic:"分 (to divide) + 钟 (bell/clock). Dividing the clock into parts — minutes."},
+  {hanzi:"高兴",pinyin:"gāoxìng",english:"happy; glad",mnemonic:"高 (tall/high) + 兴 (excitement). High excitement — happy!"},
+  {hanzi:"个",pinyin:"gè",english:"(general measure word)",mnemonic:"A person 人 standing under a cover — just one individual thing."},
+  {hanzi:"工作",pinyin:"gōngzuò",english:"work; job",mnemonic:"工 (labor, looks like a beam between floor and ceiling) + 作 (to make). Making with labor — work!"},
+  {hanzi:"狗",pinyin:"gǒu",english:"dog",mnemonic:"犭(animal) + 句 (phrase). The animal that comes when you call its name — a dog!"},
+  {hanzi:"汉语",pinyin:"Hànyǔ",english:"Chinese language",mnemonic:"汉 (Han people) + 语 (language). The language of the Han people — Chinese!"},
+  {hanzi:"好",pinyin:"hǎo",english:"good",mnemonic:"女 (woman) + 子 (child). A mother with her child — that's good!"},
+  {hanzi:"好吃",pinyin:"hǎochī",english:"delicious",mnemonic:"好 (good) + 吃 (eat). Good to eat — delicious!"},
+  {hanzi:"喝",pinyin:"hē",english:"to drink",mnemonic:"口 (mouth) + 曷 (why not). Why not put something in your mouth? Drink up!"},
+  {hanzi:"和",pinyin:"hé",english:"and",mnemonic:"禾 (grain) + 口 (mouth). Grain and mouths together — harmony, togetherness, 'and'."},
+  {hanzi:"很",pinyin:"hěn",english:"very",mnemonic:"彳(step) + 艮 (stubborn/tough). Taking tough steps — going very far!"},
+  {hanzi:"后面",pinyin:"hòumiàn",english:"behind",mnemonic:"后 (after/behind) + 面 (face/side). The back face of something — behind."},
+  {hanzi:"回",pinyin:"huí",english:"to return",mnemonic:"A small box 口 inside a big box 囗 — going back inside where you came from. Returning!"},
+  {hanzi:"会",pinyin:"huì",english:"can; to be able to",mnemonic:"人 (person) + 云 (cloud). A person who can reach the clouds — ability!"},
+  {hanzi:"几",pinyin:"jǐ",english:"how many; several",mnemonic:"Looks like a small table — how many things are on the table?"},
+  {hanzi:"家",pinyin:"jiā",english:"home; family",mnemonic:"宀 (roof) + 豕 (pig). A pig under a roof — in ancient China, keeping pigs meant a prosperous home."},
+  {hanzi:"叫",pinyin:"jiào",english:"to be called; to call",mnemonic:"口 (mouth) + 丩 (twist). Your mouth twists open to call out someone's name."},
+  {hanzi:"今天",pinyin:"jīntiān",english:"today",mnemonic:"今 (now/present) + 天 (day). The present day — today!"},
+  {hanzi:"九",pinyin:"jiǔ",english:"nine",mnemonic:"Looks like an arm flexing — strong enough to lift nine things!"},
+  {hanzi:"开",pinyin:"kāi",english:"to open; to drive",mnemonic:"Two hands 廾 lifting a bar 一 — opening a gate!"},
+  {hanzi:"看",pinyin:"kàn",english:"to look; to watch",mnemonic:"手 (hand) over 目 (eye). Put your hand above your eyes to look into the distance."},
+  {hanzi:"看见",pinyin:"kànjiàn",english:"to see",mnemonic:"看 (look) + 见 (perceive). You look and actually perceive — you see it!"},
+  {hanzi:"块",pinyin:"kuài",english:"(measure word for money)",mnemonic:"土 (earth) + 夬 (decisive). A decisive chunk of earth — a piece, used for counting money."},
+  {hanzi:"来",pinyin:"lái",english:"to come",mnemonic:"Looks like a tree 木 with extra branches reaching toward you — come here!"},
+  {hanzi:"老师",pinyin:"lǎoshī",english:"teacher",mnemonic:"老 (old/experienced) + 师 (master). An experienced master — a teacher!"},
+  {hanzi:"了",pinyin:"le",english:"(completed action particle)",mnemonic:"Looks like a hook — it hooks onto the end of a sentence to mark 'done!'"},
+  {hanzi:"冷",pinyin:"lěng",english:"cold",mnemonic:"冫(ice) + 令 (command). Ice commands the temperature — cold!"},
+  {hanzi:"里",pinyin:"lǐ",english:"inside",mnemonic:"田 (field) + 土 (earth). The earth within the field — inside."},
+  {hanzi:"六",pinyin:"liù",english:"six",mnemonic:"A roof 亠 with 八 (eight) below but smaller — six is a bit less than eight."},
+  {hanzi:"妈妈",pinyin:"māma",english:"mom",mnemonic:"妈 = 女 (woman) + 马 (horse). The woman strong as a horse who carries everything — mom!"},
+  {hanzi:"吗",pinyin:"ma",english:"(question particle)",mnemonic:"口 (mouth) + 马 (horse). Your mouth gallops forward like a horse with a question — right?"},
+  {hanzi:"买",pinyin:"mǎi",english:"to buy",mnemonic:"The top looks like a fishing net — you cast a net to catch a deal. Buying!"},
+  {hanzi:"猫",pinyin:"māo",english:"cat",mnemonic:"犭(animal) + 苗 (sprout/seedling). A small animal as delicate as a seedling — a cat!"},
+  {hanzi:"没",pinyin:"méi",english:"not; have not",mnemonic:"氵(water) + 殳 (weapon). Your weapon fell in the water — you have not got it anymore!"},
+  {hanzi:"没关系",pinyin:"méi guānxi",english:"it doesn't matter",mnemonic:"没 (not) + 关系 (connection/relation). There's no connection to worry about — it doesn't matter."},
+  {hanzi:"米饭",pinyin:"mǐfàn",english:"rice",mnemonic:"米 (uncooked rice, looks like grains scattered on a plant) + 饭 (cooked meal). Rice prepared as a meal."},
+  {hanzi:"名字",pinyin:"míngzi",english:"name",mnemonic:"名 = 夕 (evening) + 口 (mouth). In the dark evening, you call out with your mouth — saying your name! 字 = a child 子 under a roof 宀, being given a name."},
+  {hanzi:"明天",pinyin:"míngtiān",english:"tomorrow",mnemonic:"明 = 日 (sun) + 月 (moon). After the sun and moon cycle once more — tomorrow!"},
+  {hanzi:"哪",pinyin:"nǎ",english:"which; where",mnemonic:"口 (mouth) + 那 (that). Mouth asking about 'that' one — which one? Where?"},
+  {hanzi:"那",pinyin:"nà",english:"that",mnemonic:"阝(place) + 刀 (knife) + 二. Pointing a knife at that place over there — that!"},
+  {hanzi:"呢",pinyin:"ne",english:"(question particle)",mnemonic:"口 (mouth) + 尼 (nun). A mouth gently asking like a patient nun — and you?"},
+  {hanzi:"能",pinyin:"néng",english:"can; to be able to",mnemonic:"Contains 月 (flesh/body) and claws — a bear's powerful body. With power comes ability!"},
+  {hanzi:"你",pinyin:"nǐ",english:"you",mnemonic:"亻(person) + 尔 (you, archaic). A person standing before you — you!"},
+  {hanzi:"年",pinyin:"nián",english:"year",mnemonic:"A person carrying grain on their back after the harvest — one full year of farming complete."},
+  {hanzi:"女儿",pinyin:"nǚ'ér",english:"daughter",mnemonic:"女 (woman) + 儿 (child). A woman who is still your child — daughter!"},
+  {hanzi:"朋友",pinyin:"péngyou",english:"friend",mnemonic:"朋 = two 月 (moons) side by side — two people close as twin moons. 友 = two hands reaching out together."},
+  {hanzi:"漂亮",pinyin:"piàoliang",english:"pretty; beautiful",mnemonic:"漂 has 氵(water) — beauty that flows like water. 亮 has 高 (high) + 几 — shining high and bright. Beautiful!"},
+  {hanzi:"苹果",pinyin:"píngguǒ",english:"apple",mnemonic:"苹 = 艹 (grass/plant) + 平 (flat/level). 果 = 田 (field) + 木 (tree). The level fruit on a tree — an apple!"},
+  {hanzi:"七",pinyin:"qī",english:"seven",mnemonic:"Looks like a cross with a bent leg — seven cuts across."},
+  {hanzi:"前面",pinyin:"qiánmiàn",english:"in front of",mnemonic:"前 (front/before) + 面 (face/side). The front face of something — in front of."},
+  {hanzi:"钱",pinyin:"qián",english:"money",mnemonic:"钅(metal/gold) + 戋 (small). Small pieces of metal — coins, money!"},
+  {hanzi:"请",pinyin:"qǐng",english:"please",mnemonic:"讠(speech) + 青 (green/young). Speaking with the freshness of youth — politely saying please."},
+  {hanzi:"去",pinyin:"qù",english:"to go",mnemonic:"土 (earth) + a legs radical. Legs leaving the ground — to go!"},
+  {hanzi:"热",pinyin:"rè",english:"hot",mnemonic:"执 (to hold) + 灬 (fire). Holding fire in your hands — hot!"},
+  {hanzi:"人",pinyin:"rén",english:"person; people",mnemonic:"Two strokes leaning on each other like legs — a person walking."},
+  {hanzi:"认识",pinyin:"rènshi",english:"to know (a person)",mnemonic:"认 = 讠(words) + 人 (person). 识 = 讠(words) + 只 (only). Trading words with a person — getting to know them!"},
+  {hanzi:"日",pinyin:"rì",english:"day; sun",mnemonic:"A rectangle with a line through it — the sun with a sunspot. One cycle of the sun = one day."},
+  {hanzi:"三",pinyin:"sān",english:"three",mnemonic:"Three horizontal lines — simply three."},
+  {hanzi:"商店",pinyin:"shāngdiàn",english:"shop; store",mnemonic:"商 (commerce/merchant) + 店 (shop). A merchant's shop — a store!"},
+  {hanzi:"上",pinyin:"shàng",english:"above; on; to go up",mnemonic:"A line above a base — something is on top, above."},
+  {hanzi:"上午",pinyin:"shàngwǔ",english:"morning",mnemonic:"上 (upper) + 午 (noon). The upper half before noon — morning!"},
+  {hanzi:"少",pinyin:"shǎo",english:"few; little",mnemonic:"小 (small) with one stroke removed — even less than small. Few!"},
+  {hanzi:"谁",pinyin:"shéi",english:"who",mnemonic:"讠(words) + 隹 (short-tailed bird). Who is that bird you're talking about? Who?"},
+  {hanzi:"什么",pinyin:"shénme",english:"what",mnemonic:"什 = 亻(person) + 十 (ten). 么 = tiny/small. A person with ten small questions — what?"},
+  {hanzi:"十",pinyin:"shí",english:"ten",mnemonic:"A cross + shape — two hands with all ten fingers spread."},
+  {hanzi:"时候",pinyin:"shíhou",english:"time; moment",mnemonic:"时 = 日 (sun) + 寸 (inch). 候 = 亻(person) + waiting. Measuring the sun inch by inch — waiting for the right time."},
+  {hanzi:"是",pinyin:"shì",english:"to be",mnemonic:"日 (sun) + 正 (correct/straight). Straight under the sun, clear as day — it is!"},
+  {hanzi:"书",pinyin:"shū",english:"book",mnemonic:"A hand holding a brush, writing — the product of writing is a book."},
+  {hanzi:"水",pinyin:"shuǐ",english:"water",mnemonic:"A central stream with splashes on each side — flowing water."},
+  {hanzi:"水果",pinyin:"shuǐguǒ",english:"fruit",mnemonic:"水 (water) + 果 (fruit). Juicy, water-filled fruit!"},
+  {hanzi:"睡觉",pinyin:"shuìjiào",english:"to sleep",mnemonic:"睡 = 目 (eye) + 垂 (droop). 觉 = to feel. Your eyes are drooping — time to sleep!"},
+  {hanzi:"说",pinyin:"shuō",english:"to speak; to say",mnemonic:"讠(words) + 兑 (exchange). Exchanging words — speaking!"},
+  {hanzi:"四",pinyin:"sì",english:"four",mnemonic:"A mouth 口 with four-ish lines inside — the number four boxed up."},
+  {hanzi:"岁",pinyin:"suì",english:"years old",mnemonic:"山 (mountain) + 夕 (evening). Counting the evenings over the mountains — counting years of age."},
+  {hanzi:"他",pinyin:"tā",english:"he; him",mnemonic:"亻(person) + 也 (also). That other person also — he/him."},
+  {hanzi:"她",pinyin:"tā",english:"she; her",mnemonic:"女 (woman) + 也 (also). That woman also — she/her."},
+  {hanzi:"太",pinyin:"tài",english:"too; very",mnemonic:"大 (big) with an extra dot — even bigger than big. Too much!"},
+  {hanzi:"天气",pinyin:"tiānqì",english:"weather",mnemonic:"天 (sky/heaven) + 气 (air/vapor). The air in the sky — weather!"},
+  {hanzi:"听",pinyin:"tīng",english:"to listen",mnemonic:"口 (mouth) + 斤 (axe/weight). Words that carry weight reaching your ear — listen!"},
+  {hanzi:"同学",pinyin:"tóngxué",english:"classmate",mnemonic:"同 (same) + 学 (study). People who study the same things — classmates!"},
+  {hanzi:"喂",pinyin:"wèi",english:"hello (on phone)",mnemonic:"口 (mouth) + 畏 (fear/awe). You open your mouth cautiously when answering the phone — hello?"},
+  {hanzi:"我",pinyin:"wǒ",english:"I; me",mnemonic:"A hand 手 holding a weapon 戈 — I will defend myself! Me!"},
+  {hanzi:"我们",pinyin:"wǒmen",english:"we; us",mnemonic:"我 (I) + 们 (plural people marker, with 亻person + 门 door). All of us people at the door — we!"},
+  {hanzi:"五",pinyin:"wǔ",english:"five",mnemonic:"Lines crossing between top and bottom — the five elements bridging heaven and earth."},
+  {hanzi:"喜欢",pinyin:"xǐhuan",english:"to like",mnemonic:"喜 = 士 (scholar) + 口 (mouth) + 豆 (bean). A scholar happily eating beans! 欢 = joy. Happy and joyful — to like!"},
+  {hanzi:"下",pinyin:"xià",english:"below; under; next",mnemonic:"A line with a stroke hanging below it — something is underneath. Below!"},
+  {hanzi:"下午",pinyin:"xiàwǔ",english:"afternoon",mnemonic:"下 (lower) + 午 (noon). The lower half after noon — afternoon!"},
+  {hanzi:"先生",pinyin:"xiānsheng",english:"Mr.; sir",mnemonic:"先 (first/before) + 生 (born/life). One who was born before you — an elder, Mr./Sir."},
+  {hanzi:"现在",pinyin:"xiànzài",english:"now",mnemonic:"现 (appear/present) + 在 (at/exist). Appearing and existing — right now!"},
+  {hanzi:"想",pinyin:"xiǎng",english:"to want; to think",mnemonic:"相 (mutual/appearance) + 心 (heart). Your heart examines appearances — thinking and wanting."},
+  {hanzi:"小",pinyin:"xiǎo",english:"small",mnemonic:"A vertical line with two small dots — something being divided into tiny pieces. Small!"},
+  {hanzi:"小姐",pinyin:"xiǎojiě",english:"Miss; young lady",mnemonic:"小 (small/young) + 姐 (older sister, 女 woman + 且 moreover). A young woman — Miss!"},
+  {hanzi:"些",pinyin:"xiē",english:"some",mnemonic:"此 (this) + 二 (two). This and that, a couple of things — some."},
+  {hanzi:"写",pinyin:"xiě",english:"to write",mnemonic:"冖 (cover/roof) + 与 (give). Under a roof, giving form to words — writing!"},
+  {hanzi:"谢谢",pinyin:"xièxie",english:"thank you",mnemonic:"谢 = 讠(words) + 射 (shoot). Words that shoot from the heart — thank you!"},
+  {hanzi:"星期",pinyin:"xīngqī",english:"week",mnemonic:"星 = 日 (sun) + 生 (born). 期 = a period of time. A period marked by the birth of new suns — a week of days!"},
+  {hanzi:"学生",pinyin:"xuésheng",english:"student",mnemonic:"学 (to study) + 生 (born/life). A life devoted to study — a student!"},
+  {hanzi:"学习",pinyin:"xuéxí",english:"to study; to learn",mnemonic:"学 = a child 子 under a roof with hands guiding. 习 = feathers 羽 practicing flight. Learning to fly — studying!"},
+  {hanzi:"学校",pinyin:"xuéxiào",english:"school",mnemonic:"学 (study) + 校 (compare/school, 木 wood + 交 cross). Where students cross paths to study — school!"},
+  {hanzi:"一",pinyin:"yī",english:"one",mnemonic:"A single horizontal stroke — the simplest number, one."},
+  {hanzi:"衣服",pinyin:"yīfu",english:"clothes",mnemonic:"衣 looks like a robe with flowing sleeves. 服 = 月 (body) + 又 (hand) serving. What your body wears — clothes!"},
+  {hanzi:"医生",pinyin:"yīshēng",english:"doctor",mnemonic:"医 = 匸 (box) + 矢 (arrow). Removing arrows from wounds! 生 (life). One who saves lives — doctor!"},
+  {hanzi:"医院",pinyin:"yīyuàn",english:"hospital",mnemonic:"医 (medicine/heal) + 院 (courtyard/institution). A medical institution — hospital!"},
+  {hanzi:"椅子",pinyin:"yǐzi",english:"chair",mnemonic:"椅 = 木 (wood) + 奇 (strange/wonderful). A wonderful wooden invention to sit on — a chair!"},
+  {hanzi:"有",pinyin:"yǒu",english:"to have; there is",mnemonic:"A hand (ナ) grabbing the moon (月) — reaching out and having something!"},
+  {hanzi:"月",pinyin:"yuè",english:"month; moon",mnemonic:"A crescent shape — the moon! One cycle of the moon = one month."},
+  {hanzi:"在",pinyin:"zài",english:"at; in; to be at",mnemonic:"土 (earth) + a presence marker. Being present on this earth — to be at a place."},
+  {hanzi:"再见",pinyin:"zàijiàn",english:"goodbye",mnemonic:"再 (again) + 见 (see). See you again — goodbye!"},
+  {hanzi:"怎么",pinyin:"zěnme",english:"how",mnemonic:"怎 = 乍 (suddenly) + 心 (heart). 么 = what. Your heart suddenly wonders — how?"},
+  {hanzi:"怎么样",pinyin:"zěnmeyàng",english:"how about; how is",mnemonic:"怎么 (how) + 样 (manner/appearance). How is the manner of things — how about it?"},
+  {hanzi:"这",pinyin:"zhè",english:"this",mnemonic:"辶 (walking) + 文 (text/pattern). Walking toward this particular thing — this!"},
+  {hanzi:"中午",pinyin:"zhōngwǔ",english:"noon",mnemonic:"中 (middle) + 午 (the noon hour). The middle of the day — noon!"},
+  {hanzi:"住",pinyin:"zhù",english:"to live; to stay",mnemonic:"亻(person) + 主 (master/owner). A person who is master of their place — they live there!"},
+  {hanzi:"桌子",pinyin:"zhuōzi",english:"table; desk",mnemonic:"桌 = 卜 + 日 on top of 木 (wood). A flat wooden surface lit by the sun — a table!"},
+  {hanzi:"字",pinyin:"zì",english:"character; word",mnemonic:"宀 (roof) + 子 (child). A child born under a roof — a written character is born!"},
+  {hanzi:"昨天",pinyin:"zuótiān",english:"yesterday",mnemonic:"昨 = 日 (sun/day) + 乍 (suddenly/just now). 天 (day). The day that just passed — yesterday!"},
+  {hanzi:"坐",pinyin:"zuò",english:"to sit",mnemonic:"Two people 人人 on the earth 土 — sitting on the ground together."},
+  {hanzi:"做",pinyin:"zuò",english:"to do; to make",mnemonic:"亻(person) + 故 (reason/cause). A person with a reason — someone doing something!"},
+];
+
+// ---------------------------------------------------------------------------
+// Audio — human-recorded MP3s from hugolpz/audio-cmn (CC-BY-SA)
+// ---------------------------------------------------------------------------
+const AUDIO_BASE = "https://github.com/hugolpz/audio-cmn/raw/master/64k/hsk";
+
+function speak(text) {
+  const url = `${AUDIO_BASE}/cmn-${encodeURIComponent(text)}.mp3`;
+  new Audio(url).play();
+}
+
+// ---------------------------------------------------------------------------
+// Persistence — localStorage
+// ---------------------------------------------------------------------------
+const STORAGE_KEY = "chinese-flash-cards-progress";
+
+function loadProgress() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+  } catch {
+    return {};
+  }
+}
+
+function saveProgress(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+// ---------------------------------------------------------------------------
+// Spaced repetition — simplified SM-2
+// ---------------------------------------------------------------------------
+const NEW_CARDS_PER_SESSION = 10;
+
+function todayStr() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildQueue(progress) {
+  const today = todayStr();
+  const due = [];
+  const unseen = [];
+
+  for (const word of VOCAB) {
+    const p = progress[word.hanzi];
+    if (!p) unseen.push(word);
+    else if (p.due <= today) due.push(word);
+  }
+
+  return [...shuffle(due), ...shuffle(unseen).slice(0, NEW_CARDS_PER_SESSION)];
+}
+
+function rateCard(card, progress, difficulty) {
+  const p = progress[card.hanzi] || { interval: 0, ease: 2.5, repetitions: 0 };
+  let { interval, ease, repetitions } = p;
+
+  if (difficulty === "hard") {
+    interval = 1;
+    ease = Math.max(1.3, ease - 0.2);
+    repetitions = 0;
+  } else if (difficulty === "medium") {
+    if (repetitions === 0) interval = 1;
+    else if (repetitions === 1) interval = 6;
+    else interval = Math.round(interval * ease);
+    repetitions++;
+  } else if (difficulty === "easy") {
+    if (repetitions === 0) interval = 4;
+    else interval = Math.round(interval * ease * 1.3);
+    ease = Math.min(3.0, ease + 0.15);
+    repetitions++;
+  }
+
+  const due = new Date();
+  due.setDate(due.getDate() + interval);
+
+  progress[card.hanzi] = {
+    interval,
+    ease,
+    repetitions,
+    due: due.toISOString().slice(0, 10),
+  };
+
+  saveProgress(progress);
+}
+
+// ---------------------------------------------------------------------------
+// UI
+// ---------------------------------------------------------------------------
+const app = document.getElementById("app");
+const progressEl = document.getElementById("progress");
+
+let progress = loadProgress();
+let queue = buildQueue(progress);
+let currentIndex = 0;
+let stage = 0; // 0 = hanzi, 1 = +pinyin+speaker, 2 = +english+mnemonic+buttons
+
+function renderCard() {
+  if (currentIndex >= queue.length) {
+    progressEl.textContent = "";
+    app.innerHTML =
+      '<div class="done"><div class="emoji">&#127881;</div>' +
+      "All done for today!<br>" +
+      '<small style="color:#aaa">Come back tomorrow for more review.</small></div>';
+    return;
+  }
+
+  progressEl.textContent = `Card ${currentIndex + 1} of ${queue.length} due today`;
+
+  const card = queue[currentIndex];
+  stage = 0;
+  render();
+
+  function render() {
+    let html = '<div class="card" id="flashcard">';
+    html += `<div class="hanzi">${card.hanzi}</div>`;
+
+    if (stage >= 1) {
+      html += `<div class="pinyin">${card.pinyin}</div>`;
+      html += '<button class="speaker-btn" id="speak-btn" title="Play pronunciation">&#128264;</button>';
+    }
+
+    if (stage >= 2) {
+      html += `<div class="english">${card.english}</div>`;
+      if (card.mnemonic) {
+        html += `<div class="mnemonic">${card.mnemonic}</div>`;
+      }
+      html += '<div class="difficulty-buttons">';
+      html += '<button class="btn-hard" data-difficulty="hard">Hard</button>';
+      html += '<button class="btn-medium" data-difficulty="medium">Medium</button>';
+      html += '<button class="btn-easy" data-difficulty="easy">Easy</button>';
+      html += "</div>";
+    }
+
+    if (stage < 2) {
+      const hints = ["tap to reveal pinyin", "tap to reveal meaning"];
+      html += `<div class="hint">${hints[stage]}</div>`;
+    }
+
+    html += "</div>";
+    app.innerHTML = html;
+
+    // Card click advances stage (only before answer is revealed)
+    if (stage < 2) {
+      document.getElementById("flashcard").addEventListener("click", () => {
+        stage++;
+        render();
+      });
+    }
+
+    // Speaker button plays audio without advancing
+    const speakBtn = document.getElementById("speak-btn");
+    if (speakBtn) {
+      speakBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        speak(card.hanzi);
+      });
+    }
+
+    // Difficulty buttons rate and advance to next card
+    for (const btn of app.querySelectorAll(".difficulty-buttons button")) {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        rateCard(card, progress, btn.dataset.difficulty);
+        currentIndex++;
+        renderCard();
+      });
+    }
+  }
+}
+
+document.getElementById("reset-btn").addEventListener("click", () => {
+  if (confirm("Reset all progress? This cannot be undone.")) {
+    localStorage.removeItem(STORAGE_KEY);
+    progress = {};
+    queue = buildQueue(progress);
+    currentIndex = 0;
+    renderCard();
+  }
+});
+
+renderCard();
+</script>
+</body>
+</html>
