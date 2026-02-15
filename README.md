@@ -9,13 +9,25 @@ You can run this app in two modes:
 - **Standalone file mode (`file://`)**: open `index.html` directly in a browser. Core flashcard functionality works.
 - **PWA mode (`http://` or `https://`)**: serve the folder (or deploy to GitHub Pages) to enable installability and service-worker caching.
 
-For local PWA testing, run a static server from this directory, for example:
+For local PWA testing, run the helper script from this directory:
 
 ```bash
-python3 -m http.server 8000
+./scripts/dev-server.sh
 ```
 
-Then open `http://localhost:8000`.
+Optional: pass a custom port (default is `8787`):
+
+```bash
+./scripts/dev-server.sh 5173
+```
+
+Equivalent direct command:
+
+```bash
+python3 -m http.server 8787 --bind 127.0.0.1
+```
+
+Then open the URL printed by the script (it auto-increments to the next free port if needed, starting from `8787`).
 
 1. A Chinese character is displayed
 2. Click to reveal the pinyin romanization and a speaker button
@@ -24,6 +36,7 @@ Then open `http://localhost:8000`.
 5. The next card appears
 
 The speaker button can be clicked at any time after pinyin is revealed to hear the pronunciation. It does not advance the card.
+From the review deck, use the buttons below the card to open `Pinyin` and `Radicals` study sections. Inside those sections, use the "Return to review deck" links (top or bottom) to go back.
 
 Progress is saved in your browser's `localStorage` and persists across sessions. Use the "Reset Progress" button to start over.
 
@@ -76,7 +89,7 @@ The JS is organized into sections separated by comment headers:
 3. **PWA setup** — `initPWA()` service worker registration (HTTP/S only)
 4. **Persistence** — `loadProgress()` / `saveProgress()` wrappers around `localStorage`
 5. **Spaced repetition** — `buildQueue()` for scheduling, `rateCard()` for SM-2 updates
-6. **UI** — `renderCard()` manages a 3-stage reveal flow (hanzi → pinyin → answer)
+6. **UI + routes** — `renderRoute()` switches between `review`, `pinyin`, and `radicals`; `renderReview()` manages the 3-stage flashcard flow (hanzi → pinyin → answer)
 
 ## License
 

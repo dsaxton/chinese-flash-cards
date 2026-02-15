@@ -40,15 +40,15 @@ header h1 {
   color: #555;
 }
 
-.top-nav {
+.sub-nav {
   width: 100%;
   max-width: 420px;
   display: flex;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-top: 8px;
 }
 
-.top-nav a {
+.sub-nav a {
   flex: 1;
   text-align: center;
   text-decoration: none;
@@ -61,10 +61,10 @@ header h1 {
   font-weight: 600;
 }
 
-.top-nav a.active {
-  color: #fff;
-  background: #ea580c;
-  border-color: #ea580c;
+.sub-nav a.active {
+  color: #9a3412;
+  background: #fff7ed;
+  border-color: #fdba74;
 }
 
 .progress {
@@ -177,6 +177,10 @@ header h1 {
   color: #666;
   font-size: 0.95rem;
   line-height: 1.5;
+}
+
+.back-link {
+  margin-bottom: 10px;
 }
 
 .mini-grid {
@@ -376,13 +380,12 @@ footer {
   <div class="progress" id="progress"></div>
 </header>
 
-<nav class="top-nav" id="top-nav">
-  <a href="#/review" data-route="review">Review</a>
+<div id="app"></div>
+
+<nav class="sub-nav" id="sub-nav">
   <a href="#/pinyin" data-route="pinyin">Pinyin</a>
   <a href="#/radicals" data-route="radicals">Radicals</a>
 </nav>
-
-<div id="app"></div>
 
 <footer>
   <button class="reset-btn" id="reset-btn">Reset Progress</button>
@@ -783,7 +786,7 @@ function rateCard(card, progress, difficulty) {
 // ---------------------------------------------------------------------------
 const app = document.getElementById("app");
 const progressEl = document.getElementById("progress");
-const topNav = document.getElementById("top-nav");
+const subNav = document.getElementById("sub-nav");
 const resetBtn = document.getElementById("reset-btn");
 
 let progress = loadProgress();
@@ -854,7 +857,7 @@ function parseRoute() {
 }
 
 function updateNav(route) {
-  for (const link of topNav.querySelectorAll("a[data-route]")) {
+  for (const link of subNav.querySelectorAll("a[data-route]")) {
     link.classList.toggle("active", link.dataset.route === route);
   }
 }
@@ -961,7 +964,8 @@ function renderPinyin(params) {
     : "Pinyin reference + examples from your deck";
 
   let html = '<section class="study-page">';
-  html += "<h2>Pinyin MVP</h2>";
+  html += '<p class="back-link"><a href="#/review">Return to review deck</a></p>';
+  html += "<h2>Pinyin</h2>";
   html += "<p>Use this page for pronunciation patterns, then jump back to Review to reinforce with spaced repetition.</p>";
   html += "<h3>Tones</h3>";
   html += '<div class="tone-table">';
@@ -1002,27 +1006,20 @@ function renderRadicals(params) {
   const filter = params.get("rad") || "";
   progressEl.textContent = filter
     ? `Radical focus: ${filter}`
-    : "Common radicals with examples from your deck";
+    : "Common radicals";
 
   let html = '<section class="study-page">';
-  html += "<h2>Radicals MVP</h2>";
-  html += "<p>Start with core radicals and inspect examples from the same words you review each day.</p>";
+  html += '<p class="back-link"><a href="#/review">Return to review deck</a></p>';
+  html += "<h2>Radicals</h2>";
+  html += "<p>Start with core radicals and their meanings.</p>";
   html += '<div class="radical-list">';
 
   for (const radical of RADICALS) {
-    const examples = VOCAB.filter((word) =>
-      radical.forms.some((form) => word.hanzi.includes(form))
-    ).slice(0, 6);
     html += `<div class="radical-item${filter === radical.radical ? " active" : ""}">`;
     html += '<div class="radical-row">';
     html += `<a class="radical-char" href="#/radicals?rad=${encodeURIComponent(radical.radical)}">${radical.radical}</a>`;
     html += `<div class="radical-meta">${radical.meaning}</div>`;
     html += "</div>";
-    if (examples.length > 0) {
-      html += `<div class="example-chars">${examples.map((item) => item.hanzi).join(" · ")}</div>`;
-    } else {
-      html += '<div class="example-chars">No deck examples yet.</div>';
-    }
     html += "</div>";
   }
 
@@ -1035,6 +1032,7 @@ function renderRadicals(params) {
 function renderRoute() {
   const { route, params } = parseRoute();
   updateNav(route);
+  subNav.style.display = route === "review" ? "flex" : "none";
   resetBtn.style.display = route === "review" ? "inline-block" : "none";
 
   if (route === "review") renderReview();
