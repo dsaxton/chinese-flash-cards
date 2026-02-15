@@ -40,6 +40,33 @@ header h1 {
   color: #555;
 }
 
+.top-nav {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.top-nav a {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  color: #666;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.top-nav a.active {
+  color: #fff;
+  background: #ea580c;
+  border-color: #ea580c;
+}
+
 .progress {
   font-size: 0.9rem;
   color: #888;
@@ -101,6 +128,149 @@ header h1 {
   font-size: 0.8rem;
   color: #bbb;
   margin-top: 12px;
+}
+
+.pinyin-link {
+  text-decoration: none;
+}
+
+.related-radicals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.chip-link {
+  text-decoration: none;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+  background: #fff7ed;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+}
+
+.study-page {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.study-page h2 {
+  font-size: 1.3rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.study-page h3 {
+  font-size: 1rem;
+  color: #555;
+  margin: 14px 0 8px;
+}
+
+.study-page p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.mini-cell {
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.tone-table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.example-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.example-item {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.example-item .hanzi {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.example-item .pinyin {
+  margin: 0;
+}
+
+.example-item .english {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.radical-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.radical-item {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.radical-item.active {
+  border-color: #fdba74;
+  background: #fff7ed;
+}
+
+.radical-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.radical-char {
+  font-size: 1.5rem;
+  color: #7c2d12;
+}
+
+.radical-meta {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.example-chars {
+  margin-top: 8px;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 .speaker-btn {
@@ -205,6 +375,12 @@ footer {
   <h1>Chinese Flash Cards</h1>
   <div class="progress" id="progress"></div>
 </header>
+
+<nav class="top-nav" id="top-nav">
+  <a href="#/review" data-route="review">Review</a>
+  <a href="#/pinyin" data-route="pinyin">Pinyin</a>
+  <a href="#/radicals" data-route="radicals">Radicals</a>
+</nav>
 
 <div id="app"></div>
 
@@ -607,13 +783,89 @@ function rateCard(card, progress, difficulty) {
 // ---------------------------------------------------------------------------
 const app = document.getElementById("app");
 const progressEl = document.getElementById("progress");
+const topNav = document.getElementById("top-nav");
+const resetBtn = document.getElementById("reset-btn");
 
 let progress = loadProgress();
 let queue = buildQueue(progress);
 let currentIndex = 0;
 let stage = 0; // 0 = hanzi, 1 = +pinyin+speaker, 2 = +english+mnemonic+buttons
 
-function renderCard() {
+const RADICALS = [
+  { radical: "口", meaning: "mouth", forms: ["口"] },
+  { radical: "人", meaning: "person", forms: ["人", "亻"] },
+  { radical: "女", meaning: "woman", forms: ["女"] },
+  { radical: "子", meaning: "child", forms: ["子"] },
+  { radical: "手", meaning: "hand", forms: ["手", "扌"] },
+  { radical: "心", meaning: "heart", forms: ["心", "忄"] },
+  { radical: "水", meaning: "water", forms: ["水", "氵"] },
+  { radical: "火", meaning: "fire", forms: ["火", "灬"] },
+  { radical: "木", meaning: "wood", forms: ["木"] },
+  { radical: "日", meaning: "sun/day", forms: ["日"] },
+  { radical: "月", meaning: "moon/body", forms: ["月"] },
+  { radical: "言", meaning: "speech", forms: ["言", "讠"] },
+  { radical: "食", meaning: "eat/food", forms: ["食", "饣"] },
+  { radical: "门", meaning: "door", forms: ["门"] },
+  { radical: "辶", meaning: "walk/motion", forms: ["辶"] },
+];
+
+const PINYIN_INITIALS = [
+  "b", "p", "m", "f", "d", "t", "n", "l",
+  "g", "k", "h", "j", "q", "x", "zh", "ch", "sh", "r", "z", "c", "s", "y", "w"
+];
+
+const PINYIN_FINALS = [
+  "a", "o", "e", "i", "u", "ai", "ei", "ao", "ou", "an", "en", "ang", "eng", "ong",
+  "ia", "ie", "iao", "iu", "ian", "in", "iang", "ing", "iong", "ua", "uo", "uai",
+  "ui", "uan", "un", "uang", "er"
+];
+
+const PINYIN_NORMALIZE_MAP = {
+  "ā": "a", "á": "a", "ǎ": "a", "à": "a",
+  "ē": "e", "é": "e", "ě": "e", "è": "e",
+  "ī": "i", "í": "i", "ǐ": "i", "ì": "i",
+  "ō": "o", "ó": "o", "ǒ": "o", "ò": "o",
+  "ū": "u", "ú": "u", "ǔ": "u", "ù": "u",
+  "ǖ": "u", "ǘ": "u", "ǚ": "u", "ǜ": "u",
+  "ü": "u", "ń": "n", "ň": "n", "ḿ": "m",
+};
+
+function normalizePinyin(text) {
+  return (text || "")
+    .toLowerCase()
+    .split("")
+    .map((c) => PINYIN_NORMALIZE_MAP[c] || c)
+    .join("")
+    .replace(/[^a-z ]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function getFirstSyllable(pinyin) {
+  return normalizePinyin((pinyin || "").split(/\s+/)[0]);
+}
+
+function parseRoute() {
+  const raw = location.hash.replace(/^#\/?/, "");
+  if (!raw) return { route: "review", params: new URLSearchParams() };
+  const [path, query = ""] = raw.split("?");
+  const route = ["review", "pinyin", "radicals"].includes(path) ? path : "review";
+  return { route, params: new URLSearchParams(query) };
+}
+
+function updateNav(route) {
+  for (const link of topNav.querySelectorAll("a[data-route]")) {
+    link.classList.toggle("active", link.dataset.route === route);
+  }
+}
+
+function findRadicalsForWord(text) {
+  return RADICALS.filter((radical) =>
+    radical.forms.some((form) => text.includes(form))
+  );
+}
+
+function renderReview() {
   if (currentIndex >= queue.length) {
     progressEl.textContent = "";
     app.innerHTML =
@@ -634,7 +886,8 @@ function renderCard() {
     html += `<div class="hanzi">${card.hanzi}</div>`;
 
     if (stage >= 1) {
-      html += `<div class="pinyin">${card.pinyin}</div>`;
+      const syllable = getFirstSyllable(card.pinyin);
+      html += `<a class="pinyin pinyin-link" href="#/pinyin?syllable=${encodeURIComponent(syllable)}">${card.pinyin}</a>`;
       html += '<button class="speaker-btn" id="speak-btn" title="Play pronunciation">&#128264;</button>';
     }
 
@@ -648,6 +901,15 @@ function renderCard() {
       html += '<button class="btn-medium" data-difficulty="medium">Medium</button>';
       html += '<button class="btn-easy" data-difficulty="easy">Easy</button>';
       html += "</div>";
+
+      const related = findRadicalsForWord(card.hanzi).slice(0, 3);
+      if (related.length > 0) {
+        html += '<div class="related-radicals">';
+        for (const radical of related) {
+          html += `<a class="chip-link" href="#/radicals?rad=${encodeURIComponent(radical.radical)}">${radical.radical} ${radical.meaning}</a>`;
+        }
+        html += "</div>";
+      }
     }
 
     if (stage < 2) {
@@ -681,23 +943,117 @@ function renderCard() {
         e.stopPropagation();
         rateCard(card, progress, btn.dataset.difficulty);
         currentIndex++;
-        renderCard();
+        renderReview();
       });
     }
   }
 }
 
-document.getElementById("reset-btn").addEventListener("click", () => {
+function renderPinyin(params) {
+  const filter = normalizePinyin(params.get("syllable") || "");
+  const examples = VOCAB.filter((item) => {
+    if (!filter) return true;
+    return getFirstSyllable(item.pinyin) === filter;
+  }).slice(0, 24);
+
+  progressEl.textContent = filter
+    ? `Pinyin focus: ${filter}`
+    : "Pinyin reference + examples from your deck";
+
+  let html = '<section class="study-page">';
+  html += "<h2>Pinyin MVP</h2>";
+  html += "<p>Use this page for pronunciation patterns, then jump back to Review to reinforce with spaced repetition.</p>";
+  html += "<h3>Tones</h3>";
+  html += '<div class="tone-table">';
+  html += '<div class="mini-cell">1st<br>mā</div>';
+  html += '<div class="mini-cell">2nd<br>má</div>';
+  html += '<div class="mini-cell">3rd<br>mǎ</div>';
+  html += '<div class="mini-cell">4th<br>mà</div>';
+  html += "</div>";
+  html += "<h3>Initials</h3>";
+  html += '<div class="mini-grid">';
+  for (const initial of PINYIN_INITIALS) html += `<div class="mini-cell">${initial}</div>`;
+  html += "</div>";
+  html += "<h3>Finals</h3>";
+  html += '<div class="mini-grid">';
+  for (const final of PINYIN_FINALS) html += `<div class="mini-cell">${final}</div>`;
+  html += "</div>";
+  html += `<h3>Deck examples${filter ? ` (${filter})` : ""}</h3>`;
+  html += '<div class="example-list">';
+  if (examples.length === 0) {
+    html += '<p>No matches yet for this syllable.</p>';
+  } else {
+    for (const word of examples) {
+      html += '<div class="example-item">';
+      html += `<div class="hanzi">${word.hanzi}</div>`;
+      html += '<div>';
+      html += `<div class="pinyin">${word.pinyin}</div>`;
+      html += `<div class="english">${word.english}</div>`;
+      html += "</div></div>";
+    }
+  }
+  html += "</div>";
+  html += '<p style="margin-top:12px;"><a href="#/review">Return to review deck</a></p>';
+  html += "</section>";
+  app.innerHTML = html;
+}
+
+function renderRadicals(params) {
+  const filter = params.get("rad") || "";
+  progressEl.textContent = filter
+    ? `Radical focus: ${filter}`
+    : "Common radicals with examples from your deck";
+
+  let html = '<section class="study-page">';
+  html += "<h2>Radicals MVP</h2>";
+  html += "<p>Start with core radicals and inspect examples from the same words you review each day.</p>";
+  html += '<div class="radical-list">';
+
+  for (const radical of RADICALS) {
+    const examples = VOCAB.filter((word) =>
+      radical.forms.some((form) => word.hanzi.includes(form))
+    ).slice(0, 6);
+    html += `<div class="radical-item${filter === radical.radical ? " active" : ""}">`;
+    html += '<div class="radical-row">';
+    html += `<a class="radical-char" href="#/radicals?rad=${encodeURIComponent(radical.radical)}">${radical.radical}</a>`;
+    html += `<div class="radical-meta">${radical.meaning}</div>`;
+    html += "</div>";
+    if (examples.length > 0) {
+      html += `<div class="example-chars">${examples.map((item) => item.hanzi).join(" · ")}</div>`;
+    } else {
+      html += '<div class="example-chars">No deck examples yet.</div>';
+    }
+    html += "</div>";
+  }
+
+  html += "</div>";
+  html += '<p style="margin-top:12px;"><a href="#/review">Return to review deck</a></p>';
+  html += "</section>";
+  app.innerHTML = html;
+}
+
+function renderRoute() {
+  const { route, params } = parseRoute();
+  updateNav(route);
+  resetBtn.style.display = route === "review" ? "inline-block" : "none";
+
+  if (route === "review") renderReview();
+  else if (route === "pinyin") renderPinyin(params);
+  else renderRadicals(params);
+}
+
+resetBtn.addEventListener("click", () => {
   if (confirm("Reset all progress? This cannot be undone.")) {
     localStorage.removeItem(STORAGE_KEY);
     progress = {};
     queue = buildQueue(progress);
     currentIndex = 0;
-    renderCard();
+    renderRoute();
   }
 });
 
-renderCard();
+window.addEventListener("hashchange", renderRoute);
+renderRoute();
 initPWA();
 </script>
 </body>
