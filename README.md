@@ -1,10 +1,21 @@
 # Chinese Flash Cards
 
-A single-file SPA for learning Mandarin Chinese using spaced repetition. Covers 143 words from the HSK 1 vocabulary list. No frameworks, no build tools — just open `index.html` in a browser.
+A lightweight SPA for learning Mandarin Chinese using spaced repetition. No frameworks, no build tools. It works as a plain `index.html` file and also supports Progressive Web App (PWA) install/offline features when served over HTTP(S).
 
 ## Usage
 
-Open `index.html` directly in any modern browser (Chrome, Firefox, Safari, Edge).
+You can run this app in two modes:
+
+- **Standalone file mode (`file://`)**: open `index.html` directly in a browser. Core flashcard functionality works.
+- **PWA mode (`http://` or `https://`)**: serve the folder (or deploy to GitHub Pages) to enable installability and service-worker caching.
+
+For local PWA testing, run a static server from this directory, for example:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open `http://localhost:8000`.
 
 1. A Chinese character is displayed
 2. Click to reveal the pinyin romanization and a speaker button
@@ -48,21 +59,24 @@ Each card includes a radical decomposition mnemonic shown alongside the English 
 
 ## Technical Details
 
-- **Single file**: all HTML, CSS, and JS in `index.html` (~530 lines)
+- **App shell**: `index.html` + `manifest.webmanifest` + `sw.js` + `icons/` (`icon-192.png`, `icon-512.png`, `apple-touch-icon-180.png`)
 - **No dependencies**: no npm, no build step, no framework
-- **Responsive**: works on desktop and mobile viewports
+- **Responsive**: optimized for desktop and mobile viewports
 - **Storage**: progress persists in `localStorage` under the key `chinese-flash-cards-progress`
 - **Audio**: requires network access to fetch MP3s from GitHub
+- **PWA**: installable and offline-capable for app shell pages when hosted over HTTP(S)
+- **File mode compatibility**: when opened from disk (`file://`), service worker is skipped and the app still runs normally
 
 ## Code Structure
 
-The JS is organized into four sections separated by comment headers:
+The JS is organized into sections separated by comment headers:
 
-1. **Vocabulary** — the 143-word HSK 1 dataset with hanzi, pinyin, english, and mnemonic fields
+1. **Vocabulary** — HSK 1 + HSK 2 data with `hanzi`, `pinyin`, `english`, and `mnemonic` fields
 2. **Audio** — `speak()` function that plays MP3s from the `hugolpz/audio-cmn` GitHub repo
-3. **Persistence** — `loadProgress()` / `saveProgress()` wrappers around `localStorage`
-4. **Spaced repetition** — `buildQueue()` for scheduling, `rateCard()` for SM-2 updates
-5. **UI** — `renderCard()` manages a 3-stage reveal flow (hanzi → pinyin → answer)
+3. **PWA setup** — `initPWA()` service worker registration (HTTP/S only)
+4. **Persistence** — `loadProgress()` / `saveProgress()` wrappers around `localStorage`
+5. **Spaced repetition** — `buildQueue()` for scheduling, `rateCard()` for SM-2 updates
+6. **UI** — `renderCard()` manages a 3-stage reveal flow (hanzi → pinyin → answer)
 
 ## License
 
