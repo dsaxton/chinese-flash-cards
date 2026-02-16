@@ -200,6 +200,16 @@ header h1 {
   font-size: 0.9rem;
 }
 
+.mini-audio-cell {
+  width: 100%;
+  cursor: pointer;
+}
+
+.mini-audio-cell:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+}
+
 .tone-table {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -219,7 +229,7 @@ header h1 {
   border-radius: 8px;
   padding: 8px 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 12px;
 }
@@ -258,12 +268,20 @@ header h1 {
 .radical-row {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .radical-char {
   font-size: 1.5rem;
   color: #7c2d12;
+  text-decoration: none;
+}
+
+.radical-main {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
 }
 
 .radical-meta {
@@ -271,10 +289,49 @@ header h1 {
   font-size: 0.95rem;
 }
 
+.radical-count {
+  color: #9a3412;
+  border: 1px solid #fdba74;
+  background: #fff7ed;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+}
+
 .example-chars {
   margin-top: 8px;
   color: #666;
   font-size: 0.9rem;
+}
+
+.radical-details {
+  margin-top: 14px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.radical-details summary {
+  cursor: pointer;
+  padding: 10px 12px;
+  color: #555;
+  font-weight: 600;
+}
+
+.radical-details-body {
+  padding: 0 10px 10px;
+}
+
+.radical-toggle-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.radical-toggle {
+  color: #9a3412;
+  text-decoration: none;
+  font-size: 0.85rem;
 }
 
 .speaker-btn {
@@ -326,6 +383,10 @@ header h1 {
 .btn-hard { background: #e74c3c; }
 .btn-medium { background: #f39c12; }
 .btn-easy { background: #27ae60; }
+
+.reset-card-btn {
+  margin-top: 12px;
+}
 
 .done {
   font-size: 1.3rem;
@@ -681,10 +742,70 @@ const VOCAB = [
 // Audio — human-recorded MP3s from hugolpz/audio-cmn (CC-BY-SA)
 // ---------------------------------------------------------------------------
 const AUDIO_BASE = "https://github.com/hugolpz/audio-cmn/raw/master/64k/hsk";
+const AUDIO_BASE_SYLLABLES = "https://github.com/hugolpz/audio-cmn/raw/master/64k/syllabs";
 
 function speak(text) {
   const url = `${AUDIO_BASE}/cmn-${encodeURIComponent(text)}.mp3`;
   new Audio(url).play();
+}
+
+const PINYIN_TONE_CHAR_MAP = {
+  "ā": ["a", 1], "á": ["a", 2], "ǎ": ["a", 3], "à": ["a", 4],
+  "ē": ["e", 1], "é": ["e", 2], "ě": ["e", 3], "è": ["e", 4],
+  "ī": ["i", 1], "í": ["i", 2], "ǐ": ["i", 3], "ì": ["i", 4],
+  "ō": ["o", 1], "ó": ["o", 2], "ǒ": ["o", 3], "ò": ["o", 4],
+  "ū": ["u", 1], "ú": ["u", 2], "ǔ": ["u", 3], "ù": ["u", 4],
+  "ǖ": ["v", 1], "ǘ": ["v", 2], "ǚ": ["v", 3], "ǜ": ["v", 4],
+  "ü": ["v", 5],
+};
+
+function pinyinSyllableToNumbered(syllable) {
+  let tone = 5;
+  let base = "";
+  const text = (syllable || "").toLowerCase();
+
+  for (const ch of text) {
+    if (PINYIN_TONE_CHAR_MAP[ch]) {
+      const [plain, detectedTone] = PINYIN_TONE_CHAR_MAP[ch];
+      base += plain;
+      if (detectedTone !== 5) tone = detectedTone;
+    } else if (/[a-z]/.test(ch)) {
+      base += ch;
+    }
+  }
+
+  if (!base) return "";
+  return `${base}${tone}`;
+}
+
+function pinyinToAudioKeys(pinyin) {
+  return (pinyin || "")
+    .replace(/['’]/g, " ")
+    .split(/\s+/)
+    .map(pinyinSyllableToNumbered)
+    .filter(Boolean);
+}
+
+function playAudioSequence(urls) {
+  if (urls.length === 0) return;
+  let i = 0;
+
+  function playNext() {
+    if (i >= urls.length) return;
+    const audio = new Audio(urls[i++]);
+    audio.addEventListener("ended", playNext, { once: true });
+    audio.addEventListener("error", playNext, { once: true });
+    audio.play().catch(playNext);
+  }
+
+  playNext();
+}
+
+function speakPinyin(pinyin) {
+  const keys = pinyinToAudioKeys(pinyin);
+  if (keys.length === 0) return;
+  const urls = keys.map((key) => `${AUDIO_BASE_SYLLABLES}/cmn-${encodeURIComponent(key)}.mp3`);
+  playAudioSequence(urls);
 }
 
 // ---------------------------------------------------------------------------
@@ -794,7 +915,7 @@ let queue = buildQueue(progress);
 let currentIndex = 0;
 let stage = 0; // 0 = hanzi, 1 = +pinyin+speaker, 2 = +english+mnemonic+buttons
 
-const RADICALS = [
+const CORE_RADICALS = [
   { radical: "口", meaning: "mouth", forms: ["口"] },
   { radical: "人", meaning: "person", forms: ["人", "亻"] },
   { radical: "女", meaning: "woman", forms: ["女"] },
@@ -811,6 +932,108 @@ const RADICALS = [
   { radical: "门", meaning: "door", forms: ["门"] },
   { radical: "辶", meaning: "walk/motion", forms: ["辶"] },
 ];
+
+const RADICAL_MEANING_HINTS = Object.fromEntries(
+  CORE_RADICALS.map((item) => [item.radical, item.meaning])
+);
+
+function isHanChar(ch) {
+  return /[\u3400-\u9fff]/.test(ch);
+}
+
+function extractRadicalsFromMnemonics(vocab) {
+  const found = new Set();
+  const pattern = /([\u3400-\u9fff])\s*\(/g;
+
+  for (const word of vocab) {
+    if (!word.mnemonic) continue;
+    for (const match of word.mnemonic.matchAll(pattern)) {
+      if (isHanChar(match[1])) found.add(match[1]);
+    }
+  }
+  return [...found];
+}
+
+function inferRadicalMeaningsFromMnemonics(vocab) {
+  const counts = new Map();
+  const pattern = /([\u3400-\u9fff])\s*\(([^)]+)\)/g;
+
+  for (const word of vocab) {
+    if (!word.mnemonic) continue;
+    for (const match of word.mnemonic.matchAll(pattern)) {
+      const symbol = match[1];
+      const rawMeaning = match[2].trim();
+      if (!isHanChar(symbol) || !rawMeaning) continue;
+
+      if (!counts.has(symbol)) counts.set(symbol, new Map());
+      const meaningCounts = counts.get(symbol);
+      meaningCounts.set(rawMeaning, (meaningCounts.get(rawMeaning) || 0) + 1);
+    }
+  }
+
+  const inferred = new Map();
+  for (const [symbol, meaningCounts] of counts.entries()) {
+    let topMeaning = "";
+    let topCount = -1;
+    for (const [meaning, count] of meaningCounts.entries()) {
+      if (count > topCount) {
+        topMeaning = meaning;
+        topCount = count;
+      }
+    }
+    if (topMeaning) inferred.set(symbol, topMeaning);
+  }
+
+  return inferred;
+}
+
+function buildLessonRadicals() {
+  const map = new Map();
+  const coveredForms = new Set();
+  const inferredMeanings = inferRadicalMeaningsFromMnemonics(VOCAB);
+
+  for (const radical of CORE_RADICALS) {
+    for (const form of radical.forms) coveredForms.add(form);
+    map.set(radical.radical, {
+      ...radical,
+      forms: [...new Set(radical.forms)],
+      core: true,
+    });
+  }
+
+  for (const symbol of extractRadicalsFromMnemonics(VOCAB)) {
+    if (map.has(symbol) || coveredForms.has(symbol)) continue;
+    map.set(symbol, {
+      radical: symbol,
+      meaning:
+        inferredMeanings.get(symbol) ||
+        RADICAL_MEANING_HINTS[symbol] ||
+        "component in lesson mnemonics",
+      forms: [symbol],
+      core: false,
+    });
+    coveredForms.add(symbol);
+  }
+
+  for (const radical of map.values()) {
+    const words = [];
+    for (const word of VOCAB) {
+      const inWord = radical.forms.some((form) => word.hanzi.includes(form));
+      const inMnemonic = radical.forms.some((form) => (word.mnemonic || "").includes(form));
+      if (inWord || inMnemonic) words.push(word.hanzi);
+    }
+    radical.wordCount = words.length;
+    radical.examples = words.slice(0, 6);
+  }
+
+  return [...map.values()].sort((a, b) => {
+    if (a.core !== b.core) return a.core ? -1 : 1;
+    if (b.wordCount !== a.wordCount) return b.wordCount - a.wordCount;
+    return a.radical.localeCompare(b.radical, "zh");
+  });
+}
+
+const RADICALS = buildLessonRadicals();
 
 const PINYIN_INITIALS = [
   "b", "p", "m", "f", "d", "t", "n", "l",
@@ -863,7 +1086,7 @@ function updateNav(route) {
 }
 
 function findRadicalsForWord(text) {
-  return RADICALS.filter((radical) =>
+  return CORE_RADICALS.filter((radical) =>
     radical.forms.some((form) => text.includes(form))
   );
 }
@@ -900,10 +1123,11 @@ function renderReview() {
         html += `<div class="mnemonic">${card.mnemonic}</div>`;
       }
       html += '<div class="difficulty-buttons">';
-      html += '<button class="btn-hard" data-difficulty="hard">Hard</button>';
-      html += '<button class="btn-medium" data-difficulty="medium">Medium</button>';
       html += '<button class="btn-easy" data-difficulty="easy">Easy</button>';
+      html += '<button class="btn-medium" data-difficulty="medium">Medium</button>';
+      html += '<button class="btn-hard" data-difficulty="hard">Hard</button>';
       html += "</div>";
+      html += '<button class="reset-btn reset-card-btn" id="reset-card-btn">Reset card</button>';
 
       const related = findRadicalsForWord(card.hanzi).slice(0, 3);
       if (related.length > 0) {
@@ -949,6 +1173,15 @@ function renderReview() {
         renderReview();
       });
     }
+
+    const resetCardBtn = document.getElementById("reset-card-btn");
+    if (resetCardBtn) {
+      resetCardBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        stage = 0;
+        render();
+      });
+    }
   }
 }
 
@@ -967,12 +1200,13 @@ function renderPinyin(params) {
   html += '<p class="back-link"><a href="#/review">Return to review deck</a></p>';
   html += "<h2>Pinyin</h2>";
   html += "<p>Use this page for pronunciation patterns, then jump back to Review to reinforce with spaced repetition.</p>";
+  html += '<p><small>Tap a tone cell to hear pinyin audio.</small></p>';
   html += "<h3>Tones</h3>";
   html += '<div class="tone-table">';
-  html += '<div class="mini-cell">1st<br>mā</div>';
-  html += '<div class="mini-cell">2nd<br>má</div>';
-  html += '<div class="mini-cell">3rd<br>mǎ</div>';
-  html += '<div class="mini-cell">4th<br>mà</div>';
+  html += '<button type="button" class="mini-cell mini-audio-cell" data-pinyin-audio="mā">1st<br>mā</button>';
+  html += '<button type="button" class="mini-cell mini-audio-cell" data-pinyin-audio="má">2nd<br>má</button>';
+  html += '<button type="button" class="mini-cell mini-audio-cell" data-pinyin-audio="mǎ">3rd<br>mǎ</button>';
+  html += '<button type="button" class="mini-cell mini-audio-cell" data-pinyin-audio="mà">4th<br>mà</button>';
   html += "</div>";
   html += "<h3>Initials</h3>";
   html += '<div class="mini-grid">';
@@ -982,7 +1216,9 @@ function renderPinyin(params) {
   html += '<div class="mini-grid">';
   for (const final of PINYIN_FINALS) html += `<div class="mini-cell">${final}</div>`;
   html += "</div>";
-  html += `<h3>Deck examples${filter ? ` (${filter})` : ""}</h3>`;
+  html += `<details class="radical-details"${filter ? " open" : ""}>`;
+  html += `<summary>Deck examples${filter ? ` (${filter})` : ""}</summary>`;
+  html += '<div class="radical-details-body">';
   html += '<div class="example-list">';
   if (examples.length === 0) {
     html += '<p>No matches yet for this syllable.</p>';
@@ -993,37 +1229,100 @@ function renderPinyin(params) {
       html += '<div>';
       html += `<div class="pinyin">${word.pinyin}</div>`;
       html += `<div class="english">${word.english}</div>`;
-      html += "</div></div>";
+      html += "</div>";
+      html += "</div>";
     }
   }
-  html += "</div>";
+  html += "</div></div></details>";
   html += '<p style="margin-top:12px;"><a href="#/review">Return to review deck</a></p>';
   html += "</section>";
   app.innerHTML = html;
+
+  for (const btn of app.querySelectorAll("[data-pinyin-audio]")) {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      speakPinyin(btn.dataset.pinyinAudio || "");
+    });
+  }
 }
 
 function renderRadicals(params) {
   const filter = params.get("rad") || "";
+  const showAll = params.get("all") === "1";
+  const focused = RADICALS.find((r) => r.radical === filter) || null;
+  const coreRadicals = RADICALS.filter((r) => r.core);
+  const lessonRadicals = RADICALS.filter((r) => !r.core);
+  const previewLimit = 36;
+  const visibleLessonRadicals = showAll ? lessonRadicals : lessonRadicals.slice(0, previewLimit);
+
   progressEl.textContent = filter
     ? `Radical focus: ${filter}`
-    : "Common radicals";
+    : "Lesson radicals";
 
   let html = '<section class="study-page">';
   html += '<p class="back-link"><a href="#/review">Return to review deck</a></p>';
   html += "<h2>Radicals</h2>";
-  html += "<p>Start with core radicals and their meanings.</p>";
+  html += '<p><small>Count badge = how many vocab entries include that symbol in the word or in its mnemonic breakdown.</small></p>';
+
+  if (focused) {
+    html += '<div class="radical-item active">';
+    html += '<div class="radical-row">';
+    html += '<div class="radical-main">';
+    html += `<a class="radical-char" href="#/radicals?rad=${encodeURIComponent(focused.radical)}">${focused.radical}</a>`;
+    html += `<div class="radical-meta">${focused.meaning}</div>`;
+    html += "</div>";
+    html += `<div class="radical-count">${focused.wordCount} words</div>`;
+    html += "</div>";
+    if (focused.examples.length > 0) {
+      html += `<div class="example-chars">${focused.examples.join(" · ")}</div>`;
+    }
+    html += "</div>";
+  }
+
+  html += "<h3>Core set</h3>";
   html += '<div class="radical-list">';
 
-  for (const radical of RADICALS) {
+  for (const radical of coreRadicals) {
     html += `<div class="radical-item${filter === radical.radical ? " active" : ""}">`;
     html += '<div class="radical-row">';
+    html += '<div class="radical-main">';
     html += `<a class="radical-char" href="#/radicals?rad=${encodeURIComponent(radical.radical)}">${radical.radical}</a>`;
     html += `<div class="radical-meta">${radical.meaning}</div>`;
+    html += "</div>";
+    html += `<div class="radical-count">${radical.wordCount} words</div>`;
     html += "</div>";
     html += "</div>";
   }
 
   html += "</div>";
+  html += `<details class="radical-details"${showAll || !!filter ? " open" : ""}>`;
+  html += `<summary>Lesson components (${lessonRadicals.length})</summary>`;
+  html += '<div class="radical-details-body">';
+  html += '<div class="radical-list">';
+
+  for (const radical of visibleLessonRadicals) {
+    html += `<div class="radical-item${filter === radical.radical ? " active" : ""}">`;
+    html += '<div class="radical-row">';
+    html += '<div class="radical-main">';
+    html += `<a class="radical-char" href="#/radicals?rad=${encodeURIComponent(radical.radical)}">${radical.radical}</a>`;
+    html += `<div class="radical-meta">${radical.meaning}</div>`;
+    html += "</div>";
+    html += `<div class="radical-count">${radical.wordCount} words</div>`;
+    html += "</div>";
+    html += "</div>";
+  }
+
+  html += "</div>";
+  if (!showAll && lessonRadicals.length > previewLimit) {
+    html += '<div class="radical-toggle-row">';
+    html += '<a class="radical-toggle" href="#/radicals?all=1">Show all lesson components</a>';
+    html += "</div>";
+  } else if (showAll) {
+    html += '<div class="radical-toggle-row">';
+    html += '<a class="radical-toggle" href="#/radicals">Show fewer</a>';
+    html += "</div>";
+  }
+  html += "</div></details>";
   html += '<p style="margin-top:12px;"><a href="#/review">Return to review deck</a></p>';
   html += "</section>";
   app.innerHTML = html;
