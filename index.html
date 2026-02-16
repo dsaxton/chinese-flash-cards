@@ -861,6 +861,15 @@ function shuffle(arr) {
   return a;
 }
 
+function escapeHtml(text) {
+  return String(text || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
 function buildQueue(progress) {
   const today = todayStr();
   const due = [];
@@ -872,7 +881,9 @@ function buildQueue(progress) {
     else if (p.due <= today) due.push(word);
   }
 
-  return [...shuffle(due), ...shuffle(unseen).slice(0, NEW_CARDS_PER_SESSION)];
+  const baseQueue = [...shuffle(due), ...shuffle(unseen).slice(0, NEW_CARDS_PER_SESSION)];
+  if (baseQueue.length === 0) return baseQueue;
+  return baseQueue;
 }
 
 function rateCard(card, progress, difficulty) {
@@ -918,8 +929,22 @@ const resetBtn = document.getElementById("reset-btn");
 
 let progress = loadProgress();
 let queue = buildQueue(progress);
+let lessonQueue = [...queue];
 let currentIndex = 0;
 let stage = 0; // 0 = hanzi, 1 = +pinyin+speaker, 2 = +english+mnemonic+buttons
+
+function startNewLessonFromProgress() {
+  queue = buildQueue(progress);
+  lessonQueue = [...queue];
+  currentIndex = 0;
+}
+
+function replayLesson() {
+  if (lessonQueue.length === 0) return;
+  queue = shuffle(lessonQueue);
+  currentIndex = 0;
+  renderReview();
+}
 
 const CORE_RADICALS = [
   { radical: "口", meaning: "mouth", forms: ["口"] },
@@ -1097,19 +1122,85 @@ function findRadicalsForWord(text, mnemonic) {
   );
 }
 
+function parseMnemonic(card) {
+  const mnemonic = card.mnemonic || "";
+  const componentPattern = /([\u3400-\u9fff]+)\s*\(([^)]+)\)/g;
+  const chips = [];
+  const seen = new Set();
+
+  for (const match of mnemonic.matchAll(componentPattern)) {
+    const hanzi = match[1].trim();
+    const meaning = match[2].trim();
+    const key = `${hanzi}|${meaning}`;
+    if (!hanzi || !meaning || seen.has(key)) continue;
+    seen.add(key);
+    chips.push({ hanzi, meaning });
+  }
+
+  let text = mnemonic.trim();
+  const firstStop = text.search(/[。.!?]/);
+  if (firstStop !== -1) {
+    const head = text.slice(0, firstStop + 1);
+    if (/[\u3400-\u9fff]+\s*\([^)]+\)/.test(head)) {
+      text = text.slice(firstStop + 1).trim();
+    }
+  }
+
+  if (!text) {
+    text = mnemonic
+      .replace(componentPattern, "$1")
+      .replace(/\s*[+＋=＝]\s*/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  return { text, chips };
+}
+
+function buildMnemonicAndChips(card) {
+  const parsed = parseMnemonic(card);
+  if (parsed.chips.length > 0) return parsed;
+
+  const chips = [];
+  const seen = new Set();
+  for (const ch of card.hanzi) {
+    const radical = RADICALS.find((item) => item.radical === ch || item.forms.includes(ch));
+    const meaning = radical ? radical.meaning : "component";
+    const key = `${ch}|${meaning}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    chips.push({ hanzi: ch, meaning });
+  }
+
+  if (chips.length === 0) {
+    chips.push({ hanzi: card.hanzi, meaning: "word component" });
+  }
+
+  return { text: parsed.text, chips };
+}
+
 function renderReview() {
   if (currentIndex >= queue.length) {
     progressEl.textContent = "";
-    app.innerHTML =
+    let html =
       '<div class="done"><div class="emoji">&#127881;</div>' +
       "All done for today!<br>" +
-      '<small style="color:#aaa">Come back tomorrow for more review.</small></div>';
+      '<small style="color:#aaa">Come back tomorrow for more review.</small>';
+    if (lessonQueue.length > 0) {
+      html += '<div style="margin-top:14px;"><button class="reset-btn" id="replay-lesson-btn">Replay lesson</button></div>';
+    }
+    html += "</div>";
+    app.innerHTML = html;
+    const replayBtn = document.getElementById("replay-lesson-btn");
+    if (replayBtn) {
+      replayBtn.addEventListener("click", replayLesson);
+    }
     return;
   }
 
-  progressEl.textContent = `Card ${currentIndex + 1} of ${queue.length} due today`;
-
   const card = queue[currentIndex];
+
+  progressEl.textContent = `Card ${currentIndex + 1} of ${queue.length} due today`;
   stage = 0;
   render();
 
@@ -1124,9 +1215,17 @@ function renderReview() {
     }
 
     if (stage >= 2) {
+      const parsedMnemonic = buildMnemonicAndChips(card);
       html += `<div class="english">${card.english}</div>`;
-      if (card.mnemonic) {
-        html += `<div class="mnemonic">${card.mnemonic}</div>`;
+      if (parsedMnemonic.text) {
+        html += `<div class="mnemonic">${escapeHtml(parsedMnemonic.text)}</div>`;
+      }
+      if (parsedMnemonic.chips.length > 0) {
+        html += '<div class="related-radicals">';
+        for (const item of parsedMnemonic.chips) {
+          html += `<span class="chip-link">${escapeHtml(item.hanzi)} ${escapeHtml(item.meaning)}</span>`;
+        }
+        html += "</div>";
       }
       html += '<div class="difficulty-buttons">';
       html += '<button class="btn-easy" data-difficulty="easy">Easy</button>';
@@ -1134,15 +1233,6 @@ function renderReview() {
       html += '<button class="btn-hard" data-difficulty="hard">Hard</button>';
       html += "</div>";
       html += '<button class="reset-btn reset-card-btn" id="reset-card-btn">Reset card</button>';
-
-      const related = findRadicalsForWord(card.hanzi, card.mnemonic).slice(0, 5);
-      if (related.length > 0) {
-        html += '<div class="related-radicals">';
-        for (const radical of related) {
-          html += `<a class="chip-link" href="#/radicals?rad=${encodeURIComponent(radical.radical)}">${radical.radical} ${radical.meaning}</a>`;
-        }
-        html += "</div>";
-      }
     }
 
     if (stage < 2) {
@@ -1349,8 +1439,7 @@ resetBtn.addEventListener("click", () => {
   if (confirm("Reset all progress? This cannot be undone.")) {
     localStorage.removeItem(STORAGE_KEY);
     progress = {};
-    queue = buildQueue(progress);
-    currentIndex = 0;
+    startNewLessonFromProgress();
     renderRoute();
   }
 });
