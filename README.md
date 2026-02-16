@@ -90,6 +90,20 @@ Each tidbit includes:
 - English translation
 - Inline attribution (for example: `— Sun Tzu, The Art of War`)
 - Source citation and link
+- Relevance selected entirely from English meaning overlap between the card definition and tidbit translation
+- Short-quote preference (long classical passages are filtered out in review cards)
+
+If no semantically relevant quote is found for a card, no cultural tidbit is shown for that card.
+
+### Coverage Check
+
+Run the coverage checker to verify how many vocab cards will show at least one cultural tidbit under current matching rules:
+
+```bash
+node scripts/check-tidbit-coverage.js 0.50
+```
+
+The argument is the minimum acceptable ratio. The command exits non-zero if coverage drops below the threshold.
 
 ## Technical Details
 
