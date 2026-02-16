@@ -122,6 +122,26 @@ The command exits non-zero if any threshold fails:
 - any single word matches more than `max_raw_matches_per_word` tidbits
 - one tidbit becomes the primary match for more than `max_primary_share` of matched words
 
+### Tidbit Tests
+
+Validate dataset integrity (source/relevance/length constraints):
+
+```bash
+node scripts/test-tidbit-data.js
+```
+
+Validate deterministic selection behavior and candidate-pool bounds:
+
+```bash
+node scripts/test-tidbit-selection.js
+```
+
+List currently unmatched vocab entries for curation:
+
+```bash
+node scripts/report-unmatched-tidbits.js
+```
+
 ## Technical Details
 
 - **App shell**: `index.html` + `manifest.webmanifest` + `sw.js` + `icons/` (`icon-192.png`, `icon-512.png`, `apple-touch-icon-180.png`)
