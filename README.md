@@ -31,9 +31,10 @@ Then open the URL printed by the script (it auto-increments to the next free por
 
 1. A Chinese character is displayed
 2. Click to reveal the pinyin romanization and a speaker button
-3. Click again to reveal the English meaning, a mnemonic hint, and difficulty buttons
+3. Click again to reveal the English meaning, radical chips, English-only mnemonic hint, optional cultural tidbit, and difficulty buttons
 4. Rate your recall: **Hard** (forgot), **Medium** (remembered), or **Easy** (instant recall)
 5. The next card appears
+6. After finishing the queue, click **Replay lesson** to run the same lesson again in a reshuffled order
 
 The speaker button can be clicked at any time after pinyin is revealed to hear the pronunciation. It does not advance the card.
 From the review deck, use the buttons below the card to open `Pinyin` and `Radicals` study sections. Inside those sections, use the "Return to review deck" links (top or bottom) to go back.
@@ -63,12 +64,32 @@ Cards due today or overdue are shown first (shuffled). When the review queue is 
 
 Pronunciation audio uses human-recorded MP3s from [hugolpz/audio-cmn](https://github.com/hugolpz/audio-cmn) (CC-BY-SA, 64kbps). Eight HSK 1 words without available recordings have been excluded from the app to avoid poor-quality fallback audio.
 
-## Mnemonics
+## Mnemonics & Radicals
 
-Each card includes a radical decomposition mnemonic shown alongside the English meaning. These break characters into their component radicals and create visual stories to aid memorization. For example:
+Each reveal card includes:
+
+- Radical chips (always shown) above the mnemonic
+- An English-only mnemonic line
+
+These break words into components and create visual stories to aid memorization. For example:
 
 - **好** (good): 女 (woman) + 子 (child). A mother with her child — that's good!
 - **家** (home): 宀 (roof) + 豕 (pig). A pig under a roof — in ancient China, keeping pigs meant a prosperous home.
+
+## Cultural Tidbits
+
+Reveal cards can show a short quote from classical Chinese texts, including:
+
+- *Tao Te Ching* (《道德经》)
+- *The Art of War* (《孙子兵法》)
+- *Analects* (《论语》)
+
+Each tidbit includes:
+
+- Original Chinese quote
+- English translation
+- Inline attribution (for example: `— Sun Tzu, The Art of War`)
+- Source citation and link
 
 ## Technical Details
 
@@ -89,7 +110,7 @@ The JS is organized into sections separated by comment headers:
 3. **PWA setup** — `initPWA()` service worker registration (HTTP/S only)
 4. **Persistence** — `loadProgress()` / `saveProgress()` wrappers around `localStorage`
 5. **Spaced repetition** — `buildQueue()` for scheduling, `rateCard()` for SM-2 updates
-6. **UI + routes** — `renderRoute()` switches between `review`, `pinyin`, and `radicals`; `renderReview()` manages the 3-stage flashcard flow (hanzi → pinyin → answer)
+6. **UI + routes** — `renderRoute()` switches between `review`, `pinyin`, and `radicals`; `renderReview()` manages the 3-stage flashcard flow (hanzi → pinyin → answer), cultural tidbit rendering, and lesson replay completion state
 
 ## License
 

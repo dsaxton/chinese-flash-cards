@@ -119,6 +119,7 @@ header h1 {
   font-size: 0.85rem;
   color: #777;
   font-style: italic;
+  margin-top: 10px;
   margin-bottom: 16px;
   line-height: 1.5;
   max-width: 340px;
@@ -150,6 +151,39 @@ header h1 {
   border-radius: 999px;
   padding: 4px 10px;
   font-size: 0.8rem;
+}
+
+.cultural-tidbit {
+  width: 100%;
+  margin-top: 14px;
+  border-left: 4px solid #ea580c;
+  background: #fef9ef;
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.cultural-quote {
+  font-size: 1.1rem;
+  line-height: 1.45;
+  color: #3f3f46;
+}
+
+.cultural-source {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: #78716c;
+}
+
+.cultural-translation {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #57534e;
+}
+
+.cultural-source a {
+  color: #9a3412;
 }
 
 .study-page {
@@ -739,6 +773,73 @@ const VOCAB = [
 ];
 
 // ---------------------------------------------------------------------------
+// Cultural tidbits — curated classical quotes with source citations.
+// Sources:
+// - Chinese Text Project (ctext.org): Dao De Jing, Analects
+// - Chinese Wikisource (zh.wikisource.org): Art of War
+// ---------------------------------------------------------------------------
+const CLASSICAL_TIDBITS_RAW = [
+  { word: "上", quote: "上善若水。", translation: "The highest goodness is like water.", source: "《道德经》 第八章", url: "https://ctext.org/dao-de-jing/8/zh" },
+  { word: "水", quote: "上善若水。", translation: "The highest goodness is like water.", source: "《道德经》 第八章", url: "https://ctext.org/dao-de-jing/8/zh" },
+  { word: "有", quote: "有无相生，难易相成，长短相形，高下相倾，音声相和，前后相随。", translation: "Being and non-being give rise to each other; hard and easy complete each other; long and short define each other; high and low incline to each other; tones and voice harmonize each other; front and back follow each other.", source: "《道德经》 第二章", url: "https://ctext.org/dao-de-jing/2/zh" },
+  { word: "和", quote: "有无相生，难易相成，长短相形，高下相倾，音声相和，前后相随。", translation: "Being and non-being give rise to each other; hard and easy complete each other; long and short define each other; high and low incline to each other; tones and voice harmonize each other; front and back follow each other.", source: "《道德经》 第二章", url: "https://ctext.org/dao-de-jing/2/zh" },
+  { word: "大", quote: "道大，天大，地大，王亦大。", translation: "The Dao is great, Heaven is great, Earth is great, and the king is also great.", source: "《道德经》 第二十五章", url: "https://ctext.org/dao-de-jing/25/zh" },
+  { word: "人", quote: "知人者智，自知者明。", translation: "Knowing others is wisdom; knowing yourself is clarity.", source: "《道德经》 第三十三章", url: "https://ctext.org/dao-de-jing/33/zh" },
+  { word: "下", quote: "江海所以能为百谷王者，以其善下之。", translation: "Rivers and seas become kings of the hundred valleys because they are good at staying below them.", source: "《道德经》 第六十六章", url: "https://ctext.org/dao-de-jing/66/zh" },
+  { word: "少", quote: "少则得，多则惑。", translation: "Few leads to gain; many leads to confusion.", source: "《道德经》 第二十二章", url: "https://ctext.org/dao-de-jing/22/zh" },
+  { word: "多", quote: "少则得，多则惑。", translation: "Few leads to gain; many leads to confusion.", source: "《道德经》 第二十二章", url: "https://ctext.org/dao-de-jing/22/zh" },
+  { word: "里", quote: "千里之行，始于足下。", translation: "A journey of a thousand li begins beneath one's feet.", source: "《道德经》 第六十四章", url: "https://ctext.org/dao-de-jing/64/zh" },
+  { word: "不", quote: "信言不美，美言不信。", translation: "Trustworthy words are not ornate; ornate words are not trustworthy.", source: "《道德经》 第八十一章", url: "https://ctext.org/dao-de-jing/81/zh" },
+  { word: "上", quote: "上兵伐谋，其次伐交，其次伐兵，其下攻城。", translation: "The best warfare attacks strategy; next attacks alliances; next attacks armies; the worst attacks cities.", source: "《孙子兵法》 谋攻篇", url: "https://zh.wikisource.org/wiki/孫子兵法/謀攻篇" },
+  { word: "下", quote: "上兵伐谋，其次伐交，其次伐兵，其下攻城。", translation: "The best warfare attacks strategy; next attacks alliances; next attacks armies; the worst attacks cities.", source: "《孙子兵法》 谋攻篇", url: "https://zh.wikisource.org/wiki/孫子兵法/謀攻篇" },
+  { word: "大", quote: "兵者，国之大事，死生之地，存亡之道，不可不察也。", translation: "War is a matter of great importance to the state, the ground of life and death, the way of survival and ruin; it must be examined.", source: "《孙子兵法》 始计篇", url: "https://zh.wikisource.org/wiki/孫子兵法/始計篇" },
+  { word: "不", quote: "兵者，国之大事，死生之地，存亡之道，不可不察也。", translation: "War is a matter of great importance to the state, the ground of life and death, the way of survival and ruin; it must be examined.", source: "《孙子兵法》 始计篇", url: "https://zh.wikisource.org/wiki/孫子兵法/始計篇" },
+  { word: "水", quote: "兵无常势，水无常形。", translation: "In war there is no constant force, just as water has no constant shape.", source: "《孙子兵法》 虚实篇", url: "https://zh.wikisource.org/wiki/孫子兵法/虛實篇" },
+  { word: "三", quote: "三人行，必有我师焉。", translation: "When three people walk together, one can surely be my teacher.", source: "《论语·述而》", url: "https://ctext.org/analects/shu-er/zh" },
+  { word: "我", quote: "三人行，必有我师焉。", translation: "When three people walk together, one can surely be my teacher.", source: "《论语·述而》", url: "https://ctext.org/analects/shu-er/zh" },
+  { word: "来", quote: "有朋自远方来，不亦乐乎？", translation: "Is it not a joy to have friends come from afar?", source: "《论语·学而》", url: "https://ctext.org/analects/xue-er/zh" },
+  { word: "远", quote: "有朋自远方来，不亦乐乎？", translation: "Is it not a joy to have friends come from afar?", source: "《论语·学而》", url: "https://ctext.org/analects/xue-er/zh" },
+  { word: "好", quote: "知之者不如好之者，好之者不如乐之者。", translation: "Those who know it are not equal to those who love it; those who love it are not equal to those who delight in it.", source: "《论语·雍也》", url: "https://ctext.org/analects/yong-ye/zh" },
+  { word: "过", quote: "过而不改，是谓过矣。", translation: "To make a mistake and not correct it: this is truly a mistake.", source: "《论语·卫灵公》", url: "https://ctext.org/analects/wei-ling-gong/zh" },
+  { word: "日", quote: "吾日三省吾身。", translation: "Each day I examine myself on three counts.", source: "《论语·学而》", url: "https://ctext.org/analects/xue-er/zh" },
+  { word: "人", quote: "人而无信，不知其可也。", translation: "If a person has no trustworthiness, I do not know what they can do.", source: "《论语·学而》", url: "https://ctext.org/analects/xue-er/zh" },
+  { word: "新", quote: "温故而知新，可以为师矣。", translation: "Review the old and know the new, and you can be a teacher.", source: "《论语·为政》", url: "https://ctext.org/analects/wei-zheng/zh" },
+  { word: "和", quote: "君子和而不同，小人同而不和。", translation: "The gentleman seeks harmony but not sameness; the petty person seeks sameness but not harmony.", source: "《论语·子路》", url: "https://ctext.org/analects/zi-lu/zh" },
+  { words: ["学", "时", "不", "说"], quote: "学而时习之，不亦说乎？", translation: "To learn and practice it in due time, is this not a pleasure?", source: "《论语·学而》", url: "https://ctext.org/analects/xue-er/zh" },
+  { words: ["知", "新", "可"], quote: "温故而知新，可以为师矣。", translation: "Review the old and know the new, and you can be a teacher.", source: "《论语·为政》", url: "https://ctext.org/analects/wei-zheng/zh" },
+  { words: ["不", "人"], quote: "己所不欲，勿施于人。", translation: "What you do not desire for yourself, do not impose on others.", source: "《论语·颜渊》", url: "https://ctext.org/analects/yan-yuan/zh" },
+  { words: ["可", "名"], quote: "道可道，非常道；名可名，非常名。", translation: "The Dao that can be spoken is not the constant Dao; the name that can be named is not the constant name.", source: "《道德经》 第一章", url: "https://ctext.org/dao-de-jing/1/zh" },
+  { words: ["天", "下", "知", "美"], quote: "天下皆知美之为美，斯恶已。", translation: "When everyone under heaven knows beauty as beauty, ugliness appears.", source: "《道德经》 第二章", url: "https://ctext.org/dao-de-jing/2/zh" },
+  { words: ["上", "善", "水"], quote: "上善若水。", translation: "The highest goodness is like water.", source: "《道德经》 第八章", url: "https://ctext.org/dao-de-jing/8/zh" },
+  { words: ["千", "里", "行", "下"], quote: "千里之行，始于足下。", translation: "A journey of a thousand li begins beneath one's feet.", source: "《道德经》 第六十四章", url: "https://ctext.org/dao-de-jing/64/zh" },
+  { words: ["兵", "水", "形"], quote: "兵无常势，水无常形。", translation: "In war there is no constant force, just as water has no constant shape.", source: "《孙子兵法》 虚实篇", url: "https://zh.wikisource.org/wiki/孫子兵法/虛實篇" },
+  { words: ["上", "下", "兵"], quote: "上兵伐谋，其次伐交，其次伐兵，其下攻城。", translation: "The best warfare attacks strategy; next attacks alliances; next attacks armies; the worst attacks cities.", source: "《孙子兵法》 谋攻篇", url: "https://zh.wikisource.org/wiki/孫子兵法/謀攻篇" },
+  { words: ["知"], quote: "知彼知己，百战不殆。", translation: "Know the other and know yourself, and in a hundred battles you will not be endangered.", source: "《孙子兵法》 谋攻篇", url: "https://zh.wikisource.org/wiki/孫子兵法/謀攻篇" },
+  { words: ["大", "国", "不"], quote: "兵者，国之大事，死生之地，存亡之道，不可不察也。", translation: "War is a matter of great importance to the state, the ground of life and death, the way of survival and ruin; it must be examined.", source: "《孙子兵法》 始计篇", url: "https://zh.wikisource.org/wiki/孫子兵法/始計篇" },
+];
+
+function normalizeHanText(text) {
+  return String(text || "").replace(/\s+/g, "");
+}
+
+function buildClassicalTidbitsByWord() {
+  const byWord = new Map();
+  for (const item of CLASSICAL_TIDBITS_RAW) {
+    const keys = Array.isArray(item.words) ? item.words : [item.word];
+    for (const key of keys) {
+      if (!key) continue;
+      if (!normalizeHanText(item.quote).includes(key)) continue;
+      if (!byWord.has(key)) byWord.set(key, []);
+      byWord.get(key).push(item);
+    }
+  }
+  return byWord;
+}
+
+const CLASSICAL_TIDBITS_BY_WORD = buildClassicalTidbitsByWord();
+const GENERAL_CLASSICAL_TIDBITS = [...CLASSICAL_TIDBITS_RAW];
+
+// ---------------------------------------------------------------------------
 // Audio — human-recorded MP3s from hugolpz/audio-cmn (CC-BY-SA)
 // ---------------------------------------------------------------------------
 const AUDIO_BASE = "https://github.com/hugolpz/audio-cmn/raw/master/64k/hsk";
@@ -868,6 +969,46 @@ function escapeHtml(text) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function hashString(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+  }
+  return hash;
+}
+
+function getCulturalTidbitForCard(card) {
+  const seed = hashString(`${card.hanzi}|${todayStr()}`);
+  const exact = CLASSICAL_TIDBITS_BY_WORD.get(card.hanzi) || [];
+  if (exact.length > 0) {
+    return exact[seed % exact.length];
+  }
+
+  const byChar = [];
+  const seen = new Set();
+  for (const ch of card.hanzi) {
+    const notes = CLASSICAL_TIDBITS_BY_WORD.get(ch) || [];
+    for (const note of notes) {
+      const key = `${ch}|${note.quote}|${note.source}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      byChar.push(note);
+    }
+  }
+  if (byChar.length > 0) return byChar[seed % byChar.length];
+
+  if (GENERAL_CLASSICAL_TIDBITS.length === 0) return null;
+  return GENERAL_CLASSICAL_TIDBITS[seed % GENERAL_CLASSICAL_TIDBITS.length];
+}
+
+function getTidbitAttribution(tidbit) {
+  const source = tidbit.source || "";
+  if (source.includes("道德经")) return "Laozi, Tao Te Ching";
+  if (source.includes("孙子兵法")) return "Sun Tzu, The Art of War";
+  if (source.includes("论语")) return "Confucius, Analects";
+  return "Classical Chinese text";
 }
 
 function buildQueue(progress) {
@@ -1116,12 +1257,6 @@ function updateNav(route) {
   }
 }
 
-function findRadicalsForWord(text, mnemonic) {
-  return RADICALS.filter((radical) =>
-    radical.forms.some((form) => text.includes(form) || (mnemonic || "").includes(form))
-  );
-}
-
 function parseMnemonic(card) {
   const mnemonic = card.mnemonic || "";
   const componentPattern = /([\u3400-\u9fff]+)\s*\(([^)]+)\)/g;
@@ -1154,28 +1289,53 @@ function parseMnemonic(card) {
       .trim();
   }
 
+  // Mnemonic line should be English-only; keep Hanzi in chips above.
+  text = text
+    .replace(/[\u3400-\u9fff]+/g, " ")
+    .replace(/\s*[+＋=＝]\s*/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
   return { text, chips };
 }
 
 function buildMnemonicAndChips(card) {
   const parsed = parseMnemonic(card);
-  if (parsed.chips.length > 0) return parsed;
-
   const chips = [];
   const seen = new Set();
-  for (const ch of card.hanzi) {
-    const radical = RADICALS.find((item) => item.radical === ch || item.forms.includes(ch));
-    const meaning = radical ? radical.meaning : "component";
-    const key = `${ch}|${meaning}`;
-    if (seen.has(key)) continue;
+  const pushChip = (hanzi, meaning) => {
+    const h = (hanzi || "").trim();
+    const m = (meaning || "").trim();
+    if (!h || !m) return;
+    const key = `${h}|${m}`;
+    if (seen.has(key)) return;
     seen.add(key);
-    chips.push({ hanzi: ch, meaning });
+    chips.push({ hanzi: h, meaning: m });
+  };
+
+  for (const item of parsed.chips) {
+    pushChip(item.hanzi, item.meaning);
   }
 
-  if (chips.length === 0) {
-    chips.push({ hanzi: card.hanzi, meaning: "word component" });
+  const equalPattern = /([\u3400-\u9fff]+)\s*=\s*([^。.!?;；]+)/g;
+  for (const match of (card.mnemonic || "").matchAll(equalPattern)) {
+    const token = match[1].trim();
+    const meaning = match[2].trim();
+    if (!token || !meaning) continue;
+    for (const ch of token) {
+      pushChip(ch, meaning);
+    }
   }
 
+  for (const ch of card.hanzi) {
+    const covered = chips.some((item) => item.hanzi.includes(ch));
+    if (covered) continue;
+    const radical = RADICALS.find((item) => item.radical === ch || item.forms.includes(ch));
+    const meaning = radical ? radical.meaning : "word component";
+    pushChip(ch, meaning);
+  }
+
+  if (chips.length === 0) pushChip(card.hanzi, "word component");
   return { text: parsed.text, chips };
 }
 
@@ -1216,15 +1376,30 @@ function renderReview() {
 
     if (stage >= 2) {
       const parsedMnemonic = buildMnemonicAndChips(card);
+      const tidbit = getCulturalTidbitForCard(card);
       html += `<div class="english">${card.english}</div>`;
-      if (parsedMnemonic.text) {
-        html += `<div class="mnemonic">${escapeHtml(parsedMnemonic.text)}</div>`;
-      }
       if (parsedMnemonic.chips.length > 0) {
         html += '<div class="related-radicals">';
         for (const item of parsedMnemonic.chips) {
           html += `<span class="chip-link">${escapeHtml(item.hanzi)} ${escapeHtml(item.meaning)}</span>`;
         }
+        html += "</div>";
+      }
+      if (parsedMnemonic.text) {
+        html += `<div class="mnemonic">${escapeHtml(parsedMnemonic.text)}</div>`;
+      }
+      if (tidbit) {
+        html += '<div class="cultural-tidbit">';
+        html += `<div class="cultural-quote">${escapeHtml(tidbit.quote)}</div>`;
+        if (tidbit.translation) {
+          html += `<div class="cultural-translation">${escapeHtml(tidbit.translation)}</div>`;
+        }
+        const attribution = getTidbitAttribution(tidbit);
+        html += '<div class="cultural-source">';
+        html += `&mdash; ${escapeHtml(attribution)}`;
+        html += ` · ${escapeHtml(tidbit.source)} · `;
+        html += `<a href="${escapeHtml(tidbit.url)}" target="_blank" rel="noopener noreferrer">source</a>`;
+        html += "</div>";
         html += "</div>";
       }
       html += '<div class="difficulty-buttons">';
