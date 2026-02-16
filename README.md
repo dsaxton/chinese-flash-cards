@@ -101,7 +101,7 @@ If no semantically relevant quote is found for a card, no cultural tidbit is sho
 Run the coverage checker to verify how many vocab cards will show at least one cultural tidbit under current matching rules:
 
 ```bash
-node scripts/check-tidbit-coverage.js 0.65
+node scripts/check-tidbit-coverage.js 0.80
 ```
 
 Optional arguments:
@@ -113,7 +113,7 @@ node scripts/check-tidbit-coverage.js <min_ratio> <max_raw_matches_per_word> <ma
 Example:
 
 ```bash
-node scripts/check-tidbit-coverage.js 0.65 80 0.18
+node scripts/check-tidbit-coverage.js 0.80 90 0.20
 ```
 
 The command exits non-zero if any threshold fails:

@@ -153,9 +153,9 @@ for (const card of VOCAB) {
 const total = VOCAB.length;
 const ratio = covered / total;
 const percent = (ratio * 100).toFixed(1);
-const minRatio = Number(process.argv[2] || "0.65");
-const maxRawMatchesPerWord = Number(process.argv[3] || "80");
-const maxPrimaryShare = Number(process.argv[4] || "0.18");
+const minRatio = Number(process.argv[2] || "0.80");
+const maxRawMatchesPerWord = Number(process.argv[3] || "90");
+const maxPrimaryShare = Number(process.argv[4] || "0.20");
 const primaryMax = Math.max(0, ...primaryTidbitCount.values());
 const primaryShare = matchedWords ? primaryMax / matchedWords : 0;
 
