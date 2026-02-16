@@ -799,7 +799,7 @@ const CLASSICAL_TIDBITS_RAW = [
   { word: "知", quote: "温故而知新，可以为师矣。", translation: "Review the old and know the new, and you can be a teacher.", relevance: ["know"], source: "《论语·为政》", url: "https://ctext.org/analects/wei-zheng/zh" },
   { word: "学", quote: "学而时习之，不亦说乎？", translation: "To learn and practice regularly, is it not a pleasure?", relevance: ["study", "learn"], source: "《论语·学而》", url: "https://ctext.org/analects/xue-er/zh" },
   { word: "问", quote: "敏而好学，不耻下问。", translation: "Be diligent in learning and do not be ashamed to ask questions.", relevance: ["ask", "question"], source: "《论语·公冶长》", url: "https://ctext.org/analects/gong-ye-chang/zh" },
-  { word: "日", quote: "吾日三省吾身。", translation: "Each day I examine myself on three counts.", relevance: ["day"], source: "《论语·学而》", url: "https://ctext.org/analects/xue-er/zh" },
+  { word: "日", quote: "吾日三省吾身。", translation: "Each day I examine myself on three counts.", relevance: ["day", "time", "hour", "minute"], source: "《论语·学而》", url: "https://ctext.org/analects/xue-er/zh" },
   { word: "四", quote: "四海之内，皆兄弟也。", translation: "Within the four seas, all people are brothers.", relevance: ["four"], source: "《论语·颜渊》", url: "https://ctext.org/analects/yan-yuan/zh" },
   { word: "不", quote: "知之为知之，不知为不知，是知也。", translation: "To know what you know and what you do not know, that is knowledge.", relevance: ["not", "no"], source: "《论语·为政》", url: "https://ctext.org/analects/wei-zheng/zh" },
   { word: "和", quote: "君子和而不同，小人同而不和。", translation: "The gentleman seeks harmony but not sameness.", relevance: ["and", "together", "harmony"], source: "《论语·子路》", url: "https://ctext.org/analects/zi-lu/zh" },
@@ -823,6 +823,22 @@ const CLASSICAL_TIDBITS_RAW = [
   { quote: "名可名，非常名。", translation: "The name that can be named is not the constant name.", relevance: ["name", "called"], source: "《道德经》 第一章", url: "https://ctext.org/dao-de-jing/1/zh" },
   { quote: "兵无常势，水无常形。", translation: "In war there is no constant force, as water has no constant shape.", relevance: ["water"], source: "《孙子》 虚实", url: "https://ctext.org/art-of-war/vacuity-and-substance/zh" },
   { quote: "知彼知己，百战不殆。", translation: "Know the other and know yourself, and you need not fear battle.", relevance: ["know"], source: "《孙子》 谋攻", url: "https://ctext.org/art-of-war/attack-by-stratagem/zh" },
+  { quote: "食不厌精，脍不厌细。", translation: "Food is not disliked for being refined, nor meat for being finely cut.", relevance: ["eat", "food", "drink", "rice", "vegetable", "dish", "tea", "coffee", "milk", "egg", "fruit", "apple", "watermelon", "delicious"], source: "《论语·乡党》", url: "https://ctext.org/analects/xiang-dang/zh" },
+  { quote: "食不语，寝不言。", translation: "Do not speak while eating, and do not speak while resting.", relevance: ["eat", "drink", "sleep", "rest"], source: "《论语·乡党》", url: "https://ctext.org/analects/xiang-dang/zh" },
+  { quote: "父母在，不远游。", translation: "When parents are alive, do not travel far.", relevance: ["family", "dad", "mom", "son", "daughter", "wife", "husband", "home", "far", "travel"], source: "《论语·里仁》", url: "https://ctext.org/analects/li-ren/zh" },
+  { quote: "父母唯其疾之忧。", translation: "The concern for parents is their illness.", relevance: ["doctor", "hospital", "medicine", "health", "sick", "body"], source: "《论语·为政》", url: "https://ctext.org/analects/wei-zheng/zh" },
+  { quote: "凿户牖以为室。", translation: "Hollow out doors and windows to make a room.", relevance: ["room", "home", "house", "door", "table", "chair", "inside"], source: "《道德经》 第十一章", url: "https://ctext.org/dao-de-jing/11/zh" },
+  { quote: "欲速则不达。", translation: "If you want speed, you will not arrive.", relevance: ["fast", "slow", "quick", "begin", "start", "arrive", "move"], source: "《论语·子路》", url: "https://ctext.org/analects/zi-lu/zh" },
+  { quote: "礼之用，和为贵。", translation: "In ritual practice, harmony is most valuable.", relevance: ["please", "sorry", "welcome", "goodbye", "polite", "respect", "mr", "miss"], source: "《论语·学而》", url: "https://ctext.org/analects/xue-er/zh" },
+  { quote: "五色令人目盲。", translation: "The five colors can make the eyes blind.", relevance: ["color", "black", "red"], source: "《道德经》 第十二章", url: "https://ctext.org/dao-de-jing/12/zh" },
+  { quote: "有教无类。", translation: "In teaching, there should be no class distinctions.", relevance: ["class", "lesson", "school", "student", "teacher"], source: "《论语·卫灵公》", url: "https://ctext.org/analects/wei-ling-gong/zh" },
+  { quote: "朝闻道，夕死可矣。", translation: "Hear the Way in the morning, and one may die in the evening without regret.", relevance: ["morning", "evening", "time", "today", "yesterday"], source: "《论语·里仁》", url: "https://ctext.org/analects/li-ren/zh" },
+  { quote: "夷狄之有君，不如诸夏之亡也。", translation: "Even foreign tribes with rulers are not equal to civilized states without rulers.", relevance: ["foreign", "outside"], source: "《论语·八佾》", url: "https://ctext.org/analects/ba-yi/zh" },
+  { quote: "其为人也孝弟。", translation: "A person should be filial and respectful to elder and younger siblings.", relevance: ["older", "younger", "brother", "sister", "family", "child"], source: "《论语·学而》", url: "https://ctext.org/analects/xue-er/zh" },
+  { quote: "学而不思则罔。", translation: "To learn without reflection leads to confusion.", relevance: ["learn", "study", "class", "lesson"], source: "《论语·为政》", url: "https://ctext.org/analects/wei-zheng/zh" },
+  { quote: "思而不学则殆。", translation: "To reflect without learning leads to danger.", relevance: ["learn", "study", "think"], source: "《论语·为政》", url: "https://ctext.org/analects/wei-zheng/zh" },
+  { quote: "君子坦荡荡。", translation: "The gentleman is open and at ease.", relevance: ["happy", "glad", "hope", "laugh"], source: "《论语·述而》", url: "https://ctext.org/analects/shu-er/zh" },
+  { quote: "过犹不及。", translation: "Going too far is as bad as not going far enough.", relevance: ["too", "very", "past", "over"], source: "《论语·先进》", url: "https://ctext.org/analects/xian-jin/zh" },
 ];
 
 const TIDBIT_MAX_QUOTE_CHARS = 24;
@@ -1008,12 +1024,130 @@ const TOKEN_SYNONYMS = {
   worries: "worry",
 };
 
+Object.assign(TOKEN_SYNONYMS, {
+  mr: "person",
+  miss: "person",
+  sir: "person",
+  everyone: "person",
+  child: "family",
+  children: "family",
+  brother: "family",
+  sister: "family",
+  home: "family",
+  house: "family",
+  live: "family",
+  stay: "family",
+  table: "home",
+  desk: "home",
+  chair: "home",
+  room: "home",
+  door: "home",
+  gate: "home",
+  clothes: "wear",
+  wear: "wear",
+  open: "move",
+  begin: "start",
+  start: "start",
+  finish: "end",
+  completed: "end",
+  end: "end",
+  wait: "time",
+  maybe: "ability",
+  where: "question",
+  which: "question",
+  what: "question",
+  who: "question",
+  how: "question",
+  why: "question",
+  this: "position",
+  that: "position",
+  these: "position",
+  those: "position",
+  noon: "time",
+  yesterday: "time",
+  week: "time",
+  snow: "weather",
+  class: "learn",
+  lesson: "learn",
+  introduce: "speak",
+  welcome: "polite",
+  goodbye: "polite",
+  please: "polite",
+  sorry: "polite",
+  waiter: "polite",
+  attendant: "polite",
+  cell: "speak",
+  bus: "move",
+  train: "move",
+  station: "move",
+  airport: "move",
+  airplane: "move",
+  road: "move",
+  side: "position",
+  beside: "position",
+  foreign: "distance",
+  from: "position",
+  thing: "object",
+  stuff: "object",
+  cat: "animal",
+  dog: "animal",
+  fish: "animal",
+  animal: "animal",
+  flower: "plant",
+  plant: "plant",
+  vegetable: "food",
+  tea: "drink",
+  coffee: "drink",
+  milk: "drink",
+  cup: "drink",
+  rice: "food",
+  fruit: "food",
+  apple: "food",
+  watermelon: "food",
+  egg: "food",
+  birthday: "time",
+  diary: "learn",
+  pencil: "learn",
+  male: "person",
+  female: "person",
+  black: "color",
+  red: "color",
+  color: "color",
+  also: "continuation",
+  then: "time",
+  because: "reason",
+  although: "contrast",
+  there: "exist",
+  have: "exist",
+  is: "exist",
+  be: "exist",
+  dance: "exercise",
+  play: "exercise",
+});
+
 function normalizeEnglishText(text) {
   return String(text || "")
     .toLowerCase()
     .replace(/[^a-z0-9\s]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+const RAW_STOPWORDS = new Set([
+  "a", "an", "the", "to", "of", "and", "or", "is", "are", "be", "in", "on", "at", "for", "with",
+  "from", "it", "its", "this", "that", "these", "those",
+]);
+
+function extractRawMeaningTokens(text) {
+  const normalized = normalizeEnglishText(text);
+  const tokens = new Set();
+  for (const raw of normalized.split(" ")) {
+    const tok = raw.trim();
+    if (!tok || tok.length < 2) continue;
+    if (RAW_STOPWORDS.has(tok)) continue;
+    tokens.add(tok);
+  }
+  return tokens;
 }
 
 function canonicalToken(token) {
@@ -1048,6 +1182,9 @@ function overlapCount(a, b) {
 const CARD_MEANING_TOKENS = new Map(
   VOCAB.map((card) => [card.hanzi, extractMeaningTokens(card.english)])
 );
+const CARD_RAW_MEANING_TOKENS = new Map(
+  VOCAB.map((card) => [card.hanzi, extractRawMeaningTokens(card.english)])
+);
 
 function normalizeHanText(text) {
   return String(text || "").replace(/\s+/g, "");
@@ -1057,9 +1194,14 @@ const TIDBIT_META = CLASSICAL_TIDBITS_RAW.map((tidbit, index) => ({
   tidbit,
   index,
   tokens: extractMeaningTokens((tidbit.relevance || []).join(" ")),
+  rawTokens: extractRawMeaningTokens((tidbit.relevance || []).join(" ")),
   quoteText: normalizeHanText(tidbit.quote),
   quoteLen: normalizeHanText(tidbit.quote).length,
 }));
+
+const GENERIC_CANONICAL_TOKENS = new Set([
+  "exist", "continuation", "quantity",
+]);
 
 // ---------------------------------------------------------------------------
 // Audio — human-recorded MP3s from hugolpz/audio-cmn (CC-BY-SA)
@@ -1153,6 +1295,7 @@ function initPWA() {
 // Persistence — localStorage
 // ---------------------------------------------------------------------------
 const STORAGE_KEY = "chinese-flash-cards-progress";
+const TIDBIT_SALT_KEY = "chinese-flash-cards-tidbit-salt";
 
 function loadProgress() {
   try {
@@ -1164,6 +1307,21 @@ function loadProgress() {
 
 function saveProgress(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function getDailyTidbitSalt() {
+  const today = todayStr();
+  try {
+    const saved = JSON.parse(localStorage.getItem(TIDBIT_SALT_KEY) || "null");
+    if (saved && saved.date === today && Number.isFinite(saved.salt)) {
+      return saved.salt;
+    }
+    const salt = Math.floor(Math.random() * 1_000_000_000);
+    localStorage.setItem(TIDBIT_SALT_KEY, JSON.stringify({ date: today, salt }));
+    return salt;
+  } catch {
+    return 0;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -1202,15 +1360,24 @@ function hashString(str) {
 }
 
 function getCulturalTidbitForCard(card) {
-  const seed = hashString(`${card.hanzi}|${todayStr()}`);
+  const seed = hashString(`${card.hanzi}|${todayStr()}|${getDailyTidbitSalt()}`);
   const cardTokens = CARD_MEANING_TOKENS.get(card.hanzi) || new Set();
-  if (cardTokens.size === 0) return null;
+  const cardRawTokens = CARD_RAW_MEANING_TOKENS.get(card.hanzi) || new Set();
+  if (cardTokens.size === 0 && cardRawTokens.size === 0) return null;
 
   const scored = [];
   for (const meta of TIDBIT_META) {
     if (meta.quoteLen > TIDBIT_MAX_QUOTE_CHARS) continue;
-    const score = overlapCount(cardTokens, meta.tokens);
-    if (score > 0) scored.push({ ...meta, score });
+    const canonicalScore = overlapCount(cardTokens, meta.tokens);
+    const rawScore = overlapCount(cardRawTokens, meta.rawTokens);
+    const canonicalSpecificScore = [...cardTokens].reduce(
+      (n, token) => n + (!GENERIC_CANONICAL_TOKENS.has(token) && meta.tokens.has(token) ? 1 : 0),
+      0
+    );
+    // Require direct lexical overlap, or at least one non-generic conceptual overlap.
+    if (rawScore === 0 && canonicalSpecificScore === 0) continue;
+    const score = rawScore * 3 + canonicalSpecificScore * 2 + canonicalScore;
+    scored.push({ ...meta, score, rawScore, canonicalScore, canonicalSpecificScore });
   }
   if (scored.length === 0) return null;
 
@@ -1220,7 +1387,8 @@ function getCulturalTidbitForCard(card) {
     return a.index - b.index;
   });
   const topScore = scored[0].score;
-  const best = scored.filter((item) => item.score === topScore);
+  // Keep a small pool of strong candidates to reduce repetition.
+  const best = scored.filter((item) => item.score >= topScore - 1).slice(0, 6);
   return best[seed % best.length].tidbit;
 }
 

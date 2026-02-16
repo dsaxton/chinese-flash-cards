@@ -92,6 +92,7 @@ Each tidbit includes:
 - Source citation and link
 - Relevance selected entirely from English meaning overlap between the card definition and tidbit translation
 - Short-quote preference (long classical passages are filtered out in review cards)
+- Daily randomized rotation among multiple top candidates to reduce repeated tidbits
 
 If no semantically relevant quote is found for a card, no cultural tidbit is shown for that card.
 
@@ -100,10 +101,26 @@ If no semantically relevant quote is found for a card, no cultural tidbit is sho
 Run the coverage checker to verify how many vocab cards will show at least one cultural tidbit under current matching rules:
 
 ```bash
-node scripts/check-tidbit-coverage.js 0.50
+node scripts/check-tidbit-coverage.js 0.65
 ```
 
-The argument is the minimum acceptable ratio. The command exits non-zero if coverage drops below the threshold.
+Optional arguments:
+
+```bash
+node scripts/check-tidbit-coverage.js <min_ratio> <max_raw_matches_per_word> <max_primary_share>
+```
+
+Example:
+
+```bash
+node scripts/check-tidbit-coverage.js 0.65 80 0.18
+```
+
+The command exits non-zero if any threshold fails:
+
+- coverage ratio drops below `min_ratio`
+- any single word matches more than `max_raw_matches_per_word` tidbits
+- one tidbit becomes the primary match for more than `max_primary_share` of matched words
 
 ## Technical Details
 
