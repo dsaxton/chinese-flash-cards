@@ -347,6 +347,13 @@ function testStructuredMnemonicPipeline(source) {
   );
 }
 
+function testAudioFallbackIsSingleShot(source) {
+  assert(
+    /function speak\(text, pinyin\) \{[\s\S]*let didFallback = false;[\s\S]*const fallbackToPinyin = \(\) => \{[\s\S]*if \(didFallback\) return;[\s\S]*didFallback = true;[\s\S]*if \(pinyin\) speakPinyin\(pinyin\);[\s\S]*\};[\s\S]*audio\.play\(\)\.catch\(\(\) => \{[\s\S]*fallbackToPinyin\(\);[\s\S]*\}\);[\s\S]*audio\.addEventListener\(\"error\", \(\) => \{[\s\S]*fallbackToPinyin\(\);[\s\S]*\}, \{ once: true \}\);[\s\S]*\}/.test(source),
+    "speak() should use a single-shot pinyin fallback to avoid duplicate audio playback"
+  );
+}
+
 function main() {
   const root = path.resolve(__dirname, "..");
   const source = readIndexHtml(root);
@@ -362,6 +369,7 @@ function main() {
   testLiteralShapeHintGuardrails(source);
   testHintSafetyHelpers(source);
   testStructuredMnemonicPipeline(source);
+  testAudioFallbackIsSingleShot(source);
 
   console.log("deck refactor regression test passed");
 }

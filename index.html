@@ -1134,11 +1134,17 @@ const AUDIO_BASE_SYLLABLES = "https://github.com/hugolpz/audio-cmn/raw/master/64
 function speak(text, pinyin) {
   const url = `${AUDIO_BASE}/cmn-${encodeURIComponent(text)}.mp3`;
   const audio = new Audio(url);
-  audio.play().catch(() => {
+  let didFallback = false;
+  const fallbackToPinyin = () => {
+    if (didFallback) return;
+    didFallback = true;
     if (pinyin) speakPinyin(pinyin);
+  };
+  audio.play().catch(() => {
+    fallbackToPinyin();
   });
   audio.addEventListener("error", () => {
-    if (pinyin) speakPinyin(pinyin);
+    fallbackToPinyin();
   }, { once: true });
 }
 
