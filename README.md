@@ -29,9 +29,9 @@ python3 -m http.server 8787 --bind 127.0.0.1
 
 The app now uses a three-deck system with a deck selection landing screen:
 
-1. `Hanzi -> English`
-2. `English -> Hanzi`
-3. `Radicals -> English`
+1. `Hanzi to English`
+2. `English to Hanzi`
+3. `Radicals to English`
 
 Each deck has independent SM-2 progress in `localStorage`.
 
@@ -44,12 +44,12 @@ Each deck has independent SM-2 progress in `localStorage`.
 ### `English -> Hanzi` flow
 
 1. Stage 0: English prompt
-2. Stage 1: English + mnemonic hint
-3. Stage 2: full reveal (hanzi + pinyin + audio + difficulty buttons)
+2. Stage 1: English + mnemonic hint (English-only; no hanzi, no pinyin, no chips)
+3. Stage 2: full reveal (hanzi + pinyin + audio + mnemonic + chips + difficulty buttons)
 
 ### `Radicals -> English` flow
 
-Uses a curated common-radicals set and the same reveal pattern as Hanzi -> English.
+Uses a curated common-radicals set and the same reveal pattern as Hanzi to English.
 
 ## Spaced Repetition
 
@@ -94,9 +94,23 @@ Migration:
 
 Pronunciation audio uses [hugolpz/audio-cmn](https://github.com/hugolpz/audio-cmn) (CC-BY-SA), fetched at runtime.
 
+## Mnemonic Guardrails
+
+Mnemonic rendering supports structured data (`soundAnchor`, `story`, `components`) with legacy fallback from a plain `mnemonic` string.
+
+Guardrails:
+
+- Explicit `"sounds like: ..."` wording is forbidden.
+- Sound anchors must resolve to intelligible English phrase output (for example: `Think of TEA.`).
+- Non-English pronunciation fragments are rejected as anchors.
+- In `English -> Hanzi` stage 1:
+  - no pinyin
+  - no hanzi/chips
+  - literal shape-description hints are suppressed (`looks like`, `stroke`, `line`, etc.)
+
 ## Cultural Tidbits
 
-Short quotes from classical Chinese sources are selected via English-meaning token overlap and displayed on `Hanzi -> English` cards when a strong match exists.
+Short quotes from classical Chinese sources are selected via English-meaning token overlap and displayed on `Hanzi to English` cards when a strong match exists.
 
 ## Tests
 

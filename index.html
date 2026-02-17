@@ -1181,7 +1181,8 @@ function pinyinToAudioKeys(pinyin) {
     .filter(Boolean);
 }
 
-const PHONETIC_ANCHOR_OVERRIDES = {
+// Candidate pinyin-to-anchor map. Only entries that pass English-word guardrails are used.
+const PHONETIC_ANCHOR_CANDIDATES = {
   ai: "eye",
   ba: "bah",
   bai: "buy",
@@ -1351,24 +1352,107 @@ const PHONETIC_ANCHOR_OVERRIDES = {
   zuo: "dzwo",
 };
 
-function buildPhoneticAnchor(card) {
+const ENGLISH_SOUND_ANCHOR_WORDS = new Set([
+  "BEE", "BUY", "CAR", "CHAI", "CHILD", "COLD", "DAY", "DOOR", "DOG", "DOWN",
+  "EYE", "FAR", "FIRE", "FOOD", "FRIEND", "GO", "GOLD", "HAND", "HEART", "HIGH",
+  "HOME", "HORSE", "HOT", "HOW", "INSIDE", "LEFT", "LOVE", "MEOW", "MONEY",
+  "MOON", "MOUTH", "MY", "NAME", "NEAR", "NEW", "OUTSIDE", "PERSON", "PHONE",
+  "RAIN", "RED", "RICE", "RIGHT", "ROUTE", "RUN", "SCHOOL", "SHOW", "SILK",
+  "SUN", "TEA", "TIME", "TREE", "UP", "WATER", "WAY", "WEEK", "WOMAN", "WOOD",
+  "WORK", "YEAR",
+]);
+
+function isEnglishAnchorWord(word) {
+  return ENGLISH_SOUND_ANCHOR_WORDS.has(String(word || "").toUpperCase());
+}
+
+function buildIntelligibleAnchorPhrase(words) {
+  if (words.length === 0) return "";
+  if (words.length === 1) return `Think of ${words[0]}.`;
+  return `Think of ${words.join(", then ")}.`;
+}
+
+function isIntelligibleEnglishAnchorPhrase(phrase) {
+  const text = String(phrase || "").trim();
+  if (!/^Think of [A-Z]+(?:, then [A-Z]+)*\.$/.test(text)) return false;
+  const words = text.match(/[A-Z]+/g) || [];
+  if (words.length === 0) return false;
+  return words.every((word) => isEnglishAnchorWord(word));
+}
+
+function getSoundAnchor(card) {
   const keys = pinyinToAudioKeys(card.pinyin);
   if (keys.length === 0) return "";
   const parts = keys.map((key) => {
     const plain = key.replace(/[1-5]$/, "").replaceAll("v", "u");
-    return PHONETIC_ANCHOR_OVERRIDES[plain] || plain;
+    return String(PHONETIC_ANCHOR_CANDIDATES[plain] || "").toUpperCase();
   });
-  const anchor = parts.join(" ");
-  return `Sounds like: ${anchor}.`;
+  if (parts.some((part) => !part)) return "";
+  if (!parts.every((part) => isEnglishAnchorWord(part))) return "";
+  const phrase = buildIntelligibleAnchorPhrase(parts);
+  return isIntelligibleEnglishAnchorPhrase(phrase) ? phrase : "";
 }
 
-function addPhoneticAnchorToMnemonic(card, text) {
-  const base = String(text || "").trim();
-  const anchor = buildPhoneticAnchor(card);
-  if (!anchor) return base;
-  if (/sounds like:/i.test(base)) return base;
-  if (!base) return anchor;
-  return `${base} ${anchor}`;
+function mergeSoundAnchorAndStory(soundAnchor, story) {
+  const anchor = String(soundAnchor || "").trim();
+  const text = String(story || "").trim();
+  if (!anchor) return text;
+  if (!text) return anchor;
+  if (text.toLowerCase().includes(anchor.toLowerCase())) return text;
+  return `${anchor} ${text}`;
+}
+
+function normalizeMnemonicData(card) {
+  const raw = card.mnemonicData;
+  if (raw && typeof raw === "object") {
+    const soundAnchor = String(raw.soundAnchor || "").trim();
+    const story = String(raw.story || "").trim();
+    const components = Array.isArray(raw.components) ? raw.components : [];
+    return { soundAnchor, story, components };
+  }
+  const parsed = parseMnemonic(card);
+  return {
+    soundAnchor: getSoundAnchor(card),
+    story: parsed.text,
+    components: parsed.chips.map((item) => ({ hanzi: item.hanzi, meaning: item.meaning })),
+  };
+}
+
+function stripPinyinFromHint(text, pinyin) {
+  let out = String(text || "");
+  const raw = String(pinyin || "").trim();
+  if (!raw) return out.trim();
+  out = out.replaceAll(raw, " ");
+  const plain = pinyinToAudioKeys(raw)
+    .map((key) => key.replace(/[1-5]$/, "").replaceAll("v", "u"))
+    .join(" ");
+  if (plain) {
+    const tokens = plain.split(/\s+/).filter(Boolean);
+    for (const token of tokens) {
+      const re = new RegExp(`\\b${token}\\b`, "gi");
+      out = out.replace(re, " ");
+    }
+  }
+  return out.replace(/\s+/g, " ").trim();
+}
+
+const LITERAL_SHAPE_HINT_PATTERNS = [
+  /\blooks like\b/i,
+  /\bshape\b/i,
+  /\bstroke(s)?\b/i,
+  /\bline(s)?\b/i,
+  /\bbox(es)?\b/i,
+  /\brectangle\b/i,
+  /\bcross\b/i,
+  /\bhook\b/i,
+  /\bvertical\b/i,
+  /\bhorizontal\b/i,
+];
+
+function isLiteralShapeHint(text) {
+  const normalized = String(text || "").trim();
+  if (!normalized) return false;
+  return LITERAL_SHAPE_HINT_PATTERNS.some((pattern) => pattern.test(normalized));
 }
 
 function playAudioSequence(urls) {
@@ -1726,8 +1810,12 @@ function parseMnemonic(card) {
   return { text, chips };
 }
 
-function buildMnemonicAndChips(card) {
-  const parsed = parseMnemonic(card);
+function buildMnemonicAndChips(card, options = {}) {
+  const includeSoundAnchor = options.includeSoundAnchor !== false;
+  const includeChips = options.includeChips !== false;
+  const forbidPinyin = options.forbidPinyin === true;
+  const forbidLiteralShapeHints = options.forbidLiteralShapeHints === true;
+  const mnemonicData = normalizeMnemonicData(card);
   const chips = [];
   const seen = new Set();
   const pushChip = (hanzi, meaning) => {
@@ -1740,29 +1828,42 @@ function buildMnemonicAndChips(card) {
     chips.push({ hanzi: h, meaning: m });
   };
 
-  for (const item of parsed.chips) {
+  for (const item of mnemonicData.components) {
     pushChip(item.hanzi, item.meaning);
   }
 
-  const equalPattern = /([\u3400-\u9fff]+)\s*=\s*([^。.!?;；]+)/g;
-  for (const match of (card.mnemonic || "").matchAll(equalPattern)) {
-    const token = match[1].trim();
-    const meaning = match[2].trim();
-    if (!token || !meaning) continue;
-    for (const ch of token) {
+  if (includeChips) {
+    const parsed = parseMnemonic(card);
+    for (const item of parsed.chips) {
+      pushChip(item.hanzi, item.meaning);
+    }
+
+    const equalPattern = /([\u3400-\u9fff]+)\s*=\s*([^。.!?;；]+)/g;
+    for (const match of (card.mnemonic || "").matchAll(equalPattern)) {
+      const token = match[1].trim();
+      const meaning = match[2].trim();
+      if (!token || !meaning) continue;
+      for (const ch of token) {
+        pushChip(ch, meaning);
+      }
+    }
+
+    for (const ch of card.hanzi) {
+      const covered = chips.some((item) => item.hanzi.includes(ch));
+      if (covered) continue;
+      const meaning = RADICAL_MEANINGS[ch] || "word component";
       pushChip(ch, meaning);
     }
+    if (chips.length === 0) pushChip(card.hanzi, "word component");
   }
 
-  for (const ch of card.hanzi) {
-    const covered = chips.some((item) => item.hanzi.includes(ch));
-    if (covered) continue;
-    const meaning = RADICAL_MEANINGS[ch] || "word component";
-    pushChip(ch, meaning);
-  }
-
-  if (chips.length === 0) pushChip(card.hanzi, "word component");
-  return { text: addPhoneticAnchorToMnemonic(card, parsed.text), chips };
+  let story = String(mnemonicData.story || "");
+  if (forbidPinyin) story = stripPinyinFromHint(story, card.pinyin);
+  if (forbidLiteralShapeHints && isLiteralShapeHint(story)) story = "";
+  const text = includeSoundAnchor
+    ? mergeSoundAnchorAndStory(mnemonicData.soundAnchor, story)
+    : story.trim();
+  return { text, chips };
 }
 
 function getDeckDueCount(deck) {
@@ -1834,15 +1935,34 @@ function renderStudyDeck() {
     if (isEnglishToHanzi) {
       html += `<div class="english">${card.english}</div>`;
       if (stage >= 1) {
-        const parsedMnemonic = buildMnemonicAndChips(card);
+        const parsedMnemonic = buildMnemonicAndChips(card, {
+          includeSoundAnchor: true,
+          includeChips: false,
+          forbidPinyin: true,
+          forbidLiteralShapeHints: true,
+        });
         if (parsedMnemonic.text) {
           html += `<div class="mnemonic">${escapeHtml(parsedMnemonic.text)}</div>`;
         }
       }
       if (stage >= 2) {
+        const parsedMnemonic = buildMnemonicAndChips(card, {
+          includeSoundAnchor: true,
+          includeChips: true,
+        });
         html += `<div class="hanzi">${card.hanzi}</div>`;
         html += `<div class="pinyin">${card.pinyin}</div>`;
         html += '<button class="speaker-btn" id="speak-btn" title="Play pronunciation">&#128264;</button>';
+        if (parsedMnemonic.text) {
+          html += `<div class="mnemonic">${escapeHtml(parsedMnemonic.text)}</div>`;
+        }
+        if (parsedMnemonic.chips.length > 0) {
+          html += '<div class="related-radicals">';
+          for (const item of parsedMnemonic.chips) {
+            html += `<span class="chip-link">${escapeHtml(item.hanzi)} ${escapeHtml(item.meaning)}</span>`;
+          }
+          html += "</div>";
+        }
       }
     } else {
       html += `<div class="hanzi">${card.hanzi}</div>`;

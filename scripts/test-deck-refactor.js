@@ -98,6 +98,82 @@ function testEnglishToHanziHintStage(source) {
     !stage1Block.includes("related-radicals"),
     "English->Hanzi stage 1 should not reveal radical chips"
   );
+  assert(
+    stage1Block.includes("includeSoundAnchor: true"),
+    "English->Hanzi stage 1 should include a sound anchor in the English hint"
+  );
+  assert(
+    stage1Block.includes("includeChips: false"),
+    "English->Hanzi stage 1 should hide component chips"
+  );
+  assert(
+    stage1Block.includes("forbidPinyin: true"),
+    "English->Hanzi stage 1 should sanitize pinyin from mnemonic hint text"
+  );
+  assert(
+    stage1Block.includes("forbidLiteralShapeHints: true"),
+    "English->Hanzi stage 1 should suppress literal shape-description hints"
+  );
+}
+
+function testLiteralShapeHintGuardrails(source) {
+  const literalBlockMatch = source.match(/const LITERAL_SHAPE_HINT_PATTERNS = \[([\s\S]*?)\n\];/);
+  assert(literalBlockMatch, "Missing LITERAL_SHAPE_HINT_PATTERNS");
+  const block = literalBlockMatch[1];
+  const requiredTokens = [
+    "looks like",
+    "shape",
+    "stroke",
+    "line",
+    "hook",
+    "vertical",
+    "horizontal",
+  ];
+  for (const token of requiredTokens) {
+    assert(
+      block.includes(token),
+      `LITERAL_SHAPE_HINT_PATTERNS should include a guard for "${token}"`
+    );
+  }
+  assert(
+    /if \(forbidLiteralShapeHints && isLiteralShapeHint\(story\)\) story = "";\s*/.test(source),
+    "Mnemonic builder should drop literal shape hints when forbidLiteralShapeHints is enabled"
+  );
+}
+
+function testStructuredMnemonicPipeline(source) {
+  assert(
+    /function normalizeMnemonicData\(card\)/.test(source),
+    "Missing normalizeMnemonicData(card) helper"
+  );
+  assert(
+    /const raw = card\.mnemonicData;/.test(source),
+    "normalizeMnemonicData should support structured card.mnemonicData"
+  );
+  assert(
+    /function mergeSoundAnchorAndStory\(soundAnchor, story\)/.test(source),
+    "Missing mergeSoundAnchorAndStory helper"
+  );
+  assert(
+    /function buildIntelligibleAnchorPhrase\(words\)/.test(source),
+    "Missing buildIntelligibleAnchorPhrase helper"
+  );
+  assert(
+    /function isIntelligibleEnglishAnchorPhrase\(phrase\)/.test(source),
+    "Missing isIntelligibleEnglishAnchorPhrase guard"
+  );
+  assert(
+    /return `Think of \$\{words\.join\(", then "\)\}\.`;/.test(source),
+    "Sound anchor should be rendered as an intelligible English phrase"
+  );
+  assert(
+    /^.*if \(!parts\.every\(\(part\) => isEnglishAnchorWord\(part\)\)\) return "";.*$/m.test(source),
+    "Sound anchors must be English words only (no pronunciation fragments)"
+  );
+  assert(
+    !/Sounds like:/.test(source),
+    "Explicit \"Sounds like:\" phrasing is not allowed in mnemonic rendering"
+  );
 }
 
 function main() {
@@ -108,6 +184,8 @@ function main() {
   testStorageKeysAndMigration(source);
   testRoutes(source);
   testEnglishToHanziHintStage(source);
+  testLiteralShapeHintGuardrails(source);
+  testStructuredMnemonicPipeline(source);
 
   console.log("deck refactor regression test passed");
 }
