@@ -1366,18 +1366,22 @@ function isEnglishAnchorWord(word) {
   return ENGLISH_SOUND_ANCHOR_WORDS.has(String(word || "").toUpperCase());
 }
 
+function canonicalizeSoundAnchorPhrase(phrase) {
+  const text = String(phrase || "").trim();
+  if (!text) return "";
+  const body = text.replace(/^Think of\s+/i, "").replace(/[.?!]+$/, "").trim();
+  if (!body) return "";
+  const words = body.match(/[A-Za-z]+/g) || [];
+  if (words.length === 0) return "";
+  const upperWords = words.map((word) => word.toUpperCase());
+  if (!upperWords.every((word) => isEnglishAnchorWord(word))) return "";
+  return buildIntelligibleAnchorPhrase(upperWords);
+}
+
 function buildIntelligibleAnchorPhrase(words) {
   if (words.length === 0) return "";
   if (words.length === 1) return `Think of ${words[0]}.`;
   return `Think of ${words.join(", then ")}.`;
-}
-
-function isIntelligibleEnglishAnchorPhrase(phrase) {
-  const text = String(phrase || "").trim();
-  if (!/^Think of [A-Z]+(?:, then [A-Z]+)*\.$/.test(text)) return false;
-  const words = text.match(/[A-Z]+/g) || [];
-  if (words.length === 0) return false;
-  return words.every((word) => isEnglishAnchorWord(word));
 }
 
 function getSoundAnchor(card) {
@@ -1389,23 +1393,24 @@ function getSoundAnchor(card) {
   });
   if (parts.some((part) => !part)) return "";
   if (!parts.every((part) => isEnglishAnchorWord(part))) return "";
-  const phrase = buildIntelligibleAnchorPhrase(parts);
-  return isIntelligibleEnglishAnchorPhrase(phrase) ? phrase : "";
+  return canonicalizeSoundAnchorPhrase(buildIntelligibleAnchorPhrase(parts));
 }
 
 function mergeSoundAnchorAndStory(soundAnchor, story) {
-  const anchor = String(soundAnchor || "").trim();
+  const anchor = canonicalizeSoundAnchorPhrase(soundAnchor);
   const text = String(story || "").trim();
   if (!anchor) return text;
   if (!text) return anchor;
-  if (text.toLowerCase().includes(anchor.toLowerCase())) return text;
+  const escapedAnchor = anchor.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const anchorPattern = new RegExp(escapedAnchor, "i");
+  if (anchorPattern.test(text)) return text.replace(anchorPattern, anchor);
   return `${anchor} ${text}`;
 }
 
 function normalizeMnemonicData(card) {
   const raw = card.mnemonicData;
   if (raw && typeof raw === "object") {
-    const soundAnchor = String(raw.soundAnchor || "").trim();
+    const soundAnchor = canonicalizeSoundAnchorPhrase(raw.soundAnchor);
     const story = String(raw.story || "").trim();
     const components = Array.isArray(raw.components) ? raw.components : [];
     return { soundAnchor, story, components };

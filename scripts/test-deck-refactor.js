@@ -143,6 +143,10 @@ function testLiteralShapeHintGuardrails(source) {
 
 function testStructuredMnemonicPipeline(source) {
   assert(
+    /function canonicalizeSoundAnchorPhrase\(phrase\)/.test(source),
+    "Missing canonicalizeSoundAnchorPhrase helper"
+  );
+  assert(
     /function normalizeMnemonicData\(card\)/.test(source),
     "Missing normalizeMnemonicData(card) helper"
   );
@@ -159,8 +163,8 @@ function testStructuredMnemonicPipeline(source) {
     "Missing buildIntelligibleAnchorPhrase helper"
   );
   assert(
-    /function isIntelligibleEnglishAnchorPhrase\(phrase\)/.test(source),
-    "Missing isIntelligibleEnglishAnchorPhrase guard"
+    /const upperWords = words\.map\(\(word\) => word\.toUpperCase\(\)\);/.test(source),
+    "Sound-anchor words should be normalized to ALL CAPS"
   );
   assert(
     /return `Think of \$\{words\.join\(", then "\)\}\.`;/.test(source),
@@ -169,6 +173,18 @@ function testStructuredMnemonicPipeline(source) {
   assert(
     /^.*if \(!parts\.every\(\(part\) => isEnglishAnchorWord\(part\)\)\) return "";.*$/m.test(source),
     "Sound anchors must be English words only (no pronunciation fragments)"
+  );
+  assert(
+    /const soundAnchor = canonicalizeSoundAnchorPhrase\(raw\.soundAnchor\);/.test(source),
+    "Structured mnemonicData sound anchors should be canonicalized"
+  );
+  assert(
+    /const anchor = canonicalizeSoundAnchorPhrase\(soundAnchor\);/.test(source),
+    "mergeSoundAnchorAndStory should canonicalize sound anchors before rendering"
+  );
+  assert(
+    /const anchorPattern = new RegExp\(escapedAnchor, "i"\);/.test(source),
+    "mergeSoundAnchorAndStory should replace non-canonical case variants with canonical ALL-CAPS anchor"
   );
   assert(
     !/Sounds like:/.test(source),

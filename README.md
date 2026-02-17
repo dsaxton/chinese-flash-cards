@@ -101,8 +101,9 @@ Mnemonic rendering supports structured data (`soundAnchor`, `story`, `components
 Guardrails:
 
 - Explicit `"sounds like: ..."` wording is forbidden.
-- Sound anchors must resolve to intelligible English phrase output (for example: `Think of TEA.`).
+- Sound anchors must resolve to intelligible English phrase output and use ALL CAPS for clue words (for example: `Think of TEA.`).
 - Non-English pronunciation fragments are rejected as anchors.
+- Structured `mnemonicData.soundAnchor` values are normalized to the same canonical ALL-CAPS format.
 - In `English -> Hanzi` stage 1:
   - no pinyin
   - no hanzi/chips
