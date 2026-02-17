@@ -39,13 +39,15 @@ Each deck has independent SM-2 progress in `localStorage`.
 
 1. Stage 0: hanzi
 2. Stage 1: pinyin + audio button
-3. Stage 2: English + mnemonic + difficulty buttons (+ optional cultural tidbit)
+3. Stage 2: mnemonic hint only (no English)
+4. Stage 3: full reveal (English + mnemonic + chips + difficulty buttons + optional cultural tidbit)
 
 ### `English -> Hanzi` flow
 
 1. Stage 0: English prompt
-2. Stage 1: English + mnemonic hint (English-only; no hanzi, no pinyin, no chips)
-3. Stage 2: full reveal (hanzi + pinyin + audio + mnemonic + chips + difficulty buttons)
+2. Stage 1: mnemonic hint (English-only; no hanzi, no pinyin, no chips)
+3. Stage 2: pinyin + audio only
+4. Stage 3: full reveal (hanzi + pinyin + audio + mnemonic + chips + difficulty buttons)
 
 ### `Radicals -> English` flow
 
@@ -107,7 +109,12 @@ Guardrails:
 - In `English -> Hanzi` stage 1:
   - no pinyin
   - no hanzi/chips
+  - no direct English-answer tokens
+  - no phonetic cue phrases (for example `think of ...` / `sounds like ...`)
   - literal shape-description hints are suppressed (`looks like`, `stroke`, `line`, etc.)
+- In hint-only stages (`English -> Hanzi` stage 1, `Hanzi -> English` stage 2):
+  - sound anchors are disabled
+  - mnemonic text is filtered to avoid answer leakage
 
 ## Cultural Tidbits
 
@@ -121,6 +128,7 @@ Run all regression checks:
 node scripts/test-tidbit-data.js
 node scripts/test-tidbit-selection.js
 node scripts/test-deck-refactor.js
+node scripts/test-hint-safety.js
 ```
 
 Optional curation helpers:
