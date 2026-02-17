@@ -8,7 +8,7 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png">
-<title>Chinese Flash Cards — HSK 1–2</title>
+<title>Chinese Flash Cards — Three Decks</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -38,33 +38,6 @@ header h1 {
   font-size: 1.4rem;
   font-weight: 600;
   color: #555;
-}
-
-.sub-nav {
-  width: 100%;
-  max-width: 420px;
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.sub-nav a {
-  flex: 1;
-  text-align: center;
-  text-decoration: none;
-  color: #666;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 8px 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.sub-nav a.active {
-  color: #9a3412;
-  background: #fff7ed;
-  border-color: #fdba74;
 }
 
 .progress {
@@ -129,10 +102,6 @@ header h1 {
   font-size: 0.8rem;
   color: #bbb;
   margin-top: 12px;
-}
-
-.pinyin-link {
-  text-decoration: none;
 }
 
 .related-radicals {
@@ -201,172 +170,29 @@ header h1 {
   margin-bottom: 10px;
 }
 
-.study-page h3 {
-  font-size: 1rem;
-  color: #555;
-  margin: 14px 0 8px;
-}
-
 .study-page p {
   color: #666;
   font-size: 0.95rem;
   line-height: 1.5;
 }
 
-.back-link {
-  margin-bottom: 10px;
+.deck-back-link {
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 0.78rem;
+  color: #a3a3a3;
 }
 
-.mini-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.mini-cell {
-  border: 1px solid #e5e7eb;
-  background: #f9fafb;
-  border-radius: 8px;
-  padding: 8px;
-  text-align: center;
-  color: #4b5563;
-  font-size: 0.9rem;
-}
-
-.mini-audio-cell {
-  width: 100%;
-  cursor: pointer;
-}
-
-.mini-audio-cell:hover {
-  background: #eef2ff;
-  border-color: #c7d2fe;
-}
-
-.tone-table {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.example-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.example-item {
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 8px 10px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 12px;
-}
-
-.example-item .hanzi {
-  font-size: 1.4rem;
-  margin: 0;
-}
-
-.example-item .pinyin {
-  margin: 0;
-}
-
-.example-item .english {
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-.radical-list {
-  display: grid;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.radical-item {
-  border: 1px solid #eee;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.radical-item.active {
-  border-color: #fdba74;
-  background: #fff7ed;
-}
-
-.radical-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.radical-char {
-  font-size: 1.5rem;
-  color: #7c2d12;
+.deck-back-link a {
+  color: #a3a3a3;
   text-decoration: none;
 }
 
-.radical-main {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
+.deck-back-link a:hover {
+  color: #888;
+  text-decoration: underline;
 }
 
-.radical-meta {
-  color: #555;
-  font-size: 0.95rem;
-}
-
-.radical-count {
-  color: #9a3412;
-  border: 1px solid #fdba74;
-  background: #fff7ed;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  padding: 2px 8px;
-}
-
-.example-chars {
-  margin-top: 8px;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.radical-details {
-  margin-top: 14px;
-  border: 1px solid #eee;
-  border-radius: 10px;
-  background: #fafafa;
-}
-
-.radical-details summary {
-  cursor: pointer;
-  padding: 10px 12px;
-  color: #555;
-  font-weight: 600;
-}
-
-.radical-details-body {
-  padding: 0 10px 10px;
-}
-
-.radical-toggle-row {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 8px;
-}
-
-.radical-toggle {
-  color: #9a3412;
-  text-decoration: none;
-  font-size: 0.85rem;
-}
 
 .speaker-btn {
   background: none;
@@ -477,18 +303,13 @@ footer {
 
 <div id="app"></div>
 
-<nav class="sub-nav" id="sub-nav">
-  <a href="#/pinyin" data-route="pinyin">Pinyin</a>
-  <a href="#/radicals" data-route="radicals">Radicals</a>
-</nav>
-
 <footer>
   <button class="reset-btn" id="reset-btn">Reset Progress</button>
 </footer>
 
 <script>
 // ---------------------------------------------------------------------------
-// Vocabulary — HSK 1 + HSK 2
+// Vocabulary data source — HSK 1 + HSK 2 (decks use HSK 1 subset + radicals set)
 // ---------------------------------------------------------------------------
 const VOCAB = [
   // === HSK 1 (143 words) ===
@@ -770,6 +591,47 @@ const VOCAB = [
   {hanzi:"走",pinyin:"zǒu",english:"to walk; to go",mnemonic:"土 (earth) + a running figure on top. A person running on the earth — walking/going!"},
   {hanzi:"最",pinyin:"zuì",english:"most; -est",mnemonic:"日 (sun) + 取 (take). Taking the sun — reaching the most, the highest!"},
   {hanzi:"左边",pinyin:"zuǒbiān",english:"left side",mnemonic:"左 = a hand (ナ) + 工 (work). The hand that works. 边 (side). The left side!"},
+];
+
+const HSK1_CARD_COUNT = 143;
+const HSK1_VOCAB = VOCAB.slice(0, HSK1_CARD_COUNT);
+
+const RADICAL_DECK_CARDS = [
+  { id: "口", hanzi: "口", pinyin: "kǒu", english: "mouth", mnemonic: "An open mouth shape, like a square speaking." },
+  { id: "人", hanzi: "人", pinyin: "rén", english: "person", mnemonic: "Two legs walking together form a person." },
+  { id: "女", hanzi: "女", pinyin: "nǚ", english: "woman", mnemonic: "A kneeling figure traditionally used for woman." },
+  { id: "子", hanzi: "子", pinyin: "zǐ", english: "child", mnemonic: "A child with outstretched arms learning to walk." },
+  { id: "手", hanzi: "手", pinyin: "shǒu", english: "hand", mnemonic: "Looks like fingers and palm reaching out." },
+  { id: "心", hanzi: "心", pinyin: "xīn", english: "heart", mnemonic: "The shape suggests chambers and emotion inside." },
+  { id: "水", hanzi: "水", pinyin: "shuǐ", english: "water", mnemonic: "A central stream with side splashes: flowing water." },
+  { id: "火", hanzi: "火", pinyin: "huǒ", english: "fire", mnemonic: "Flames rising from a central spark." },
+  { id: "木", hanzi: "木", pinyin: "mù", english: "wood; tree", mnemonic: "Trunk, branches, and roots form a tree." },
+  { id: "日", hanzi: "日", pinyin: "rì", english: "sun; day", mnemonic: "A boxed sun with a mark inside." },
+  { id: "月", hanzi: "月", pinyin: "yuè", english: "moon; body", mnemonic: "A crescent-like form for moon and flesh." },
+  { id: "言", hanzi: "言", pinyin: "yán", english: "speech", mnemonic: "Words stacked above a mouth line." },
+  { id: "食", hanzi: "食", pinyin: "shí", english: "eat; food", mnemonic: "A lid above food being eaten." },
+  { id: "门", hanzi: "门", pinyin: "mén", english: "door; gate", mnemonic: "A doorway seen from the front." },
+  { id: "辶", hanzi: "辶", pinyin: "chuò", english: "walk; movement", mnemonic: "A path mark showing motion forward." },
+  { id: "艹", hanzi: "艹", pinyin: "cǎo", english: "grass; plant", mnemonic: "Sprouting strokes on top of plant words." },
+  { id: "讠", hanzi: "讠", pinyin: "yán", english: "speech (side form)", mnemonic: "Compressed speech radical on the left side." },
+  { id: "氵", hanzi: "氵", pinyin: "shuǐ", english: "water (side form)", mnemonic: "Three drops of water on the left." },
+  { id: "扌", hanzi: "扌", pinyin: "shǒu", english: "hand (side form)", mnemonic: "Hand radical squeezed to fit the left side." },
+  { id: "忄", hanzi: "忄", pinyin: "xīn", english: "heart (side form)", mnemonic: "Heart radical in narrow side form." },
+  { id: "亻", hanzi: "亻", pinyin: "rén", english: "person (side form)", mnemonic: "Narrow person radical standing on the left." },
+  { id: "宀", hanzi: "宀", pinyin: "mián", english: "roof", mnemonic: "A sheltering roof over what is below." },
+  { id: "土", hanzi: "土", pinyin: "tǔ", english: "earth; soil", mnemonic: "A mound of ground crossing a base line." },
+  { id: "金", hanzi: "金", pinyin: "jīn", english: "metal; gold", mnemonic: "Metal pieces gathered under a roof-like top." },
+  { id: "钅", hanzi: "钅", pinyin: "jīn", english: "metal (side form)", mnemonic: "Compressed metal radical used in compounds." },
+  { id: "雨", hanzi: "雨", pinyin: "yǔ", english: "rain", mnemonic: "Drops falling from a sky frame." },
+  { id: "目", hanzi: "目", pinyin: "mù", english: "eye", mnemonic: "An eye shape with pupil-like center." },
+  { id: "足", hanzi: "足", pinyin: "zú", english: "foot", mnemonic: "A foot stepping forward from the ground." },
+  { id: "阝", hanzi: "阝", pinyin: "fù", english: "mound; place", mnemonic: "Slope/place marker at the side of characters." },
+  { id: "禾", hanzi: "禾", pinyin: "hé", english: "grain", mnemonic: "A stalk of grain with bending leaves." },
+  { id: "米", hanzi: "米", pinyin: "mǐ", english: "rice", mnemonic: "Rice grains scattered from a center." },
+  { id: "纟", hanzi: "纟", pinyin: "sī", english: "silk thread", mnemonic: "Three thread strokes for silk-related words." },
+  { id: "贝", hanzi: "贝", pinyin: "bèi", english: "shell; money", mnemonic: "Cowrie shell once used as currency." },
+  { id: "车", hanzi: "车", pinyin: "chē", english: "vehicle", mnemonic: "An axle and wheels viewed from above." },
+  { id: "马", hanzi: "马", pinyin: "mǎ", english: "horse", mnemonic: "A horse with mane and tail simplified." },
 ];
 
 // ---------------------------------------------------------------------------
@@ -1242,10 +1104,10 @@ function overlapCount(a, b) {
 }
 
 const CARD_MEANING_TOKENS = new Map(
-  VOCAB.map((card) => [card.hanzi, extractMeaningTokens(card.english)])
+  HSK1_VOCAB.map((card) => [card.hanzi, extractMeaningTokens(card.english)])
 );
 const CARD_RAW_MEANING_TOKENS = new Map(
-  VOCAB.map((card) => [card.hanzi, extractRawMeaningTokens(card.english)])
+  HSK1_VOCAB.map((card) => [card.hanzi, extractRawMeaningTokens(card.english)])
 );
 
 function normalizeHanText(text) {
@@ -1356,19 +1218,80 @@ function initPWA() {
 // ---------------------------------------------------------------------------
 // Persistence — localStorage
 // ---------------------------------------------------------------------------
-const STORAGE_KEY = "chinese-flash-cards-progress";
+const LEGACY_STORAGE_KEY = "chinese-flash-cards-progress";
+const DECK_STORAGE_KEYS = {
+  hanzi_to_english: "hanzi_to_english_progress",
+  english_to_hanzi: "english_to_hanzi_progress",
+  radicals_to_english: "radicals_to_english_progress",
+};
+const ACTIVE_DECK_STORAGE_KEY = "chinese-flash-cards-active-deck";
 const TIDBIT_SALT_KEY = "chinese-flash-cards-tidbit-salt";
+const NEW_CARDS_PER_SESSION = 10;
 
-function loadProgress() {
+const DECKS = {
+  hanzi_to_english: {
+    id: "hanzi_to_english",
+    title: "Hanzi -> English",
+    subtitle: "See Hanzi, recall the English meaning.",
+    cards: HSK1_VOCAB,
+    mode: "hanzi_to_english",
+  },
+  english_to_hanzi: {
+    id: "english_to_hanzi",
+    title: "English -> Hanzi",
+    subtitle: "See English, recall the Chinese character.",
+    cards: HSK1_VOCAB,
+    mode: "english_to_hanzi",
+  },
+  radicals_to_english: {
+    id: "radicals_to_english",
+    title: "Radicals -> English",
+    subtitle: "See radicals, recall the English meaning.",
+    cards: RADICAL_DECK_CARDS,
+    mode: "radicals_to_english",
+  },
+};
+
+function loadJson(key, fallback = {}) {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    return JSON.parse(localStorage.getItem(key)) || fallback;
   } catch {
-    return {};
+    return fallback;
   }
 }
 
-function saveProgress(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+function saveJson(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+function getCardId(card) {
+  return card.id || card.hanzi;
+}
+
+function loadDeckProgress(deckId) {
+  return loadJson(DECK_STORAGE_KEYS[deckId], {});
+}
+
+function saveDeckProgress(deckId, data) {
+  saveJson(DECK_STORAGE_KEYS[deckId], data);
+}
+
+function migrateLegacyProgress() {
+  const legacy = loadJson(LEGACY_STORAGE_KEY, null);
+  if (!legacy || typeof legacy !== "object") return;
+  const existing = loadDeckProgress("hanzi_to_english");
+  if (Object.keys(existing).length === 0) {
+    saveDeckProgress("hanzi_to_english", legacy);
+  }
+}
+
+function getSavedActiveDeckId() {
+  const saved = localStorage.getItem(ACTIVE_DECK_STORAGE_KEY);
+  return DECKS[saved] ? saved : null;
+}
+
+function saveActiveDeckId(deckId) {
+  localStorage.setItem(ACTIVE_DECK_STORAGE_KEY, deckId);
 }
 
 function getDailyTidbitSalt() {
@@ -1389,8 +1312,6 @@ function getDailyTidbitSalt() {
 // ---------------------------------------------------------------------------
 // Spaced repetition — simplified SM-2
 // ---------------------------------------------------------------------------
-const NEW_CARDS_PER_SESSION = 10;
-
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -1422,9 +1343,10 @@ function hashString(str) {
 }
 
 function getCulturalTidbitForCard(card) {
-  const seed = hashString(`${card.hanzi}|${todayStr()}|${getDailyTidbitSalt()}`);
-  const cardTokens = CARD_MEANING_TOKENS.get(card.hanzi) || new Set();
-  const cardRawTokens = CARD_RAW_MEANING_TOKENS.get(card.hanzi) || new Set();
+  const key = card.hanzi || "";
+  const seed = hashString(`${key}|${todayStr()}|${getDailyTidbitSalt()}`);
+  const cardTokens = CARD_MEANING_TOKENS.get(key) || new Set();
+  const cardRawTokens = CARD_RAW_MEANING_TOKENS.get(key) || new Set();
   if (cardTokens.size === 0 && cardRawTokens.size === 0) return null;
 
   const scored = [];
@@ -1462,15 +1384,16 @@ function getTidbitAttribution(tidbit) {
   return "Classical Chinese text";
 }
 
-function buildQueue(progress) {
+function buildQueue(cards, progress) {
   const today = todayStr();
   const due = [];
   const unseen = [];
 
-  for (const word of VOCAB) {
-    const p = progress[word.hanzi];
-    if (!p) unseen.push(word);
-    else if (p.due <= today) due.push(word);
+  for (const card of cards) {
+    const id = getCardId(card);
+    const p = progress[id];
+    if (!p) unseen.push(card);
+    else if (p.due <= today) due.push(card);
   }
 
   const baseQueue = [...shuffle(due), ...shuffle(unseen).slice(0, NEW_CARDS_PER_SESSION)];
@@ -1478,8 +1401,9 @@ function buildQueue(progress) {
   return baseQueue;
 }
 
-function rateCard(card, progress, difficulty) {
-  const p = progress[card.hanzi] || { interval: 0, ease: 2.5, repetitions: 0 };
+function rateCard(card, progress, difficulty, deckId) {
+  const id = getCardId(card);
+  const p = progress[id] || { interval: 0, ease: 2.5, repetitions: 0 };
   let { interval, ease, repetitions } = p;
 
   if (difficulty === "hard") {
@@ -1501,14 +1425,14 @@ function rateCard(card, progress, difficulty) {
   const due = new Date();
   due.setDate(due.getDate() + interval);
 
-  progress[card.hanzi] = {
+  progress[id] = {
     interval,
     ease,
     repetitions,
     due: due.toISOString().slice(0, 10),
   };
 
-  saveProgress(progress);
+  saveDeckProgress(deckId, progress);
 }
 
 // ---------------------------------------------------------------------------
@@ -1516,17 +1440,32 @@ function rateCard(card, progress, difficulty) {
 // ---------------------------------------------------------------------------
 const app = document.getElementById("app");
 const progressEl = document.getElementById("progress");
-const subNav = document.getElementById("sub-nav");
 const resetBtn = document.getElementById("reset-btn");
+const RADICAL_MEANINGS = Object.fromEntries(
+  RADICAL_DECK_CARDS.map((card) => [card.hanzi, card.english])
+);
 
-let progress = loadProgress();
-let queue = buildQueue(progress);
+let activeDeckId = null;
+let progress = {};
+let queue = [];
 let lessonQueue = [...queue];
 let currentIndex = 0;
-let stage = 0; // 0 = hanzi, 1 = +pinyin+speaker, 2 = +english+mnemonic+buttons
+let stage = 0;
+
+function getActiveDeck() {
+  return activeDeckId ? DECKS[activeDeckId] : null;
+}
+
+function setActiveDeck(deckId) {
+  activeDeckId = deckId;
+  saveActiveDeckId(deckId);
+  progress = loadDeckProgress(deckId);
+  startNewLessonFromProgress();
+}
 
 function startNewLessonFromProgress() {
-  queue = buildQueue(progress);
+  const deck = getActiveDeck();
+  queue = deck ? buildQueue(deck.cards, progress) : [];
   lessonQueue = [...queue];
   currentIndex = 0;
 }
@@ -1535,177 +1474,15 @@ function replayLesson() {
   if (lessonQueue.length === 0) return;
   queue = shuffle(lessonQueue);
   currentIndex = 0;
-  renderReview();
-}
-
-const CORE_RADICALS = [
-  { radical: "口", meaning: "mouth", forms: ["口"] },
-  { radical: "人", meaning: "person", forms: ["人", "亻"] },
-  { radical: "女", meaning: "woman", forms: ["女"] },
-  { radical: "子", meaning: "child", forms: ["子"] },
-  { radical: "手", meaning: "hand", forms: ["手", "扌"] },
-  { radical: "心", meaning: "heart", forms: ["心", "忄"] },
-  { radical: "水", meaning: "water", forms: ["水", "氵"] },
-  { radical: "火", meaning: "fire", forms: ["火", "灬"] },
-  { radical: "木", meaning: "wood", forms: ["木"] },
-  { radical: "日", meaning: "sun/day", forms: ["日"] },
-  { radical: "月", meaning: "moon/body", forms: ["月"] },
-  { radical: "言", meaning: "speech", forms: ["言", "讠"] },
-  { radical: "食", meaning: "eat/food", forms: ["食", "饣"] },
-  { radical: "门", meaning: "door", forms: ["门"] },
-  { radical: "辶", meaning: "walk/motion", forms: ["辶"] },
-];
-
-const RADICAL_MEANING_HINTS = Object.fromEntries(
-  CORE_RADICALS.map((item) => [item.radical, item.meaning])
-);
-
-function isHanChar(ch) {
-  return /[\u3400-\u9fff]/.test(ch);
-}
-
-function extractRadicalsFromMnemonics(vocab) {
-  const found = new Set();
-  const pattern = /([\u3400-\u9fff])\s*\(/g;
-
-  for (const word of vocab) {
-    if (!word.mnemonic) continue;
-    for (const match of word.mnemonic.matchAll(pattern)) {
-      if (isHanChar(match[1])) found.add(match[1]);
-    }
-  }
-  return [...found];
-}
-
-function inferRadicalMeaningsFromMnemonics(vocab) {
-  const counts = new Map();
-  const pattern = /([\u3400-\u9fff])\s*\(([^)]+)\)/g;
-
-  for (const word of vocab) {
-    if (!word.mnemonic) continue;
-    for (const match of word.mnemonic.matchAll(pattern)) {
-      const symbol = match[1];
-      const rawMeaning = match[2].trim();
-      if (!isHanChar(symbol) || !rawMeaning) continue;
-
-      if (!counts.has(symbol)) counts.set(symbol, new Map());
-      const meaningCounts = counts.get(symbol);
-      meaningCounts.set(rawMeaning, (meaningCounts.get(rawMeaning) || 0) + 1);
-    }
-  }
-
-  const inferred = new Map();
-  for (const [symbol, meaningCounts] of counts.entries()) {
-    let topMeaning = "";
-    let topCount = -1;
-    for (const [meaning, count] of meaningCounts.entries()) {
-      if (count > topCount) {
-        topMeaning = meaning;
-        topCount = count;
-      }
-    }
-    if (topMeaning) inferred.set(symbol, topMeaning);
-  }
-
-  return inferred;
-}
-
-function buildLessonRadicals() {
-  const map = new Map();
-  const coveredForms = new Set();
-  const inferredMeanings = inferRadicalMeaningsFromMnemonics(VOCAB);
-
-  for (const radical of CORE_RADICALS) {
-    for (const form of radical.forms) coveredForms.add(form);
-    map.set(radical.radical, {
-      ...radical,
-      forms: [...new Set(radical.forms)],
-      core: true,
-    });
-  }
-
-  for (const symbol of extractRadicalsFromMnemonics(VOCAB)) {
-    if (map.has(symbol) || coveredForms.has(symbol)) continue;
-    map.set(symbol, {
-      radical: symbol,
-      meaning:
-        inferredMeanings.get(symbol) ||
-        RADICAL_MEANING_HINTS[symbol] ||
-        "component in lesson mnemonics",
-      forms: [symbol],
-      core: false,
-    });
-    coveredForms.add(symbol);
-  }
-
-  for (const radical of map.values()) {
-    const words = [];
-    for (const word of VOCAB) {
-      const inWord = radical.forms.some((form) => word.hanzi.includes(form));
-      const inMnemonic = radical.forms.some((form) => (word.mnemonic || "").includes(form));
-      if (inWord || inMnemonic) words.push(word.hanzi);
-    }
-    radical.wordCount = words.length;
-    radical.examples = words.slice(0, 6);
-  }
-
-  return [...map.values()].sort((a, b) => {
-    if (a.core !== b.core) return a.core ? -1 : 1;
-    if (b.wordCount !== a.wordCount) return b.wordCount - a.wordCount;
-    return a.radical.localeCompare(b.radical, "zh");
-  });
-}
-
-const RADICALS = buildLessonRadicals();
-
-const PINYIN_INITIALS = [
-  "b", "p", "m", "f", "d", "t", "n", "l",
-  "g", "k", "h", "j", "q", "x", "zh", "ch", "sh", "r", "z", "c", "s", "y", "w"
-];
-
-const PINYIN_FINALS = [
-  "a", "o", "e", "i", "u", "ai", "ei", "ao", "ou", "an", "en", "ang", "eng", "ong",
-  "ia", "ie", "iao", "iu", "ian", "in", "iang", "ing", "iong", "ua", "uo", "uai",
-  "ui", "uan", "un", "uang", "er"
-];
-
-const PINYIN_NORMALIZE_MAP = {
-  "ā": "a", "á": "a", "ǎ": "a", "à": "a",
-  "ē": "e", "é": "e", "ě": "e", "è": "e",
-  "ī": "i", "í": "i", "ǐ": "i", "ì": "i",
-  "ō": "o", "ó": "o", "ǒ": "o", "ò": "o",
-  "ū": "u", "ú": "u", "ǔ": "u", "ù": "u",
-  "ǖ": "u", "ǘ": "u", "ǚ": "u", "ǜ": "u",
-  "ü": "u", "ń": "n", "ň": "n", "ḿ": "m",
-};
-
-function normalizePinyin(text) {
-  return (text || "")
-    .toLowerCase()
-    .split("")
-    .map((c) => PINYIN_NORMALIZE_MAP[c] || c)
-    .join("")
-    .replace(/[^a-z ]/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function getFirstSyllable(pinyin) {
-  return normalizePinyin((pinyin || "").split(/\s+/)[0]);
+  renderStudyDeck();
 }
 
 function parseRoute() {
   const raw = location.hash.replace(/^#\/?/, "");
-  if (!raw) return { route: "review", params: new URLSearchParams() };
+  if (!raw) return { route: "decks", params: new URLSearchParams() };
   const [path, query = ""] = raw.split("?");
-  const route = ["review", "pinyin", "radicals"].includes(path) ? path : "review";
+  const route = ["decks", "study"].includes(path) ? path : "decks";
   return { route, params: new URLSearchParams(query) };
-}
-
-function updateNav(route) {
-  for (const link of subNav.querySelectorAll("a[data-route]")) {
-    link.classList.toggle("active", link.dataset.route === route);
-  }
 }
 
 function parseMnemonic(card) {
@@ -1790,8 +1567,7 @@ function buildMnemonicAndChips(card) {
   for (const ch of card.hanzi) {
     const covered = chips.some((item) => item.hanzi.includes(ch));
     if (covered) continue;
-    const radical = RADICALS.find((item) => item.radical === ch || item.forms.includes(ch));
-    const meaning = radical ? radical.meaning : "word component";
+    const meaning = RADICAL_MEANINGS[ch] || "word component";
     pushChip(ch, meaning);
   }
 
@@ -1799,13 +1575,49 @@ function buildMnemonicAndChips(card) {
   return { text: parsed.text, chips };
 }
 
-function renderReview() {
+function getDeckDueCount(deck) {
+  const today = todayStr();
+  const deckProgress = loadDeckProgress(deck.id);
+  let count = 0;
+  for (const card of deck.cards) {
+    const p = deckProgress[getCardId(card)];
+    if (!p || p.due <= today) count++;
+  }
+  return count;
+}
+
+function renderDeckSelection() {
+  progressEl.textContent = "Choose a deck";
+  let html = '<section class="study-page">';
+
+  for (const deck of Object.values(DECKS)) {
+    const dueCount = getDeckDueCount(deck);
+    html += '<div style="margin:10px 0;">';
+    html += `<a class="chip-link" style="display:block;padding:12px 14px;" href="#/study?deck=${deck.id}">`;
+    html += `<strong>${escapeHtml(deck.title)}</strong><br>`;
+    html += `<small>${escapeHtml(deck.subtitle)} · ${dueCount} due/new</small>`;
+    html += "</a>";
+    html += "</div>";
+  }
+
+  html += "</section>";
+  app.innerHTML = html;
+}
+
+function renderStudyDeck() {
+  const deck = getActiveDeck();
+  if (!deck) {
+    renderDeckSelection();
+    return;
+  }
+
   if (currentIndex >= queue.length) {
     progressEl.textContent = "";
     let html =
       '<div class="done"><div class="emoji">&#127881;</div>' +
       "All done for today!<br>" +
       '<small style="color:#aaa">Come back tomorrow for more review.</small>';
+    html += '<div style="margin-top:14px;"><a class="reset-btn" href="#/decks">Deck selection</a></div>';
     if (lessonQueue.length > 0) {
       html += '<div style="margin-top:14px;"><button class="reset-btn" id="replay-lesson-btn">Replay lesson</button></div>';
     }
@@ -1820,48 +1632,66 @@ function renderReview() {
 
   const card = queue[currentIndex];
 
-  progressEl.textContent = `Card ${currentIndex + 1} of ${queue.length} due today`;
+  progressEl.textContent = `${deck.title} · Card ${currentIndex + 1} of ${queue.length}`;
   stage = 0;
   render();
 
   function render() {
+    const isEnglishToHanzi = deck.mode === "english_to_hanzi";
+    const isHanziToEnglish = deck.mode === "hanzi_to_english";
     let html = '<div class="card" id="flashcard">';
-    html += `<div class="hanzi">${card.hanzi}</div>`;
 
-    if (stage >= 1) {
-      const syllable = getFirstSyllable(card.pinyin);
-      html += `<a class="pinyin pinyin-link" href="#/pinyin?syllable=${encodeURIComponent(syllable)}">${card.pinyin}</a>`;
-      html += '<button class="speaker-btn" id="speak-btn" title="Play pronunciation">&#128264;</button>';
+    if (isEnglishToHanzi) {
+      html += `<div class="english">${card.english}</div>`;
+      if (stage >= 1) {
+        const parsedMnemonic = buildMnemonicAndChips(card);
+        if (parsedMnemonic.text) {
+          html += `<div class="mnemonic">${escapeHtml(parsedMnemonic.text)}</div>`;
+        }
+      }
+      if (stage >= 2) {
+        html += `<div class="hanzi">${card.hanzi}</div>`;
+        html += `<div class="pinyin">${card.pinyin}</div>`;
+        html += '<button class="speaker-btn" id="speak-btn" title="Play pronunciation">&#128264;</button>';
+      }
+    } else {
+      html += `<div class="hanzi">${card.hanzi}</div>`;
+      if (stage >= 1) {
+        html += `<div class="pinyin">${card.pinyin}</div>`;
+        html += '<button class="speaker-btn" id="speak-btn" title="Play pronunciation">&#128264;</button>';
+      }
+      if (stage >= 2) {
+        const parsedMnemonic = buildMnemonicAndChips(card);
+        const tidbit = isHanziToEnglish ? getCulturalTidbitForCard(card) : null;
+        html += `<div class="english">${card.english}</div>`;
+        if (parsedMnemonic.text) {
+          html += `<div class="mnemonic">${escapeHtml(parsedMnemonic.text)}</div>`;
+        }
+        if (parsedMnemonic.chips.length > 0) {
+          html += '<div class="related-radicals">';
+          for (const item of parsedMnemonic.chips) {
+            html += `<span class="chip-link">${escapeHtml(item.hanzi)} ${escapeHtml(item.meaning)}</span>`;
+          }
+          html += "</div>";
+        }
+        if (tidbit) {
+          html += '<div class="cultural-tidbit">';
+          html += `<div class="cultural-quote">${escapeHtml(tidbit.quote)}</div>`;
+          if (tidbit.translation) {
+            html += `<div class="cultural-translation">${escapeHtml(tidbit.translation)}</div>`;
+          }
+          const attribution = getTidbitAttribution(tidbit);
+          html += '<div class="cultural-source">';
+          html += `&mdash; ${escapeHtml(attribution)}`;
+          html += ` · ${escapeHtml(tidbit.source)} · `;
+          html += `<a href="${escapeHtml(tidbit.url)}" target="_blank" rel="noopener noreferrer">source</a>`;
+          html += "</div>";
+          html += "</div>";
+        }
+      }
     }
 
     if (stage >= 2) {
-      const parsedMnemonic = buildMnemonicAndChips(card);
-      const tidbit = getCulturalTidbitForCard(card);
-      html += `<div class="english">${card.english}</div>`;
-      if (parsedMnemonic.chips.length > 0) {
-        html += '<div class="related-radicals">';
-        for (const item of parsedMnemonic.chips) {
-          html += `<span class="chip-link">${escapeHtml(item.hanzi)} ${escapeHtml(item.meaning)}</span>`;
-        }
-        html += "</div>";
-      }
-      if (parsedMnemonic.text) {
-        html += `<div class="mnemonic">${escapeHtml(parsedMnemonic.text)}</div>`;
-      }
-      if (tidbit) {
-        html += '<div class="cultural-tidbit">';
-        html += `<div class="cultural-quote">${escapeHtml(tidbit.quote)}</div>`;
-        if (tidbit.translation) {
-          html += `<div class="cultural-translation">${escapeHtml(tidbit.translation)}</div>`;
-        }
-        const attribution = getTidbitAttribution(tidbit);
-        html += '<div class="cultural-source">';
-        html += `&mdash; ${escapeHtml(attribution)}`;
-        html += ` · ${escapeHtml(tidbit.source)} · `;
-        html += `<a href="${escapeHtml(tidbit.url)}" target="_blank" rel="noopener noreferrer">source</a>`;
-        html += "</div>";
-        html += "</div>";
-      }
       html += '<div class="difficulty-buttons">';
       html += '<button class="btn-easy" data-difficulty="easy">Easy</button>';
       html += '<button class="btn-medium" data-difficulty="medium">Medium</button>';
@@ -1871,10 +1701,13 @@ function renderReview() {
     }
 
     if (stage < 2) {
-      const hints = ["tap to reveal pinyin", "tap to reveal meaning"];
+      const hints = isEnglishToHanzi
+        ? ["tap to reveal mnemonic hint", "tap to reveal hanzi + pinyin"]
+        : ["tap to reveal pinyin", "tap to reveal meaning"];
       html += `<div class="hint">${hints[stage]}</div>`;
     }
 
+    html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
     html += "</div>";
     app.innerHTML = html;
 
@@ -1899,9 +1732,9 @@ function renderReview() {
     for (const btn of app.querySelectorAll(".difficulty-buttons button")) {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        rateCard(card, progress, btn.dataset.difficulty);
+        rateCard(card, progress, btn.dataset.difficulty, deck.id);
         currentIndex++;
-        renderReview();
+        renderStudyDeck();
       });
     }
 
@@ -1916,163 +1749,29 @@ function renderReview() {
   }
 }
 
-function renderPinyin(params) {
-  const filter = normalizePinyin(params.get("syllable") || "");
-  const examples = VOCAB.filter((item) => {
-    if (!filter) return true;
-    return getFirstSyllable(item.pinyin) === filter;
-  }).slice(0, 24);
-
-  progressEl.textContent = filter
-    ? `Pinyin focus: ${filter}`
-    : "Pinyin reference + examples from your deck";
-
-  let html = '<section class="study-page">';
-  html += '<p class="back-link"><a href="#/review">Return to review deck</a></p>';
-  html += "<h2>Pinyin</h2>";
-  html += "<p>Use this page for pronunciation patterns, then jump back to Review to reinforce with spaced repetition.</p>";
-  html += '<p><small>Tap a tone cell to hear pinyin audio.</small></p>';
-  html += "<h3>Tones</h3>";
-  html += '<div class="tone-table">';
-  html += '<button type="button" class="mini-cell mini-audio-cell" data-pinyin-audio="mā">1st<br>mā</button>';
-  html += '<button type="button" class="mini-cell mini-audio-cell" data-pinyin-audio="má">2nd<br>má</button>';
-  html += '<button type="button" class="mini-cell mini-audio-cell" data-pinyin-audio="mǎ">3rd<br>mǎ</button>';
-  html += '<button type="button" class="mini-cell mini-audio-cell" data-pinyin-audio="mà">4th<br>mà</button>';
-  html += "</div>";
-  html += "<h3>Initials</h3>";
-  html += '<div class="mini-grid">';
-  for (const initial of PINYIN_INITIALS) html += `<div class="mini-cell">${initial}</div>`;
-  html += "</div>";
-  html += "<h3>Finals</h3>";
-  html += '<div class="mini-grid">';
-  for (const final of PINYIN_FINALS) html += `<div class="mini-cell">${final}</div>`;
-  html += "</div>";
-  html += `<details class="radical-details"${filter ? " open" : ""}>`;
-  html += `<summary>Deck examples${filter ? ` (${filter})` : ""}</summary>`;
-  html += '<div class="radical-details-body">';
-  html += '<div class="example-list">';
-  if (examples.length === 0) {
-    html += '<p>No matches yet for this syllable.</p>';
-  } else {
-    for (const word of examples) {
-      html += '<div class="example-item">';
-      html += `<div class="hanzi">${word.hanzi}</div>`;
-      html += '<div>';
-      html += `<div class="pinyin">${word.pinyin}</div>`;
-      html += `<div class="english">${word.english}</div>`;
-      html += "</div>";
-      html += "</div>";
-    }
-  }
-  html += "</div></div></details>";
-  html += '<p style="margin-top:12px;"><a href="#/review">Return to review deck</a></p>';
-  html += "</section>";
-  app.innerHTML = html;
-
-  for (const btn of app.querySelectorAll("[data-pinyin-audio]")) {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      speakPinyin(btn.dataset.pinyinAudio || "");
-    });
-  }
-}
-
-function renderRadicals(params) {
-  const filter = params.get("rad") || "";
-  const showAll = params.get("all") === "1";
-  const focused = RADICALS.find((r) => r.radical === filter) || null;
-  const coreRadicals = RADICALS.filter((r) => r.core);
-  const lessonRadicals = RADICALS.filter((r) => !r.core);
-  const previewLimit = 36;
-  const visibleLessonRadicals = showAll ? lessonRadicals : lessonRadicals.slice(0, previewLimit);
-
-  progressEl.textContent = filter
-    ? `Radical focus: ${filter}`
-    : "Lesson radicals";
-
-  let html = '<section class="study-page">';
-  html += '<p class="back-link"><a href="#/review">Return to review deck</a></p>';
-  html += "<h2>Radicals</h2>";
-  html += '<p><small>Count badge = how many vocab entries include that symbol in the word or in its mnemonic breakdown.</small></p>';
-
-  if (focused) {
-    html += '<div class="radical-item active">';
-    html += '<div class="radical-row">';
-    html += '<div class="radical-main">';
-    html += `<a class="radical-char" href="#/radicals?rad=${encodeURIComponent(focused.radical)}">${focused.radical}</a>`;
-    html += `<div class="radical-meta">${focused.meaning}</div>`;
-    html += "</div>";
-    html += `<div class="radical-count">${focused.wordCount} words</div>`;
-    html += "</div>";
-    if (focused.examples.length > 0) {
-      html += `<div class="example-chars">${focused.examples.join(" · ")}</div>`;
-    }
-    html += "</div>";
-  }
-
-  html += "<h3>Core set</h3>";
-  html += '<div class="radical-list">';
-
-  for (const radical of coreRadicals) {
-    html += `<div class="radical-item${filter === radical.radical ? " active" : ""}">`;
-    html += '<div class="radical-row">';
-    html += '<div class="radical-main">';
-    html += `<a class="radical-char" href="#/radicals?rad=${encodeURIComponent(radical.radical)}">${radical.radical}</a>`;
-    html += `<div class="radical-meta">${radical.meaning}</div>`;
-    html += "</div>";
-    html += `<div class="radical-count">${radical.wordCount} words</div>`;
-    html += "</div>";
-    html += "</div>";
-  }
-
-  html += "</div>";
-  html += `<details class="radical-details"${showAll || !!filter ? " open" : ""}>`;
-  html += `<summary>Lesson components (${lessonRadicals.length})</summary>`;
-  html += '<div class="radical-details-body">';
-  html += '<div class="radical-list">';
-
-  for (const radical of visibleLessonRadicals) {
-    html += `<div class="radical-item${filter === radical.radical ? " active" : ""}">`;
-    html += '<div class="radical-row">';
-    html += '<div class="radical-main">';
-    html += `<a class="radical-char" href="#/radicals?rad=${encodeURIComponent(radical.radical)}">${radical.radical}</a>`;
-    html += `<div class="radical-meta">${radical.meaning}</div>`;
-    html += "</div>";
-    html += `<div class="radical-count">${radical.wordCount} words</div>`;
-    html += "</div>";
-    html += "</div>";
-  }
-
-  html += "</div>";
-  if (!showAll && lessonRadicals.length > previewLimit) {
-    html += '<div class="radical-toggle-row">';
-    html += '<a class="radical-toggle" href="#/radicals?all=1">Show all lesson components</a>';
-    html += "</div>";
-  } else if (showAll) {
-    html += '<div class="radical-toggle-row">';
-    html += '<a class="radical-toggle" href="#/radicals">Show fewer</a>';
-    html += "</div>";
-  }
-  html += "</div></details>";
-  html += '<p style="margin-top:12px;"><a href="#/review">Return to review deck</a></p>';
-  html += "</section>";
-  app.innerHTML = html;
-}
-
 function renderRoute() {
   const { route, params } = parseRoute();
-  updateNav(route);
-  subNav.style.display = route === "review" ? "flex" : "none";
-  resetBtn.style.display = route === "review" ? "inline-block" : "none";
+  resetBtn.style.display = route === "study" ? "inline-block" : "none";
 
-  if (route === "review") renderReview();
-  else if (route === "pinyin") renderPinyin(params);
-  else renderRadicals(params);
+  if (route === "decks") {
+    renderDeckSelection();
+    return;
+  }
+
+  const requestedDeckId = params.get("deck") || activeDeckId || getSavedActiveDeckId();
+  if (!requestedDeckId || !DECKS[requestedDeckId]) {
+    location.hash = "#/decks";
+    return;
+  }
+  if (activeDeckId !== requestedDeckId) setActiveDeck(requestedDeckId);
+  renderStudyDeck();
 }
 
 resetBtn.addEventListener("click", () => {
-  if (confirm("Reset all progress? This cannot be undone.")) {
-    localStorage.removeItem(STORAGE_KEY);
+  const deck = getActiveDeck();
+  if (!deck) return;
+  if (confirm(`Reset progress for "${deck.title}"? This cannot be undone.`)) {
+    localStorage.removeItem(DECK_STORAGE_KEYS[deck.id]);
     progress = {};
     startNewLessonFromProgress();
     renderRoute();
@@ -2080,6 +1779,8 @@ resetBtn.addEventListener("click", () => {
 });
 
 window.addEventListener("hashchange", renderRoute);
+migrateLegacyProgress();
+if (!location.hash) location.hash = "#/decks";
 renderRoute();
 initPWA();
 </script>
