@@ -98,7 +98,7 @@ Pronunciation audio uses [hugolpz/audio-cmn](https://github.com/hugolpz/audio-cm
 
 ## Mnemonic Guardrails
 
-Mnemonic rendering supports structured data (`soundAnchor`, `story`, `components`) with legacy fallback from a plain `mnemonic` string.
+Mnemonic rendering uses structured data (`soundAnchor`, `story`, `components`) for deck content.
 
 Guardrails:
 
@@ -114,7 +114,30 @@ Guardrails:
   - literal shape-description hints are suppressed (`looks like`, `stroke`, `line`, etc.)
 - In hint-only stages (`English -> Hanzi` stage 1, `Hanzi -> English` stage 2):
   - sound anchors are disabled
-  - mnemonic text is filtered to avoid answer leakage
+  - invalid stories are skipped (not rewritten)
+  - empty stories intentionally skip the mnemonic hint stage
+
+## Mnemonic Curation
+
+Use open-source datasets to generate draft seed material, then curate into `mnemonicData`.
+
+```bash
+node scripts/build-mnemonic-seeds.js --makemeahanzi /path/to/dictionary.txt --out data/mnemonic-seeds/hsk1-seeds.json
+```
+
+One-time migration helper (legacy `mnemonic` -> validated `mnemonicData`):
+
+```bash
+node scripts/migrate-mnemonic-data.js
+```
+
+Audit current data quality:
+
+```bash
+node scripts/audit-mnemonics.js --mode all
+```
+
+See `docs/mnemonic-curation.md` for full workflow details.
 
 ## Cultural Tidbits
 
@@ -129,6 +152,7 @@ node scripts/test-tidbit-data.js
 node scripts/test-tidbit-selection.js
 node scripts/test-deck-refactor.js
 node scripts/test-hint-safety.js
+node scripts/test-mnemonic-curation.js
 ```
 
 Optional curation helpers:

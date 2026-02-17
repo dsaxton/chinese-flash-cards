@@ -12,26 +12,31 @@ Implemented:
   - no English-answer token leakage,
   - no explicit phonetic cue phrases (`think of ...`, `sounds like ...`),
   - no literal shape-description hints in E2H stage 1.
-- Regression coverage includes a full-deck hint safety test.
+- Mnemonic cleanup/migration completed:
+  - every card now has structured `mnemonicData` (`soundAnchor`, `story`, `components`),
+  - stories that violate constraints are removed from data (empty story), and mnemonic hint stage is skipped for those cards,
+  - radicals deck is fully curated with non-empty compliant stories,
+  - HSK1 deck has no hint-safety violations (audit clean).
+- Tooling added:
+  - `scripts/build-mnemonic-seeds.js` (Make Me a Hanzi + optional cross-reference imports),
+  - `scripts/audit-mnemonics.js` (deck-level quality audit),
+  - `scripts/migrate-mnemonic-data.js` (one-time migration to structured data),
+  - `scripts/test-mnemonic-curation.js` (data-first regression checks).
+- Regression coverage includes full-deck hint safety + mnemonic curation tests.
 
 # Remaining Work
 
 ## Mnemonics
 
-1. Curate structured mnemonic data across the deck.
-   - Populate `mnemonicData` (`soundAnchor`, `story`, `components`) per card.
-   - Reduce reliance on parser fallback from legacy `mnemonic`.
-2. Improve story quality.
-   - Remove awkward phrasing and direct-meaning leakage from legacy stories.
-   - Keep cues memorable but indirect.
-3. Improve sound-anchor quality for full-reveal contexts.
-   - Keep anchors intelligible, natural, and in ALL CAPS.
-   - Continue rejecting non-English pronunciation fragments.
+1. Increase non-empty curated story coverage for HSK1 (currently many cards intentionally skip hint stage).
+2. Improve sound-anchor quality for full-reveal contexts.
+   - keep anchors intelligible, natural, and in ALL CAPS,
+   - continue rejecting non-English pronunciation fragments.
 
 ## Tests
 
-1. Add curated spot-check fixtures for representative words/radicals (beyond regex-level guards).
-2. Add targeted tests for `mnemonicData`-first cards once curation lands.
+1. Add stronger curated fixture snapshots for a larger HSK1 subset.
+2. Add a CI gate for `scripts/audit-mnemonics.js --fail-on-violations`.
 
 ## Future
 

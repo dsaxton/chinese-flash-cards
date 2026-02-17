@@ -89,57 +89,57 @@ function testEnglishToHanziHintStage(source) {
   assert(branchEnd !== -1, "Could not find end of isEnglishToHanzi branch");
   const branch = source.slice(branchStart, branchEnd);
 
-  const stage1Start = branch.indexOf("if (stage === 1) {");
-  assert(stage1Start !== -1, "Missing stage 1 block for English->Hanzi");
-  const stage2Start = branch.indexOf("if (stage === 2) {", stage1Start);
-  assert(stage2Start !== -1, "Missing stage 2 block for English->Hanzi");
-  const revealStart = branch.indexOf("if (stage >= finalStage) {", stage2Start);
-  assert(revealStart !== -1, "Missing final reveal block for English->Hanzi");
-  const stage1Block = branch.slice(stage1Start, stage2Start);
-  const stage2Block = branch.slice(stage2Start, revealStart);
   assert(
-    stage1Block.trimStart().startsWith("if (stage === 1) {"),
-    "English->Hanzi mnemonic hint block should render only on stage 1 (not stage 2)"
+    /if \(stage >= 1 && hintMnemonic\.text\)/.test(branch),
+    "English->Hanzi hint should remain visible from stage 1 onward"
   );
   assert(
-    !stage1Block.includes("related-radicals"),
-    "English->Hanzi stage 1 should not reveal radical chips"
+    /if \(stage >= 2 && stage < finalStage\)/.test(branch),
+    "English->Hanzi pinyin stage should appear at stage 2 before final reveal"
   );
   assert(
-    stage1Block.includes("includeSoundAnchor: false"),
-    "English->Hanzi stage 1 should not include sound-anchor phonetic clues"
+    /if \(stage >= finalStage\)/.test(branch),
+    "English->Hanzi should have a final reveal block"
   );
   assert(
-    stage1Block.includes("includeChips: false"),
-    "English->Hanzi stage 1 should hide component chips"
+    !/if \(stage === 1\)/.test(branch),
+    "English->Hanzi should not use stage-equality gating that drops prior info"
   );
   assert(
-    stage1Block.includes("forbidPinyin: true"),
-    "English->Hanzi stage 1 should sanitize pinyin from mnemonic hint text"
+    branch.includes("includeSoundAnchor: false"),
+    "English->Hanzi hint should disable sound-anchor phonetic clues"
   );
   assert(
-    stage1Block.includes("forbidEnglishAnswer: true"),
-    "English->Hanzi stage 1 should sanitize English-answer leakage from hints"
+    branch.includes("includeChips: false"),
+    "English->Hanzi hint should hide component chips"
   );
   assert(
-    stage1Block.includes("forbidPhoneticCue: true"),
-    "English->Hanzi stage 1 should sanitize phonetic-cue phrasing from hints"
+    branch.includes("forbidPinyin: true"),
+    "English->Hanzi hint should sanitize pinyin from mnemonic hint text"
   );
   assert(
-    stage1Block.includes("forbidLiteralShapeHints: true"),
-    "English->Hanzi stage 1 should suppress literal shape-description hints"
+    branch.includes("forbidEnglishAnswer: true"),
+    "English->Hanzi hint should sanitize English-answer leakage from hints"
   );
   assert(
-    stage2Block.includes("class=\"pinyin\""),
-    "English->Hanzi stage 2 should include a pinyin-only reveal"
+    branch.includes("forbidPhoneticCue: true"),
+    "English->Hanzi hint should sanitize phonetic-cue phrasing from hints"
   );
   assert(
-    !stage2Block.includes("class=\"hanzi\""),
-    "English->Hanzi stage 2 should not reveal hanzi"
+    branch.includes("forbidLiteralShapeHints: true"),
+    "English->Hanzi hint should suppress literal shape-description hints"
   );
   assert(
-    !stage2Block.includes("related-radicals"),
-    "English->Hanzi stage 2 should not reveal chips"
+    branch.includes("class=\"pinyin\""),
+    "English->Hanzi stage 2 should include a pinyin reveal"
+  );
+  assert(
+    branch.includes("class=\"hanzi\""),
+    "English->Hanzi final stage should include hanzi reveal"
+  );
+  assert(
+    branch.includes("related-radicals"),
+    "English->Hanzi final stage should include component chips"
   );
 }
 
@@ -150,28 +150,32 @@ function testHanziToEnglishIntermediateMnemonicStage(source) {
   assert(branchEnd !== -1, "Could not locate end of non-English->Hanzi branch");
   const branch = source.slice(elseStart, branchEnd);
 
-  const stage2Start = branch.indexOf("if (isHanziToEnglish && stage === 2) {");
+  const stage2Start = branch.indexOf("if (isHanziToEnglish && stage >= 2");
   assert(stage2Start !== -1, "Missing Hanzi->English stage 2 mnemonic-only block");
   const stage2Block = branch.slice(stage2Start, branch.indexOf("if (stage >= finalStage) {", stage2Start));
   assert(
-    /includeSoundAnchor: false/.test(stage2Block),
+    /const hintMnemonic = isHanziToEnglish[\s\S]*includeSoundAnchor: false/.test(branch),
     "Hanzi->English stage 2 hint should disable sound-anchor phonetic clues"
   );
   assert(
-    /includeChips: false/.test(stage2Block),
+    /const hintMnemonic = isHanziToEnglish[\s\S]*includeChips: false/.test(branch),
     "Hanzi->English stage 2 should render mnemonic without chips"
   );
   assert(
-    /forbidEnglishAnswer: true/.test(stage2Block),
+    /const hintMnemonic = isHanziToEnglish[\s\S]*forbidEnglishAnswer: true/.test(branch),
     "Hanzi->English stage 2 should sanitize English-answer leakage"
   );
   assert(
-    /forbidPhoneticCue: true/.test(stage2Block),
+    /const hintMnemonic = isHanziToEnglish[\s\S]*forbidPhoneticCue: true/.test(branch),
     "Hanzi->English stage 2 should sanitize phonetic-cue phrasing"
   );
   assert(
     !stage2Block.includes("class=\"english\""),
     "Hanzi->English stage 2 should not reveal English yet"
+  );
+  assert(
+    !/if \(isHanziToEnglish && stage === 2\)/.test(branch),
+    "Hanzi->English should not use stage-equality gating that drops prior info"
   );
 }
 
@@ -217,6 +221,25 @@ function testStageSkipLogic(source) {
   );
 }
 
+function testProgressiveRevealMonotonic(source) {
+  assert(
+    /if \(stage >= 1 && hintMnemonic\.text\)/.test(source),
+    "Progressive reveal: E2H hint should remain visible once revealed"
+  );
+  assert(
+    /if \(isHanziToEnglish && stage >= 2 && hintMnemonic && hintMnemonic\.text\)/.test(source),
+    "Progressive reveal: H2E hint should remain visible once revealed"
+  );
+  assert(
+    /if \(stage >= 1\) \{[\s\S]*class="pinyin"/.test(source),
+    "Progressive reveal: pinyin shown at stage 1 should persist through later H2E stages"
+  );
+  assert(
+    /if \(stage >= finalStage\) \{[\s\S]*class="pinyin"[\s\S]*class="mnemonic"/.test(source),
+    "Progressive reveal: final stage should include accumulated reveal information"
+  );
+}
+
 function testLiteralShapeHintGuardrails(source) {
   const literalBlockMatch = source.match(/const LITERAL_SHAPE_HINT_PATTERNS = \[([\s\S]*?)\n\];/);
   assert(literalBlockMatch, "Missing LITERAL_SHAPE_HINT_PATTERNS");
@@ -248,20 +271,28 @@ function testHintSafetyHelpers(source) {
     "Missing extractEnglishAnswerTokens helper"
   );
   assert(
-    /function stripEnglishAnswerFromHint\(text, english\)/.test(source),
-    "Missing stripEnglishAnswerFromHint helper"
+    /function hintContainsEnglishAnswer\(text, english\)/.test(source),
+    "Missing hintContainsEnglishAnswer helper"
   );
   assert(
-    /function stripPhoneticCueText\(text\)/.test(source),
-    "Missing stripPhoneticCueText helper"
+    /function hintContainsPhoneticCue\(text\)/.test(source),
+    "Missing hintContainsPhoneticCue helper"
   );
   assert(
-    /if \(forbidEnglishAnswer\) story = stripEnglishAnswerFromHint\(story, card\.english\);/.test(source),
-    "Mnemonic builder should strip English-answer leakage when forbidEnglishAnswer is enabled"
+    /function hintContainsPinyin\(text, pinyin\)/.test(source),
+    "Missing hintContainsPinyin helper"
   );
   assert(
-    /if \(forbidPhoneticCue\) story = stripPhoneticCueText\(story\);/.test(source),
-    "Mnemonic builder should strip phonetic-cue phrasing when forbidPhoneticCue is enabled"
+    /if \(forbidPinyin && hintContainsPinyin\(story, card\.pinyin\)\) story = "";/.test(source),
+    "Mnemonic builder should reject hints containing pinyin when forbidPinyin is enabled"
+  );
+  assert(
+    /if \(forbidEnglishAnswer && hintContainsEnglishAnswer\(story, card\.english\)\) story = "";/.test(source),
+    "Mnemonic builder should reject hints containing English answer leakage when forbidEnglishAnswer is enabled"
+  );
+  assert(
+    /if \(forbidPhoneticCue && hintContainsPhoneticCue\(story\)\) story = "";/.test(source),
+    "Mnemonic builder should reject hints containing phonetic-cue phrasing when forbidPhoneticCue is enabled"
   );
 }
 
@@ -327,6 +358,7 @@ function main() {
   testHanziToEnglishIntermediateMnemonicStage(source);
   testFinalStageFlow(source);
   testStageSkipLogic(source);
+  testProgressiveRevealMonotonic(source);
   testLiteralShapeHintGuardrails(source);
   testHintSafetyHelpers(source);
   testStructuredMnemonicPipeline(source);
