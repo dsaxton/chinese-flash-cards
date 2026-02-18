@@ -33,6 +33,32 @@ on its own, but they must never be the primary hook.
 | **Shape** | Character has a distinctive, iconic visual form | Describe what it looks like; works best for simple characters (人, 口, 日, 大, 山, 木) |
 | **Meaning** | Always | State or evoke the English meaning in the scene. Required for anchored stories; evoked (not stated outright) for unanchored stories |
 
+### Sound anchor selection: dual proximity
+
+A sound anchor word must satisfy **two constraints simultaneously**:
+
+1. **Phonetic proximity** — the anchor must closely approximate the Chinese
+   syllable(s) when spoken aloud.
+2. **Semantic tractability** — the anchor must be naturally usable in a scene
+   that connects to the English meaning. If no plausible scene bridge exists,
+   the anchor is wrong regardless of how close it sounds.
+
+An anchor that satisfies only the phonetic constraint forces the story to work
+harder to link sound to meaning. The result is often a strained or forgettable
+scene.
+
+| Anchor | Hanzi | English | Assessment |
+|--------|-------|---------|------------|
+| CHAI | 茶 chá | tea | Chai *is* a kind of tea — perfect dual fit |
+| BOO | 不 bù | not; no | Boo evokes rejection/negation — dual fit |
+| CHEW | 吃 chī | to eat | Chewing is part of eating — dual fit |
+| SHOE | 书 shū | book | Phonetic match; shoe has no connection to books — weak |
+
+When no ideal dual-fit anchor exists, prefer one that allows an *indirect but
+plausible* scene connection over a purely phonetic choice with no handle.
+
+---
+
 ### Anchored stories: linking sound to meaning
 
 The phonetic keyword method works as a two-link chain:
@@ -127,11 +153,114 @@ node scripts/test-mnemonic-curation.js              # includes single-char HSK1 
 Note: coherence / concreteness / component-only checks are implemented as
 heuristics in scripts, not as full semantic understanding.
 
+### Relevance scoring
+
+Score every story for meaning-relevance and surface the worst candidates for
+rewrite:
+
+```bash
+# Score all stories (includes empty) — lowest-scoring first
+node scripts/score-story-relevance.js
+
+# Score non-empty stories only (skip empties); cap output rows
+node scripts/score-story-relevance.js --non-empty --limit 20
+
+# Write results to a custom path
+node scripts/score-story-relevance.js --non-empty --out work/relevance.json
+```
+
+The scorer assigns 0–100 per story. Key penalty flags:
+
+| Flag | Points lost | Meaning |
+|------|-------------|---------|
+| `anchor_not_integrated` | −35 | Anchor word absent from story |
+| `anchored_no_meaning_hit` | −25 | Anchored story has no meaning cue |
+| `anchor_meaning_split` | −12 | Anchor and meaning are in different `;`-clauses |
+| `unanchored_no_meaning_hit` | −18 | Unanchored story has no meaning cue |
+| `incoherent` | −30 | Story fails basic coherence checks |
+| `abstract` | −20 | Story uses abstract meta-language |
+
+Use the output JSON as input for an LLM coherence pass on the bottom tier.
+
+### Relevance rewrite workflow (agent handoff)
+
+Use this when you want an LLM agent to rewrite low-scoring stories.
+
+**Step 1 — generate the ranked list**
+
+```bash
+node scripts/score-story-relevance.js --non-empty --out work/relevance.json
+```
+
+**Step 2 — hand off to the agent**
+
+Give the agent `work/relevance.json` and the following prompt:
+
+> You are rewriting mnemonic stories for a Chinese flash card app.
+> Each entry in the JSON has: `hanzi`, `pinyin`, `english`, `soundAnchor`,
+> `story`, `score`, and `reasons`.
+>
+> For each entry with `score < 100`, rewrite the `story` so that it:
+>
+> 1. If `soundAnchor` is non-empty (e.g. `"Think of BOO."`): opens with or
+>    prominently features the anchor word in ALL CAPS, and the scene must
+>    directly involve or cause something related to the English meaning.
+>    Both the sound hook and the meaning hook must appear in the same clause —
+>    do not separate them with a semicolon.
+> 2. If `soundAnchor` is empty: evokes the English meaning strongly enough
+>    that a reader could infer the concept — but does not state the answer
+>    word directly.
+> 3. Is a single, concrete, pictureable scene (≤ 12 words).
+> 4. Uses natural English with no Chinese characters, no pinyin, no
+>    "Think of", "sounds like", or "flashes into the scene".
+>
+> `reasons` tells you what is wrong with the current story:
+> - `anchor_not_integrated` — the anchor word does not appear in the story at all
+> - `anchored_no_meaning_hit` — the story has no word or synonym related to the English meaning
+> - `anchor_meaning_split` — the anchor and the meaning are in different clauses (separated by `;`)
+> - `unanchored_no_meaning_hit` — no meaning cue present; evoke the concept more directly
+> - `abstract` — replace abstract meta-language with a concrete scene
+> - `incoherent` — fix grammar/structure
+>
+> For grammar/discourse particles (e.g. 得, 正在, 了, 的, 吗) where the
+> English meaning is a grammatical label, write a scene that demonstrates the
+> *function* of the word rather than naming it. If no plausible scene exists,
+> output `"rewrittenStory": ""` — an empty story is shown as nothing rather
+> than as a bad mnemonic.
+>
+> **Dual proximity rule for anchors:** If the anchor word has no natural
+> semantic connection to the English meaning, note this in a `"anchorNote"`
+> field (e.g. `"SHOE has no connection to 'book'; consider replacing with
+> SHELF or SCROLL"`). Do not let a weak anchor force a strained story.
+>
+> Output a JSON array:
+> ```json
+> [
+>   { "hanzi": "来", "rewrittenStory": "LIE detector beeps — come clean now." },
+>   { "hanzi": "会", "rewrittenStory": "WAY she lifts it — now she can." },
+>   ...
+> ]
+> ```
+> Only include entries you are rewriting (score < 100). Skip entries that
+> already score 100.
+
+**Step 3 — apply and validate**
+
+```bash
+node scripts/apply-story-rewrites.js --input work/relevance-rewrites.json --dry-run
+node scripts/apply-story-rewrites.js --input work/relevance-rewrites.json
+node scripts/audit-mnemonics.js --mode all
+node scripts/score-story-relevance.js --non-empty --limit 20
+```
+
 ### Review and rewrite workflow
 
 ```bash
 # Export all stories for LLM coherence review
 node scripts/export-all-stories.js > work/coherence-review-input.json
+
+# Score stories by meaning-relevance and surface the worst candidates
+node scripts/score-story-relevance.js --non-empty --out work/relevance.json
 
 # Export specific problem categories
 node scripts/export-problem-stories.js > work/phase1-input.json   # broken / leakers / context-desc / multi-anchor

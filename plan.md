@@ -126,6 +126,7 @@ node scripts/validate-anchor-stories.js
 
 | Script | Purpose |
 |--------|---------|
+| `scripts/score-story-relevance.js --non-empty` | Score all stories by meaning-relevance; surface worst candidates for rewrite |
 | `scripts/export-all-stories.js` | Export all 178 stories (HSK1 + radicals) for review |
 | `scripts/apply-story-rewrites.js --input <file> [--dry-run]` | Apply rewrites from flagged-card rewrite pass |
 | `scripts/audit-mnemonics.js --mode all` | Re-run automated checks after rewriting |

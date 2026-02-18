@@ -74,7 +74,7 @@
       "mnemonic": "A tree 木 with a line at its root — the root/origin of knowledge is a book.",
       "mnemonicData": {
         "soundAnchor": "Think of BUN.",
-        "story": "BUN sticker labels one book volume on the shelf.",
+        "story": "BUN tag marks one measure for books on this shelf.",
         "components": [
           {
             "hanzi": "木",
@@ -90,7 +90,7 @@
       "mnemonic": "A bird tries to fly up to the sky but hits a ceiling — not going anywhere!",
       "mnemonicData": {
         "soundAnchor": "Think of BOO.",
-        "story": "BOO shouts mean NO; the gate stays firmly shut.",
+        "story": "BOO guards shout, no entry, and block the gate.",
         "components": []
       }
     },
@@ -293,7 +293,7 @@
       "mnemonic": "者 (one who) lives in the 阝(city). Everyone in the city — all of them.",
       "mnemonicData": {
         "soundAnchor": "Think of DOE.",
-        "story": "DOE bells ring; all guests gather in one yard.",
+        "story": "DOE bells gather all guests into one courtyard crowd.",
         "components": [
           {
             "hanzi": "者",
@@ -333,7 +333,7 @@
       "mnemonic": "对 (correct) + 不 (not) + 起 (rise). Can't rise to what's correct — I'm sorry.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "You bow your head and ask forgiveness after the mistake.",
+        "story": "She bows and apologizes after the mistake.",
         "components": [
           {
             "hanzi": "对",
@@ -369,7 +369,7 @@
       "mnemonic": "多 (many) + 少 (few). How much is it — many or few?",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "You raise fingers and ask for the quantity.",
+        "story": "Fingers rise while you count the amount on the bill.",
         "components": [
           {
             "hanzi": "多",
@@ -502,7 +502,7 @@
       "mnemonic": "工 (labor, looks like a beam between floor and ceiling) + 作 (to make). Making with labor — work!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Hands lift bricks from dawn until the shift ends.",
+        "story": "Before dusk, labor continues through the final shift.",
         "components": [
           {
             "hanzi": "工",
@@ -562,7 +562,7 @@
       "mnemonic": "女 (woman) + 子 (child). A mother with her child — that's good!",
       "mnemonicData": {
         "soundAnchor": "Think of HOW.",
-        "story": "HOW nice this tea tastes; good mood fills dinner.",
+        "story": "HOW nice this tea tastes when everyone shares a good meal.",
         "components": [
           {
             "hanzi": "女",
@@ -693,7 +693,7 @@
       "mnemonic": "人 (person) + 云 (cloud). A person who can reach the clouds — ability!",
       "mnemonicData": {
         "soundAnchor": "Think of WAY.",
-        "story": "WAY too hard before; now she can lift it.",
+        "story": "WAY she moves now proves she can handle the lift.",
         "components": [
           {
             "hanzi": "人",
@@ -764,7 +764,7 @@
       "mnemonic": "今 (now/present) + 天 (day). The present day — today!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "This exact day begins with rain on the windows.",
+        "story": "Rain taps the window on this very day.",
         "components": [
           {
             "hanzi": "今",
@@ -866,7 +866,7 @@
       "mnemonic": "Looks like a tree 木 with extra branches reaching toward you — come here!",
       "mnemonicData": {
         "soundAnchor": "Think of LIE.",
-        "story": "LIE ends now; come through the doorway.",
+        "story": "LIE ends now, so come through the doorway.",
         "components": []
       }
     },
@@ -1015,7 +1015,7 @@
       "mnemonic": "犭(animal) + 苗 (sprout/seedling). A small animal as delicate as a seedling — a cat!",
       "mnemonicData": {
         "soundAnchor": "Think of MEOW.",
-        "story": "MEOW echoes once; the cat leaps onto the wall.",
+        "story": "MEOW echoes once, and the cat leaps onto the wall.",
         "components": [
           {
             "hanzi": "犭",
@@ -1242,7 +1242,7 @@
       "mnemonic": "女 (woman) + 儿 (child). A woman who is still your child — daughter!",
       "mnemonicData": {
         "soundAnchor": "Think of NEW.",
-        "story": "NEW ribbon crowns her; everyone cheers for the daughter.",
+        "story": "NEW ribbon crowns her, and everyone cheers for their daughter.",
         "components": [
           {
             "hanzi": "女",
@@ -1357,7 +1357,7 @@
       "mnemonic": "钅(metal/gold) + 戋 (small). Small pieces of metal — coins, money!",
       "mnemonicData": {
         "soundAnchor": "Think of CHAIN.",
-        "story": "CHAIN clinks loudly; money changes hands at the counter.",
+        "story": "CHAIN clinks while money piles up on the counter.",
         "components": [
           {
             "hanzi": "钅",
@@ -1397,7 +1397,7 @@
       "mnemonic": "土 (earth) + a legs radical. Legs leaving the ground — to go!",
       "mnemonicData": {
         "soundAnchor": "Think of CUE.",
-        "story": "CUE bell rings; now we go through the arch.",
+        "story": "CUE bell rings, and we go through the arch.",
         "components": [
           {
             "hanzi": "土",
@@ -1510,7 +1510,7 @@
       "mnemonic": "A line above a base — something is on top, above.",
       "mnemonicData": {
         "soundAnchor": "Think of SONG.",
-        "story": "SONG rises upward; the kite goes above the roof.",
+        "story": "SONG rises upward, and the kite goes above the roof.",
         "components": []
       }
     },
@@ -1841,7 +1841,7 @@
       "mnemonic": "口 (mouth) + 斤 (axe/weight). Words that carry weight reaching your ear — listen!",
       "mnemonicData": {
         "soundAnchor": "Think of TINGE.",
-        "story": "TINGE bell fades; everyone pauses to listen closely.",
+        "story": "TINGE fades and we listen for the final bell.",
         "components": [
           {
             "hanzi": "口",
@@ -2169,7 +2169,7 @@
       "mnemonic": "学 (to study) + 生 (born/life). A life devoted to study — a student!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A learner copies notes while listening in class.",
+        "story": "A pupil copies notes while listening through class.",
         "components": [
           {
             "hanzi": "学",
@@ -2337,7 +2337,7 @@
       "mnemonic": "土 (earth) + a presence marker. Being present on this earth — to be at a place.",
       "mnemonicData": {
         "soundAnchor": "Think of SIGH.",
-        "story": "SIGH, wait right here; we are at the gate.",
+        "story": "SIGH, wait right here at the gate.",
         "components": [
           {
             "hanzi": "土",
@@ -2393,7 +2393,7 @@
       "mnemonic": "怎么 (how) + 样 (manner/appearance). How is the manner of things — how about it?",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "What is your opinion on this plan?",
+        "story": "After tasting, she asks your opinion of the new soup.",
         "components": [
           {
             "hanzi": "怎么",
@@ -2544,7 +2544,7 @@
       "mnemonic": "亻(person) + 故 (reason/cause). A person with a reason — someone doing something!",
       "mnemonicData": {
         "soundAnchor": "Think of ZOO.",
-        "story": "ZOO whistle starts the shift; now we do the work.",
+        "story": "ZOO whistle starts work as they make tools at once.",
         "components": [
           {
             "hanzi": "亻",
@@ -2757,7 +2757,7 @@
       "mnemonic": "彳(step) + 日 (sun) + 寸 (inch). Steps measured by the sun, inch by inch — how well you do something.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A tiny mark shows manner, degree, or result in speech.",
+        "story": "She runs quickly, sings clearly, and finishes with perfect timing.",
         "components": [
           {
             "hanzi": "彳",
@@ -4508,7 +4508,7 @@
       "mnemonic": "希 (rare/scarce) + 望 (gaze/expect). Gazing at something rare — hoping!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Gazing at something rare — hoping!",
+        "story": "She fixes her gaze on distant light, expecting good news.",
         "components": [
           {
             "hanzi": "希",
@@ -5066,7 +5066,7 @@
       "mnemonic": "正 (straight/correct) + 在 (at). Right at this moment, in the correct place — right now doing something!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Right this moment, the action is happening before your eyes.",
+        "story": "Right now, workers are still moving on the same task.",
         "components": [
           {
             "hanzi": "正",
@@ -5194,7 +5194,7 @@
       "mnemonic": "左 = a hand (ナ) + 工 (work). The hand that works. 边 (side). The left side!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "The working hand points toward the hand-watch wrist.",
+        "story": "The watch rests on the wrist that does not hold the pen.",
         "components": [
           {
             "hanzi": "工",
@@ -5218,7 +5218,7 @@
       "mnemonic": "An open mouth shape, like a square speaking.",
       "mnemonicData": {
         "soundAnchor": "Think of CO.",
-        "story": "CO bell calls villagers together at the old gate.",
+        "story": "CO shout bursts as lips open wide at the gate.",
         "components": []
       }
     },
@@ -5242,7 +5242,7 @@
       "mnemonic": "A kneeling figure traditionally used for woman.",
       "mnemonicData": {
         "soundAnchor": "Think of NEW.",
-        "story": "NEW etiquette honors a calm figure with lowered gaze.",
+        "story": "NEW custom portrays a graceful lady bowing with calm respect.",
         "components": []
       }
     },
@@ -5326,7 +5326,7 @@
       "mnemonic": "A boxed sun with a mark inside.",
       "mnemonicData": {
         "soundAnchor": "Think of RIB.",
-        "story": "RIB clocks strike as first light opens the market.",
+        "story": "RIB clocks strike at dawn as market stalls open.",
         "components": []
       }
     },
@@ -5338,7 +5338,7 @@
       "mnemonic": "A crescent-like form for moon and flesh.",
       "mnemonicData": {
         "soundAnchor": "Think of YOU.",
-        "story": "YOU lantern hangs above the harbor through one cycle.",
+        "story": "YOU lantern glows through the long night above harbor boats.",
         "components": []
       }
     },
@@ -5350,7 +5350,7 @@
       "mnemonic": "Words stacked above a mouth line.",
       "mnemonicData": {
         "soundAnchor": "Think of YEN.",
-        "story": "YEN banners announce a formal declaration before the crowd.",
+        "story": "YEN herald voice announces words across the square.",
         "components": []
       }
     },
@@ -5458,7 +5458,7 @@
       "mnemonic": "Narrow person radical standing on the left.",
       "mnemonicData": {
         "soundAnchor": "Think of RUN.",
-        "story": "RUN silhouette leans forward mid-step on the road.",
+        "story": "RUN figure leans forward mid-step on the road.",
         "components": []
       }
     },
