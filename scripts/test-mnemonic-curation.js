@@ -4,9 +4,13 @@ const fs = require("fs");
 const {
   collectDeckCards,
   getStoryText,
+  hasBoilerplateStoryPhrase,
   hintContainsEnglishAnswer,
   hintContainsPhoneticCue,
   hintContainsPinyin,
+  isLikelyAbstractStory,
+  isLikelyComponentOnlyStory,
+  isLikelyIncoherentStory,
   isLiteralShapeHint,
 } = require("./mnemonic-quality-lib");
 
@@ -17,7 +21,7 @@ function assert(condition, message) {
 function assertCanonicalSoundAnchor(anchor, cardLabel) {
   const text = String(anchor || "").trim();
   if (!text) return;
-  assert(/^Think of [A-Z ,]+\.$/.test(text), `${cardLabel}: soundAnchor must be canonical ALL-CAPS phrase`);
+  assert(/^Think of [A-Z]+\.$/.test(text), `${cardLabel}: soundAnchor must be canonical single-word ALL-CAPS phrase`);
   assert(!/\b(?:sounds?|sound)\s+like\b/i.test(text), `${cardLabel}: soundAnchor cannot use "sounds like"`);
 }
 
@@ -67,6 +71,13 @@ function testMnemonicDataCoverage(cards, minNonEmpty) {
     assert(!hintContainsPinyin(story, card.pinyin), `${label}: story leaks pinyin token`);
     assert(!hintContainsPhoneticCue(story), `${label}: story uses forbidden phonetic cue phrasing`);
     assert(!isLiteralShapeHint(story), `${label}: story uses forbidden literal shape phrasing`);
+    assert(!hasBoilerplateStoryPhrase(story), `${label}: story uses forbidden boilerplate phrasing`);
+    assert(!isLikelyIncoherentStory(story), `${label}: story appears incoherent`);
+    assert(!isLikelyAbstractStory(story), `${label}: story appears abstract/non-scene`);
+    assert(
+      !isLikelyComponentOnlyStory(story, { hasSoundAnchor, english: card.english }),
+      `${label}: story appears to rely only on component/radical explanation`
+    );
   }
 
   const nonEmptyCount = cards.filter((card) => getStoryText(card).length > 0).length;
@@ -74,6 +85,33 @@ function testMnemonicDataCoverage(cards, minNonEmpty) {
     nonEmptyCount >= minNonEmpty,
     `Expected at least ${minNonEmpty} cards with non-empty compliant stories, got ${nonEmptyCount}`
   );
+}
+
+function testStorySafety(cards, { requireNonEmpty = false } = {}) {
+  for (const card of cards) {
+    const label = `${card.hanzi} (${card.english})`;
+    const hasSoundAnchor = Boolean(String(card.mnemonicData && card.mnemonicData.soundAnchor || "").trim());
+    const story = getStoryText(card);
+    if (!story) {
+      if (requireNonEmpty) {
+        throw new Error(`${label}: story must be non-empty`);
+      }
+      continue;
+    }
+    if (!hasSoundAnchor) {
+      assert(!hintContainsEnglishAnswer(story, card.english), `${label}: story leaks English answer token`);
+    }
+    assert(!hintContainsPinyin(story, card.pinyin), `${label}: story leaks pinyin token`);
+    assert(!hintContainsPhoneticCue(story), `${label}: story uses forbidden phonetic cue phrasing`);
+    assert(!isLiteralShapeHint(story), `${label}: story uses forbidden literal shape phrasing`);
+    assert(!hasBoilerplateStoryPhrase(story), `${label}: story uses forbidden boilerplate phrasing`);
+    assert(!isLikelyIncoherentStory(story), `${label}: story appears incoherent`);
+    assert(!isLikelyAbstractStory(story), `${label}: story appears abstract/non-scene`);
+    assert(
+      !isLikelyComponentOnlyStory(story, { hasSoundAnchor, english: card.english }),
+      `${label}: story appears to rely only on component/radical explanation`
+    );
+  }
 }
 
 function testSoundAnchorBatch(cards, allowedWords, minAnchors) {
@@ -108,6 +146,18 @@ function testSoundAnchorBatch(cards, allowedWords, minAnchors) {
   );
 }
 
+function testSingleCharAnchorCoverage(cards, minRatio) {
+  const eligible = cards.filter((card) => [...String(card.hanzi || "")].length === 1);
+  const anchored = eligible.filter((card) => String(card.mnemonicData && card.mnemonicData.soundAnchor || "").trim());
+  const ratio = eligible.length > 0 ? anchored.length / eligible.length : 1;
+  const pct = Math.round(ratio * 1000) / 10;
+  const minPct = Math.round(minRatio * 1000) / 10;
+  assert(
+    ratio >= minRatio,
+    `Expected at least ${minPct}% single-character HSK1 cards with sound anchors, got ${pct}% (${anchored.length}/${eligible.length})`
+  );
+}
+
 function testRadicalsFullyCurated(radicals) {
   for (const card of radicals) {
     const label = `${card.hanzi} (${card.english})`;
@@ -121,6 +171,13 @@ function testRadicalsFullyCurated(radicals) {
     assert(!hintContainsPinyin(story, card.pinyin), `${label}: story leaks pinyin token`);
     assert(!hintContainsPhoneticCue(story), `${label}: story uses forbidden phonetic cue phrasing`);
     assert(!isLiteralShapeHint(story), `${label}: story uses forbidden literal shape phrasing`);
+    assert(!hasBoilerplateStoryPhrase(story), `${label}: story uses forbidden boilerplate phrasing`);
+    assert(!isLikelyIncoherentStory(story), `${label}: story appears incoherent`);
+    assert(!isLikelyAbstractStory(story), `${label}: story appears abstract/non-scene`);
+    assert(
+      !isLikelyComponentOnlyStory(story, { hasSoundAnchor: false, english: card.english }),
+      `${label}: story appears to rely only on component/radical explanation`
+    );
     assertCanonicalSoundAnchor(card.mnemonicData.soundAnchor, label);
   }
 }
@@ -180,17 +237,19 @@ function testStoryWordCount(cards, maxWords) {
 
 function main() {
   const root = path.resolve(__dirname, "..");
-  const { hsk1Cards, radicals } = collectDeckCards(root);
+  const { vocab, hsk1Cards, radicals } = collectDeckCards(root);
   const allowedAnchorWords = readAllowedAnchorWords();
 
+  testStorySafety(vocab);
   testMnemonicDataCoverage(hsk1Cards, 25);
   testSoundAnchorBatch(hsk1Cards, allowedAnchorWords, 80);
+  testSingleCharAnchorCoverage(hsk1Cards, 0.95);
   testMnemonicDataCoverage(radicals, radicals.length);
   testRadicalsFullyCurated(radicals);
   testAnchorNarrativeRegressions(hsk1Cards);
-  testNoPlaceholderTemplateLanguage(hsk1Cards);
+  testNoPlaceholderTemplateLanguage(vocab);
   testNoPlaceholderTemplateLanguage(radicals);
-  testStoryWordCount(hsk1Cards, 12);
+  testStoryWordCount(vocab, 12);
   testStoryWordCount(radicals, 12);
 
   console.log("mnemonic curation test passed");

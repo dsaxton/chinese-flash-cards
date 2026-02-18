@@ -102,15 +102,39 @@ Guardrails:
 
 ## Mnemonic Curation
 
-Use open-source datasets to generate draft seed material, then curate into `mnemonicData`.
+### Provenance
+
+All mnemonic content in `data/deck-data.json` is **original or LLM-generated**. No third-party dataset text has been imported into the committed card data.
+
+**Sound anchors (`soundAnchor`):** Each anchor maps a pinyin syllable to a near-homophone English word (e.g. `bù → BOO`, `chī → CHEW`, `ài → EYE`). Anchors were selected from a hand-curated pinyin→English sound-alike table in `data/phonetic-config.json`. Tooling scripts (`build-phonetic-hints.js`) can optionally cross-reference Make Me a Hanzi, Unihan, and CC-CEDICT to surface phonetic-family candidates for review, but no output from those scripts has ever been committed.
+
+**Stories (`story`):** Initial stories were hand-written. Problem stories (fragments, answer leakers, incoherent anchors) were later rewritten by LLM and applied via `scripts/apply-story-rewrites.js`. External sources such as Koohii, Heisig/Arthur CSV, and Make Me a Hanzi are referenced as optional seed inputs in `build-mnemonic-seeds.js` but were never used to populate the committed data.
+
+**Coverage (current):** 90 HSK1 vocab cards have both anchor + story; 53 have story only; 0 have neither. All 35 radical cards have story only.
+
+### Tooling
+
+Audit current data quality:
+
+```bash
+node scripts/audit-mnemonics.js --mode all --fail-on-violations
+node scripts/validate-anchor-stories.js
+node scripts/test-mnemonic-curation.js
+```
+
+Review and rewrite workflow:
+
+```bash
+node scripts/export-problem-stories.js > work/phase1-input.json
+node scripts/export-missing-stories.js > work/phase2-input.json
+node scripts/apply-story-rewrites.js --input work/output.json --dry-run
+node scripts/apply-story-rewrites.js --input work/output.json
+```
+
+Offline seed generators (require external datasets, output not committed):
 
 ```bash
 node scripts/build-mnemonic-seeds.js --makemeahanzi /path/to/dictionary.txt --out data/mnemonic-seeds/hsk1-seeds.json
-```
-
-Generate phonetic-anchor suggestion candidates (character-first scoring pipeline):
-
-```bash
 node scripts/build-phonetic-hints.js \
   --makemeahanzi /path/to/dictionary.txt \
   --unihan /path/to/Unihan_Readings.txt \
@@ -118,19 +142,7 @@ node scripts/build-phonetic-hints.js \
   --out data/mnemonic-seeds/hsk1-phonetic-hints.json
 ```
 
-One-time migration helper (legacy `mnemonic` -> validated `mnemonicData`):
-
-```bash
-node scripts/migrate-mnemonic-data.js
-```
-
-Audit current data quality:
-
-```bash
-node scripts/audit-mnemonics.js --mode all
-```
-
-See `docs/mnemonic-curation.md` for full workflow details.
+See `docs/mnemonic-curation.md` for quality rules and data format details.
 
 ## Cultural Tidbits
 

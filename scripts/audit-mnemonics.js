@@ -3,9 +3,13 @@ const path = require("path");
 const {
   collectDeckCards,
   getStoryText,
+  hasBoilerplateStoryPhrase,
   hintContainsEnglishAnswer,
   hintContainsPhoneticCue,
   hintContainsPinyin,
+  isLikelyAbstractStory,
+  isLikelyComponentOnlyStory,
+  isLikelyIncoherentStory,
   isLiteralShapeHint,
 } = require("./mnemonic-quality-lib");
 
@@ -28,13 +32,15 @@ function usage() {
   console.log(
     [
       "Usage:",
-      "  node scripts/audit-mnemonics.js [--mode all|hsk1|radicals] [--fail-on-violations]",
+      "  node scripts/audit-mnemonics.js [--mode all|vocab|hsk1|radicals] [--fail-on-violations]",
       "",
       "Checks story text for:",
       "- English answer leakage",
       "- direct pinyin leakage",
       "- explicit phonetic cue phrases",
       "- literal shape wording",
+      "- boilerplate phrase fragments",
+      "- likely incoherent / abstract / component-only stories",
     ].join("\n")
   );
 }
@@ -55,6 +61,27 @@ function collectViolations(card, profile, options = {}) {
   }
   if (profile.forbidLiteralShapeHints && isLiteralShapeHint(text)) {
     violations.push("literal_shape_description");
+  }
+  if (profile.forbidBoilerplate && hasBoilerplateStoryPhrase(text)) {
+    violations.push("boilerplate_phrase");
+  }
+  if (profile.forbidIncoherent && isLikelyIncoherentStory(text)) {
+    violations.push("likely_incoherent_story");
+  }
+  if (profile.forbidAbstract && isLikelyAbstractStory(text)) {
+    violations.push("likely_abstract_story");
+  }
+  if (profile.forbidComponentOnly && isLikelyComponentOnlyStory(text, {
+    hasSoundAnchor,
+    english: card.english,
+  })) {
+    violations.push("likely_component_only_story");
+  }
+  if (profile.forbidMultiWordAnchor) {
+    const anchor = String(card.mnemonicData?.soundAnchor || "").trim();
+    if (anchor && !/^Think of [A-Z]+\.$/.test(anchor)) {
+      violations.push("multi_or_noncanonical_sound_anchor");
+    }
   }
   return violations;
 }
@@ -88,9 +115,10 @@ function main() {
   }
 
   const root = path.resolve(__dirname, "..");
-  const { hsk1Cards, radicals } = collectDeckCards(root);
+  const { vocab, hsk1Cards, radicals } = collectDeckCards(root);
 
-  const includeHSK1 = args.mode === "all" || args.mode === "hsk1";
+  const includeVocab = args.mode === "all" || args.mode === "vocab";
+  const includeHSK1 = args.mode === "hsk1";
   const includeRadicals = args.mode === "all" || args.mode === "radicals";
 
   const e2hProfile = {
@@ -98,6 +126,11 @@ function main() {
     forbidPinyin: true,
     forbidPhoneticCue: true,
     forbidLiteralShapeHints: true,
+    forbidBoilerplate: true,
+    forbidIncoherent: true,
+    forbidAbstract: true,
+    forbidComponentOnly: true,
+    forbidMultiWordAnchor: true,
   };
 
   const h2eProfile = {
@@ -105,9 +138,30 @@ function main() {
     forbidPinyin: false,
     forbidPhoneticCue: true,
     forbidLiteralShapeHints: false,
+    forbidBoilerplate: true,
+    forbidIncoherent: true,
+    forbidAbstract: true,
+    forbidComponentOnly: true,
+    forbidMultiWordAnchor: true,
   };
 
   const sections = [];
+
+  if (includeVocab) {
+    const e2h = [];
+    const h2e = [];
+    for (const card of vocab) {
+      const text = getStoryText(card);
+      const hasSoundAnchor = Boolean(String(card.mnemonicData?.soundAnchor || "").trim());
+      const e2hViolations = collectViolations(card, e2hProfile, { hasSoundAnchor });
+      const h2eViolations = collectViolations(card, h2eProfile, { hasSoundAnchor });
+      if (e2hViolations.length > 0) e2h.push({ ...card, text, violations: e2hViolations });
+      if (h2eViolations.length > 0) h2e.push({ ...card, text, violations: h2eViolations });
+    }
+    sections.push(["All Vocab English to Hanzi Hint Profile", e2h]);
+    sections.push(["All Vocab Hanzi to English Hint Profile", h2e]);
+    console.log(`Vocab cards with empty story (intentional skip): ${countEmptyStories(vocab)}/${vocab.length}`);
+  }
 
   if (includeHSK1) {
     const e2h = [];
@@ -132,6 +186,11 @@ function main() {
       forbidPinyin: false,
       forbidPhoneticCue: true,
       forbidLiteralShapeHints: false,
+      forbidBoilerplate: true,
+      forbidIncoherent: true,
+      forbidAbstract: true,
+      forbidComponentOnly: true,
+      forbidMultiWordAnchor: true,
     };
     for (const card of radicals) {
       const text = getStoryText(card);

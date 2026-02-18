@@ -41,7 +41,7 @@ function main() {
 
   const firstSuggestion = goodEntry.candidates.find((row) => row.suggestion);
   assert(firstSuggestion, "好 should produce at least one anchor suggestion");
-  assert(/^Think of [A-Z ,]+\.$/.test(firstSuggestion.suggestion), "suggestion must be canonical ALL CAPS phrase");
+  assert(/^Think of [A-Z]+\.$/.test(firstSuggestion.suggestion), "suggestion must be canonical single-word ALL CAPS phrase");
 
   const maEntry = findEntry(data, "吗");
   assert(maEntry, "expected 吗 entry from fixtures");

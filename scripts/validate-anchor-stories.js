@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 // scripts/validate-anchor-stories.js
 //
-// Checks that all HSK1 cards with sound anchors have the anchor word(s)
-// integrated in ALL CAPS within the story text. Also flags stories that
-// still contain forbidden "Think of" / "sounds like" phonetic cue phrases.
+// Checks that all HSK1 cards with sound anchors have a canonical single-word
+// anchor ("Think of WORD."), integrated in ALL CAPS within the story text.
+// Also flags stories that still contain forbidden "Think of" / "sounds like"
+// phonetic cue phrases.
 //
 // Usage:
 //   node scripts/validate-anchor-stories.js
@@ -18,12 +19,9 @@ const {
 function extractAnchorWords(soundAnchor) {
   const text = String(soundAnchor || "").trim();
   if (!text) return [];
-  const match = text.match(/^Think of (.+?)\.?$/i);
+  const match = text.match(/^Think of ([A-Z]+)\.$/);
   if (!match) return [];
-  return match[1]
-    .split(/,\s*/)
-    .map((s) => s.trim().toUpperCase())
-    .filter(Boolean);
+  return [match[1]];
 }
 
 function anchorIntegratedInStory(anchorWords, story) {
@@ -43,6 +41,7 @@ function main() {
   let integrated = 0;
   const missing = [];
   const cuePhraseLeaks = [];
+  const malformedAnchors = [];
 
   for (const card of hsk1Cards) {
     const md = card.mnemonicData || {};
@@ -50,7 +49,10 @@ function main() {
     if (!soundAnchor) continue;
 
     const anchorWords = extractAnchorWords(soundAnchor);
-    if (anchorWords.length === 0) continue;
+    if (anchorWords.length === 0) {
+      malformedAnchors.push({ hanzi: card.hanzi, pinyin: card.pinyin, soundAnchor });
+      continue;
+    }
 
     total++;
     const story = String(md.story || "").trim();
@@ -71,6 +73,7 @@ function main() {
   console.log(`Anchor integrated in story: ${integrated} / ${total} (${pct}%)`);
   console.log(`Not yet integrated:         ${missing.length}`);
   console.log(`Forbidden cue phrases:      ${cuePhraseLeaks.length}`);
+  console.log(`Malformed anchors:          ${malformedAnchors.length}`);
 
   if (missing.length > 0) {
     console.log("\nNeeds integration:");
@@ -87,7 +90,14 @@ function main() {
     }
   }
 
-  if (failOnMissing && missing.length > 0) {
+  if (malformedAnchors.length > 0) {
+    console.log("\nMalformed soundAnchor (must be: Think of WORD.):");
+    for (const r of malformedAnchors) {
+      console.log(`  ${r.hanzi} (${r.pinyin}) "${r.soundAnchor}"`);
+    }
+  }
+
+  if (failOnMissing && (missing.length > 0 || malformedAnchors.length > 0)) {
     process.exit(1);
   }
 }

@@ -92,8 +92,8 @@ cleared (empty is better than broken).
 8. **No "flashes into the scene" boilerplate.**
 9. **No literal shape-description filler** — "this component appears in
    characters related to X" is not a mnemonic.
-10. **No multi-word `soundAnchor`** — `Think of MAY, GUARD, SHE.` is unusable;
-    simplify to one word or clear the field.
+10. **No multi-word `soundAnchor`** — anchors must be canonical single-word
+    format: `Think of WORD.`
 
 ---
 
@@ -119,9 +119,13 @@ mnemonicData: {
 ### Audit and validate
 
 ```bash
-node scripts/audit-mnemonics.js --mode all          # leakage, pinyin, cue phrases, shape filler
+node scripts/audit-mnemonics.js --mode all --fail-on-violations   # full vocab + radicals quality gate
 node scripts/validate-anchor-stories.js             # anchor integration coverage
+node scripts/test-mnemonic-curation.js              # includes single-char HSK1 sound-anchor coverage >= 95%
 ```
+
+Note: coherence / concreteness / component-only checks are implemented as
+heuristics in scripts, not as full semantic understanding.
 
 ### Review and rewrite workflow
 

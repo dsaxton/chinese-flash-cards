@@ -641,8 +641,8 @@
       "english": "very",
       "mnemonic": "彳(step) + 艮 (stubborn/tough). Taking tough steps — going very far!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "The wind is extremely cold tonight.",
+        "soundAnchor": "Think of HAN.",
+        "story": "HAN repeats it until the point feels very clear.",
         "components": [
           {
             "hanzi": "彳",
@@ -743,8 +743,8 @@
       "english": "to be called; to call",
       "mnemonic": "口 (mouth) + 丩 (twist). Your mouth twists open to call out someone's name.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "At roll time, the teacher shouts his name.",
+        "soundAnchor": "Think of JOWL.",
+        "story": "JOWL voice calls his name across the crowded yard.",
         "components": [
           {
             "hanzi": "口",
@@ -983,8 +983,8 @@
       "english": "(question particle)",
       "mnemonic": "口 (mouth) + 马 (horse). Your mouth gallops forward like a horse with a question — right?",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Sentence-ending tone rises, seeking confirmation from the listener.",
+        "soundAnchor": "Think of MAMA.",
+        "story": "MAMA raises the final tone to mark a question.",
         "components": [
           {
             "hanzi": "口",
@@ -1134,8 +1134,8 @@
       "english": "which; where",
       "mnemonic": "口 (mouth) + 那 (that). Mouth asking about 'that' one — which one? Where?",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "You point and ask for the correct place.",
+        "soundAnchor": "Think of NAH.",
+        "story": "NAH points between doors: which one leads outside?",
         "components": [
           {
             "hanzi": "口",
@@ -1154,8 +1154,8 @@
       "english": "that",
       "mnemonic": "阝(place) + 刀 (knife) + 二. Pointing a knife at that place over there — that!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Point to the far option, not the nearby one.",
+        "soundAnchor": "Think of NAH.",
+        "story": "NAH gesture points to that one across the street.",
         "components": [
           {
             "hanzi": "阝",
@@ -1556,8 +1556,8 @@
       "english": "who",
       "mnemonic": "讠(words) + 隹 (short-tailed bird). Who is that bird you're talking about? Who?",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "You ask for the identity of the speaker.",
+        "soundAnchor": "Think of SHEA.",
+        "story": "SHEA asks, who left this umbrella by the door?",
         "components": [
           {
             "hanzi": "讠",
@@ -1966,8 +1966,8 @@
       "english": "below; under; next",
       "mnemonic": "A line with a stroke hanging below it — something is underneath. Below!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "The cat hides beneath the table until noon.",
+        "soundAnchor": "Think of SHEA.",
+        "story": "SHEA ducks below the table before the rain starts.",
         "components": []
       }
     },
@@ -2037,8 +2037,8 @@
       "english": "to want; to think",
       "mnemonic": "相 (mutual/appearance) + 心 (heart). Your heart examines appearances — thinking and wanting.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "He pauses, mind racing, longing for one more chance.",
+        "soundAnchor": "Think of SIGH.",
+        "story": "SIGH, he thinks all night and still wants another try.",
         "components": [
           {
             "hanzi": "相",
@@ -2057,8 +2057,8 @@
       "english": "small",
       "mnemonic": "A vertical line with two small dots — something being divided into tiny pieces. Small!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A tiny pebble rests beside the giant stone.",
+        "soundAnchor": "Think of SHOW.",
+        "story": "SHOW only a small pebble beside the massive boulder.",
         "components": []
       }
     },
@@ -2452,8 +2452,8 @@
       "english": "to live; to stay",
       "mnemonic": "亻(person) + 主 (master/owner). A person who is master of their place — they live there!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "After moving in, they remain in that house.",
+        "soundAnchor": "Think of ZOO.",
+        "story": "ZOO tickets prove they stay nearby and live in town.",
         "components": [
           {
             "hanzi": "亻",
@@ -2606,7 +2606,7 @@
       "mnemonic": "穴 (cave/hole) + 牙 (tooth). Threading teeth through a hole — like putting on clothes, threading your body through!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Threading teeth through a hole — like putting on clothes, threading your body through!",
+        "story": "Thread your body through cloth like entering a narrow tunnel.",
         "components": [
           {
             "hanzi": "穴",
@@ -2645,8 +2645,8 @@
       "english": "from",
       "mnemonic": "Two people 人人 one behind the other — following from one place to another.",
       "mnemonicData": {
-        "soundAnchor": "Think of SONG, FROM.",
-        "story": "Two people one behind the other — following from one place to another.",
+        "soundAnchor": "Think of SONG.",
+        "story": "A SONG points FROM one village toward another.",
         "components": []
       }
     },
@@ -2757,7 +2757,7 @@
       "mnemonic": "彳(step) + 日 (sun) + 寸 (inch). Steps measured by the sun, inch by inch — how well you do something.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Steps measured by the sun, inch by inch — how well you do something.",
+        "story": "A tiny mark shows manner, degree, or result in speech.",
         "components": [
           {
             "hanzi": "彳",
@@ -2781,7 +2781,7 @@
       "mnemonic": "竹 (bamboo) + 寺 (temple). Waiting at a bamboo temple — patiently waiting.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Waiting at a bamboo temple — patiently waiting.",
+        "story": "Drums fade while everyone remains by the bamboo gate.",
         "components": [
           {
             "hanzi": "竹",
@@ -3005,7 +3005,7 @@
       "mnemonic": "辶 (walk) + 寸 (inch). Walking inch by inch through time — something that has passed.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Walking inch by inch through time — something that has passed.",
+        "story": "A traveler crosses the bridge; that moment is now behind.",
         "components": [
           {
             "hanzi": "辶",
@@ -3320,7 +3320,7 @@
       "mnemonic": "辶 (walk) + 井 (well). Walking into the well area — entering!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Walking into the well area — entering!",
+        "story": "The crowd steps through the gate into the courtyard.",
         "components": [
           {
             "hanzi": "辶",
@@ -3404,7 +3404,7 @@
       "mnemonic": "开 (open) + 始 (begin, 女 woman + 台 platform). Opening the platform — starting!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Opening the platform — starting!",
+        "story": "A whistle blows; the race moves from stillness to motion.",
         "components": [
           {
             "hanzi": "开",
@@ -3599,7 +3599,7 @@
       "mnemonic": "旅 (journey) + 游 (swim/roam). Journeying and roaming — traveling!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Journeying and roaming — traveling!",
+        "story": "Suitcases roll as friends roam city streets for new sights.",
         "components": [
           {
             "hanzi": "旅",
@@ -3619,7 +3619,7 @@
       "mnemonic": "Like 买 (buy) but with 十 (ten) on top — selling ten things at once!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Like but with on top — selling ten things at once!",
+        "story": "At market, ten goods swap hands for silver coins.",
         "components": [
           {
             "hanzi": "买",
@@ -3812,7 +3812,7 @@
       "mnemonic": "跑 = 足 (foot) + 包 (wrap). 步 = 止 (stop) + 少 (few). Feet wrapping the ground with few stops — running!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Feet wrapping the ground with few stops — running!",
+        "story": "Shoes pound the track in steady laps before dawn.",
         "components": [
           {
             "hanzi": "足",
@@ -3884,7 +3884,7 @@
       "mnemonic": "妻 = a woman 女 with a hand holding a broom. 子 (child). The woman of the house — wife!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "a woman with a hand holding a broom.  .",
+        "story": "She keeps the household steady while planning tomorrow's family meals.",
         "components": [
           {
             "hanzi": "子",
@@ -4160,7 +4160,7 @@
       "mnemonic": "说 (speak) + 话 (words/speech). Speaking words — talking!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Speaking words — talking!",
+        "story": "Words pass between friends until the room fills with voices.",
         "components": [
           {
             "hanzi": "说",
@@ -4223,8 +4223,8 @@
       "english": "it",
       "mnemonic": "宀 (roof) + 匕 (spoon). Something under a roof, but not a person — it!",
       "mnemonicData": {
-        "soundAnchor": "Think of TAR, MEANING.",
-        "story": "Something under a roof, but not a person — it!",
+        "soundAnchor": "Think of TAR.",
+        "story": "TAR marks one object under the roof: it stays put.",
         "components": [
           {
             "hanzi": "宀",
@@ -4284,7 +4284,7 @@
       "mnemonic": "跳 = 足 (foot) + 兆 (omen). 舞 = dancing figure. Feet moving like an omen of joy — dancing!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "dancing figure. Feet moving like an omen of joy — dancing!",
+        "story": "Feet leap in rhythm while sleeves swirl through lantern light.",
         "components": [
           {
             "hanzi": "足",
@@ -4428,7 +4428,7 @@
       "mnemonic": "门 (door) + 口 (mouth). A mouth at the door — asking to come in!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A mouth at the door — asking to come in!",
+        "story": "A voice at the door seeks an answer from inside.",
         "components": [
           {
             "hanzi": "门",
@@ -4608,7 +4608,7 @@
       "mnemonic": "休 = 亻(person) + 木 (tree). A person leaning against a tree — resting! 息 = 自 (self) + 心 (heart). Your heart calms itself.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A person leaning against a tree — resting!  .",
+        "story": "After miles on foot, she leans under a tree, breathing slow.",
         "components": [
           {
             "hanzi": "亻",
@@ -4859,7 +4859,7 @@
       "mnemonic": "游 = 氵(water) + 方 (direction) + 子 (child). 泳 = 氵(water) + 永 (eternal). A child finding their way through water forever — swimming!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A child finding their way through water forever — swimming!",
+        "story": "In deep water, she glides across the lane with steady kicks.",
         "components": [
           {
             "hanzi": "氵",
@@ -4962,7 +4962,7 @@
       "mnemonic": "早 = 日 (sun) + 十 (ten). The sun at ten o'clock height. 上 (on). Early in the day — morning!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "The sun at ten o'clock height.  .",
+        "story": "First light climbs the rooftops as market shutters lift.",
         "components": [
           {
             "hanzi": "日",
@@ -5006,7 +5006,7 @@
       "mnemonic": "扌(hand) + 戈 (weapon). A hand searching for a weapon — looking for something!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A hand searching for a weapon — looking for something!",
+        "story": "He checks every pocket until the missing key appears.",
         "components": [
           {
             "hanzi": "扌",
@@ -5066,7 +5066,7 @@
       "mnemonic": "正 (straight/correct) + 在 (at). Right at this moment, in the correct place — right now doing something!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Right at this moment, in the correct place — right now doing something!",
+        "story": "Right this moment, the action is happening before your eyes.",
         "components": [
           {
             "hanzi": "正",
@@ -5106,7 +5106,7 @@
       "mnemonic": "准 = 冫(ice) + 隹 (bird). 备 = 夂 (go) + 田 (field). A bird on ice getting ready to fly to the fields — preparing!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A bird on ice getting ready to fly to the fields — preparing!",
+        "story": "Before departure, bags are packed and tickets set by door.",
         "components": [
           {
             "hanzi": "冫",
@@ -5158,7 +5158,7 @@
       "mnemonic": "土 (earth) + a running figure on top. A person running on the earth — walking/going!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A person running on the earth — walking/going!",
+        "story": "At dusk, he heads down the road toward home.",
         "components": [
           {
             "hanzi": "土",
@@ -5194,7 +5194,7 @@
       "mnemonic": "左 = a hand (ナ) + 工 (work). The hand that works. 边 (side). The left side!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "The hand that works.  .",
+        "story": "The working hand points toward the hand-watch wrist.",
         "components": [
           {
             "hanzi": "工",

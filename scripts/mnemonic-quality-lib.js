@@ -20,6 +20,37 @@ const LITERAL_SHAPE_HINT_PATTERNS = [
   /\bhorizontal\b/i,
 ];
 
+const BOILERPLATE_STORY_PATTERNS = [
+  /\bflashes?\s+into\s+the\s+scene\b/i,
+];
+
+const ABSTRACT_STORY_PATTERNS = [
+  /\bconcept of\b/i,
+  /\bidea of\b/i,
+  /\bessence of\b/i,
+  /\benergy of\b/i,
+  /\bstate of\b/i,
+  /\bnotion of\b/i,
+  /\bsymboli[sz]es?\b/i,
+  /\brepresents?\b/i,
+  /\bdefinition of\b/i,
+];
+
+const COMPONENT_META_PATTERNS = [
+  /\bcomponent(s)?\b/i,
+  /\bradical(s)?\b/i,
+  /\bsemantic\b/i,
+  /\bphonetic\b/i,
+  /\bused in compounds\b/i,
+  /\bappears in (characters|words|terms)\b/i,
+  /\bleft side\b/i,
+  /\bright side\b/i,
+  /\btop\b/i,
+  /\bbottom\b/i,
+];
+
+const CONCRETE_SCENE_VERBS = /\b(?:walk|run|step|call|ask|open|close|hold|carry|move|stand|sit|eat|drink|kick|push|pull|lean|point|shout|speak|arrive|cross|raise|duck|hide|wait|glide|pack|gather|confess|settle|remain|head|roll|roam|jump|leap|write|read|watch|look|find|search|check|rest|sleep|swim|dance|buy|sell)\w*\b/i;
+
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
@@ -129,6 +160,38 @@ function isLiteralShapeHint(text) {
   return LITERAL_SHAPE_HINT_PATTERNS.some((pattern) => pattern.test(normalized));
 }
 
+function hasBoilerplateStoryPhrase(text) {
+  const normalized = String(text || "").trim();
+  if (!normalized) return false;
+  return BOILERPLATE_STORY_PATTERNS.some((pattern) => pattern.test(normalized));
+}
+
+function isLikelyIncoherentStory(text) {
+  const normalized = String(text || "").trim();
+  if (!normalized) return false;
+  if (/\.\s+\./.test(normalized)) return true;
+  if (/^[a-z]/.test(normalized)) return true;
+  if (/[!?.,]{2,}/.test(normalized)) return true;
+  return false;
+}
+
+function isLikelyAbstractStory(text) {
+  const normalized = String(text || "").trim();
+  if (!normalized) return false;
+  return ABSTRACT_STORY_PATTERNS.some((pattern) => pattern.test(normalized));
+}
+
+function isLikelyComponentOnlyStory(text, options = {}) {
+  const normalized = String(text || "").trim();
+  if (!normalized) return false;
+  const hasSoundAnchor = Boolean(options.hasSoundAnchor);
+  const english = String(options.english || "");
+  const hasMeaningHook = hintContainsEnglishAnswer(normalized, english);
+  const hasComponentMeta = COMPONENT_META_PATTERNS.some((pattern) => pattern.test(normalized));
+  const hasConcreteScene = CONCRETE_SCENE_VERBS.test(normalized);
+  return hasComponentMeta && !hasConcreteScene && !hasSoundAnchor && !hasMeaningHook;
+}
+
 function collectDeckCards(rootDir = process.cwd()) {
   const deck = loadDeckData(rootDir);
   const vocab = Array.isArray(deck.vocab) ? deck.vocab : [];
@@ -157,6 +220,10 @@ module.exports = {
   hintContainsEnglishAnswer,
   hintContainsPhoneticCue,
   hintContainsPinyin,
+  hasBoilerplateStoryPhrase,
+  isLikelyAbstractStory,
+  isLikelyComponentOnlyStory,
+  isLikelyIncoherentStory,
   isLiteralShapeHint,
   loadDeckData,
   loadPhoneticConfig,

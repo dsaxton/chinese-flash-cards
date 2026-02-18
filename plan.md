@@ -62,7 +62,7 @@ and anchors integrated safely.
 
 ### Ongoing checks
 
-- `node scripts/audit-mnemonics.js --mode all`
+- `node scripts/audit-mnemonics.js --mode all --fail-on-violations` (full vocab + radicals)
 - `node scripts/validate-anchor-stories.js`
 - `node scripts/test-mnemonic-curation.js`
 - `node scripts/test-hint-safety.js`
@@ -89,7 +89,7 @@ node scripts/validate-anchor-stories.js
 2. No pinyin leakage in English-to-Hanzi hint profile.
 3. No explicit phonetic cue phrases (`think of`, `sounds like`).
 4. No literal shape-description filler.
-5. No multi-word comma-separated `soundAnchor` values.
+5. No multi-word comma-separated `soundAnchor` values (single-word ALL CAPS only).
 6. No "flashes into the scene" boilerplate.
 
 ## Coherence Review Workflow
