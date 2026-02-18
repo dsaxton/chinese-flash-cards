@@ -19,35 +19,17 @@ function readIndexHtml(rootDir) {
   return fs.readFileSync(htmlPath, "utf8");
 }
 
-function extractConstArray(source, name) {
-  const re = new RegExp(`const ${name} = \\[([\\s\\S]*?)\\n\\];`);
-  const match = source.match(re);
-  if (!match) throw new Error(`Could not find const ${name}`);
-  return eval(`([${match[1]}])`);
-}
-
-function extractConstObject(source, name) {
-  const re = new RegExp(`const ${name} = \\{([\\s\\S]*?)\\n\\};`);
-  const match = source.match(re);
-  if (!match) throw new Error(`Could not find const ${name}`);
-  return eval(`({${match[1]}})`);
-}
-
-function extractConstNumber(source, name, fallback) {
-  const match = source.match(new RegExp(`const ${name} = (\\d+);`));
-  if (!match) return fallback;
-  return Number(match[1]);
-}
-
 function loadModel(rootDir) {
   const source = readIndexHtml(rootDir);
-  const vocab = extractConstArray(source, "VOCAB");
-  const radicals = extractConstArray(source, "RADICAL_DECK_CARDS");
-  const tidbits = extractConstArray(source, "CLASSICAL_TIDBITS_RAW");
-  const synonyms = extractConstObject(source, "TOKEN_SYNONYMS");
+  const deckData = JSON.parse(fs.readFileSync(path.join(rootDir, "data", "deck-data.json"), "utf8"));
+  const tidbitData = JSON.parse(fs.readFileSync(path.join(rootDir, "data", "tidbit-data.json"), "utf8"));
+  const vocab = Array.isArray(deckData.vocab) ? deckData.vocab : [];
+  const radicals = Array.isArray(deckData.radicals) ? deckData.radicals : [];
+  const tidbits = Array.isArray(tidbitData.classicalTidbitsRaw) ? tidbitData.classicalTidbitsRaw : [];
+  const synonyms = { ...(tidbitData.tokenSynonyms || {}) };
   const assignMatch = source.match(/Object\.assign\(TOKEN_SYNONYMS, \{([\s\S]*?)\n\}\);/);
   if (assignMatch) Object.assign(synonyms, eval(`({${assignMatch[1]}})`));
-  const maxQuoteChars = extractConstNumber(source, "TIDBIT_MAX_QUOTE_CHARS", 24);
+  const maxQuoteChars = Number(tidbitData.tidbitMaxQuoteChars || 24);
 
   function normalizeEnglishText(text) {
     return String(text || "")

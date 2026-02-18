@@ -1,0 +1,1167 @@
+{
+  "classicalTidbitsRaw": [
+    {
+      "word": "水",
+      "quote": "上善若水。",
+      "translation": "The highest goodness is like water.",
+      "relevance": [
+        "water",
+        "rain"
+      ],
+      "source": "《道德经》 第八章",
+      "url": "https://ctext.org/dao-de-jing/8/zh"
+    },
+    {
+      "word": "上",
+      "quote": "上善若水。",
+      "translation": "The highest goodness is like water.",
+      "relevance": [
+        "highest",
+        "above"
+      ],
+      "source": "《道德经》 第八章",
+      "url": "https://ctext.org/dao-de-jing/8/zh"
+    },
+    {
+      "word": "下",
+      "quote": "江海所以能为百谷王者，以其善下之。",
+      "translation": "Rivers and seas become kings of the valleys because they stay below them.",
+      "relevance": [
+        "below",
+        "under",
+        "down"
+      ],
+      "source": "《道德经》 第六十六章",
+      "url": "https://ctext.org/dao-de-jing/66/zh"
+    },
+    {
+      "word": "少",
+      "quote": "少则得，多则惑。",
+      "translation": "Few brings clarity; many brings confusion.",
+      "relevance": [
+        "few",
+        "little"
+      ],
+      "source": "《道德经》 第二十二章",
+      "url": "https://ctext.org/dao-de-jing/22/zh"
+    },
+    {
+      "word": "多",
+      "quote": "少则得，多则惑。",
+      "translation": "Few brings clarity; many brings confusion.",
+      "relevance": [
+        "many",
+        "much"
+      ],
+      "source": "《道德经》 第二十二章",
+      "url": "https://ctext.org/dao-de-jing/22/zh"
+    },
+    {
+      "word": "大",
+      "quote": "道大，天大，地大，王亦大。",
+      "translation": "The Dao is great, Heaven is great, Earth is great, and the king is also great.",
+      "relevance": [
+        "big",
+        "great",
+        "earth",
+        "soil"
+      ],
+      "source": "《道德经》 第二十五章",
+      "url": "https://ctext.org/dao-de-jing/25/zh"
+    },
+    {
+      "word": "天",
+      "quote": "道大，天大，地大，王亦大。",
+      "translation": "The Dao is great, Heaven is great, Earth is great, and the king is also great.",
+      "relevance": [
+        "heaven",
+        "sky"
+      ],
+      "source": "《道德经》 第二十五章",
+      "url": "https://ctext.org/dao-de-jing/25/zh"
+    },
+    {
+      "word": "人",
+      "quote": "知人者智，自知者明。",
+      "translation": "Knowing others is wisdom; knowing yourself is clarity.",
+      "relevance": [
+        "person",
+        "people"
+      ],
+      "source": "《道德经》 第三十三章",
+      "url": "https://ctext.org/dao-de-jing/33/zh"
+    },
+    {
+      "word": "名",
+      "quote": "名可名，非常名。",
+      "translation": "A name that can be named is not the constant name.",
+      "relevance": [
+        "name"
+      ],
+      "source": "《道德经》 第一章",
+      "url": "https://ctext.org/dao-de-jing/1/zh"
+    },
+    {
+      "word": "一",
+      "quote": "道生一，一生二，二生三，三生万物。",
+      "translation": "The Dao gives birth to one; one gives birth to two; two gives birth to three.",
+      "relevance": [
+        "one"
+      ],
+      "source": "《道德经》 第四十二章",
+      "url": "https://ctext.org/dao-de-jing/42/zh"
+    },
+    {
+      "word": "二",
+      "quote": "道生一，一生二，二生三，三生万物。",
+      "translation": "The Dao gives birth to one; one gives birth to two; two gives birth to three.",
+      "relevance": [
+        "two"
+      ],
+      "source": "《道德经》 第四十二章",
+      "url": "https://ctext.org/dao-de-jing/42/zh"
+    },
+    {
+      "word": "三",
+      "quote": "道生一，一生二，二生三，三生万物。",
+      "translation": "The Dao gives birth to one; one gives birth to two; two gives birth to three.",
+      "relevance": [
+        "three"
+      ],
+      "source": "《道德经》 第四十二章",
+      "url": "https://ctext.org/dao-de-jing/42/zh"
+    },
+    {
+      "word": "来",
+      "quote": "有朋自远方来，不亦乐乎？",
+      "translation": "Is it not a joy to have friends come from afar?",
+      "relevance": [
+        "come"
+      ],
+      "source": "《论语·学而》",
+      "url": "https://ctext.org/analects/xue-er/zh"
+    },
+    {
+      "word": "远",
+      "quote": "有朋自远方来，不亦乐乎？",
+      "translation": "Is it not a joy to have friends come from afar?",
+      "relevance": [
+        "far"
+      ],
+      "source": "《论语·学而》",
+      "url": "https://ctext.org/analects/xue-er/zh"
+    },
+    {
+      "word": "三",
+      "quote": "三人行，必有我师焉。",
+      "translation": "When three people walk together, one can be my teacher.",
+      "relevance": [
+        "three"
+      ],
+      "source": "《论语·述而》",
+      "url": "https://ctext.org/analects/shu-er/zh"
+    },
+    {
+      "word": "人",
+      "quote": "三人行，必有我师焉。",
+      "translation": "When three people walk together, one can be my teacher.",
+      "relevance": [
+        "person",
+        "people"
+      ],
+      "source": "《论语·述而》",
+      "url": "https://ctext.org/analects/shu-er/zh"
+    },
+    {
+      "word": "我",
+      "quote": "三人行，必有我师焉。",
+      "translation": "When three people walk together, one can be my teacher.",
+      "relevance": [
+        "i",
+        "me"
+      ],
+      "source": "《论语·述而》",
+      "url": "https://ctext.org/analects/shu-er/zh"
+    },
+    {
+      "word": "过",
+      "quote": "过而不改，是谓过矣。",
+      "translation": "To make a mistake and not correct it is truly a mistake.",
+      "relevance": [
+        "past",
+        "pass",
+        "mistake"
+      ],
+      "source": "《论语·卫灵公》",
+      "url": "https://ctext.org/analects/wei-ling-gong/zh"
+    },
+    {
+      "word": "新",
+      "quote": "温故而知新，可以为师矣。",
+      "translation": "Review the old and know the new, and you can be a teacher.",
+      "relevance": [
+        "new"
+      ],
+      "source": "《论语·为政》",
+      "url": "https://ctext.org/analects/wei-zheng/zh"
+    },
+    {
+      "word": "知",
+      "quote": "温故而知新，可以为师矣。",
+      "translation": "Review the old and know the new, and you can be a teacher.",
+      "relevance": [
+        "know"
+      ],
+      "source": "《论语·为政》",
+      "url": "https://ctext.org/analects/wei-zheng/zh"
+    },
+    {
+      "word": "学",
+      "quote": "学而时习之，不亦说乎？",
+      "translation": "To learn and practice regularly, is it not a pleasure?",
+      "relevance": [
+        "study",
+        "learn"
+      ],
+      "source": "《论语·学而》",
+      "url": "https://ctext.org/analects/xue-er/zh"
+    },
+    {
+      "word": "问",
+      "quote": "敏而好学，不耻下问。",
+      "translation": "Be diligent in learning and do not be ashamed to ask questions.",
+      "relevance": [
+        "ask",
+        "question"
+      ],
+      "source": "《论语·公冶长》",
+      "url": "https://ctext.org/analects/gong-ye-chang/zh"
+    },
+    {
+      "word": "日",
+      "quote": "吾日三省吾身。",
+      "translation": "Each day I examine myself on three counts.",
+      "relevance": [
+        "day",
+        "time",
+        "hour",
+        "minute"
+      ],
+      "source": "《论语·学而》",
+      "url": "https://ctext.org/analects/xue-er/zh"
+    },
+    {
+      "word": "四",
+      "quote": "四海之内，皆兄弟也。",
+      "translation": "Within the four seas, all people are brothers.",
+      "relevance": [
+        "four"
+      ],
+      "source": "《论语·颜渊》",
+      "url": "https://ctext.org/analects/yan-yuan/zh"
+    },
+    {
+      "word": "不",
+      "quote": "知之为知之，不知为不知，是知也。",
+      "translation": "To know what you know and what you do not know, that is knowledge.",
+      "relevance": [
+        "not",
+        "no"
+      ],
+      "source": "《论语·为政》",
+      "url": "https://ctext.org/analects/wei-zheng/zh"
+    },
+    {
+      "word": "和",
+      "quote": "君子和而不同，小人同而不和。",
+      "translation": "The gentleman seeks harmony but not sameness.",
+      "relevance": [
+        "and",
+        "together",
+        "harmony"
+      ],
+      "source": "《论语·子路》",
+      "url": "https://ctext.org/analects/zi-lu/zh"
+    },
+    {
+      "quote": "学而时习之，不亦说乎？",
+      "translation": "To learn and practice regularly, is it not a pleasure?",
+      "relevance": [
+        "study",
+        "learn",
+        "time",
+        "joy"
+      ],
+      "source": "《论语·学而》",
+      "url": "https://ctext.org/analects/xue-er/zh"
+    },
+    {
+      "quote": "温故而知新，可以为师矣。",
+      "translation": "Review the old and know the new, and you can be a teacher.",
+      "relevance": [
+        "learn",
+        "know",
+        "new",
+        "teacher"
+      ],
+      "source": "《论语·为政》",
+      "url": "https://ctext.org/analects/wei-zheng/zh"
+    },
+    {
+      "quote": "敏而好学，不耻下问。",
+      "translation": "Be diligent in learning and do not be ashamed to ask.",
+      "relevance": [
+        "learn",
+        "study",
+        "ask",
+        "question"
+      ],
+      "source": "《论语·公冶长》",
+      "url": "https://ctext.org/analects/gong-ye-chang/zh"
+    },
+    {
+      "quote": "知之为知之，不知为不知，是知也。",
+      "translation": "To know what you know and what you do not know is true knowledge.",
+      "relevance": [
+        "know",
+        "not"
+      ],
+      "source": "《论语·为政》",
+      "url": "https://ctext.org/analects/wei-zheng/zh"
+    },
+    {
+      "quote": "言必信，行必果。",
+      "translation": "In speech be trustworthy; in action be resolute.",
+      "relevance": [
+        "speak",
+        "word",
+        "move",
+        "trust"
+      ],
+      "source": "《论语·子路》",
+      "url": "https://ctext.org/analects/zi-lu/zh"
+    },
+    {
+      "quote": "君子欲讷于言而敏于行。",
+      "translation": "The gentleman is cautious in speech and quick in action.",
+      "relevance": [
+        "speak",
+        "move"
+      ],
+      "source": "《论语·里仁》",
+      "url": "https://ctext.org/analects/li-ren/zh"
+    },
+    {
+      "quote": "见贤思齐焉，见不贤而内自省也。",
+      "translation": "On seeing the worthy, think to equal them; on seeing the unworthy, examine yourself.",
+      "relevance": [
+        "see",
+        "look",
+        "watch"
+      ],
+      "source": "《论语·里仁》",
+      "url": "https://ctext.org/analects/li-ren/zh"
+    },
+    {
+      "quote": "逝者如斯夫，不舍昼夜。",
+      "translation": "What passes is like this, never ceasing day or night.",
+      "relevance": [
+        "time",
+        "day",
+        "night"
+      ],
+      "source": "《论语·子罕》",
+      "url": "https://ctext.org/analects/zi-han/zh"
+    },
+    {
+      "quote": "不在其位，不谋其政。",
+      "translation": "If one is not in that position, one should not plan its affairs.",
+      "relevance": [
+        "not",
+        "position",
+        "work",
+        "job"
+      ],
+      "source": "《论语·泰伯》",
+      "url": "https://ctext.org/analects/tai-bo/zh"
+    },
+    {
+      "quote": "工欲善其事，必先利其器。",
+      "translation": "To do good work, first sharpen your tools.",
+      "relevance": [
+        "work",
+        "job",
+        "make"
+      ],
+      "source": "《论语·卫灵公》",
+      "url": "https://ctext.org/analects/wei-ling-gong/zh"
+    },
+    {
+      "quote": "己所不欲，勿施于人。",
+      "translation": "Do not impose on others what you do not desire.",
+      "relevance": [
+        "not",
+        "person",
+        "people"
+      ],
+      "source": "《论语·颜渊》",
+      "url": "https://ctext.org/analects/yan-yuan/zh"
+    },
+    {
+      "quote": "人而无信，不知其可也。",
+      "translation": "If a person lacks trustworthiness, I do not know what they can do.",
+      "relevance": [
+        "person",
+        "know",
+        "can"
+      ],
+      "source": "《论语·学而》",
+      "url": "https://ctext.org/analects/xue-er/zh"
+    },
+    {
+      "quote": "人无远虑，必有近忧。",
+      "translation": "Without long-term thinking, there will be near-term worries.",
+      "relevance": [
+        "near",
+        "far"
+      ],
+      "source": "《论语·卫灵公》",
+      "url": "https://ctext.org/analects/wei-ling-gong/zh"
+    },
+    {
+      "quote": "君子喻于义，小人喻于利。",
+      "translation": "The gentleman understands righteousness; the petty person understands profit.",
+      "relevance": [
+        "money",
+        "virtue"
+      ],
+      "source": "《论语·里仁》",
+      "url": "https://ctext.org/analects/li-ren/zh"
+    },
+    {
+      "quote": "岁寒，然后知松柏之后凋也。",
+      "translation": "In the cold of the year, one learns that pine and cypress endure.",
+      "relevance": [
+        "cold",
+        "year",
+        "time"
+      ],
+      "source": "《论语·子罕》",
+      "url": "https://ctext.org/analects/zi-han/zh"
+    },
+    {
+      "quote": "知者不言，言者不知。",
+      "translation": "Those who know do not speak; those who speak do not know.",
+      "relevance": [
+        "know",
+        "speak",
+        "word"
+      ],
+      "source": "《道德经》 第五十六章",
+      "url": "https://ctext.org/dao-de-jing/56/zh"
+    },
+    {
+      "quote": "道可道，非常道。",
+      "translation": "The way that can be spoken is not the constant way.",
+      "relevance": [
+        "speak",
+        "word"
+      ],
+      "source": "《道德经》 第一章",
+      "url": "https://ctext.org/dao-de-jing/1/zh"
+    },
+    {
+      "quote": "名可名，非常名。",
+      "translation": "The name that can be named is not the constant name.",
+      "relevance": [
+        "name",
+        "called"
+      ],
+      "source": "《道德经》 第一章",
+      "url": "https://ctext.org/dao-de-jing/1/zh"
+    },
+    {
+      "quote": "兵无常势，水无常形。",
+      "translation": "In war there is no constant force, as water has no constant shape.",
+      "relevance": [
+        "water",
+        "rain"
+      ],
+      "source": "《孙子》 虚实",
+      "url": "https://ctext.org/art-of-war/vacuity-and-substance/zh"
+    },
+    {
+      "quote": "知彼知己，百战不殆。",
+      "translation": "Know the other and know yourself, and you need not fear battle.",
+      "relevance": [
+        "know"
+      ],
+      "source": "《孙子》 谋攻",
+      "url": "https://ctext.org/art-of-war/attack-by-stratagem/zh"
+    },
+    {
+      "quote": "食不厌精，脍不厌细。",
+      "translation": "Food is not disliked for being refined, nor meat for being finely cut.",
+      "relevance": [
+        "eat",
+        "food",
+        "drink",
+        "rice",
+        "vegetable",
+        "dish",
+        "tea",
+        "coffee",
+        "milk",
+        "egg",
+        "fruit",
+        "apple",
+        "watermelon",
+        "delicious"
+      ],
+      "source": "《论语·乡党》",
+      "url": "https://ctext.org/analects/xiang-dang/zh"
+    },
+    {
+      "quote": "食不语，寝不言。",
+      "translation": "Do not speak while eating, and do not speak while resting.",
+      "relevance": [
+        "eat",
+        "drink",
+        "sleep",
+        "rest"
+      ],
+      "source": "《论语·乡党》",
+      "url": "https://ctext.org/analects/xiang-dang/zh"
+    },
+    {
+      "quote": "父母在，不远游。",
+      "translation": "When parents are alive, do not travel far.",
+      "relevance": [
+        "family",
+        "dad",
+        "mom",
+        "son",
+        "daughter",
+        "wife",
+        "husband",
+        "home",
+        "far",
+        "travel"
+      ],
+      "source": "《论语·里仁》",
+      "url": "https://ctext.org/analects/li-ren/zh"
+    },
+    {
+      "quote": "父母唯其疾之忧。",
+      "translation": "The concern for parents is their illness.",
+      "relevance": [
+        "doctor",
+        "hospital",
+        "medicine",
+        "health",
+        "sick",
+        "body"
+      ],
+      "source": "《论语·为政》",
+      "url": "https://ctext.org/analects/wei-zheng/zh"
+    },
+    {
+      "quote": "凿户牖以为室。",
+      "translation": "Hollow out doors and windows to make a room.",
+      "relevance": [
+        "room",
+        "home",
+        "house",
+        "door",
+        "table",
+        "chair",
+        "inside"
+      ],
+      "source": "《道德经》 第十一章",
+      "url": "https://ctext.org/dao-de-jing/11/zh"
+    },
+    {
+      "quote": "欲速则不达。",
+      "translation": "If you want speed, you will not arrive.",
+      "relevance": [
+        "fast",
+        "slow",
+        "quick",
+        "begin",
+        "start",
+        "arrive",
+        "move"
+      ],
+      "source": "《论语·子路》",
+      "url": "https://ctext.org/analects/zi-lu/zh"
+    },
+    {
+      "quote": "礼之用，和为贵。",
+      "translation": "In ritual practice, harmony is most valuable.",
+      "relevance": [
+        "please",
+        "sorry",
+        "welcome",
+        "goodbye",
+        "polite",
+        "respect",
+        "mr",
+        "miss"
+      ],
+      "source": "《论语·学而》",
+      "url": "https://ctext.org/analects/xue-er/zh"
+    },
+    {
+      "quote": "五色令人目盲。",
+      "translation": "The five colors can make the eyes blind.",
+      "relevance": [
+        "color",
+        "black",
+        "red"
+      ],
+      "source": "《道德经》 第十二章",
+      "url": "https://ctext.org/dao-de-jing/12/zh"
+    },
+    {
+      "quote": "有教无类。",
+      "translation": "In teaching, there should be no class distinctions.",
+      "relevance": [
+        "class",
+        "lesson",
+        "school",
+        "student",
+        "teacher"
+      ],
+      "source": "《论语·卫灵公》",
+      "url": "https://ctext.org/analects/wei-ling-gong/zh"
+    },
+    {
+      "quote": "朝闻道，夕死可矣。",
+      "translation": "Hear the Way in the morning, and one may die in the evening without regret.",
+      "relevance": [
+        "morning",
+        "evening",
+        "time",
+        "today",
+        "yesterday"
+      ],
+      "source": "《论语·里仁》",
+      "url": "https://ctext.org/analects/li-ren/zh"
+    },
+    {
+      "quote": "夷狄之有君，不如诸夏之亡也。",
+      "translation": "Even foreign tribes with rulers are not equal to civilized states without rulers.",
+      "relevance": [
+        "foreign",
+        "outside"
+      ],
+      "source": "《论语·八佾》",
+      "url": "https://ctext.org/analects/ba-yi/zh"
+    },
+    {
+      "quote": "其为人也孝弟。",
+      "translation": "A person should be filial and respectful to elder and younger siblings.",
+      "relevance": [
+        "older",
+        "younger",
+        "brother",
+        "sister",
+        "family",
+        "child"
+      ],
+      "source": "《论语·学而》",
+      "url": "https://ctext.org/analects/xue-er/zh"
+    },
+    {
+      "quote": "学而不思则罔。",
+      "translation": "To learn without reflection leads to confusion.",
+      "relevance": [
+        "learn",
+        "study",
+        "class",
+        "lesson"
+      ],
+      "source": "《论语·为政》",
+      "url": "https://ctext.org/analects/wei-zheng/zh"
+    },
+    {
+      "quote": "思而不学则殆。",
+      "translation": "To reflect without learning leads to danger.",
+      "relevance": [
+        "learn",
+        "study",
+        "think"
+      ],
+      "source": "《论语·为政》",
+      "url": "https://ctext.org/analects/wei-zheng/zh"
+    },
+    {
+      "quote": "君子坦荡荡。",
+      "translation": "The gentleman is open and at ease.",
+      "relevance": [
+        "happy",
+        "glad",
+        "hope",
+        "laugh"
+      ],
+      "source": "《论语·述而》",
+      "url": "https://ctext.org/analects/shu-er/zh"
+    },
+    {
+      "quote": "过犹不及。",
+      "translation": "Going too far is as bad as not going far enough.",
+      "relevance": [
+        "too",
+        "very",
+        "past",
+        "over"
+      ],
+      "source": "《论语·先进》",
+      "url": "https://ctext.org/analects/xian-jin/zh"
+    },
+    {
+      "quote": "物有本末，事有终始。",
+      "translation": "Things have roots and branches; affairs have beginning and end.",
+      "relevance": [
+        "thing",
+        "stuff",
+        "start",
+        "begin",
+        "finish",
+        "end",
+        "prepare"
+      ],
+      "source": "《大学》",
+      "url": "https://ctext.org/liji/da-xue/zh"
+    },
+    {
+      "quote": "苟日新，日日新，又日新。",
+      "translation": "If one can renew oneself for one day, do so daily, and keep renewing.",
+      "relevance": [
+        "already",
+        "again",
+        "new",
+        "day",
+        "now",
+        "every",
+        "each"
+      ],
+      "source": "《大学》",
+      "url": "https://ctext.org/liji/da-xue/zh"
+    },
+    {
+      "quote": "凡事豫则立，不豫则废。",
+      "translation": "If in all affairs one prepares, one succeeds; without preparation, one fails.",
+      "relevance": [
+        "prepare",
+        "ready",
+        "to prepare"
+      ],
+      "source": "《中庸》",
+      "url": "https://ctext.org/liji/zhong-yong/zh"
+    },
+    {
+      "quote": "诚者，物之终始。",
+      "translation": "Sincerity is the beginning and end of things.",
+      "relevance": [
+        "thing",
+        "start",
+        "end",
+        "true",
+        "really"
+      ],
+      "source": "《中庸》",
+      "url": "https://ctext.org/liji/zhong-yong/zh"
+    },
+    {
+      "quote": "岂曰无衣？与子同袍。",
+      "translation": "How can one say there are no clothes? I share my robe with you.",
+      "relevance": [
+        "clothes",
+        "wear",
+        "to wear"
+      ],
+      "source": "《诗经·秦风·无衣》",
+      "url": "https://ctext.org/book-of-poetry/garb/zh"
+    },
+    {
+      "quote": "鱼，我所欲也。",
+      "translation": "Fish is what I desire.",
+      "relevance": [
+        "fish",
+        "want",
+        "need",
+        "to want"
+      ],
+      "source": "《孟子·告子上》",
+      "url": "https://ctext.org/mengzi/gaozi-i/zh"
+    },
+    {
+      "quote": "不为也，非不能也。",
+      "translation": "It is not that one cannot; it is that one does not do it.",
+      "relevance": [
+        "can",
+        "able",
+        "not",
+        "do",
+        "work"
+      ],
+      "source": "《孟子·梁惠王上》",
+      "url": "https://ctext.org/mengzi/liang-hui-wang-i/zh"
+    },
+    {
+      "quote": "虽有智慧，不如乘势。",
+      "translation": "Even with wisdom, it is better to follow the right momentum.",
+      "relevance": [
+        "although",
+        "although",
+        "still",
+        "then"
+      ],
+      "source": "《孟子·公孙丑上》",
+      "url": "https://ctext.org/mengzi/gong-sun-chou-i/zh"
+    },
+    {
+      "quote": "朝三而暮四。",
+      "translation": "Three in the morning and four in the evening.",
+      "relevance": [
+        "four",
+        "number",
+        "time",
+        "morning",
+        "evening"
+      ],
+      "source": "《庄子·齐物论》",
+      "url": "https://ctext.org/zhuangzi/adjustment-of-controversies/zh"
+    },
+    {
+      "quote": "相濡以沫，不如相忘于江湖。",
+      "translation": "Helping each other with a little moisture is less than forgetting each other in rivers and lakes.",
+      "relevance": [
+        "water",
+        "swim",
+        "sports",
+        "exercise"
+      ],
+      "source": "《庄子·大宗师》",
+      "url": "https://ctext.org/zhuangzi/great-and-most-honoured-master/zh"
+    },
+    {
+      "quote": "兼相爱，交相利。",
+      "translation": "Love each other universally and benefit each other mutually.",
+      "relevance": [
+        "love",
+        "friend",
+        "everyone",
+        "all"
+      ],
+      "source": "《墨子·兼爱中》",
+      "url": "https://ctext.org/mozi/impartial-love-ii/zh"
+    },
+    {
+      "quote": "志不强者智不达。",
+      "translation": "If one's will is not strong, wisdom does not reach far.",
+      "relevance": [
+        "can",
+        "able",
+        "far",
+        "strong"
+      ],
+      "source": "《墨子·修身》",
+      "url": "https://ctext.org/mozi/self-cultivation/zh"
+    },
+    {
+      "quote": "不积跬步，无以至千里。",
+      "translation": "Without accumulating small steps, one cannot reach a thousand li.",
+      "relevance": [
+        "walk",
+        "go",
+        "road",
+        "to go",
+        "to walk"
+      ],
+      "source": "《荀子·劝学》",
+      "url": "https://ctext.org/xunzi/encouraging-learning/zh"
+    },
+    {
+      "quote": "锲而不舍，金石可镂。",
+      "translation": "If one carves and does not stop, even metal and stone can be engraved.",
+      "relevance": [
+        "continue",
+        "still",
+        "already",
+        "ongoing",
+        "metal",
+        "gold"
+      ],
+      "source": "《荀子·劝学》",
+      "url": "https://ctext.org/xunzi/encouraging-learning/zh"
+    },
+    {
+      "quote": "桃李不言，下自成蹊。",
+      "translation": "Peach and plum trees do not speak, yet a path forms beneath them.",
+      "relevance": [
+        "flower",
+        "tree",
+        "plant",
+        "not",
+        "speak"
+      ],
+      "source": "《史记·李将军列传》",
+      "url": "https://ctext.org/shiji/biographies-of-li-jiangjun/zh"
+    },
+    {
+      "quote": "运筹帷幄之中，决胜千里之外。",
+      "translation": "Plan within the tent and decide victory a thousand li away.",
+      "relevance": [
+        "outside",
+        "far",
+        "away",
+        "to prepare"
+      ],
+      "source": "《史记·高祖本纪》",
+      "url": "https://ctext.org/shiji/ben-ji-of-gaozu/zh"
+    },
+    {
+      "quote": "居安思危。",
+      "translation": "In peace, think of danger.",
+      "relevance": [
+        "busy",
+        "prepare",
+        "worry",
+        "careful"
+      ],
+      "source": "《左传·襄公十一年》",
+      "url": "https://ctext.org/chun-qiu-zuo-zhuan/xiang-gong-11-nian/zh"
+    },
+    {
+      "quote": "多行不义必自毙。",
+      "translation": "One who does many unrighteous acts will ruin oneself.",
+      "relevance": [
+        "many",
+        "do",
+        "wrong",
+        "not"
+      ],
+      "source": "《左传·隐公元年》",
+      "url": "https://ctext.org/chun-qiu-zuo-zhuan/yin-gong-yuan-nian/zh"
+    },
+    {
+      "quote": "辅车相依，唇亡齿寒。",
+      "translation": "Things depend on each other; when lips are gone, teeth feel cold.",
+      "relevance": [
+        "relation",
+        "it doesn't matter",
+        "because",
+        "and"
+      ],
+      "source": "《左传·僖公五年》",
+      "url": "https://ctext.org/chun-qiu-zuo-zhuan/xi-gong-5-nian/zh"
+    },
+    {
+      "quote": "窈窕淑女，君子好逑。",
+      "translation": "A graceful and beautiful lady is a good match for a gentleman.",
+      "relevance": [
+        "pretty",
+        "beautiful",
+        "beauty"
+      ],
+      "source": "《诗经·周南·关雎》",
+      "url": "https://ctext.org/book-of-poetry/guan-ju/zh"
+    },
+    {
+      "quote": "一日不见，如三秋兮。",
+      "translation": "One day apart feels like three autumns.",
+      "relevance": [
+        "long",
+        "time",
+        "briefly",
+        "a bit"
+      ],
+      "source": "《诗经·王风·采葛》",
+      "url": "https://ctext.org/book-of-poetry/cai-ge/zh"
+    }
+  ],
+  "tidbitMaxQuoteChars": 24,
+  "tokenSynonyms": {
+    "i": "me",
+    "you": "person",
+    "he": "person",
+    "she": "person",
+    "we": "person",
+    "us": "person",
+    "him": "person",
+    "her": "person",
+    "people": "person",
+    "persons": "person",
+    "humans": "person",
+    "dad": "family",
+    "mom": "family",
+    "son": "family",
+    "daughter": "family",
+    "husband": "family",
+    "wife": "family",
+    "classmate": "student",
+    "teacher": "learn",
+    "student": "learn",
+    "school": "learn",
+    "classroom": "learn",
+    "exam": "learn",
+    "test": "learn",
+    "friends": "friend",
+    "friend": "person",
+    "studying": "study",
+    "studies": "study",
+    "learned": "learn",
+    "learning": "learn",
+    "teachers": "teacher",
+    "students": "student",
+    "read": "learn",
+    "write": "learn",
+    "writing": "learn",
+    "book": "learn",
+    "books": "learn",
+    "language": "speak",
+    "words": "word",
+    "speaking": "speak",
+    "speak": "speak",
+    "say": "speak",
+    "tell": "speak",
+    "talk": "speak",
+    "says": "say",
+    "asking": "ask",
+    "ask": "question",
+    "question": "question",
+    "questions": "question",
+    "answer": "question",
+    "call": "speak",
+    "phone": "speak",
+    "hello": "speak",
+    "listen": "speak",
+    "hear": "speak",
+    "look": "see",
+    "watch": "see",
+    "movie": "see",
+    "television": "see",
+    "tv": "see",
+    "computer": "see",
+    "eye": "see",
+    "eyes": "see",
+    "know": "know",
+    "understanding": "know",
+    "understand": "know",
+    "think": "know",
+    "want": "need",
+    "need": "need",
+    "can": "ability",
+    "able": "ability",
+    "possible": "ability",
+    "may": "ability",
+    "day": "time",
+    "days": "time",
+    "year": "time",
+    "years": "time",
+    "month": "time",
+    "minute": "time",
+    "hour": "time",
+    "today": "time",
+    "tomorrow": "time",
+    "morning": "time",
+    "afternoon": "time",
+    "evening": "time",
+    "night": "time",
+    "now": "time",
+    "time": "time",
+    "go": "move",
+    "come": "move",
+    "return": "move",
+    "arrive": "move",
+    "enter": "move",
+    "travel": "move",
+    "walk": "move",
+    "run": "move",
+    "send": "move",
+    "toward": "move",
+    "near": "distance",
+    "close": "distance",
+    "far": "distance",
+    "inside": "position",
+    "outside": "position",
+    "above": "position",
+    "below": "position",
+    "under": "position",
+    "front": "position",
+    "behind": "position",
+    "left": "position",
+    "right": "position",
+    "up": "position",
+    "down": "position",
+    "many": "quantity",
+    "much": "quantity",
+    "few": "quantity",
+    "little": "quantity",
+    "all": "quantity",
+    "both": "quantity",
+    "some": "quantity",
+    "one": "number",
+    "two": "number",
+    "three": "number",
+    "four": "number",
+    "five": "number",
+    "six": "number",
+    "seven": "number",
+    "eight": "number",
+    "nine": "number",
+    "ten": "number",
+    "thousand": "number",
+    "big": "size",
+    "small": "size",
+    "high": "size",
+    "low": "size",
+    "good": "virtue",
+    "happy": "joy",
+    "glad": "joy",
+    "love": "joy",
+    "like": "joy",
+    "hot": "weather",
+    "cold": "weather",
+    "sunny": "weather",
+    "cloudy": "weather",
+    "weather": "weather",
+    "not": "negation",
+    "no": "negation",
+    "never": "negation",
+    "without": "negation",
+    "still": "continuation",
+    "again": "continuation",
+    "already": "continuation",
+    "work": "work",
+    "job": "work",
+    "company": "work",
+    "money": "money",
+    "cheap": "money",
+    "expensive": "money",
+    "buy": "money",
+    "sell": "money",
+    "ticket": "money",
+    "doctor": "health",
+    "hospital": "health",
+    "medicine": "health",
+    "body": "health",
+    "health": "health",
+    "sick": "health",
+    "sport": "exercise",
+    "sports": "exercise",
+    "exercise": "exercise",
+    "bicycle": "exercise",
+    "soccer": "exercise",
+    "basketball": "exercise",
+    "swim": "exercise",
+    "armies": "army",
+    "battles": "battle",
+    "rivers": "river",
+    "seas": "sea",
+    "valleys": "valley",
+    "worries": "worry"
+  }
+}

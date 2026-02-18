@@ -7,7 +7,6 @@ const {
   hintContainsPhoneticCue,
   hintContainsPinyin,
   isLiteralShapeHint,
-  readIndexHtml,
 } = require("./mnemonic-quality-lib");
 
 function parseArgs(argv) {
@@ -88,8 +87,7 @@ function main() {
   }
 
   const root = path.resolve(__dirname, "..");
-  const source = readIndexHtml(root);
-  const { hsk1Cards, radicals } = collectDeckCards(source);
+  const { hsk1Cards, radicals } = collectDeckCards(root);
 
   const includeHSK1 = args.mode === "all" || args.mode === "hsk1";
   const includeRadicals = args.mode === "all" || args.mode === "radicals";

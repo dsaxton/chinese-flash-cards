@@ -7,7 +7,6 @@ const {
   hintContainsPhoneticCue,
   hintContainsPinyin,
   isLiteralShapeHint,
-  readIndexHtml,
 } = require("./mnemonic-quality-lib");
 
 function assert(condition, message) {
@@ -26,8 +25,7 @@ function buildSafeHint(card, options = {}) {
 
 function main() {
   const root = path.resolve(__dirname, "..");
-  const source = readIndexHtml(root);
-  const { hsk1Cards } = collectDeckCards(source);
+  const { hsk1Cards } = collectDeckCards(root);
 
   for (const card of hsk1Cards) {
     const e2hHint = buildSafeHint(card, {

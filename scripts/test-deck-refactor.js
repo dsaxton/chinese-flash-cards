@@ -11,13 +11,6 @@ function readIndexHtml(rootDir) {
   return fs.readFileSync(htmlPath, "utf8");
 }
 
-function extractConstArray(source, name) {
-  const re = new RegExp(`const ${name} = \\[([\\s\\S]*?)\\n\\];`);
-  const match = source.match(re);
-  if (!match) throw new Error(`Could not find const ${name}`);
-  return eval(`([${match[1]}])`);
-}
-
 function extractConstObject(source, name) {
   const re = new RegExp(`const ${name} = \\{([\\s\\S]*?)\\n\\};`);
   const match = source.match(re);
@@ -25,21 +18,20 @@ function extractConstObject(source, name) {
   return eval(`({${match[1]}})`);
 }
 
-function extractConstNumber(source, name) {
-  const match = source.match(new RegExp(`const ${name} = (\\d+);`));
-  if (!match) throw new Error(`Could not find const ${name}`);
-  return Number(match[1]);
+function readDeckData(rootDir) {
+  const jsonPath = path.join(rootDir, "data", "deck-data.json");
+  return JSON.parse(fs.readFileSync(jsonPath, "utf8"));
 }
 
-function testDeckData(source) {
-  const hsk1CardCount = extractConstNumber(source, "HSK1_CARD_COUNT");
+function testDeckData(source, deckData) {
+  const hsk1CardCount = Number(deckData.hsk1CardCount || 0);
   assert(hsk1CardCount === 143, `HSK1_CARD_COUNT should be 143, got ${hsk1CardCount}`);
   assert(
     /const HSK1_VOCAB = VOCAB\.slice\(0, HSK1_CARD_COUNT\);/.test(source),
     "HSK1_VOCAB should be defined as VOCAB.slice(0, HSK1_CARD_COUNT)"
   );
 
-  const radicals = extractConstArray(source, "RADICAL_DECK_CARDS");
+  const radicals = Array.isArray(deckData.radicals) ? deckData.radicals : [];
   assert(radicals.length >= 30, `Expected >= 30 radical deck cards, got ${radicals.length}`);
   for (const [i, card] of radicals.entries()) {
     const id = `RADICAL_DECK_CARDS[${i}]`;
@@ -218,8 +210,9 @@ function testRadicalsUsePinyinAudio(source) {
 function main() {
   const root = path.resolve(__dirname, "..");
   const source = readIndexHtml(root);
+  const deckData = readDeckData(root);
 
-  testDeckData(source);
+  testDeckData(source, deckData);
   testStorageKeysAndMigration(source);
   testRoutes(source);
   testUniversalStageFlow(source);

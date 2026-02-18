@@ -1,0 +1,5634 @@
+{
+  "vocab": [
+    {
+      "hanzi": "爱",
+      "pinyin": "ài",
+      "english": "to love",
+      "mnemonic": "A claw (爫) reaching down to grasp a friend (友) close to your heart — that's love.",
+      "mnemonicData": {
+        "soundAnchor": "Think of EYE.",
+        "story": "A hand reaches toward a friend and holds them close to the chest.",
+        "components": [
+          {
+            "hanzi": "爫",
+            "meaning": "claw/hand"
+          },
+          {
+            "hanzi": "友",
+            "meaning": "friend"
+          },
+          {
+            "hanzi": "心",
+            "meaning": "heart"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "八",
+      "pinyin": "bā",
+      "english": "eight",
+      "mnemonic": "Two strokes splitting apart, like breaking something in half — 8 can be split into two equal parts.",
+      "mnemonicData": {
+        "soundAnchor": "Think of BAR.",
+        "story": "Two paths split from one starting point.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "爸爸",
+      "pinyin": "bàba",
+      "english": "dad",
+      "mnemonic": "爸 = 父 (father) + 巴 (to cling to). A child clinging to their father — dad!",
+      "mnemonicData": {
+        "soundAnchor": "Think of PAPA.",
+        "story": "A little one clings to the family's protector at the doorway.",
+        "components": [
+          {
+            "hanzi": "父",
+            "meaning": "father/protector"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "杯子",
+      "pinyin": "bēizi",
+      "english": "cup",
+      "mnemonic": "杯 = 木 (wood) + 不 (not). A wooden vessel that's 'not' empty — a cup ready to be filled.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A wooden vessel waits on the table for tea service.",
+        "components": [
+          {
+            "hanzi": "木",
+            "meaning": "wood"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "本",
+      "pinyin": "běn",
+      "english": "(measure word for books)",
+      "mnemonic": "A tree 木 with a line at its root — the root/origin of knowledge is a book.",
+      "mnemonicData": {
+        "soundAnchor": "Think of BUN.",
+        "story": "A marked root points to origin at the base of a trunk.",
+        "components": [
+          {
+            "hanzi": "木",
+            "meaning": "tree/wood"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "不",
+      "pinyin": "bù",
+      "english": "not; no",
+      "mnemonic": "A bird tries to fly up to the sky but hits a ceiling — not going anywhere!",
+      "mnemonicData": {
+        "soundAnchor": "Think of BOO.",
+        "story": "A bird jumps upward and hits an unseen barrier.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "菜",
+      "pinyin": "cài",
+      "english": "vegetable; dish",
+      "mnemonic": "艹 (grass/plant) on top + 采 (to pick). Picking plants from the garden — vegetables!",
+      "mnemonicData": {
+        "soundAnchor": "Think of SIGH.",
+        "story": "Fresh harvest from the garden heads straight to the kitchen.",
+        "components": [
+          {
+            "hanzi": "艹",
+            "meaning": "plant/grass"
+          },
+          {
+            "hanzi": "采",
+            "meaning": "pick"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "茶",
+      "pinyin": "chá",
+      "english": "tea",
+      "mnemonic": "艹 (plant) + 人 (person) + 木 (tree). A person between plants and trees, picking tea leaves.",
+      "mnemonicData": {
+        "soundAnchor": "Think of CHAI.",
+        "story": "Leaves are picked from shrubs for a warm brew.",
+        "components": [
+          {
+            "hanzi": "艹",
+            "meaning": "plant"
+          },
+          {
+            "hanzi": "木",
+            "meaning": "tree/wood"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "吃",
+      "pinyin": "chī",
+      "english": "to eat",
+      "mnemonic": "口 (mouth) + 乞 (to beg). A mouth begging for food — eating!",
+      "mnemonicData": {
+        "soundAnchor": "Think of CHEW.",
+        "story": "A hungry mouth begs for another bite.",
+        "components": [
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "大",
+      "pinyin": "dà",
+      "english": "big",
+      "mnemonic": "A person 人 stretching their arms out wide — as big as possible!",
+      "mnemonicData": {
+        "soundAnchor": "Think of DAY.",
+        "story": "Arms spread wide to claim as much space as possible.",
+        "components": [
+          {
+            "hanzi": "人",
+            "meaning": "person"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "的",
+      "pinyin": "de",
+      "english": "(possessive particle)",
+      "mnemonic": "白 (white) + 勺 (spoon). The white spoon is mine — 'of' or possession.",
+      "mnemonicData": {
+        "soundAnchor": "Think of DUH.",
+        "story": "A white spoon marks ownership in a short phrase.",
+        "components": [
+          {
+            "hanzi": "白",
+            "meaning": "white"
+          },
+          {
+            "hanzi": "勺",
+            "meaning": "spoon"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "点",
+      "pinyin": "diǎn",
+      "english": "o'clock; a little",
+      "mnemonic": "A fortune teller 占 uses fire 灬 to divine the exact point in time — o'clock.",
+      "mnemonicData": {
+        "soundAnchor": "Think of DEAN.",
+        "story": "A fortune reader uses fire to mark a precise moment.",
+        "components": [
+          {
+            "hanzi": "占",
+            "meaning": "divine"
+          },
+          {
+            "hanzi": "灬",
+            "meaning": "fire"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "电脑",
+      "pinyin": "diànnǎo",
+      "english": "computer",
+      "mnemonic": "电 (electricity) + 脑 (brain). An electric brain — a computer!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "An electric brain handles every task on the desk.",
+        "components": [
+          {
+            "hanzi": "电",
+            "meaning": "electricity"
+          },
+          {
+            "hanzi": "脑",
+            "meaning": "brain"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "电视",
+      "pinyin": "diànshì",
+      "english": "television",
+      "mnemonic": "电 (electricity) + 视 (to view). Electric viewing — television!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Electric images bring distant scenes into the room.",
+        "components": [
+          {
+            "hanzi": "电",
+            "meaning": "electricity"
+          },
+          {
+            "hanzi": "视",
+            "meaning": "view"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "电影",
+      "pinyin": "diànyǐng",
+      "english": "movie",
+      "mnemonic": "电 (electricity) + 影 (shadow/image). Electric shadows projected on a screen — movies!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Electric shadows flicker across a theater wall.",
+        "components": [
+          {
+            "hanzi": "电",
+            "meaning": "electricity"
+          },
+          {
+            "hanzi": "影",
+            "meaning": "shadow/image"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "东西",
+      "pinyin": "dōngxi",
+      "english": "thing; stuff",
+      "mnemonic": "东 (east) + 西 (west). From east to west, everything in between — stuff/things.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "From east to west, everything in between gets packed together.",
+        "components": [
+          {
+            "hanzi": "东",
+            "meaning": "east"
+          },
+          {
+            "hanzi": "西",
+            "meaning": "west"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "都",
+      "pinyin": "dōu",
+      "english": "all; both",
+      "mnemonic": "者 (one who) lives in the 阝(city). Everyone in the city — all of them.",
+      "mnemonicData": {
+        "soundAnchor": "Think of DOE.",
+        "story": "Everyone in the city is included together.",
+        "components": [
+          {
+            "hanzi": "者",
+            "meaning": "one who"
+          },
+          {
+            "hanzi": "阝",
+            "meaning": "city/place"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "读",
+      "pinyin": "dú",
+      "english": "to read",
+      "mnemonic": "讠(words) + 卖 (sell). Selling words to your mind — reading!",
+      "mnemonicData": {
+        "soundAnchor": "Think of DO.",
+        "story": "Words are traded into the mind through careful study.",
+        "components": [
+          {
+            "hanzi": "讠",
+            "meaning": "speech/words"
+          },
+          {
+            "hanzi": "卖",
+            "meaning": "sell"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "对不起",
+      "pinyin": "duìbuqǐ",
+      "english": "sorry",
+      "mnemonic": "对 (correct) + 不 (not) + 起 (rise). Can't rise to what's correct — I'm sorry.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Unable to rise to what is right, you offer an apology.",
+        "components": [
+          {
+            "hanzi": "对",
+            "meaning": "correct"
+          },
+          {
+            "hanzi": "起",
+            "meaning": "rise"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "多",
+      "pinyin": "duō",
+      "english": "many; much",
+      "mnemonic": "Two 夕 (evening) moons stacked — so many evenings, so many!",
+      "mnemonicData": {
+        "soundAnchor": "Think of DOOR.",
+        "story": "Two evening marks stacked together suggest abundance.",
+        "components": [
+          {
+            "hanzi": "夕",
+            "meaning": "evening"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "多少",
+      "pinyin": "duōshao",
+      "english": "how many; how much",
+      "mnemonic": "多 (many) + 少 (few). How much is it — many or few?",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "You compare abundance and scarcity to ask for quantity.",
+        "components": [
+          {
+            "hanzi": "多",
+            "meaning": "many/much"
+          },
+          {
+            "hanzi": "少",
+            "meaning": "few/little"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "儿子",
+      "pinyin": "érzi",
+      "english": "son",
+      "mnemonic": "儿 looks like a little person with legs spread wide, learning to walk — a son. 子 is a child.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "二",
+      "pinyin": "èr",
+      "english": "two",
+      "mnemonic": "Two horizontal lines — simply the number two.",
+      "mnemonicData": {
+        "soundAnchor": "Think of ARE.",
+        "story": "A pair of lanterns hangs at the gate in perfect balance.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "饭店",
+      "pinyin": "fàndiàn",
+      "english": "restaurant; hotel",
+      "mnemonic": "饭 (cooked rice/meal) + 店 (shop). A shop that serves meals — restaurant!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "饭",
+            "meaning": "cooked rice/meal"
+          },
+          {
+            "hanzi": "店",
+            "meaning": "shop"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "飞机",
+      "pinyin": "fēijī",
+      "english": "airplane",
+      "mnemonic": "飞 (to fly) + 机 (machine). A flying machine — airplane!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "飞",
+            "meaning": "to fly"
+          },
+          {
+            "hanzi": "机",
+            "meaning": "machine"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "分钟",
+      "pinyin": "fēnzhōng",
+      "english": "minute",
+      "mnemonic": "分 (to divide) + 钟 (bell/clock). Dividing the clock into parts — minutes.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Dividing the clock into parts — minutes.",
+        "components": [
+          {
+            "hanzi": "分",
+            "meaning": "to divide"
+          },
+          {
+            "hanzi": "钟",
+            "meaning": "bell/clock"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "高兴",
+      "pinyin": "gāoxìng",
+      "english": "happy; glad",
+      "mnemonic": "高 (tall/high) + 兴 (excitement). High excitement — happy!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "高",
+            "meaning": "tall/high"
+          },
+          {
+            "hanzi": "兴",
+            "meaning": "excitement"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "个",
+      "pinyin": "gè",
+      "english": "(general measure word)",
+      "mnemonic": "A person 人 standing under a cover — just one individual thing.",
+      "mnemonicData": {
+        "soundAnchor": "Think of GEAR.",
+        "story": "A person standing under a cover — just one individual thing.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "工作",
+      "pinyin": "gōngzuò",
+      "english": "work; job",
+      "mnemonic": "工 (labor, looks like a beam between floor and ceiling) + 作 (to make). Making with labor — work!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "工",
+            "meaning": "labor, looks like a beam between floor and ceiling"
+          },
+          {
+            "hanzi": "作",
+            "meaning": "to make"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "狗",
+      "pinyin": "gǒu",
+      "english": "dog",
+      "mnemonic": "犭(animal) + 句 (phrase). The animal that comes when you call its name — a dog!",
+      "mnemonicData": {
+        "soundAnchor": "Think of GO.",
+        "story": "A kennel guard hears an animal answer a shouted call.",
+        "components": [
+          {
+            "hanzi": "犭",
+            "meaning": "animal"
+          },
+          {
+            "hanzi": "句",
+            "meaning": "phrase"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "汉语",
+      "pinyin": "Hànyǔ",
+      "english": "Chinese language",
+      "mnemonic": "汉 (Han people) + 语 (language). The language of the Han people — Chinese!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "汉",
+            "meaning": "Han people"
+          },
+          {
+            "hanzi": "语",
+            "meaning": "language"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "好",
+      "pinyin": "hǎo",
+      "english": "good",
+      "mnemonic": "女 (woman) + 子 (child). A mother with her child — that's good!",
+      "mnemonicData": {
+        "soundAnchor": "Think of HOW.",
+        "story": "A mother and child share a peaceful morning at home.",
+        "components": [
+          {
+            "hanzi": "女",
+            "meaning": "woman"
+          },
+          {
+            "hanzi": "子",
+            "meaning": "child"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "好吃",
+      "pinyin": "hǎochī",
+      "english": "delicious",
+      "mnemonic": "好 (good) + 吃 (eat). Good to eat — delicious!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "好",
+            "meaning": "good"
+          },
+          {
+            "hanzi": "吃",
+            "meaning": "eat"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "喝",
+      "pinyin": "hē",
+      "english": "to drink",
+      "mnemonic": "口 (mouth) + 曷 (why not). Why not put something in your mouth? Drink up!",
+      "mnemonicData": {
+        "soundAnchor": "Think of HER.",
+        "story": "A thirsty guest raises a cup while the host urges another sip.",
+        "components": [
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          },
+          {
+            "hanzi": "曷",
+            "meaning": "why not"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "and",
+      "mnemonic": "禾 (grain) + 口 (mouth). Grain and mouths together — harmony, togetherness, 'and'.",
+      "mnemonicData": {
+        "soundAnchor": "Think of HUH.",
+        "story": "Grain and mouths together — harmony, togetherness, 'and'.",
+        "components": [
+          {
+            "hanzi": "禾",
+            "meaning": "grain"
+          },
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "很",
+      "pinyin": "hěn",
+      "english": "very",
+      "mnemonic": "彳(step) + 艮 (stubborn/tough). Taking tough steps — going very far!",
+      "mnemonicData": {
+        "soundAnchor": "Think of HEN.",
+        "story": "Taking tough steps — going very far!",
+        "components": [
+          {
+            "hanzi": "彳",
+            "meaning": "step"
+          },
+          {
+            "hanzi": "艮",
+            "meaning": "stubborn/tough"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "后面",
+      "pinyin": "hòumiàn",
+      "english": "behind",
+      "mnemonic": "后 (after/behind) + 面 (face/side). The back face of something — behind.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "后",
+            "meaning": "after/behind"
+          },
+          {
+            "hanzi": "面",
+            "meaning": "face/side"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "回",
+      "pinyin": "huí",
+      "english": "to return",
+      "mnemonic": "A small box 口 inside a big box 囗 — going back inside where you came from. Returning!",
+      "mnemonicData": {
+        "soundAnchor": "Think of WAY.",
+        "story": "After a long detour, the traveler circles back to the same courtyard.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "会",
+      "pinyin": "huì",
+      "english": "can; to be able to",
+      "mnemonic": "人 (person) + 云 (cloud). A person who can reach the clouds — ability!",
+      "mnemonicData": {
+        "soundAnchor": "Think of WAY.",
+        "story": "A learner reaches a skill milestone and handles the task with confidence.",
+        "components": [
+          {
+            "hanzi": "人",
+            "meaning": "person"
+          },
+          {
+            "hanzi": "云",
+            "meaning": "cloud"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "几",
+      "pinyin": "jǐ",
+      "english": "how many; several",
+      "mnemonic": "Looks like a small table — how many things are on the table?",
+      "mnemonicData": {
+        "soundAnchor": "Think of JEEP.",
+        "story": "At the market stall, you count rough handfuls before paying.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "家",
+      "pinyin": "jiā",
+      "english": "home; family",
+      "mnemonic": "宀 (roof) + 豕 (pig). A pig under a roof — in ancient China, keeping pigs meant a prosperous home.",
+      "mnemonicData": {
+        "soundAnchor": "Think of JAR.",
+        "story": "Under one roof, the household gathers around supper after sunset.",
+        "components": [
+          {
+            "hanzi": "宀",
+            "meaning": "roof"
+          },
+          {
+            "hanzi": "豕",
+            "meaning": "pig"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "叫",
+      "pinyin": "jiào",
+      "english": "to be called; to call",
+      "mnemonic": "口 (mouth) + 丩 (twist). Your mouth twists open to call out someone's name.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          },
+          {
+            "hanzi": "丩",
+            "meaning": "twist"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "今天",
+      "pinyin": "jīntiān",
+      "english": "today",
+      "mnemonic": "今 (now/present) + 天 (day). The present day — today!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "今",
+            "meaning": "now/present"
+          },
+          {
+            "hanzi": "天",
+            "meaning": "day"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "九",
+      "pinyin": "jiǔ",
+      "english": "nine",
+      "mnemonic": "Looks like an arm flexing — strong enough to lift nine things!",
+      "mnemonicData": {
+        "soundAnchor": "Think of JOE.",
+        "story": "The acrobat completes the final count before the crowd erupts.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "开",
+      "pinyin": "kāi",
+      "english": "to open; to drive",
+      "mnemonic": "Two hands 廾 lifting a bar 一 — opening a gate!",
+      "mnemonicData": {
+        "soundAnchor": "Think of KITE.",
+        "story": "Two hands lifting a bar — opening a gate!",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "看",
+      "pinyin": "kàn",
+      "english": "to look; to watch",
+      "mnemonic": "手 (hand) over 目 (eye). Put your hand above your eyes to look into the distance.",
+      "mnemonicData": {
+        "soundAnchor": "Think of CAN.",
+        "story": "A hand shades the eyes while attention locks on distant movement.",
+        "components": [
+          {
+            "hanzi": "手",
+            "meaning": "hand"
+          },
+          {
+            "hanzi": "目",
+            "meaning": "eye"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "看见",
+      "pinyin": "kànjiàn",
+      "english": "to see",
+      "mnemonic": "看 (look) + 见 (perceive). You look and actually perceive — you see it!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "看",
+            "meaning": "look"
+          },
+          {
+            "hanzi": "见",
+            "meaning": "perceive"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "块",
+      "pinyin": "kuài",
+      "english": "(measure word for money)",
+      "mnemonic": "土 (earth) + 夬 (decisive). A decisive chunk of earth — a piece, used for counting money.",
+      "mnemonicData": {
+        "soundAnchor": "Think of WHY.",
+        "story": "Small chunks of metal are weighed and exchanged at the counter.",
+        "components": [
+          {
+            "hanzi": "土",
+            "meaning": "earth"
+          },
+          {
+            "hanzi": "夬",
+            "meaning": "decisive"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "来",
+      "pinyin": "lái",
+      "english": "to come",
+      "mnemonic": "Looks like a tree 木 with extra branches reaching toward you — come here!",
+      "mnemonicData": {
+        "soundAnchor": "Think of LIE.",
+        "story": "Footsteps approach the doorway as a guest nears the hall.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "老师",
+      "pinyin": "lǎoshī",
+      "english": "teacher",
+      "mnemonic": "老 (old/experienced) + 师 (master). An experienced master — a teacher!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "老",
+            "meaning": "old/experienced"
+          },
+          {
+            "hanzi": "师",
+            "meaning": "master"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "了",
+      "pinyin": "le",
+      "english": "(completed action particle)",
+      "mnemonic": "Looks like a hook — it hooks onto the end of a sentence to mark 'done!'",
+      "mnemonicData": {
+        "soundAnchor": "Think of LUCK.",
+        "story": "The chore is wrapped up, and the speaker marks it as done.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "冷",
+      "pinyin": "lěng",
+      "english": "cold",
+      "mnemonic": "冫(ice) + 令 (command). Ice commands the temperature — cold!",
+      "mnemonicData": {
+        "soundAnchor": "Think of LUNG.",
+        "story": "Frost settles over the window and everyone reaches for thicker coats.",
+        "components": [
+          {
+            "hanzi": "冫",
+            "meaning": "ice"
+          },
+          {
+            "hanzi": "令",
+            "meaning": "command"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "里",
+      "pinyin": "lǐ",
+      "english": "inside",
+      "mnemonic": "田 (field) + 土 (earth). The earth within the field — inside.",
+      "mnemonicData": {
+        "soundAnchor": "Think of LEE.",
+        "story": "A secret note stays tucked within the field boundary.",
+        "components": [
+          {
+            "hanzi": "田",
+            "meaning": "field"
+          },
+          {
+            "hanzi": "土",
+            "meaning": "earth"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "六",
+      "pinyin": "liù",
+      "english": "six",
+      "mnemonic": "A roof 亠 with 八 (eight) below but smaller — six is a bit less than eight.",
+      "mnemonicData": {
+        "soundAnchor": "Think of LEO.",
+        "story": "A tally marker lands just below the next larger count.",
+        "components": [
+          {
+            "hanzi": "八",
+            "meaning": "eight"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "妈妈",
+      "pinyin": "māma",
+      "english": "mom",
+      "mnemonic": "妈 = 女 (woman) + 马 (horse). The woman strong as a horse who carries everything — mom!",
+      "mnemonicData": {
+        "soundAnchor": "Think of MAMA.",
+        "story": "She carries the whole household through the morning rush.",
+        "components": [
+          {
+            "hanzi": "女",
+            "meaning": "woman"
+          },
+          {
+            "hanzi": "马",
+            "meaning": "horse"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "吗",
+      "pinyin": "ma",
+      "english": "(question particle)",
+      "mnemonic": "口 (mouth) + 马 (horse). Your mouth gallops forward like a horse with a question — right?",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          },
+          {
+            "hanzi": "马",
+            "meaning": "horse"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "买",
+      "pinyin": "mǎi",
+      "english": "to buy",
+      "mnemonic": "The top looks like a fishing net — you cast a net to catch a deal. Buying!",
+      "mnemonicData": {
+        "soundAnchor": "Think of MY.",
+        "story": "A shopper casts a net for bargains in a crowded market.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "猫",
+      "pinyin": "māo",
+      "english": "cat",
+      "mnemonic": "犭(animal) + 苗 (sprout/seedling). A small animal as delicate as a seedling — a cat!",
+      "mnemonicData": {
+        "soundAnchor": "Think of MEOW.",
+        "story": "A quiet hunter waits by seedlings near a courtyard wall.",
+        "components": [
+          {
+            "hanzi": "犭",
+            "meaning": "animal"
+          },
+          {
+            "hanzi": "苗",
+            "meaning": "sprout/seedling"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "没",
+      "pinyin": "méi",
+      "english": "not; have not",
+      "mnemonic": "氵(water) + 殳 (weapon). Your weapon fell in the water — you have not got it anymore!",
+      "mnemonicData": {
+        "soundAnchor": "Think of MAY.",
+        "story": "The bag is empty, and the item is gone.",
+        "components": [
+          {
+            "hanzi": "氵",
+            "meaning": "water"
+          },
+          {
+            "hanzi": "殳",
+            "meaning": "weapon"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "没关系",
+      "pinyin": "méi guānxi",
+      "english": "it doesn't matter",
+      "mnemonic": "没 (not) + 关系 (connection/relation). There's no connection to worry about — it doesn't matter.",
+      "mnemonicData": {
+        "soundAnchor": "Think of MAY, GUARD, SHE.",
+        "story": "A small mistake passes by with no worry attached.",
+        "components": [
+          {
+            "hanzi": "没",
+            "meaning": "not"
+          },
+          {
+            "hanzi": "关系",
+            "meaning": "connection/relation"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "米饭",
+      "pinyin": "mǐfàn",
+      "english": "rice",
+      "mnemonic": "米 (uncooked rice, looks like grains scattered on a plant) + 饭 (cooked meal). Rice prepared as a meal.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "米",
+            "meaning": "uncooked rice, looks like grains scattered on a plant"
+          },
+          {
+            "hanzi": "饭",
+            "meaning": "cooked meal"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "名字",
+      "pinyin": "míngzi",
+      "english": "name",
+      "mnemonic": "名 = 夕 (evening) + 口 (mouth). In the dark evening, you call out with your mouth — saying your name! 字 = a child 子 under a roof 宀, being given a name.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "夕",
+            "meaning": "evening"
+          },
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "明天",
+      "pinyin": "míngtiān",
+      "english": "tomorrow",
+      "mnemonic": "明 = 日 (sun) + 月 (moon). After the sun and moon cycle once more — tomorrow!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "日",
+            "meaning": "sun"
+          },
+          {
+            "hanzi": "月",
+            "meaning": "moon"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "哪",
+      "pinyin": "nǎ",
+      "english": "which; where",
+      "mnemonic": "口 (mouth) + 那 (that). Mouth asking about 'that' one — which one? Where?",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          },
+          {
+            "hanzi": "那",
+            "meaning": "that"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "那",
+      "pinyin": "nà",
+      "english": "that",
+      "mnemonic": "阝(place) + 刀 (knife) + 二. Pointing a knife at that place over there — that!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "阝",
+            "meaning": "place"
+          },
+          {
+            "hanzi": "刀",
+            "meaning": "knife"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "呢",
+      "pinyin": "ne",
+      "english": "(question particle)",
+      "mnemonic": "口 (mouth) + 尼 (nun). A mouth gently asking like a patient nun — and you?",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A mouth gently asking like a patient nun — and you?",
+        "components": [
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          },
+          {
+            "hanzi": "尼",
+            "meaning": "nun"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "能",
+      "pinyin": "néng",
+      "english": "can; to be able to",
+      "mnemonic": "Contains 月 (flesh/body) and claws — a bear's powerful body. With power comes ability!",
+      "mnemonicData": {
+        "soundAnchor": "Think of NONE.",
+        "story": "With power comes ability!",
+        "components": [
+          {
+            "hanzi": "月",
+            "meaning": "flesh/body"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "english": "you",
+      "mnemonic": "亻(person) + 尔 (you, archaic). A person standing before you — you!",
+      "mnemonicData": {
+        "soundAnchor": "Think of KNEE.",
+        "story": "A person stands directly before the speaker in close address.",
+        "components": [
+          {
+            "hanzi": "亻",
+            "meaning": "person"
+          },
+          {
+            "hanzi": "尔",
+            "meaning": "you, archaic"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "年",
+      "pinyin": "nián",
+      "english": "year",
+      "mnemonic": "A person carrying grain on their back after the harvest — one full year of farming complete.",
+      "mnemonicData": {
+        "soundAnchor": "Think of NEON.",
+        "story": "Harvest to harvest marks one full cycle of seasons.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "女儿",
+      "pinyin": "nǚ'ér",
+      "english": "daughter",
+      "mnemonic": "女 (woman) + 儿 (child). A woman who is still your child — daughter!",
+      "mnemonicData": {
+        "soundAnchor": "Think of NEW, ARE.",
+        "story": "A young girl remains cherished as the child of the household.",
+        "components": [
+          {
+            "hanzi": "女",
+            "meaning": "woman"
+          },
+          {
+            "hanzi": "儿",
+            "meaning": "child"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "朋友",
+      "pinyin": "péngyou",
+      "english": "friend",
+      "mnemonic": "朋 = two 月 (moons) side by side — two people close as twin moons. 友 = two hands reaching out together.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "two hands reaching out together.",
+        "components": [
+          {
+            "hanzi": "月",
+            "meaning": "moons"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "漂亮",
+      "pinyin": "piàoliang",
+      "english": "pretty; beautiful",
+      "mnemonic": "漂 has 氵(water) — beauty that flows like water. 亮 has 高 (high) + 几 — shining high and bright. Beautiful!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "氵",
+            "meaning": "water"
+          },
+          {
+            "hanzi": "高",
+            "meaning": "high"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "苹果",
+      "pinyin": "píngguǒ",
+      "english": "apple",
+      "mnemonic": "苹 = 艹 (grass/plant) + 平 (flat/level). 果 = 田 (field) + 木 (tree). The level fruit on a tree — an apple!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "艹",
+            "meaning": "grass/plant"
+          },
+          {
+            "hanzi": "平",
+            "meaning": "flat/level"
+          },
+          {
+            "hanzi": "田",
+            "meaning": "field"
+          },
+          {
+            "hanzi": "木",
+            "meaning": "tree"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "七",
+      "pinyin": "qī",
+      "english": "seven",
+      "mnemonic": "Looks like a cross with a bent leg — seven cuts across.",
+      "mnemonicData": {
+        "soundAnchor": "Think of KEY.",
+        "story": "The count passes midway and lands on a lucky mark.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "前面",
+      "pinyin": "qiánmiàn",
+      "english": "in front of",
+      "mnemonic": "前 (front/before) + 面 (face/side). The front face of something — in front of.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "前",
+            "meaning": "front/before"
+          },
+          {
+            "hanzi": "面",
+            "meaning": "face/side"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "钱",
+      "pinyin": "qián",
+      "english": "money",
+      "mnemonic": "钅(metal/gold) + 戋 (small). Small pieces of metal — coins, money!",
+      "mnemonicData": {
+        "soundAnchor": "Think of CHAIN.",
+        "story": "Metal pieces clink together as payment changes hands.",
+        "components": [
+          {
+            "hanzi": "钅",
+            "meaning": "metal/gold"
+          },
+          {
+            "hanzi": "戋",
+            "meaning": "small"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "请",
+      "pinyin": "qǐng",
+      "english": "please",
+      "mnemonic": "讠(speech) + 青 (green/young). Speaking with the freshness of youth — politely saying please.",
+      "mnemonicData": {
+        "soundAnchor": "Think of CHIN.",
+        "story": "Words are offered with courtesy to invite cooperation.",
+        "components": [
+          {
+            "hanzi": "讠",
+            "meaning": "speech"
+          },
+          {
+            "hanzi": "青",
+            "meaning": "green/young"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "去",
+      "pinyin": "qù",
+      "english": "to go",
+      "mnemonic": "土 (earth) + a legs radical. Legs leaving the ground — to go!",
+      "mnemonicData": {
+        "soundAnchor": "Think of CUE.",
+        "story": "Legs leaving the ground — to go!",
+        "components": [
+          {
+            "hanzi": "土",
+            "meaning": "earth"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "热",
+      "pinyin": "rè",
+      "english": "hot",
+      "mnemonic": "执 (to hold) + 灬 (fire). Holding fire in your hands — hot!",
+      "mnemonicData": {
+        "soundAnchor": "Think of HER.",
+        "story": "Flames roar from the brazier and the room swelters.",
+        "components": [
+          {
+            "hanzi": "执",
+            "meaning": "to hold"
+          },
+          {
+            "hanzi": "灬",
+            "meaning": "fire"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "人",
+      "pinyin": "rén",
+      "english": "person; people",
+      "mnemonic": "Two strokes leaning on each other like legs — a person walking.",
+      "mnemonicData": {
+        "soundAnchor": "Think of RUN.",
+        "story": "A lone runner crosses the square before sunrise.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "认识",
+      "pinyin": "rènshi",
+      "english": "to know (a person)",
+      "mnemonic": "认 = 讠(words) + 人 (person). 识 = 讠(words) + 只 (only). Trading words with a person — getting to know them!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "讠",
+            "meaning": "words"
+          },
+          {
+            "hanzi": "人",
+            "meaning": "person"
+          },
+          {
+            "hanzi": "只",
+            "meaning": "only"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "日",
+      "pinyin": "rì",
+      "english": "day; sun",
+      "mnemonic": "A rectangle with a line through it — the sun with a sunspot. One cycle of the sun = one day.",
+      "mnemonicData": {
+        "soundAnchor": "Think of RIB.",
+        "story": "Dawn breaks, then dusk closes another cycle.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "三",
+      "pinyin": "sān",
+      "english": "three",
+      "mnemonic": "Three horizontal lines — simply three.",
+      "mnemonicData": {
+        "soundAnchor": "Think of SUN.",
+        "story": "A triad of beats sets a stable rhythm for counting.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "商店",
+      "pinyin": "shāngdiàn",
+      "english": "shop; store",
+      "mnemonic": "商 (commerce/merchant) + 店 (shop). A merchant's shop — a store!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "商",
+            "meaning": "commerce/merchant"
+          },
+          {
+            "hanzi": "店",
+            "meaning": "shop"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "上",
+      "pinyin": "shàng",
+      "english": "above; on; to go up",
+      "mnemonic": "A line above a base — something is on top, above.",
+      "mnemonicData": {
+        "soundAnchor": "Think of SONG.",
+        "story": "The marker sits at the top position over the base.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "上午",
+      "pinyin": "shàngwǔ",
+      "english": "morning",
+      "mnemonic": "上 (upper) + 午 (noon). The upper half before noon — morning!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "上",
+            "meaning": "upper"
+          },
+          {
+            "hanzi": "午",
+            "meaning": "noon"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "少",
+      "pinyin": "shǎo",
+      "english": "few; little",
+      "mnemonic": "小 (small) with one stroke removed — even less than small. Few!",
+      "mnemonicData": {
+        "soundAnchor": "Think of SHOWER.",
+        "story": "Only a small amount remains in the bowl.",
+        "components": [
+          {
+            "hanzi": "小",
+            "meaning": "small"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "谁",
+      "pinyin": "shéi",
+      "english": "who",
+      "mnemonic": "讠(words) + 隹 (short-tailed bird). Who is that bird you're talking about? Who?",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "讠",
+            "meaning": "words"
+          },
+          {
+            "hanzi": "隹",
+            "meaning": "short-tailed bird"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "什么",
+      "pinyin": "shénme",
+      "english": "what",
+      "mnemonic": "什 = 亻(person) + 十 (ten). 么 = tiny/small. A person with ten small questions — what?",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "亻",
+            "meaning": "person"
+          },
+          {
+            "hanzi": "十",
+            "meaning": "ten"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "十",
+      "pinyin": "shí",
+      "english": "ten",
+      "mnemonic": "A cross + shape — two hands with all ten fingers spread.",
+      "mnemonicData": {
+        "soundAnchor": "Think of SHE.",
+        "story": "Both hands spread fully, counting every finger at once.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "时候",
+      "pinyin": "shíhou",
+      "english": "time; moment",
+      "mnemonic": "时 = 日 (sun) + 寸 (inch). 候 = 亻(person) + waiting. Measuring the sun inch by inch — waiting for the right time.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "日",
+            "meaning": "sun"
+          },
+          {
+            "hanzi": "寸",
+            "meaning": "inch"
+          },
+          {
+            "hanzi": "亻",
+            "meaning": "person"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "是",
+      "pinyin": "shì",
+      "english": "to be",
+      "mnemonic": "日 (sun) + 正 (correct/straight). Straight under the sun, clear as day — it is!",
+      "mnemonicData": {
+        "soundAnchor": "Think of SHE.",
+        "story": "Straight under the sun, clear as day — it is!",
+        "components": [
+          {
+            "hanzi": "日",
+            "meaning": "sun"
+          },
+          {
+            "hanzi": "正",
+            "meaning": "correct/straight"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "书",
+      "pinyin": "shū",
+      "english": "book",
+      "mnemonic": "A hand holding a brush, writing — the product of writing is a book.",
+      "mnemonicData": {
+        "soundAnchor": "Think of SHOE.",
+        "story": "Bound pages preserve ideas for later study.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "水",
+      "pinyin": "shuǐ",
+      "english": "water",
+      "mnemonic": "A central stream with splashes on each side — flowing water.",
+      "mnemonicData": {
+        "soundAnchor": "Think of SWAY.",
+        "story": "A stream runs through the valley and feeds the fields.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "水果",
+      "pinyin": "shuǐguǒ",
+      "english": "fruit",
+      "mnemonic": "水 (water) + 果 (fruit). Juicy, water-filled fruit!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "水",
+            "meaning": "water"
+          },
+          {
+            "hanzi": "果",
+            "meaning": "fruit"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "睡觉",
+      "pinyin": "shuìjiào",
+      "english": "to sleep",
+      "mnemonic": "睡 = 目 (eye) + 垂 (droop). 觉 = to feel. Your eyes are drooping — time to sleep!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "目",
+            "meaning": "eye"
+          },
+          {
+            "hanzi": "垂",
+            "meaning": "droop"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "说",
+      "pinyin": "shuō",
+      "english": "to speak; to say",
+      "mnemonic": "讠(words) + 兑 (exchange). Exchanging words — speaking!",
+      "mnemonicData": {
+        "soundAnchor": "Think of SHORE.",
+        "story": "Exchanging words — speaking!",
+        "components": [
+          {
+            "hanzi": "讠",
+            "meaning": "words"
+          },
+          {
+            "hanzi": "兑",
+            "meaning": "exchange"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "四",
+      "pinyin": "sì",
+      "english": "four",
+      "mnemonic": "A mouth 口 with four-ish lines inside — the number four boxed up.",
+      "mnemonicData": {
+        "soundAnchor": "Think of SEE.",
+        "story": "A stable count lands just after the first triad.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "岁",
+      "pinyin": "suì",
+      "english": "years old",
+      "mnemonic": "山 (mountain) + 夕 (evening). Counting the evenings over the mountains — counting years of age.",
+      "mnemonicData": {
+        "soundAnchor": "Think of SWAY.",
+        "story": "Each birthday adds another mark to a growing age tally.",
+        "components": [
+          {
+            "hanzi": "山",
+            "meaning": "mountain"
+          },
+          {
+            "hanzi": "夕",
+            "meaning": "evening"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "他",
+      "pinyin": "tā",
+      "english": "he; him",
+      "mnemonic": "亻(person) + 也 (also). That other person also — he/him.",
+      "mnemonicData": {
+        "soundAnchor": "Think of TAR.",
+        "story": "That male person is the one being referenced.",
+        "components": [
+          {
+            "hanzi": "亻",
+            "meaning": "person"
+          },
+          {
+            "hanzi": "也",
+            "meaning": "also"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "她",
+      "pinyin": "tā",
+      "english": "she; her",
+      "mnemonic": "女 (woman) + 也 (also). That woman also — she/her.",
+      "mnemonicData": {
+        "soundAnchor": "Think of TAR.",
+        "story": "That female person is the one being referenced.",
+        "components": [
+          {
+            "hanzi": "女",
+            "meaning": "woman"
+          },
+          {
+            "hanzi": "也",
+            "meaning": "also"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "太",
+      "pinyin": "tài",
+      "english": "too; very",
+      "mnemonic": "大 (big) with an extra dot — even bigger than big. Too much!",
+      "mnemonicData": {
+        "soundAnchor": "Think of TIE.",
+        "story": "Too much!",
+        "components": [
+          {
+            "hanzi": "大",
+            "meaning": "big"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "天气",
+      "pinyin": "tiānqì",
+      "english": "weather",
+      "mnemonic": "天 (sky/heaven) + 气 (air/vapor). The air in the sky — weather!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "天",
+            "meaning": "sky/heaven"
+          },
+          {
+            "hanzi": "气",
+            "meaning": "air/vapor"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "听",
+      "pinyin": "tīng",
+      "english": "to listen",
+      "mnemonic": "口 (mouth) + 斤 (axe/weight). Words that carry weight reaching your ear — listen!",
+      "mnemonicData": {
+        "soundAnchor": "Think of TINGE.",
+        "story": "The mouth grows quiet while the ear takes in weighted words.",
+        "components": [
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          },
+          {
+            "hanzi": "斤",
+            "meaning": "axe/weight"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "同学",
+      "pinyin": "tóngxué",
+      "english": "classmate",
+      "mnemonic": "同 (same) + 学 (study). People who study the same things — classmates!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "People who study the same things — classmates!",
+        "components": [
+          {
+            "hanzi": "同",
+            "meaning": "same"
+          },
+          {
+            "hanzi": "学",
+            "meaning": "study"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "喂",
+      "pinyin": "wèi",
+      "english": "hello (on phone)",
+      "mnemonic": "口 (mouth) + 畏 (fear/awe). You open your mouth cautiously when answering the phone — hello?",
+      "mnemonicData": {
+        "soundAnchor": "Think of WAY.",
+        "story": "A caller answers quickly before the connection drops.",
+        "components": [
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          },
+          {
+            "hanzi": "畏",
+            "meaning": "fear/awe"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me",
+      "mnemonic": "A hand 手 holding a weapon 戈 — I will defend myself! Me!",
+      "mnemonicData": {
+        "soundAnchor": "Think of WORE.",
+        "story": "A hand holding a weapon — I will defend myself! Me!",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "我们",
+      "pinyin": "wǒmen",
+      "english": "we; us",
+      "mnemonic": "我 (I) + 们 (plural people marker, with 亻person + 门 door). All of us people at the door — we!",
+      "mnemonicData": {
+        "soundAnchor": "Think of WORE, MEN.",
+        "story": "All of us people at the door — we!",
+        "components": [
+          {
+            "hanzi": "我",
+            "meaning": "I"
+          },
+          {
+            "hanzi": "们",
+            "meaning": "plural people marker, with 亻person + 门 door"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "五",
+      "pinyin": "wǔ",
+      "english": "five",
+      "mnemonic": "Lines crossing between top and bottom — the five elements bridging heaven and earth.",
+      "mnemonicData": {
+        "soundAnchor": "Think of WOO.",
+        "story": "The count reaches the midpoint of both hands.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "喜欢",
+      "pinyin": "xǐhuan",
+      "english": "to like",
+      "mnemonic": "喜 = 士 (scholar) + 口 (mouth) + 豆 (bean). A scholar happily eating beans! 欢 = joy. Happy and joyful — to like!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A scholar happily eating beans!  joy.",
+        "components": [
+          {
+            "hanzi": "士",
+            "meaning": "scholar"
+          },
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          },
+          {
+            "hanzi": "豆",
+            "meaning": "bean"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "下",
+      "pinyin": "xià",
+      "english": "below; under; next",
+      "mnemonic": "A line with a stroke hanging below it — something is underneath. Below!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "下午",
+      "pinyin": "xiàwǔ",
+      "english": "afternoon",
+      "mnemonic": "下 (lower) + 午 (noon). The lower half after noon — afternoon!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "下",
+            "meaning": "lower"
+          },
+          {
+            "hanzi": "午",
+            "meaning": "noon"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "先生",
+      "pinyin": "xiānsheng",
+      "english": "Mr.; sir",
+      "mnemonic": "先 (first/before) + 生 (born/life). One who was born before you — an elder, Mr./Sir.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "先",
+            "meaning": "first/before"
+          },
+          {
+            "hanzi": "生",
+            "meaning": "born/life"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "现在",
+      "pinyin": "xiànzài",
+      "english": "now",
+      "mnemonic": "现 (appear/present) + 在 (at/exist). Appearing and existing — right now!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "现",
+            "meaning": "appear/present"
+          },
+          {
+            "hanzi": "在",
+            "meaning": "at/exist"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "to want; to think",
+      "mnemonic": "相 (mutual/appearance) + 心 (heart). Your heart examines appearances — thinking and wanting.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Your heart examines appearances — thinking and wanting.",
+        "components": [
+          {
+            "hanzi": "相",
+            "meaning": "mutual/appearance"
+          },
+          {
+            "hanzi": "心",
+            "meaning": "heart"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "小",
+      "pinyin": "xiǎo",
+      "english": "small",
+      "mnemonic": "A vertical line with two small dots — something being divided into tiny pieces. Small!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "小姐",
+      "pinyin": "xiǎojiě",
+      "english": "Miss; young lady",
+      "mnemonic": "小 (small/young) + 姐 (older sister, 女 woman + 且 moreover). A young woman — Miss!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "小",
+            "meaning": "small/young"
+          },
+          {
+            "hanzi": "姐",
+            "meaning": "older sister, 女 woman + 且 moreover"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "些",
+      "pinyin": "xiē",
+      "english": "some",
+      "mnemonic": "此 (this) + 二 (two). This and that, a couple of things — some.",
+      "mnemonicData": {
+        "soundAnchor": "Think of SHEER.",
+        "story": "A small subset is chosen while the rest stays aside.",
+        "components": [
+          {
+            "hanzi": "此",
+            "meaning": "this"
+          },
+          {
+            "hanzi": "二",
+            "meaning": "two"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "写",
+      "pinyin": "xiě",
+      "english": "to write",
+      "mnemonic": "冖 (cover/roof) + 与 (give). Under a roof, giving form to words — writing!",
+      "mnemonicData": {
+        "soundAnchor": "Think of SHEER.",
+        "story": "Under a roof, giving form to words — writing!",
+        "components": [
+          {
+            "hanzi": "冖",
+            "meaning": "cover/roof"
+          },
+          {
+            "hanzi": "与",
+            "meaning": "give"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "谢谢",
+      "pinyin": "xièxie",
+      "english": "thank you",
+      "mnemonic": "谢 = 讠(words) + 射 (shoot). Words that shoot from the heart — thank you!",
+      "mnemonicData": {
+        "soundAnchor": "Think of SHEER, SHEER.",
+        "story": "Grateful words are offered in polite response.",
+        "components": [
+          {
+            "hanzi": "讠",
+            "meaning": "words"
+          },
+          {
+            "hanzi": "射",
+            "meaning": "shoot"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "星期",
+      "pinyin": "xīngqī",
+      "english": "week",
+      "mnemonic": "星 = 日 (sun) + 生 (born). 期 = a period of time. A period marked by the birth of new suns — a week of days!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "日",
+            "meaning": "sun"
+          },
+          {
+            "hanzi": "生",
+            "meaning": "born"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "学生",
+      "pinyin": "xuésheng",
+      "english": "student",
+      "mnemonic": "学 (to study) + 生 (born/life). A life devoted to study — a student!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "学",
+            "meaning": "to study"
+          },
+          {
+            "hanzi": "生",
+            "meaning": "born/life"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "学习",
+      "pinyin": "xuéxí",
+      "english": "to study; to learn",
+      "mnemonic": "学 = a child 子 under a roof with hands guiding. 习 = feathers 羽 practicing flight. Learning to fly — studying!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "a child under a roof with hands guiding.  feathers practicing flight.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "学校",
+      "pinyin": "xuéxiào",
+      "english": "school",
+      "mnemonic": "学 (study) + 校 (compare/school, 木 wood + 交 cross). Where students cross paths to study — school!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "学",
+            "meaning": "study"
+          },
+          {
+            "hanzi": "校",
+            "meaning": "compare/school, 木 wood + 交 cross"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "一",
+      "pinyin": "yī",
+      "english": "one",
+      "mnemonic": "A single horizontal stroke — the simplest number, one.",
+      "mnemonicData": {
+        "soundAnchor": "Think of EEL.",
+        "story": "A single marker sets the starting count.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "衣服",
+      "pinyin": "yīfu",
+      "english": "clothes",
+      "mnemonic": "衣 looks like a robe with flowing sleeves. 服 = 月 (body) + 又 (hand) serving. What your body wears — clothes!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "月",
+            "meaning": "body"
+          },
+          {
+            "hanzi": "又",
+            "meaning": "hand"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "医生",
+      "pinyin": "yīshēng",
+      "english": "doctor",
+      "mnemonic": "医 = 匸 (box) + 矢 (arrow). Removing arrows from wounds! 生 (life). One who saves lives — doctor!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Removing arrows from wounds!  .",
+        "components": [
+          {
+            "hanzi": "匸",
+            "meaning": "box"
+          },
+          {
+            "hanzi": "矢",
+            "meaning": "arrow"
+          },
+          {
+            "hanzi": "生",
+            "meaning": "life"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "医院",
+      "pinyin": "yīyuàn",
+      "english": "hospital",
+      "mnemonic": "医 (medicine/heal) + 院 (courtyard/institution). A medical institution — hospital!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "医",
+            "meaning": "medicine/heal"
+          },
+          {
+            "hanzi": "院",
+            "meaning": "courtyard/institution"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "椅子",
+      "pinyin": "yǐzi",
+      "english": "chair",
+      "mnemonic": "椅 = 木 (wood) + 奇 (strange/wonderful). A wonderful wooden invention to sit on — a chair!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "木",
+            "meaning": "wood"
+          },
+          {
+            "hanzi": "奇",
+            "meaning": "strange/wonderful"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "有",
+      "pinyin": "yǒu",
+      "english": "to have; there is",
+      "mnemonic": "A hand (ナ) grabbing the moon (月) — reaching out and having something!",
+      "mnemonicData": {
+        "soundAnchor": "Think of YOU.",
+        "story": "A hand grabbing the moon — reaching out and having something!",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "月",
+      "pinyin": "yuè",
+      "english": "month; moon",
+      "mnemonic": "A crescent shape — the moon! One cycle of the moon = one month.",
+      "mnemonicData": {
+        "soundAnchor": "Think of YOU.",
+        "story": "A full lunar cycle marks the calendar interval.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "在",
+      "pinyin": "zài",
+      "english": "at; in; to be at",
+      "mnemonic": "土 (earth) + a presence marker. Being present on this earth — to be at a place.",
+      "mnemonicData": {
+        "soundAnchor": "Think of SIGH.",
+        "story": "Being present on this earth — to be at a place.",
+        "components": [
+          {
+            "hanzi": "土",
+            "meaning": "earth"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "再见",
+      "pinyin": "zàijiàn",
+      "english": "goodbye",
+      "mnemonic": "再 (again) + 见 (see). See you again — goodbye!",
+      "mnemonicData": {
+        "soundAnchor": "Think of ZEST, JET.",
+        "story": "After one more glance, the speakers part for now.",
+        "components": [
+          {
+            "hanzi": "再",
+            "meaning": "again"
+          },
+          {
+            "hanzi": "见",
+            "meaning": "see"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "怎么",
+      "pinyin": "zěnme",
+      "english": "how",
+      "mnemonic": "怎 = 乍 (suddenly) + 心 (heart). 么 = what. Your heart suddenly wonders — how?",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "乍",
+            "meaning": "suddenly"
+          },
+          {
+            "hanzi": "心",
+            "meaning": "heart"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "怎么样",
+      "pinyin": "zěnmeyàng",
+      "english": "how about; how is",
+      "mnemonic": "怎么 (how) + 样 (manner/appearance). How is the manner of things — how about it?",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "怎么",
+            "meaning": "how"
+          },
+          {
+            "hanzi": "样",
+            "meaning": "manner/appearance"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "这",
+      "pinyin": "zhè",
+      "english": "this",
+      "mnemonic": "辶 (walking) + 文 (text/pattern). Walking toward this particular thing — this!",
+      "mnemonicData": {
+        "soundAnchor": "Think of JET.",
+        "story": "The nearby option is singled out from everything else.",
+        "components": [
+          {
+            "hanzi": "辶",
+            "meaning": "walking"
+          },
+          {
+            "hanzi": "文",
+            "meaning": "text/pattern"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "中午",
+      "pinyin": "zhōngwǔ",
+      "english": "noon",
+      "mnemonic": "中 (middle) + 午 (the noon hour). The middle of the day — noon!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "中",
+            "meaning": "middle"
+          },
+          {
+            "hanzi": "午",
+            "meaning": "the noon hour"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "住",
+      "pinyin": "zhù",
+      "english": "to live; to stay",
+      "mnemonic": "亻(person) + 主 (master/owner). A person who is master of their place — they live there!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "亻",
+            "meaning": "person"
+          },
+          {
+            "hanzi": "主",
+            "meaning": "master/owner"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "桌子",
+      "pinyin": "zhuōzi",
+      "english": "table; desk",
+      "mnemonic": "桌 = 卜 + 日 on top of 木 (wood). A flat wooden surface lit by the sun — a table!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "木",
+            "meaning": "wood"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "字",
+      "pinyin": "zì",
+      "english": "character; word",
+      "mnemonic": "宀 (roof) + 子 (child). A child born under a roof — a written character is born!",
+      "mnemonicData": {
+        "soundAnchor": "Think of ZEE.",
+        "story": "Under a roof, a child learns the written symbol.",
+        "components": [
+          {
+            "hanzi": "宀",
+            "meaning": "roof"
+          },
+          {
+            "hanzi": "子",
+            "meaning": "child"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "昨天",
+      "pinyin": "zuótiān",
+      "english": "yesterday",
+      "mnemonic": "昨 = 日 (sun/day) + 乍 (suddenly/just now). 天 (day). The day that just passed — yesterday!",
+      "mnemonicData": {
+        "soundAnchor": "Think of ZOO, TEEN.",
+        "story": "The moment just before today is recalled as already past.",
+        "components": [
+          {
+            "hanzi": "日",
+            "meaning": "sun/day"
+          },
+          {
+            "hanzi": "乍",
+            "meaning": "suddenly/just now"
+          },
+          {
+            "hanzi": "天",
+            "meaning": "day"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "坐",
+      "pinyin": "zuò",
+      "english": "to sit",
+      "mnemonic": "Two people 人人 on the earth 土 — sitting on the ground together.",
+      "mnemonicData": {
+        "soundAnchor": "Think of ZOO.",
+        "story": "Two people on the earth — sitting on the ground together.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "做",
+      "pinyin": "zuò",
+      "english": "to do; to make",
+      "mnemonic": "亻(person) + 故 (reason/cause). A person with a reason — someone doing something!",
+      "mnemonicData": {
+        "soundAnchor": "Think of ZOO.",
+        "story": "A person with a reason — someone doing something!",
+        "components": [
+          {
+            "hanzi": "亻",
+            "meaning": "person"
+          },
+          {
+            "hanzi": "故",
+            "meaning": "reason/cause"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "别",
+      "pinyin": "bié",
+      "english": "don't; other",
+      "mnemonic": "另 (other) + 刂 (knife). A knife cutting you off — don't do that!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "另",
+            "meaning": "other"
+          },
+          {
+            "hanzi": "刂",
+            "meaning": "knife"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "长",
+      "pinyin": "cháng",
+      "english": "long",
+      "mnemonic": "Looks like long flowing hair — stretching out long!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "出",
+      "pinyin": "chū",
+      "english": "to go out; to exit",
+      "mnemonic": "A sprout 屮 pushing up through the ground — coming out!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "穿",
+      "pinyin": "chuān",
+      "english": "to wear",
+      "mnemonic": "穴 (cave/hole) + 牙 (tooth). Threading teeth through a hole — like putting on clothes, threading your body through!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Threading teeth through a hole — like putting on clothes, threading your body through!",
+        "components": [
+          {
+            "hanzi": "穴",
+            "meaning": "cave/hole"
+          },
+          {
+            "hanzi": "牙",
+            "meaning": "tooth"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "次",
+      "pinyin": "cì",
+      "english": "time (occurrence); next",
+      "mnemonic": "冫(ice) + 欠 (owe/lack). Each time the ice melts, you count another occurrence.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "冫",
+            "meaning": "ice"
+          },
+          {
+            "hanzi": "欠",
+            "meaning": "owe/lack"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "从",
+      "pinyin": "cóng",
+      "english": "from",
+      "mnemonic": "Two people 人人 one behind the other — following from one place to another.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Two people one behind the other — following from one place to another.",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "错",
+      "pinyin": "cuò",
+      "english": "wrong; mistake",
+      "mnemonic": "钅(metal/gold) + 昔 (past). The gold from the past turned out to be fake — wrong!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "钅",
+            "meaning": "metal/gold"
+          },
+          {
+            "hanzi": "昔",
+            "meaning": "past"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "打电话",
+      "pinyin": "dǎ diànhuà",
+      "english": "to make a phone call",
+      "mnemonic": "打 (hit/strike) + 电话 (electric speech). Striking up an electric conversation — making a call!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "打",
+            "meaning": "hit/strike"
+          },
+          {
+            "hanzi": "电话",
+            "meaning": "electric speech"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "打篮球",
+      "pinyin": "dǎ lánqiú",
+      "english": "to play basketball",
+      "mnemonic": "打 (hit/strike) + 篮球 (basket ball). Hitting the basket ball — playing basketball!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "打",
+            "meaning": "hit/strike"
+          },
+          {
+            "hanzi": "篮球",
+            "meaning": "basket ball"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "大家",
+      "pinyin": "dàjiā",
+      "english": "everyone",
+      "mnemonic": "大 (big) + 家 (family). One big family — everyone!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "大",
+            "meaning": "big"
+          },
+          {
+            "hanzi": "家",
+            "meaning": "family"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "到",
+      "pinyin": "dào",
+      "english": "to arrive; to",
+      "mnemonic": "至 (reach) + 刂 (knife). Cutting through to reach your destination — arrive!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "至",
+            "meaning": "reach"
+          },
+          {
+            "hanzi": "刂",
+            "meaning": "knife"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "得",
+      "pinyin": "de",
+      "english": "(complement particle)",
+      "mnemonic": "彳(step) + 日 (sun) + 寸 (inch). Steps measured by the sun, inch by inch — how well you do something.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Steps measured by the sun, inch by inch — how well you do something.",
+        "components": [
+          {
+            "hanzi": "彳",
+            "meaning": "step"
+          },
+          {
+            "hanzi": "日",
+            "meaning": "sun"
+          },
+          {
+            "hanzi": "寸",
+            "meaning": "inch"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "等",
+      "pinyin": "děng",
+      "english": "to wait",
+      "mnemonic": "竹 (bamboo) + 寺 (temple). Waiting at a bamboo temple — patiently waiting.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Waiting at a bamboo temple — patiently waiting.",
+        "components": [
+          {
+            "hanzi": "竹",
+            "meaning": "bamboo"
+          },
+          {
+            "hanzi": "寺",
+            "meaning": "temple"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "弟弟",
+      "pinyin": "dìdi",
+      "english": "younger brother",
+      "mnemonic": "弟 has 弓 (bow) + a small figure. The younger one still learning to use the bow — little brother!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "弓",
+            "meaning": "bow"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "第一",
+      "pinyin": "dìyī",
+      "english": "first; number one",
+      "mnemonic": "第 (ordinal prefix) + 一 (one). The number one position — first!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "第",
+            "meaning": "ordinal prefix"
+          },
+          {
+            "hanzi": "一",
+            "meaning": "one"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "懂",
+      "pinyin": "dǒng",
+      "english": "to understand",
+      "mnemonic": "忄(heart) + 董 (to direct). Your heart directs you to comprehend — to understand!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "忄",
+            "meaning": "heart"
+          },
+          {
+            "hanzi": "董",
+            "meaning": "to direct"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "对",
+      "pinyin": "duì",
+      "english": "correct; right",
+      "mnemonic": "又 (hand) + 寸 (inch). Your hand measures exactly one inch — correct!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "又",
+            "meaning": "hand"
+          },
+          {
+            "hanzi": "寸",
+            "meaning": "inch"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "房间",
+      "pinyin": "fángjiān",
+      "english": "room",
+      "mnemonic": "房 = 户 (door) + 方 (square). 间 = 门 (gate) + 日 (sun). A square space behind a door where sunlight enters — a room!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "户",
+            "meaning": "door"
+          },
+          {
+            "hanzi": "方",
+            "meaning": "square"
+          },
+          {
+            "hanzi": "门",
+            "meaning": "gate"
+          },
+          {
+            "hanzi": "日",
+            "meaning": "sun"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "非常",
+      "pinyin": "fēicháng",
+      "english": "very; extremely",
+      "mnemonic": "非 (not) + 常 (ordinary). Not ordinary at all — extremely!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "非",
+            "meaning": "not"
+          },
+          {
+            "hanzi": "常",
+            "meaning": "ordinary"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "服务员",
+      "pinyin": "fúwùyuán",
+      "english": "waiter; attendant",
+      "mnemonic": "服务 (to serve) + 员 (person/member). A person who serves — waiter!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "服务",
+            "meaning": "to serve"
+          },
+          {
+            "hanzi": "员",
+            "meaning": "person/member"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "公共汽车",
+      "pinyin": "gōnggòng qìchē",
+      "english": "bus",
+      "mnemonic": "公共 (public) + 汽车 (automobile). A public automobile — a bus!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "公共",
+            "meaning": "public"
+          },
+          {
+            "hanzi": "汽车",
+            "meaning": "automobile"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "公司",
+      "pinyin": "gōngsī",
+      "english": "company",
+      "mnemonic": "公 (public/official) + 司 (manage). Officially managing business — a company!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "公",
+            "meaning": "public/official"
+          },
+          {
+            "hanzi": "司",
+            "meaning": "manage"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "贵",
+      "pinyin": "guì",
+      "english": "expensive",
+      "mnemonic": "中 (middle) + 一 + 贝 (shell/money). A pile of shells (ancient money) — expensive!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "中",
+            "meaning": "middle"
+          },
+          {
+            "hanzi": "贝",
+            "meaning": "shell/money"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "过",
+      "pinyin": "guò",
+      "english": "(past tense particle); to pass",
+      "mnemonic": "辶 (walk) + 寸 (inch). Walking inch by inch through time — something that has passed.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Walking inch by inch through time — something that has passed.",
+        "components": [
+          {
+            "hanzi": "辶",
+            "meaning": "walk"
+          },
+          {
+            "hanzi": "寸",
+            "meaning": "inch"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "还",
+      "pinyin": "hái",
+      "english": "still; also",
+      "mnemonic": "辶 (walk) + 不 (not). Still walking, not stopping — still going, also continuing!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "辶",
+            "meaning": "walk"
+          },
+          {
+            "hanzi": "不",
+            "meaning": "not"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "还是",
+      "pinyin": "háishi",
+      "english": "or; still",
+      "mnemonic": "还 (still) + 是 (is). Is it still this or that — or?",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "还",
+            "meaning": "still"
+          },
+          {
+            "hanzi": "是",
+            "meaning": "is"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "孩子",
+      "pinyin": "háizi",
+      "english": "child",
+      "mnemonic": "孩 = 子 (child) + 亥 (last). 子 (child). The little one at the end of the family line — a child!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "子",
+            "meaning": "child"
+          },
+          {
+            "hanzi": "亥",
+            "meaning": "last"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "黑",
+      "pinyin": "hēi",
+      "english": "black",
+      "mnemonic": "A window 囗 covered with soot 灬 — everything is dark and black!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "红",
+      "pinyin": "hóng",
+      "english": "red",
+      "mnemonic": "纟(silk) + 工 (work). The silk workers dye fabric — red silk!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "纟",
+            "meaning": "silk"
+          },
+          {
+            "hanzi": "工",
+            "meaning": "work"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "花",
+      "pinyin": "huā",
+      "english": "flower; to spend",
+      "mnemonic": "艹 (plant) + 化 (transform). A plant that transforms into something beautiful — a flower!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "艹",
+            "meaning": "plant"
+          },
+          {
+            "hanzi": "化",
+            "meaning": "transform"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "欢迎",
+      "pinyin": "huānyíng",
+      "english": "to welcome",
+      "mnemonic": "欢 (joy) + 迎 (to greet). Greeting with joy — welcome!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "欢",
+            "meaning": "joy"
+          },
+          {
+            "hanzi": "迎",
+            "meaning": "to greet"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "火车站",
+      "pinyin": "huǒchēzhàn",
+      "english": "train station",
+      "mnemonic": "火车 (fire vehicle = train) + 站 (stand/station). Where the fire vehicle stops — train station!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "火车",
+            "meaning": "fire vehicle = train"
+          },
+          {
+            "hanzi": "站",
+            "meaning": "stand/station"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "机场",
+      "pinyin": "jīchǎng",
+      "english": "airport",
+      "mnemonic": "机 (machine/airplane) + 场 (field/ground). The field where airplanes land — airport!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "机",
+            "meaning": "machine/airplane"
+          },
+          {
+            "hanzi": "场",
+            "meaning": "field/ground"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "鸡蛋",
+      "pinyin": "jīdàn",
+      "english": "egg",
+      "mnemonic": "鸡 (chicken) + 蛋 (egg). What the chicken produces — an egg!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "鸡",
+            "meaning": "chicken"
+          },
+          {
+            "hanzi": "蛋",
+            "meaning": "egg"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "件",
+      "pinyin": "jiàn",
+      "english": "(measure word for matters/clothes)",
+      "mnemonic": "亻(person) + 牛 (cow). A person counts their cows one piece at a time — a measure word for items.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "亻",
+            "meaning": "person"
+          },
+          {
+            "hanzi": "牛",
+            "meaning": "cow"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "教室",
+      "pinyin": "jiàoshì",
+      "english": "classroom",
+      "mnemonic": "教 (teach) + 室 (room). A room for teaching — classroom!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "教",
+            "meaning": "teach"
+          },
+          {
+            "hanzi": "室",
+            "meaning": "room"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "姐姐",
+      "pinyin": "jiějie",
+      "english": "older sister",
+      "mnemonic": "姐 = 女 (woman) + 且 (moreover/also). The woman who is moreover older than you — big sister!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "女",
+            "meaning": "woman"
+          },
+          {
+            "hanzi": "且",
+            "meaning": "moreover/also"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "介绍",
+      "pinyin": "jièshào",
+      "english": "to introduce",
+      "mnemonic": "介 = 人 (person) between two lines. 绍 = 纟(silk) + 召 (summon). A person weaving connections, summoning others — introducing!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A person weaving connections, summoning others — introducing!",
+        "components": [
+          {
+            "hanzi": "人",
+            "meaning": "person"
+          },
+          {
+            "hanzi": "纟",
+            "meaning": "silk"
+          },
+          {
+            "hanzi": "召",
+            "meaning": "summon"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "近",
+      "pinyin": "jìn",
+      "english": "near; close",
+      "mnemonic": "辶 (walk) + 斤 (axe/short). A short walk — near!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "辶",
+            "meaning": "walk"
+          },
+          {
+            "hanzi": "斤",
+            "meaning": "axe/short"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "进",
+      "pinyin": "jìn",
+      "english": "to enter",
+      "mnemonic": "辶 (walk) + 井 (well). Walking into the well area — entering!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Walking into the well area — entering!",
+        "components": [
+          {
+            "hanzi": "辶",
+            "meaning": "walk"
+          },
+          {
+            "hanzi": "井",
+            "meaning": "well"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "就",
+      "pinyin": "jiù",
+      "english": "then; at once",
+      "mnemonic": "京 (capital) + 尤 (especially). Especially in the capital, things happen at once — then, immediately!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "京",
+            "meaning": "capital"
+          },
+          {
+            "hanzi": "尤",
+            "meaning": "especially"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "觉得",
+      "pinyin": "juéde",
+      "english": "to feel; to think",
+      "mnemonic": "觉 = 学 (study) + 见 (see). 得 = to obtain. Studying what you see and obtaining a feeling — to feel/think!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "学",
+            "meaning": "study"
+          },
+          {
+            "hanzi": "见",
+            "meaning": "see"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "咖啡",
+      "pinyin": "kāfēi",
+      "english": "coffee",
+      "mnemonic": "Both characters have 口 (mouth) — a drink for the mouth. 加 (add) + 非 (not ordinary). Not your ordinary drink — coffee!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          },
+          {
+            "hanzi": "加",
+            "meaning": "add"
+          },
+          {
+            "hanzi": "非",
+            "meaning": "not ordinary"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "开始",
+      "pinyin": "kāishǐ",
+      "english": "to begin; to start",
+      "mnemonic": "开 (open) + 始 (begin, 女 woman + 台 platform). Opening the platform — starting!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Opening the platform — starting!",
+        "components": [
+          {
+            "hanzi": "开",
+            "meaning": "open"
+          },
+          {
+            "hanzi": "始",
+            "meaning": "begin, 女 woman + 台 platform"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "考试",
+      "pinyin": "kǎoshì",
+      "english": "exam; test",
+      "mnemonic": "考 = 老 (old) with a twist — the elders test you. 试 = 讠(words) + 式 (style). Words in a formal style — an exam!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "老",
+            "meaning": "old"
+          },
+          {
+            "hanzi": "讠",
+            "meaning": "words"
+          },
+          {
+            "hanzi": "式",
+            "meaning": "style"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "可能",
+      "pinyin": "kěnéng",
+      "english": "maybe; possible",
+      "mnemonic": "可 (can) + 能 (able). If you can and are able — it's possible!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "可",
+            "meaning": "can"
+          },
+          {
+            "hanzi": "能",
+            "meaning": "able"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "可以",
+      "pinyin": "kěyǐ",
+      "english": "may; can",
+      "mnemonic": "可 (can/approve) + 以 (use/by). Approved for use — you may!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "可",
+            "meaning": "can/approve"
+          },
+          {
+            "hanzi": "以",
+            "meaning": "use/by"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "课",
+      "pinyin": "kè",
+      "english": "class; lesson",
+      "mnemonic": "讠(words) + 果 (fruit). Words bearing fruit — a lesson!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "讠",
+            "meaning": "words"
+          },
+          {
+            "hanzi": "果",
+            "meaning": "fruit"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "快",
+      "pinyin": "kuài",
+      "english": "fast; quick",
+      "mnemonic": "忄(heart) + 夬 (decisive). A heart that decides quickly — fast!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "忄",
+            "meaning": "heart"
+          },
+          {
+            "hanzi": "夬",
+            "meaning": "decisive"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "快乐",
+      "pinyin": "kuàilè",
+      "english": "happy; joyful",
+      "mnemonic": "快 (quick) + 乐 (joy/music). Quick to feel joy — happy!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "快",
+            "meaning": "quick"
+          },
+          {
+            "hanzi": "乐",
+            "meaning": "joy/music"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "离",
+      "pinyin": "lí",
+      "english": "away from; from",
+      "mnemonic": "A complex character showing separation — away from!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "两",
+      "pinyin": "liǎng",
+      "english": "two; a couple",
+      "mnemonic": "一 (one) with two 人 (people) inside — a pair, two of something.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "一",
+            "meaning": "one"
+          },
+          {
+            "hanzi": "人",
+            "meaning": "people"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "路",
+      "pinyin": "lù",
+      "english": "road; path",
+      "mnemonic": "足 (foot) + 各 (each). Each foot takes a step on the path — road!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "足",
+            "meaning": "foot"
+          },
+          {
+            "hanzi": "各",
+            "meaning": "each"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "旅游",
+      "pinyin": "lǚyóu",
+      "english": "to travel; tourism",
+      "mnemonic": "旅 (journey) + 游 (swim/roam). Journeying and roaming — traveling!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Journeying and roaming — traveling!",
+        "components": [
+          {
+            "hanzi": "旅",
+            "meaning": "journey"
+          },
+          {
+            "hanzi": "游",
+            "meaning": "swim/roam"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "卖",
+      "pinyin": "mài",
+      "english": "to sell",
+      "mnemonic": "Like 买 (buy) but with 十 (ten) on top — selling ten things at once!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Like but with on top — selling ten things at once!",
+        "components": [
+          {
+            "hanzi": "买",
+            "meaning": "buy"
+          },
+          {
+            "hanzi": "十",
+            "meaning": "ten"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "慢",
+      "pinyin": "màn",
+      "english": "slow",
+      "mnemonic": "忄(heart) + 曼 (extended/prolonged). A heart that is prolonged and extended — slow!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "忄",
+            "meaning": "heart"
+          },
+          {
+            "hanzi": "曼",
+            "meaning": "extended/prolonged"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "忙",
+      "pinyin": "máng",
+      "english": "busy",
+      "mnemonic": "忄(heart) + 亡 (die/perish). Your heart is dying from being so busy!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "忄",
+            "meaning": "heart"
+          },
+          {
+            "hanzi": "亡",
+            "meaning": "die/perish"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "每",
+      "pinyin": "měi",
+      "english": "every; each",
+      "mnemonic": "A mother 母 with a stroke — every mother cares for each child.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "妹妹",
+      "pinyin": "mèimei",
+      "english": "younger sister",
+      "mnemonic": "妹 = 女 (woman) + 未 (not yet). The woman not yet grown up — little sister!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "女",
+            "meaning": "woman"
+          },
+          {
+            "hanzi": "未",
+            "meaning": "not yet"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "门",
+      "pinyin": "mén",
+      "english": "door; gate",
+      "mnemonic": "Looks like a traditional Chinese double door — a gate!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "男",
+      "pinyin": "nán",
+      "english": "male",
+      "mnemonic": "田 (field) + 力 (strength). Strength in the field — traditionally male!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "田",
+            "meaning": "field"
+          },
+          {
+            "hanzi": "力",
+            "meaning": "strength"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "您",
+      "pinyin": "nín",
+      "english": "you (polite)",
+      "mnemonic": "你 (you) + 心 (heart). You, with heart — the respectful, polite 'you'!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "你",
+            "meaning": "you"
+          },
+          {
+            "hanzi": "心",
+            "meaning": "heart"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "牛奶",
+      "pinyin": "niúnǎi",
+      "english": "milk",
+      "mnemonic": "牛 (cow) + 奶 (milk/breast, 女 woman + 乃). What comes from the cow — milk!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "牛",
+            "meaning": "cow"
+          },
+          {
+            "hanzi": "奶",
+            "meaning": "milk/breast, 女 woman + 乃"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "女",
+      "pinyin": "nǚ",
+      "english": "female; woman",
+      "mnemonic": "A figure kneeling gracefully — the character for woman.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "旁边",
+      "pinyin": "pángbiān",
+      "english": "beside; next to",
+      "mnemonic": "旁 (side) + 边 (edge). At the side edge — beside!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "旁",
+            "meaning": "side"
+          },
+          {
+            "hanzi": "边",
+            "meaning": "edge"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "跑步",
+      "pinyin": "pǎobù",
+      "english": "to run; jogging",
+      "mnemonic": "跑 = 足 (foot) + 包 (wrap). 步 = 止 (stop) + 少 (few). Feet wrapping the ground with few stops — running!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Feet wrapping the ground with few stops — running!",
+        "components": [
+          {
+            "hanzi": "足",
+            "meaning": "foot"
+          },
+          {
+            "hanzi": "包",
+            "meaning": "wrap"
+          },
+          {
+            "hanzi": "止",
+            "meaning": "stop"
+          },
+          {
+            "hanzi": "少",
+            "meaning": "few"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "便宜",
+      "pinyin": "piányi",
+      "english": "cheap; inexpensive",
+      "mnemonic": "便 = 亻(person) + 更 (more). 宜 (suitable). More suitable for a person's wallet — cheap!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "亻",
+            "meaning": "person"
+          },
+          {
+            "hanzi": "更",
+            "meaning": "more"
+          },
+          {
+            "hanzi": "宜",
+            "meaning": "suitable"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "票",
+      "pinyin": "piào",
+      "english": "ticket",
+      "mnemonic": "西 (west) + 示 (show). Show this to go west — a ticket!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "西",
+            "meaning": "west"
+          },
+          {
+            "hanzi": "示",
+            "meaning": "show"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "妻子",
+      "pinyin": "qīzi",
+      "english": "wife",
+      "mnemonic": "妻 = a woman 女 with a hand holding a broom. 子 (child). The woman of the house — wife!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "a woman with a hand holding a broom.  .",
+        "components": [
+          {
+            "hanzi": "子",
+            "meaning": "child"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "起床",
+      "pinyin": "qǐchuáng",
+      "english": "to get up (from bed)",
+      "mnemonic": "起 (rise) + 床 (bed, 广 shelter + 木 wood). Rising from the wooden bed — getting up!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "起",
+            "meaning": "rise"
+          },
+          {
+            "hanzi": "床",
+            "meaning": "bed, 广 shelter + 木 wood"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "千",
+      "pinyin": "qiān",
+      "english": "thousand",
+      "mnemonic": "十 (ten) with an extra stroke — ten times a hundred makes a thousand!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "十",
+            "meaning": "ten"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "铅笔",
+      "pinyin": "qiānbǐ",
+      "english": "pencil",
+      "mnemonic": "铅 (lead, 钅metal + 几) + 笔 (brush/pen, 竹 bamboo + 毛 hair). A lead-tipped bamboo writing tool — pencil!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "铅",
+            "meaning": "lead, 钅metal + 几"
+          },
+          {
+            "hanzi": "笔",
+            "meaning": "brush/pen, 竹 bamboo + 毛 hair"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "晴",
+      "pinyin": "qíng",
+      "english": "clear (weather); sunny",
+      "mnemonic": "日 (sun) + 青 (green/blue). The sun shining on a blue-green sky — clear weather!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "日",
+            "meaning": "sun"
+          },
+          {
+            "hanzi": "青",
+            "meaning": "green/blue"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "让",
+      "pinyin": "ràng",
+      "english": "to let; to allow",
+      "mnemonic": "讠(words) + 上 (up). Words that lift restrictions — to let, to allow!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "讠",
+            "meaning": "words"
+          },
+          {
+            "hanzi": "上",
+            "meaning": "up"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "日记",
+      "pinyin": "rìjì",
+      "english": "diary",
+      "mnemonic": "日 (day) + 记 (record). A daily record — a diary!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "日",
+            "meaning": "day"
+          },
+          {
+            "hanzi": "记",
+            "meaning": "record"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "上班",
+      "pinyin": "shàngbān",
+      "english": "to go to work",
+      "mnemonic": "上 (go up/to) + 班 (shift/class). Going to your shift — going to work!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "上",
+            "meaning": "go up/to"
+          },
+          {
+            "hanzi": "班",
+            "meaning": "shift/class"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "身体",
+      "pinyin": "shēntǐ",
+      "english": "body; health",
+      "mnemonic": "身 (body, looks like a person with a big belly) + 体 = 亻(person) + 本 (root). A person's root — their body/health!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "身",
+            "meaning": "body, looks like a person with a big belly"
+          },
+          {
+            "hanzi": "亻",
+            "meaning": "person"
+          },
+          {
+            "hanzi": "本",
+            "meaning": "root"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "生病",
+      "pinyin": "shēngbìng",
+      "english": "to get sick",
+      "mnemonic": "生 (born/arise) + 病 (illness, 疒 sickness + 丙). Illness arises — getting sick!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "生",
+            "meaning": "born/arise"
+          },
+          {
+            "hanzi": "病",
+            "meaning": "illness, 疒 sickness + 丙"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "生日",
+      "pinyin": "shēngrì",
+      "english": "birthday",
+      "mnemonic": "生 (born/birth) + 日 (day). The day you were born — birthday!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "生",
+            "meaning": "born/birth"
+          },
+          {
+            "hanzi": "日",
+            "meaning": "day"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "手表",
+      "pinyin": "shǒubiǎo",
+      "english": "wristwatch",
+      "mnemonic": "手 (hand) + 表 (surface/display). A display on your hand — wristwatch!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "手",
+            "meaning": "hand"
+          },
+          {
+            "hanzi": "表",
+            "meaning": "surface/display"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "手机",
+      "pinyin": "shǒujī",
+      "english": "cell phone",
+      "mnemonic": "手 (hand) + 机 (machine). A machine in your hand — cell phone!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "手",
+            "meaning": "hand"
+          },
+          {
+            "hanzi": "机",
+            "meaning": "machine"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "瘦",
+      "pinyin": "shòu",
+      "english": "thin; skinny",
+      "mnemonic": "疒 (illness) + 叟 (old man). An old man weakened by illness — thin!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "疒",
+            "meaning": "illness"
+          },
+          {
+            "hanzi": "叟",
+            "meaning": "old man"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "说话",
+      "pinyin": "shuōhuà",
+      "english": "to speak; to talk",
+      "mnemonic": "说 (speak) + 话 (words/speech). Speaking words — talking!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Speaking words — talking!",
+        "components": [
+          {
+            "hanzi": "说",
+            "meaning": "speak"
+          },
+          {
+            "hanzi": "话",
+            "meaning": "words/speech"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "送",
+      "pinyin": "sòng",
+      "english": "to give (a gift); to send",
+      "mnemonic": "辶 (walk) + 关 (close/care). Walking to someone you care about — to give or send!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "辶",
+            "meaning": "walk"
+          },
+          {
+            "hanzi": "关",
+            "meaning": "close/care"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "虽然",
+      "pinyin": "suīrán",
+      "english": "although",
+      "mnemonic": "虽 = 虫 (insect) + 口 (mouth). 然 = 然 (so/correct). Even though an insect speaks — although!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "虫",
+            "meaning": "insect"
+          },
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          },
+          {
+            "hanzi": "然",
+            "meaning": "so/correct"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "它",
+      "pinyin": "tā",
+      "english": "it",
+      "mnemonic": "宀 (roof) + 匕 (spoon). Something under a roof, but not a person — it!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Something under a roof, but not a person — it!",
+        "components": [
+          {
+            "hanzi": "宀",
+            "meaning": "roof"
+          },
+          {
+            "hanzi": "匕",
+            "meaning": "spoon"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "踢足球",
+      "pinyin": "tī zúqiú",
+      "english": "to play soccer",
+      "mnemonic": "踢 = 足 (foot) + 易 (easy). 足球 = foot ball. Kicking a ball with your foot — soccer!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "足",
+            "meaning": "foot"
+          },
+          {
+            "hanzi": "易",
+            "meaning": "easy"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "题",
+      "pinyin": "tí",
+      "english": "question; topic",
+      "mnemonic": "是 (is) + 页 (page). What is on the page — a question/topic!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "是",
+            "meaning": "is"
+          },
+          {
+            "hanzi": "页",
+            "meaning": "page"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "跳舞",
+      "pinyin": "tiàowǔ",
+      "english": "to dance",
+      "mnemonic": "跳 = 足 (foot) + 兆 (omen). 舞 = dancing figure. Feet moving like an omen of joy — dancing!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "dancing figure. Feet moving like an omen of joy — dancing!",
+        "components": [
+          {
+            "hanzi": "足",
+            "meaning": "foot"
+          },
+          {
+            "hanzi": "兆",
+            "meaning": "omen"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "外",
+      "pinyin": "wài",
+      "english": "outside; foreign",
+      "mnemonic": "夕 (evening) + 卜 (divination). Divining under the evening sky, outside the walls — outside!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "夕",
+            "meaning": "evening"
+          },
+          {
+            "hanzi": "卜",
+            "meaning": "divination"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "完",
+      "pinyin": "wán",
+      "english": "to finish; complete",
+      "mnemonic": "宀 (roof) + 元 (origin/first). Under the roof from start to finish — complete!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "宀",
+            "meaning": "roof"
+          },
+          {
+            "hanzi": "元",
+            "meaning": "origin/first"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "玩",
+      "pinyin": "wán",
+      "english": "to play; to have fun",
+      "mnemonic": "王 (king) + 元 (origin). Even kings need to return to their origins and play!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "王",
+            "meaning": "king"
+          },
+          {
+            "hanzi": "元",
+            "meaning": "origin"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "晚上",
+      "pinyin": "wǎnshang",
+      "english": "evening; night",
+      "mnemonic": "晚 = 日 (sun) + 免 (exempt). The sun is exempt from shining — evening! 上 (on/during).",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "日",
+            "meaning": "sun"
+          },
+          {
+            "hanzi": "免",
+            "meaning": "exempt"
+          },
+          {
+            "hanzi": "上",
+            "meaning": "on/during"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "往",
+      "pinyin": "wǎng",
+      "english": "toward; in the direction of",
+      "mnemonic": "彳(step) + 主 (master). Stepping toward the master — heading in a direction!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "彳",
+            "meaning": "step"
+          },
+          {
+            "hanzi": "主",
+            "meaning": "master"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "为什么",
+      "pinyin": "wèishénme",
+      "english": "why",
+      "mnemonic": "为 (for/because) + 什么 (what). For what reason — why?",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "为",
+            "meaning": "for/because"
+          },
+          {
+            "hanzi": "什么",
+            "meaning": "what"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "问",
+      "pinyin": "wèn",
+      "english": "to ask",
+      "mnemonic": "门 (door) + 口 (mouth). A mouth at the door — asking to come in!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A mouth at the door — asking to come in!",
+        "components": [
+          {
+            "hanzi": "门",
+            "meaning": "door"
+          },
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "问题",
+      "pinyin": "wèntí",
+      "english": "question; problem",
+      "mnemonic": "问 (ask) + 题 (topic). Asking about a topic — a question or problem!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "问",
+            "meaning": "ask"
+          },
+          {
+            "hanzi": "题",
+            "meaning": "topic"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "洗",
+      "pinyin": "xǐ",
+      "english": "to wash",
+      "mnemonic": "氵(water) + 先 (first). Water first — the first step is to wash!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "氵",
+            "meaning": "water"
+          },
+          {
+            "hanzi": "先",
+            "meaning": "first"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "西瓜",
+      "pinyin": "xīguā",
+      "english": "watermelon",
+      "mnemonic": "西 (west) + 瓜 (melon). The melon from the west — watermelon!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "西",
+            "meaning": "west"
+          },
+          {
+            "hanzi": "瓜",
+            "meaning": "melon"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "希望",
+      "pinyin": "xīwàng",
+      "english": "to hope; hope",
+      "mnemonic": "希 (rare/scarce) + 望 (gaze/expect). Gazing at something rare — hoping!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Gazing at something rare — hoping!",
+        "components": [
+          {
+            "hanzi": "希",
+            "meaning": "rare/scarce"
+          },
+          {
+            "hanzi": "望",
+            "meaning": "gaze/expect"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "小时",
+      "pinyin": "xiǎoshí",
+      "english": "hour",
+      "mnemonic": "小 (small) + 时 (time). A small unit of time — an hour!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "小",
+            "meaning": "small"
+          },
+          {
+            "hanzi": "时",
+            "meaning": "time"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "笑",
+      "pinyin": "xiào",
+      "english": "to laugh; to smile",
+      "mnemonic": "竹 (bamboo) + 夭 (young/tender). Young bamboo bending in the wind — like a smiling face!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Young bamboo bending in the wind — like a smiling face!",
+        "components": [
+          {
+            "hanzi": "竹",
+            "meaning": "bamboo"
+          },
+          {
+            "hanzi": "夭",
+            "meaning": "young/tender"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "新",
+      "pinyin": "xīn",
+      "english": "new",
+      "mnemonic": "亲 (close/parent) + 斤 (axe). Cutting fresh wood with an axe — new!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "亲",
+            "meaning": "close/parent"
+          },
+          {
+            "hanzi": "斤",
+            "meaning": "axe"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "姓",
+      "pinyin": "xìng",
+      "english": "surname; family name",
+      "mnemonic": "女 (woman) + 生 (born). The name a woman is born with — surname!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "女",
+            "meaning": "woman"
+          },
+          {
+            "hanzi": "生",
+            "meaning": "born"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "休息",
+      "pinyin": "xiūxi",
+      "english": "to rest",
+      "mnemonic": "休 = 亻(person) + 木 (tree). A person leaning against a tree — resting! 息 = 自 (self) + 心 (heart). Your heart calms itself.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A person leaning against a tree — resting!  .",
+        "components": [
+          {
+            "hanzi": "亻",
+            "meaning": "person"
+          },
+          {
+            "hanzi": "木",
+            "meaning": "tree"
+          },
+          {
+            "hanzi": "自",
+            "meaning": "self"
+          },
+          {
+            "hanzi": "心",
+            "meaning": "heart"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "雪",
+      "pinyin": "xuě",
+      "english": "snow",
+      "mnemonic": "雨 (rain) + 彐 (hand). Rain that you can hold in your hand — snow!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "雨",
+            "meaning": "rain"
+          },
+          {
+            "hanzi": "彐",
+            "meaning": "hand"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "颜色",
+      "pinyin": "yánsè",
+      "english": "color",
+      "mnemonic": "颜 = 彦 (elegant) + 页 (page/face). 色 (color). The elegant colors on a face — color!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "彦",
+            "meaning": "elegant"
+          },
+          {
+            "hanzi": "页",
+            "meaning": "page/face"
+          },
+          {
+            "hanzi": "色",
+            "meaning": "color"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "眼睛",
+      "pinyin": "yǎnjing",
+      "english": "eye",
+      "mnemonic": "眼 = 目 (eye) + 艮 (stubborn/steady). 睛 = 目 (eye) + 青 (green/clear). A steady, clear eye — eyes!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "目",
+            "meaning": "eye"
+          },
+          {
+            "hanzi": "艮",
+            "meaning": "stubborn/steady"
+          },
+          {
+            "hanzi": "青",
+            "meaning": "green/clear"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "药",
+      "pinyin": "yào",
+      "english": "medicine",
+      "mnemonic": "艹 (plant/herb) + 约 (agreement). Plants that have an agreement with your body to heal — medicine!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "艹",
+            "meaning": "plant/herb"
+          },
+          {
+            "hanzi": "约",
+            "meaning": "agreement"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "要",
+      "pinyin": "yào",
+      "english": "to want; to need; will",
+      "mnemonic": "西 (west) + 女 (woman). A woman looking west, wanting something — to want!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "西",
+            "meaning": "west"
+          },
+          {
+            "hanzi": "女",
+            "meaning": "woman"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "也",
+      "pinyin": "yě",
+      "english": "also; too",
+      "mnemonic": "Looks like a snake or river branching — this way and also that way!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "已经",
+      "pinyin": "yǐjīng",
+      "english": "already",
+      "mnemonic": "已 (already/stop) + 经 (pass through). Having already passed through — already!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "已",
+            "meaning": "already/stop"
+          },
+          {
+            "hanzi": "经",
+            "meaning": "pass through"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "一起",
+      "pinyin": "yīqǐ",
+      "english": "together",
+      "mnemonic": "一 (one) + 起 (rise). Rising as one — together!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "一",
+            "meaning": "one"
+          },
+          {
+            "hanzi": "起",
+            "meaning": "rise"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "一下",
+      "pinyin": "yīxià",
+      "english": "a bit; briefly",
+      "mnemonic": "一 (one) + 下 (down). One quick downward motion — just a bit!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "一",
+            "meaning": "one"
+          },
+          {
+            "hanzi": "下",
+            "meaning": "down"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "因为",
+      "pinyin": "yīnwèi",
+      "english": "because",
+      "mnemonic": "因 = 囗 (enclosure) + 大 (big). 为 (for). A big reason enclosed — because!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "囗",
+            "meaning": "enclosure"
+          },
+          {
+            "hanzi": "大",
+            "meaning": "big"
+          },
+          {
+            "hanzi": "为",
+            "meaning": "for"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "阴",
+      "pinyin": "yīn",
+      "english": "cloudy; overcast",
+      "mnemonic": "阝(hill/mound) + 月 (moon). The moon behind a hill — shadowy, cloudy!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "阝",
+            "meaning": "hill/mound"
+          },
+          {
+            "hanzi": "月",
+            "meaning": "moon"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "游泳",
+      "pinyin": "yóuyǒng",
+      "english": "to swim",
+      "mnemonic": "游 = 氵(water) + 方 (direction) + 子 (child). 泳 = 氵(water) + 永 (eternal). A child finding their way through water forever — swimming!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A child finding their way through water forever — swimming!",
+        "components": [
+          {
+            "hanzi": "氵",
+            "meaning": "water"
+          },
+          {
+            "hanzi": "方",
+            "meaning": "direction"
+          },
+          {
+            "hanzi": "子",
+            "meaning": "child"
+          },
+          {
+            "hanzi": "永",
+            "meaning": "eternal"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "右边",
+      "pinyin": "yòubiān",
+      "english": "right side",
+      "mnemonic": "右 = a hand (ナ) + 口 (mouth). Your right hand near your mouth. 边 (side). The right side!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          },
+          {
+            "hanzi": "边",
+            "meaning": "side"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "鱼",
+      "pinyin": "yú",
+      "english": "fish",
+      "mnemonic": "Looks like a fish with a head, body, and tail fin — fish!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": []
+      }
+    },
+    {
+      "hanzi": "远",
+      "pinyin": "yuǎn",
+      "english": "far",
+      "mnemonic": "辶 (walk) + 元 (origin). Walking far from your origin — far!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "辶",
+            "meaning": "walk"
+          },
+          {
+            "hanzi": "元",
+            "meaning": "origin"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "运动",
+      "pinyin": "yùndòng",
+      "english": "sports; exercise",
+      "mnemonic": "运 = 辶 (walk) + 云 (cloud). 动 = 云 (cloud) + 力 (strength). Moving with the strength of clouds — exercise!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "辶",
+            "meaning": "walk"
+          },
+          {
+            "hanzi": "云",
+            "meaning": "cloud"
+          },
+          {
+            "hanzi": "力",
+            "meaning": "strength"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "早上",
+      "pinyin": "zǎoshang",
+      "english": "morning; early morning",
+      "mnemonic": "早 = 日 (sun) + 十 (ten). The sun at ten o'clock height. 上 (on). Early in the day — morning!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "The sun at ten o'clock height.  .",
+        "components": [
+          {
+            "hanzi": "日",
+            "meaning": "sun"
+          },
+          {
+            "hanzi": "十",
+            "meaning": "ten"
+          },
+          {
+            "hanzi": "上",
+            "meaning": "on"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "丈夫",
+      "pinyin": "zhàngfu",
+      "english": "husband",
+      "mnemonic": "丈 (ten feet tall) + 夫 (man). A man who stands ten feet tall — husband!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "丈",
+            "meaning": "ten feet tall"
+          },
+          {
+            "hanzi": "夫",
+            "meaning": "man"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "找",
+      "pinyin": "zhǎo",
+      "english": "to look for; to find",
+      "mnemonic": "扌(hand) + 戈 (weapon). A hand searching for a weapon — looking for something!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A hand searching for a weapon — looking for something!",
+        "components": [
+          {
+            "hanzi": "扌",
+            "meaning": "hand"
+          },
+          {
+            "hanzi": "戈",
+            "meaning": "weapon"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "着",
+      "pinyin": "zhe",
+      "english": "(ongoing action particle)",
+      "mnemonic": "羊 (sheep) + 目 (eye). Keeping an eye on the sheep — an ongoing, continuous action!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "羊",
+            "meaning": "sheep"
+          },
+          {
+            "hanzi": "目",
+            "meaning": "eye"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "真",
+      "pinyin": "zhēn",
+      "english": "really; truly",
+      "mnemonic": "十 (ten) + 具 (tool). Ten genuine tools — really, truly authentic!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "十",
+            "meaning": "ten"
+          },
+          {
+            "hanzi": "具",
+            "meaning": "tool"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "正在",
+      "pinyin": "zhèngzài",
+      "english": "in the process of; -ing",
+      "mnemonic": "正 (straight/correct) + 在 (at). Right at this moment, in the correct place — right now doing something!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Right at this moment, in the correct place — right now doing something!",
+        "components": [
+          {
+            "hanzi": "正",
+            "meaning": "straight/correct"
+          },
+          {
+            "hanzi": "在",
+            "meaning": "at"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "知道",
+      "pinyin": "zhīdào",
+      "english": "to know",
+      "mnemonic": "知 = 矢 (arrow) + 口 (mouth). 道 = way/path. An arrow from your mouth hits the right path — you know!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "矢",
+            "meaning": "arrow"
+          },
+          {
+            "hanzi": "口",
+            "meaning": "mouth"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "准备",
+      "pinyin": "zhǔnbèi",
+      "english": "to prepare",
+      "mnemonic": "准 = 冫(ice) + 隹 (bird). 备 = 夂 (go) + 田 (field). A bird on ice getting ready to fly to the fields — preparing!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A bird on ice getting ready to fly to the fields — preparing!",
+        "components": [
+          {
+            "hanzi": "冫",
+            "meaning": "ice"
+          },
+          {
+            "hanzi": "隹",
+            "meaning": "bird"
+          },
+          {
+            "hanzi": "夂",
+            "meaning": "go"
+          },
+          {
+            "hanzi": "田",
+            "meaning": "field"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "自行车",
+      "pinyin": "zìxíngchē",
+      "english": "bicycle",
+      "mnemonic": "自 (self) + 行 (go/travel) + 车 (vehicle). A self-propelled vehicle — bicycle!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "自",
+            "meaning": "self"
+          },
+          {
+            "hanzi": "行",
+            "meaning": "go/travel"
+          },
+          {
+            "hanzi": "车",
+            "meaning": "vehicle"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "走",
+      "pinyin": "zǒu",
+      "english": "to walk; to go",
+      "mnemonic": "土 (earth) + a running figure on top. A person running on the earth — walking/going!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A person running on the earth — walking/going!",
+        "components": [
+          {
+            "hanzi": "土",
+            "meaning": "earth"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "最",
+      "pinyin": "zuì",
+      "english": "most; -est",
+      "mnemonic": "日 (sun) + 取 (take). Taking the sun — reaching the most, the highest!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "",
+        "components": [
+          {
+            "hanzi": "日",
+            "meaning": "sun"
+          },
+          {
+            "hanzi": "取",
+            "meaning": "take"
+          }
+        ]
+      }
+    },
+    {
+      "hanzi": "左边",
+      "pinyin": "zuǒbiān",
+      "english": "left side",
+      "mnemonic": "左 = a hand (ナ) + 工 (work). The hand that works. 边 (side). The left side!",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "The hand that works.  .",
+        "components": [
+          {
+            "hanzi": "工",
+            "meaning": "work"
+          },
+          {
+            "hanzi": "边",
+            "meaning": "side"
+          }
+        ]
+      }
+    }
+  ],
+  "hsk1CardCount": 143,
+  "radicals": [
+    {
+      "id": "口",
+      "hanzi": "口",
+      "pinyin": "kǒu",
+      "english": "mouth",
+      "mnemonic": "An open mouth shape, like a square speaking.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "At the village gate, a speaker calls everyone to gather.",
+        "components": []
+      }
+    },
+    {
+      "id": "人",
+      "hanzi": "人",
+      "pinyin": "rén",
+      "english": "person",
+      "mnemonic": "Two legs walking together form a person.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A lone traveler strides between two roads at dawn.",
+        "components": []
+      }
+    },
+    {
+      "id": "女",
+      "hanzi": "女",
+      "pinyin": "nǚ",
+      "english": "woman",
+      "mnemonic": "A kneeling figure traditionally used for woman.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "An old pictograph shows a calm figure in a respectful posture.",
+        "components": []
+      }
+    },
+    {
+      "id": "子",
+      "hanzi": "子",
+      "pinyin": "zǐ",
+      "english": "child",
+      "mnemonic": "A child with outstretched arms learning to walk.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "An heir takes first steps while family watches nearby.",
+        "components": []
+      }
+    },
+    {
+      "id": "手",
+      "hanzi": "手",
+      "pinyin": "shǒu",
+      "english": "hand",
+      "mnemonic": "Looks like fingers and palm reaching out.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A helper reaches forward to pass a tool to a friend.",
+        "components": []
+      }
+    },
+    {
+      "id": "心",
+      "hanzi": "心",
+      "pinyin": "xīn",
+      "english": "heart",
+      "mnemonic": "The shape suggests chambers and emotion inside.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A quiet center holds feeling, resolve, and intention together.",
+        "components": []
+      }
+    },
+    {
+      "id": "水",
+      "hanzi": "水",
+      "pinyin": "shuǐ",
+      "english": "water",
+      "mnemonic": "A central stream with side splashes: flowing water.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Streams branch from one source and rush outward through a valley.",
+        "components": []
+      }
+    },
+    {
+      "id": "火",
+      "hanzi": "火",
+      "pinyin": "huǒ",
+      "english": "fire",
+      "mnemonic": "Flames rising from a central spark.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A camp spark jumps to dry wood and grows bright by night.",
+        "components": []
+      }
+    },
+    {
+      "id": "木",
+      "hanzi": "木",
+      "pinyin": "mù",
+      "english": "wood; tree",
+      "mnemonic": "Trunk, branches, and roots form a tree.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Timbers are stacked by a workshop after a storm.",
+        "components": []
+      }
+    },
+    {
+      "id": "日",
+      "hanzi": "日",
+      "pinyin": "rì",
+      "english": "sun; day",
+      "mnemonic": "A boxed sun with a mark inside.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Dawn arrives and the market opens at first light.",
+        "components": []
+      }
+    },
+    {
+      "id": "月",
+      "hanzi": "月",
+      "pinyin": "yuè",
+      "english": "moon; body",
+      "mnemonic": "A crescent-like form for moon and flesh.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A night lantern hangs over the harbor and marks a cycle.",
+        "components": []
+      }
+    },
+    {
+      "id": "言",
+      "hanzi": "言",
+      "pinyin": "yán",
+      "english": "speech",
+      "mnemonic": "Words stacked above a mouth line.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A public declaration is announced before the crowd.",
+        "components": []
+      }
+    },
+    {
+      "id": "食",
+      "hanzi": "食",
+      "pinyin": "shí",
+      "english": "eat; food",
+      "mnemonic": "A lid above food being eaten.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Steam rises from a shared meal in a busy kitchen.",
+        "components": []
+      }
+    },
+    {
+      "id": "门",
+      "hanzi": "门",
+      "pinyin": "mén",
+      "english": "door; gate",
+      "mnemonic": "A doorway seen from the front.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A city entrance swings wide for new visitors.",
+        "components": []
+      }
+    },
+    {
+      "id": "辶",
+      "hanzi": "辶",
+      "pinyin": "chuò",
+      "english": "walk; movement",
+      "mnemonic": "A path mark showing motion forward.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A traveler follows a winding route across town.",
+        "components": []
+      }
+    },
+    {
+      "id": "艹",
+      "hanzi": "艹",
+      "pinyin": "cǎo",
+      "english": "grass; plant",
+      "mnemonic": "Sprouting strokes on top of plant words.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Fresh herbs spread across the hillside after rain.",
+        "components": []
+      }
+    },
+    {
+      "id": "讠",
+      "hanzi": "讠",
+      "pinyin": "yán",
+      "english": "speech (side form)",
+      "mnemonic": "Compressed speech radical on the left side.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "This compact component often marks words about talking.",
+        "components": []
+      }
+    },
+    {
+      "id": "氵",
+      "hanzi": "氵",
+      "pinyin": "shuǐ",
+      "english": "water (side form)",
+      "mnemonic": "Three drops of water on the left.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "This compact component appears in characters tied to rivers and rain.",
+        "components": []
+      }
+    },
+    {
+      "id": "扌",
+      "hanzi": "扌",
+      "pinyin": "shǒu",
+      "english": "hand (side form)",
+      "mnemonic": "Hand radical squeezed to fit the left side.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "This compact component appears in actions done with the palm.",
+        "components": []
+      }
+    },
+    {
+      "id": "忄",
+      "hanzi": "忄",
+      "pinyin": "xīn",
+      "english": "heart (side form)",
+      "mnemonic": "Heart radical in narrow side form.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "This compact component appears in terms for feeling and intent.",
+        "components": []
+      }
+    },
+    {
+      "id": "亻",
+      "hanzi": "亻",
+      "pinyin": "rén",
+      "english": "person (side form)",
+      "mnemonic": "Narrow person radical standing on the left.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "This compact component appears in many roles and occupations.",
+        "components": []
+      }
+    },
+    {
+      "id": "宀",
+      "hanzi": "宀",
+      "pinyin": "mián",
+      "english": "roof",
+      "mnemonic": "A sheltering roof over what is below.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A shelter sign is set above a household scene.",
+        "components": []
+      }
+    },
+    {
+      "id": "土",
+      "hanzi": "土",
+      "pinyin": "tǔ",
+      "english": "earth; soil",
+      "mnemonic": "A mound of ground crossing a base line.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Packed ground sits firm under a village wall.",
+        "components": []
+      }
+    },
+    {
+      "id": "金",
+      "hanzi": "金",
+      "pinyin": "jīn",
+      "english": "metal; gold",
+      "mnemonic": "Metal pieces gathered under a roof-like top.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Forged coins cool on the workbench after casting.",
+        "components": []
+      }
+    },
+    {
+      "id": "钅",
+      "hanzi": "钅",
+      "pinyin": "jīn",
+      "english": "metal (side form)",
+      "mnemonic": "Compressed metal radical used in compounds.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "This compact component often marks tools and alloys.",
+        "components": []
+      }
+    },
+    {
+      "id": "雨",
+      "hanzi": "雨",
+      "pinyin": "yǔ",
+      "english": "rain",
+      "mnemonic": "Drops falling from a sky frame.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Dark clouds burst and streets turn slick.",
+        "components": []
+      }
+    },
+    {
+      "id": "目",
+      "hanzi": "目",
+      "pinyin": "mù",
+      "english": "eye",
+      "mnemonic": "An eye shape with pupil-like center.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A steady gaze locks onto a distant target.",
+        "components": []
+      }
+    },
+    {
+      "id": "足",
+      "hanzi": "足",
+      "pinyin": "zú",
+      "english": "foot",
+      "mnemonic": "A foot stepping forward from the ground.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A runner pushes off the track in one stride.",
+        "components": []
+      }
+    },
+    {
+      "id": "阝",
+      "hanzi": "阝",
+      "pinyin": "fù",
+      "english": "mound; place",
+      "mnemonic": "Slope/place marker at the side of characters.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "This flank marker often points to locations and terrain.",
+        "components": []
+      }
+    },
+    {
+      "id": "禾",
+      "hanzi": "禾",
+      "pinyin": "hé",
+      "english": "grain",
+      "mnemonic": "A stalk of grain with bending leaves.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Ripe stalks bend over fields at harvest time.",
+        "components": []
+      }
+    },
+    {
+      "id": "米",
+      "hanzi": "米",
+      "pinyin": "mǐ",
+      "english": "rice",
+      "mnemonic": "Rice grains scattered from a center.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Loose kernels scatter from a sack in the pantry.",
+        "components": []
+      }
+    },
+    {
+      "id": "纟",
+      "hanzi": "纟",
+      "pinyin": "sī",
+      "english": "silk thread",
+      "mnemonic": "Three thread strokes for silk-related words.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "This compact component appears in weaving and fabric terms.",
+        "components": []
+      }
+    },
+    {
+      "id": "贝",
+      "hanzi": "贝",
+      "pinyin": "bèi",
+      "english": "shell; money",
+      "mnemonic": "Cowrie shell once used as currency.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Cowrie currency moved through ancient markets.",
+        "components": []
+      }
+    },
+    {
+      "id": "车",
+      "hanzi": "车",
+      "pinyin": "chē",
+      "english": "vehicle",
+      "mnemonic": "An axle and wheels viewed from above.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "Wheels and axle carry cargo down a long road.",
+        "components": []
+      }
+    },
+    {
+      "id": "马",
+      "hanzi": "马",
+      "pinyin": "mǎ",
+      "english": "horse",
+      "mnemonic": "A horse with mane and tail simplified.",
+      "mnemonicData": {
+        "soundAnchor": "",
+        "story": "A fast mount dashes across open ground.",
+        "components": []
+      }
+    }
+  ]
+}

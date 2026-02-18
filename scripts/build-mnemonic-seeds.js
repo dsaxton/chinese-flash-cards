@@ -4,7 +4,6 @@ const path = require("path");
 const {
   collectDeckCards,
   collectHsk1UniqueChars,
-  readIndexHtml,
 } = require("./mnemonic-quality-lib");
 
 function parseArgs(argv) {
@@ -144,8 +143,7 @@ function main() {
   }
 
   const root = path.resolve(__dirname, "..");
-  const source = readIndexHtml(root);
-  const { hsk1Cards } = collectDeckCards(source);
+  const { hsk1Cards } = collectDeckCards(root);
   const hsk1Chars = collectHsk1UniqueChars(hsk1Cards);
 
   const makeMeAData = parseMakeMeAHanziDictionary(safeRead(args.makeMeAHanzi));

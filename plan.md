@@ -10,24 +10,31 @@ Upgrade mnemonic content so every retained story is a real memory aid (not struc
 2. Remove non-mnemonic story text directly from source data.
 3. Rewrite replacements using Make Me a Hanzi + community story references.
 4. Keep only stories that are concrete, visual, and non-leaking.
-5. **Expand sound-anchor coverage — currently 8/311 cards have anchors.**
-   - Build `scripts/suggest-sound-anchors.js` to ingest Make Me a Hanzi
-     (`phonetic`), Unihan (`kPhonetic`, `kMandarin`), and CC-CEDICT pinyin
-     to propose anchors for each syllable.
-   - Score candidates by phonetic-family agreement + English-word validity,
-     minus penalties for meaning leakage and overuse; emit top 1–3 into
-     `data/sound-anchor-suggestions.json` for manual review.
-   - Curate and write approved anchors into `mnemonicData.soundAnchor`,
-     integrating them naturally into story text with ALL-CAPS anchors and no
-     English-answer leakage.
-   - Add a CI check to fail when anchor coverage < 90% of HSK1 cards or when
-     any anchor is not ALL CAPS / not an English word.
+5. **Expand sound-anchor coverage from the current baseline to >=90% of HSK1 cards.**
+   - Continue using `scripts/build-phonetic-hints.js` (Make Me a Hanzi +
+     Unihan + CC-CEDICT) for candidate generation.
+   - Curate high-quality anchors only; leave blank when no clear English anchor
+     is available.
+   - Prefer anchors woven into story sentences over detached/placeholder feel.
+   - Keep strict rules: ALL CAPS anchor words, intelligible English words only,
+     no English-answer leakage.
 6. Purge filler “shape/side-form” blurbs (e.g., “This compact component appears in…”)
    and replace with actual mnemonic imagery or leave empty to hide the line.
+7. Run an application trial with `data/deck-data.proposed.json` as the active deck
+   source, then review anchor quality and recall usefulness.
+   - Keep `data/deck-data.json` as the baseline fallback.
+   - Be prepared to revert to the baseline dataset if proposal quality is not
+     acceptable after manual review.
+   - If proposal quality is acceptable, use the validated phonetic hints to
+     improve mnemonic narratives by weaving the hint cues into stronger story
+     text (instead of leaving hints as isolated anchors).
 
 ### Acceptance
 1. `scripts/audit-mnemonics.js` reports no violations.
 2. Story quality spot checks pass for a representative HSK1 subset.
+3. HSK1 `soundAnchor` coverage is >=90%.
+4. Anchored stories read naturally and retain no-leak constraints.
+5. Trial dataset decision is documented: keep proposed set or revert baseline.
 
 ## Priority 2: Cultural Tidbit Quality Expansion
 

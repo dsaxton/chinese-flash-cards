@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const path = require("path");
+const fs = require("fs");
 const {
   collectDeckCards,
   getStoryText,
@@ -7,7 +8,6 @@ const {
   hintContainsPhoneticCue,
   hintContainsPinyin,
   isLiteralShapeHint,
-  readIndexHtml,
 } = require("./mnemonic-quality-lib");
 
 function assert(condition, message) {
@@ -21,10 +21,11 @@ function assertCanonicalSoundAnchor(anchor, cardLabel) {
   assert(!/\b(?:sounds?|sound)\s+like\b/i.test(text), `${cardLabel}: soundAnchor cannot use "sounds like"`);
 }
 
-function readAllowedAnchorWords(source) {
-  const match = source.match(/const ENGLISH_SOUND_ANCHOR_WORDS = new Set\(\[([\s\S]*?)\]\);/);
-  assert(match, "Could not read ENGLISH_SOUND_ANCHOR_WORDS from index source");
-  const values = eval(`[${match[1]}]`);
+function readAllowedAnchorWords() {
+  const root = path.resolve(__dirname, "..");
+  const mnemonicPath = path.join(root, "data", "mnemonic-data.json");
+  const data = JSON.parse(fs.readFileSync(mnemonicPath, "utf8"));
+  const values = Array.isArray(data.englishSoundAnchorWords) ? data.englishSoundAnchorWords : [];
   return new Set(values.map((value) => String(value).toUpperCase()));
 }
 
@@ -110,9 +111,8 @@ function testRadicalsFullyCurated(radicals) {
 
 function main() {
   const root = path.resolve(__dirname, "..");
-  const source = readIndexHtml(root);
-  const { hsk1Cards, radicals } = collectDeckCards(source);
-  const allowedAnchorWords = readAllowedAnchorWords(source);
+  const { hsk1Cards, radicals } = collectDeckCards(root);
+  const allowedAnchorWords = readAllowedAnchorWords();
 
   testMnemonicDataCoverage(hsk1Cards, 25);
   testSoundAnchorBatch(hsk1Cards, allowedAnchorWords, 80);

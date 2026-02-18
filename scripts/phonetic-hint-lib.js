@@ -178,18 +178,6 @@ function parseCedictByChar(text) {
   return normalized;
 }
 
-function extractConstObject(source, name) {
-  const match = source.match(new RegExp(`const ${name} = \\{([\\s\\S]*?)\\n\\};`));
-  if (!match) return {};
-  return eval(`({${match[1]}})`);
-}
-
-function extractConstSetValues(source, name) {
-  const match = source.match(new RegExp(`const ${name} = new Set\\(\\[([\\s\\S]*?)\\]\\);`));
-  if (!match) return [];
-  return eval(`[${match[1]}]`);
-}
-
 function scoreCandidate({
   anchorWord,
   syllable,
@@ -229,8 +217,6 @@ function buildAnchorSuggestion(anchorWord) {
 module.exports = {
   buildAnchorSuggestion,
   ensureParentDir,
-  extractConstObject,
-  extractConstSetValues,
   normalizePinyinAscii,
   parseCedictByChar,
   parseMakeMeAHanziDictionary,

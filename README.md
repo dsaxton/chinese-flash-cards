@@ -157,6 +157,9 @@ node scripts/report-unmatched-tidbits.js
 ## Structure
 
 - `index.html`: app UI, data, routing, SM-2 logic
+- `data/deck-data.json`: raw deck data used by runtime loader
+- `data/tidbit-data.json`: raw tidbit data used by runtime loader
+- `data/mnemonic-data.json`: raw mnemonic/anchor data used by runtime loader
 - `sw.js`, `manifest.webmanifest`, `icons/`: PWA shell assets
 - `scripts/`: validation and coverage tooling
 

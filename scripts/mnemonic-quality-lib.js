@@ -20,22 +20,16 @@ const LITERAL_SHAPE_HINT_PATTERNS = [
   /\bhorizontal\b/i,
 ];
 
-function readIndexHtml(rootDir) {
-  const htmlPath = path.join(rootDir, "index.html");
-  return fs.readFileSync(htmlPath, "utf8");
+function readJson(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
 
-function extractConstArray(source, name) {
-  const re = new RegExp(`const ${name} = \\[([\\s\\S]*?)\\n\\];`);
-  const match = source.match(re);
-  if (!match) throw new Error(`Could not find const ${name}`);
-  return eval(`([${match[1]}])`);
+function loadDeckData(rootDir) {
+  return readJson(path.join(rootDir, "data", "deck-data.json"));
 }
 
-function extractConstNumber(source, name) {
-  const match = source.match(new RegExp(`const ${name} = (\\d+);`));
-  if (!match) throw new Error(`Could not find const ${name}`);
-  return Number(match[1]);
+function loadMnemonicData(rootDir) {
+  return readJson(path.join(rootDir, "data", "mnemonic-data.json"));
 }
 
 function normalizePinyinAscii(pinyin) {
@@ -133,10 +127,11 @@ function isLiteralShapeHint(text) {
   return LITERAL_SHAPE_HINT_PATTERNS.some((pattern) => pattern.test(normalized));
 }
 
-function collectDeckCards(source) {
-  const vocab = extractConstArray(source, "VOCAB");
-  const radicals = extractConstArray(source, "RADICAL_DECK_CARDS");
-  const hsk1Count = extractConstNumber(source, "HSK1_CARD_COUNT");
+function collectDeckCards(rootDir = process.cwd()) {
+  const deck = loadDeckData(rootDir);
+  const vocab = Array.isArray(deck.vocab) ? deck.vocab : [];
+  const radicals = Array.isArray(deck.radicals) ? deck.radicals : [];
+  const hsk1Count = Number(deck.hsk1CardCount) || 0;
   return {
     vocab,
     hsk1Cards: vocab.slice(0, hsk1Count),
@@ -161,5 +156,6 @@ module.exports = {
   hintContainsPhoneticCue,
   hintContainsPinyin,
   isLiteralShapeHint,
-  readIndexHtml,
+  loadDeckData,
+  loadMnemonicData,
 };

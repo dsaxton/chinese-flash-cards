@@ -3,13 +3,11 @@ const path = require("path");
 const {
   collectDeckCards,
   collectHsk1UniqueChars,
-  readIndexHtml,
+  loadMnemonicData,
 } = require("./mnemonic-quality-lib");
 const {
   buildAnchorSuggestion,
   ensureParentDir,
-  extractConstObject,
-  extractConstSetValues,
   parseCedictByChar,
   parseMakeMeAHanziDictionary,
   parseUnihanKPhonetic,
@@ -131,12 +129,14 @@ function buildCandidates({ syllables, sources, mmh, unihanFamily, anchorMap, eng
 
 function generatePhoneticHints(args) {
   const root = path.resolve(__dirname, "..");
-  const source = readIndexHtml(root);
-  const { hsk1Cards } = collectDeckCards(source);
+  const { hsk1Cards } = collectDeckCards(root);
   const hsk1Chars = collectHsk1UniqueChars(hsk1Cards);
 
-  const anchorMap = extractConstObject(source, "PHONETIC_ANCHOR_CANDIDATES");
-  const englishWords = extractConstSetValues(source, "ENGLISH_SOUND_ANCHOR_WORDS");
+  const mnemonicData = loadMnemonicData(root);
+  const anchorMap = mnemonicData.phoneticAnchorCandidates || {};
+  const englishWords = Array.isArray(mnemonicData.englishSoundAnchorWords)
+    ? mnemonicData.englishSoundAnchorWords
+    : [];
   const englishWordSet = new Set(englishWords.map((w) => String(w).toUpperCase()));
 
   const mmhByChar = parseMakeMeAHanziDictionary(safeRead(args.makeMeAHanzi));
