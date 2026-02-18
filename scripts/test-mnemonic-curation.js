@@ -147,6 +147,37 @@ function testAnchorNarrativeRegressions(cards) {
   }
 }
 
+function testNoPlaceholderTemplateLanguage(cards) {
+  const bannedPatterns = [
+    /\bforms near the old gate\b/i,
+    /\blantern smoke curls above stones beside a quiet gate\b/i,
+    /\bmeets [a-z].* near the old gate\b/i,
+  ];
+
+  for (const card of cards) {
+    const story = getStoryText(card);
+    if (!story) continue;
+    for (const pattern of bannedPatterns) {
+      assert(
+        !pattern.test(story),
+        `${card.hanzi} (${card.english}): story uses banned placeholder template language`
+      );
+    }
+  }
+}
+
+function testStoryWordCount(cards, maxWords) {
+  for (const card of cards) {
+    const story = getStoryText(card);
+    if (!story) continue;
+    const words = story.split(/\s+/).filter(Boolean).length;
+    assert(
+      words <= maxWords,
+      `${card.hanzi} (${card.english}): story too long (${words} > ${maxWords})`
+    );
+  }
+}
+
 function main() {
   const root = path.resolve(__dirname, "..");
   const { hsk1Cards, radicals } = collectDeckCards(root);
@@ -157,6 +188,10 @@ function main() {
   testMnemonicDataCoverage(radicals, radicals.length);
   testRadicalsFullyCurated(radicals);
   testAnchorNarrativeRegressions(hsk1Cards);
+  testNoPlaceholderTemplateLanguage(hsk1Cards);
+  testNoPlaceholderTemplateLanguage(radicals);
+  testStoryWordCount(hsk1Cards, 12);
+  testStoryWordCount(radicals, 12);
 
   console.log("mnemonic curation test passed");
 }

@@ -58,7 +58,7 @@
       "mnemonic": "杯 = 木 (wood) + 不 (not). A wooden vessel that's 'not' empty — a cup ready to be filled.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A wooden vessel waits on the table for tea service.",
+        "story": "A ceramic mug waits on the table beside hot tea.",
         "components": [
           {
             "hanzi": "木",
@@ -213,7 +213,7 @@
       "mnemonic": "电 (electricity) + 脑 (brain). An electric brain — a computer!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "An electric brain handles every task on the desk.",
+        "story": "A glowing screen hums while keys race through tasks.",
         "components": [
           {
             "hanzi": "电",
@@ -233,7 +233,7 @@
       "mnemonic": "电 (electricity) + 视 (to view). Electric viewing — television!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Electric images bring distant scenes into the room.",
+        "story": "A bright screen shows distant dramas in the living room.",
         "components": [
           {
             "hanzi": "电",
@@ -253,7 +253,7 @@
       "mnemonic": "电 (electricity) + 影 (shadow/image). Electric shadows projected on a screen — movies!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Electric shadows flicker across a theater wall.",
+        "story": "Dark hall, bright screen; everyone watches shadows move.",
         "components": [
           {
             "hanzi": "电",
@@ -273,7 +273,7 @@
       "mnemonic": "东 (east) + 西 (west). From east to west, everything in between — stuff/things.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "From east to west, everything in between gets packed together.",
+        "story": "From east to west, every item gets packed together.",
         "components": [
           {
             "hanzi": "东",
@@ -333,7 +333,7 @@
       "mnemonic": "对 (correct) + 不 (not) + 起 (rise). Can't rise to what's correct — I'm sorry.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Unable to rise to what is right, you offer an apology.",
+        "story": "You bow your head and ask forgiveness after the mistake.",
         "components": [
           {
             "hanzi": "对",
@@ -369,7 +369,7 @@
       "mnemonic": "多 (many) + 少 (few). How much is it — many or few?",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "You compare abundance and scarcity to ask for quantity.",
+        "story": "You raise fingers and ask for the quantity.",
         "components": [
           {
             "hanzi": "多",
@@ -389,7 +389,7 @@
       "mnemonic": "儿 looks like a little person with legs spread wide, learning to walk — a son. 子 is a child.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Lantern smoke curls above stones beside a quiet gate.",
+        "story": "A boy stands proudly beside his parents at the gate.",
         "components": []
       }
     },
@@ -411,7 +411,7 @@
       "mnemonic": "饭 (cooked rice/meal) + 店 (shop). A shop that serves meals — restaurant!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Steamed grains meets shop forms near the old gate.",
+        "story": "Warm dishes and travelers crowd the roadside inn at dusk.",
         "components": [
           {
             "hanzi": "饭",
@@ -431,7 +431,7 @@
       "mnemonic": "飞 (to fly) + 机 (machine). A flying machine — airplane!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "To fly forms meets machine forms near the old gate.",
+        "story": "Metal wings roar above clouds toward distant cities.",
         "components": [
           {
             "hanzi": "飞",
@@ -451,7 +451,7 @@
       "mnemonic": "分 (to divide) + 钟 (bell/clock). Dividing the clock into parts — minutes.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "To divide forms meets bell forms near the old gate.",
+        "story": "Second hand ticks; sixty beats complete one short cycle.",
         "components": [
           {
             "hanzi": "分",
@@ -471,7 +471,7 @@
       "mnemonic": "高 (tall/high) + 兴 (excitement). High excitement — happy!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Tall forms meets excitement forms near the old gate.",
+        "story": "Her face lights up when the good news arrives.",
         "components": [
           {
             "hanzi": "高",
@@ -502,7 +502,7 @@
       "mnemonic": "工 (labor, looks like a beam between floor and ceiling) + 作 (to make). Making with labor — work!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Labor forms meets to make forms near the old gate.",
+        "story": "Hands lift bricks from dawn until the shift ends.",
         "components": [
           {
             "hanzi": "工",
@@ -542,7 +542,7 @@
       "mnemonic": "汉 (Han people) + 语 (language). The language of the Han people — Chinese!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Han people forms meets a spoken phrase near the old gate.",
+        "story": "Han voices trade words in one shared tongue.",
         "components": [
           {
             "hanzi": "汉",
@@ -582,7 +582,7 @@
       "mnemonic": "好 (good) + 吃 (eat). Good to eat — delicious!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Good forms meets eat forms near the old gate.",
+        "story": "One bite in, everyone reaches for another bowl.",
         "components": [
           {
             "hanzi": "好",
@@ -642,7 +642,7 @@
       "mnemonic": "彳(step) + 艮 (stubborn/tough). Taking tough steps — going very far!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Step forms meets stubborn forms near the old gate.",
+        "story": "The wind is extremely cold tonight.",
         "components": [
           {
             "hanzi": "彳",
@@ -662,7 +662,7 @@
       "mnemonic": "后 (after/behind) + 面 (face/side). The back face of something — behind.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "After forms meets face forms near the old gate.",
+        "story": "The backpack hangs at the rear of the chair.",
         "components": [
           {
             "hanzi": "后",
@@ -744,7 +744,7 @@
       "mnemonic": "口 (mouth) + 丩 (twist). Your mouth twists open to call out someone's name.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A bowl and open lips meets twist forms near the old gate.",
+        "story": "At roll time, the teacher shouts his name.",
         "components": [
           {
             "hanzi": "口",
@@ -764,7 +764,7 @@
       "mnemonic": "今 (now/present) + 天 (day). The present day — today!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Now forms meets day forms near the old gate.",
+        "story": "This exact day begins with rain on the windows.",
         "components": [
           {
             "hanzi": "今",
@@ -826,7 +826,7 @@
       "mnemonic": "看 (look) + 见 (perceive). You look and actually perceive — you see it!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Look forms meets perceive forms near the old gate.",
+        "story": "At last, her friend appears through the crowd.",
         "components": [
           {
             "hanzi": "看",
@@ -877,7 +877,7 @@
       "mnemonic": "老 (old/experienced) + 师 (master). An experienced master — a teacher!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Old forms meets master forms near the old gate.",
+        "story": "In class, the instructor writes examples across the board.",
         "components": [
           {
             "hanzi": "老",
@@ -964,7 +964,7 @@
       "mnemonic": "妈 = 女 (woman) + 马 (horse). The woman strong as a horse who carries everything — mom!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "She carries the whole household through the morning rush.",
+        "story": "She packs lunch and checks every coat before dawn.",
         "components": [
           {
             "hanzi": "女",
@@ -984,7 +984,7 @@
       "mnemonic": "口 (mouth) + 马 (horse). Your mouth gallops forward like a horse with a question — right?",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A bowl and open lips meets hooves near the old gate.",
+        "story": "Sentence-ending tone rises, seeking confirmation from the listener.",
         "components": [
           {
             "hanzi": "口",
@@ -1075,7 +1075,7 @@
       "mnemonic": "米 (uncooked rice, looks like grains scattered on a plant) + 饭 (cooked meal). Rice prepared as a meal.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Rain meets cooked meal forms near the old gate.",
+        "story": "Steam lifts from white grains beside the evening dishes.",
         "components": [
           {
             "hanzi": "米",
@@ -1095,7 +1095,7 @@
       "mnemonic": "名 = 夕 (evening) + 口 (mouth). In the dark evening, you call out with your mouth — saying your name! 字 = a child 子 under a roof 宀, being given a name.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Evening forms meets a bowl and open lips near the old gate.",
+        "story": "He writes his own label at the page top.",
         "components": [
           {
             "hanzi": "夕",
@@ -1115,7 +1115,7 @@
       "mnemonic": "明 = 日 (sun) + 月 (moon). After the sun and moon cycle once more — tomorrow!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Sun forms meets moonlight near the old gate.",
+        "story": "After one night's sleep, the next day begins.",
         "components": [
           {
             "hanzi": "日",
@@ -1135,7 +1135,7 @@
       "mnemonic": "口 (mouth) + 那 (that). Mouth asking about 'that' one — which one? Where?",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A bowl and open lips meets that forms near the old gate.",
+        "story": "You point and ask for the correct place.",
         "components": [
           {
             "hanzi": "口",
@@ -1155,7 +1155,7 @@
       "mnemonic": "阝(place) + 刀 (knife) + 二. Pointing a knife at that place over there — that!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Place forms meets knife forms near the old gate.",
+        "story": "Point to the far option, not the nearby one.",
         "components": [
           {
             "hanzi": "阝",
@@ -1262,7 +1262,7 @@
       "mnemonic": "朋 = two 月 (moons) side by side — two people close as twin moons. 友 = two hands reaching out together.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Two hands reaching out together.",
+        "story": "Two people share trust and keep each other's secrets.",
         "components": [
           {
             "hanzi": "月",
@@ -1278,7 +1278,7 @@
       "mnemonic": "漂 has 氵(water) — beauty that flows like water. 亮 has 高 (high) + 几 — shining high and bright. Beautiful!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A stream meets high forms near the old gate.",
+        "story": "Her dress looks stunning under the evening lights.",
         "components": [
           {
             "hanzi": "氵",
@@ -1298,7 +1298,7 @@
       "mnemonic": "苹 = 艹 (grass/plant) + 平 (flat/level). 果 = 田 (field) + 木 (tree). The level fruit on a tree — an apple!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Grass forms meets flat forms near the old gate.",
+        "story": "Red fruit rolls from the basket onto the floor.",
         "components": [
           {
             "hanzi": "艹",
@@ -1337,7 +1337,7 @@
       "mnemonic": "前 (front/before) + 面 (face/side). The front face of something — in front of.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Lantern smoke curls above stones beside a quiet gate.",
+        "story": "The sign stands ahead of the bus stop.",
         "components": [
           {
             "hanzi": "前",
@@ -1444,7 +1444,7 @@
       "mnemonic": "认 = 讠(words) + 人 (person). 识 = 讠(words) + 只 (only). Trading words with a person — getting to know them!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Words forms meets a lone figure near the old gate.",
+        "story": "After introductions, you can recognize him on the street.",
         "components": [
           {
             "hanzi": "讠",
@@ -1490,7 +1490,7 @@
       "mnemonic": "商 (commerce/merchant) + 店 (shop). A merchant's shop — a store!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Lantern smoke curls above stones beside a quiet gate.",
+        "story": "Shelves of goods fill the neighborhood market.",
         "components": [
           {
             "hanzi": "商",
@@ -1521,7 +1521,7 @@
       "mnemonic": "上 (upper) + 午 (noon). The upper half before noon — morning!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Upper forms meets noon forms near the old gate.",
+        "story": "Before noon, sunlight climbs over the rooftops.",
         "components": [
           {
             "hanzi": "上",
@@ -1557,7 +1557,7 @@
       "mnemonic": "讠(words) + 隹 (short-tailed bird). Who is that bird you're talking about? Who?",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Words forms meets short-tailed bird forms near the old gate.",
+        "story": "You ask for the identity of the speaker.",
         "components": [
           {
             "hanzi": "讠",
@@ -1577,7 +1577,7 @@
       "mnemonic": "什 = 亻(person) + 十 (ten). 么 = tiny/small. A person with ten small questions — what?",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A lone figure meets ten forms near the old gate.",
+        "story": "You raise your hands, asking for the unknown item.",
         "components": [
           {
             "hanzi": "亻",
@@ -1608,7 +1608,7 @@
       "mnemonic": "时 = 日 (sun) + 寸 (inch). 候 = 亻(person) + waiting. Measuring the sun inch by inch — waiting for the right time.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Sun forms meets inch forms near the old gate.",
+        "story": "At that point, everyone falls silent and waits.",
         "components": [
           {
             "hanzi": "日",
@@ -1674,7 +1674,7 @@
       "mnemonic": "水 (water) + 果 (fruit). Juicy, water-filled fruit!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Lantern smoke curls above stones beside a quiet gate.",
+        "story": "Fresh produce fills the basket with sweet colors.",
         "components": [
           {
             "hanzi": "水",
@@ -1694,7 +1694,7 @@
       "mnemonic": "睡 = 目 (eye) + 垂 (droop). 觉 = to feel. Your eyes are drooping — time to sleep!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A sharp gaze meets droop forms near the old gate.",
+        "story": "After lights out, she closes her eyes and drifts.",
         "components": [
           {
             "hanzi": "目",
@@ -1821,7 +1821,7 @@
       "mnemonic": "天 (sky/heaven) + 气 (air/vapor). The air in the sky — weather!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Sky forms meets air forms near the old gate.",
+        "story": "Clouds gather, and the sky turns windy and cold.",
         "components": [
           {
             "hanzi": "天",
@@ -1861,7 +1861,7 @@
       "mnemonic": "同 (same) + 学 (study). People who study the same things — classmates!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Two figures trade notes beneath one roof after dusk.",
+        "story": "Two learners trade notes beneath one roof after dusk.",
         "components": [
           {
             "hanzi": "同",
@@ -1943,7 +1943,7 @@
       "mnemonic": "喜 = 士 (scholar) + 口 (mouth) + 豆 (bean). A scholar happily eating beans! 欢 = joy. Happy and joyful — to like!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A scholar happily eating beans! joy.",
+        "story": "Her face brightens whenever that song starts.",
         "components": [
           {
             "hanzi": "士",
@@ -1967,7 +1967,7 @@
       "mnemonic": "A line with a stroke hanging below it — something is underneath. Below!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Lantern smoke curls above stones beside a quiet gate.",
+        "story": "The cat hides beneath the table until noon.",
         "components": []
       }
     },
@@ -1978,7 +1978,7 @@
       "mnemonic": "下 (lower) + 午 (noon). The lower half after noon — afternoon!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Lower forms meets noon forms near the old gate.",
+        "story": "After noon, shadows lengthen across the schoolyard.",
         "components": [
           {
             "hanzi": "下",
@@ -1998,7 +1998,7 @@
       "mnemonic": "先 (first/before) + 生 (born/life). One who was born before you — an elder, Mr./Sir.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "First forms meets born forms near the old gate.",
+        "story": "The host greets the gentleman at the door.",
         "components": [
           {
             "hanzi": "先",
@@ -2018,7 +2018,7 @@
       "mnemonic": "现 (appear/present) + 在 (at/exist). Appearing and existing — right now!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "An alert ear meets at forms near the old gate.",
+        "story": "At this moment, the bell is ringing.",
         "components": [
           {
             "hanzi": "现",
@@ -2038,7 +2038,7 @@
       "mnemonic": "相 (mutual/appearance) + 心 (heart). Your heart examines appearances — thinking and wanting.",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Heart and eye pause while plans swirl in silent circles.",
+        "story": "He pauses, mind racing, longing for one more chance.",
         "components": [
           {
             "hanzi": "相",
@@ -2058,7 +2058,7 @@
       "mnemonic": "A vertical line with two small dots — something being divided into tiny pieces. Small!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Lantern smoke curls above stones beside a quiet gate.",
+        "story": "A tiny pebble rests beside the giant stone.",
         "components": []
       }
     },
@@ -2069,7 +2069,7 @@
       "mnemonic": "小 (small/young) + 姐 (older sister, 女 woman + 且 moreover). A young woman — Miss!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Small forms meets a quiet figure near the old gate.",
+        "story": "The maiden steps forward in a silk dress.",
         "components": [
           {
             "hanzi": "小",
@@ -2149,7 +2149,7 @@
       "mnemonic": "星 = 日 (sun) + 生 (born). 期 = a period of time. A period marked by the birth of new suns — a week of days!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Sun forms meets born forms near the old gate.",
+        "story": "Seven days pass, then the cycle starts again.",
         "components": [
           {
             "hanzi": "日",
@@ -2169,7 +2169,7 @@
       "mnemonic": "学 (to study) + 生 (born/life). A life devoted to study — a student!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "To study forms meets born forms near the old gate.",
+        "story": "A learner copies notes while listening in class.",
         "components": [
           {
             "hanzi": "学",
@@ -2189,7 +2189,7 @@
       "mnemonic": "学 = a child 子 under a roof with hands guiding. 习 = feathers 羽 practicing flight. Learning to fly — studying!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A child under a roof with hands guiding. feathers practicing flight.",
+        "story": "Each night, she reviews notes until midnight.",
         "components": []
       }
     },
@@ -2200,7 +2200,7 @@
       "mnemonic": "学 (study) + 校 (compare/school, 木 wood + 交 cross). Where students cross paths to study — school!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Study forms meets compare forms near the old gate.",
+        "story": "Children stream into campus when the first bell rings.",
         "components": [
           {
             "hanzi": "学",
@@ -2231,7 +2231,7 @@
       "mnemonic": "衣 looks like a robe with flowing sleeves. 服 = 月 (body) + 又 (hand) serving. What your body wears — clothes!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Body forms meets fingers near the old gate.",
+        "story": "A clean outfit hangs by the door after washing.",
         "components": [
           {
             "hanzi": "月",
@@ -2251,7 +2251,7 @@
       "mnemonic": "医 = 匸 (box) + 矢 (arrow). Removing arrows from wounds! 生 (life). One who saves lives — doctor!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Removing arrows from wounds.",
+        "story": "In the clinic, the healer checks pulse and breathing.",
         "components": [
           {
             "hanzi": "匸",
@@ -2275,7 +2275,7 @@
       "mnemonic": "医 (medicine/heal) + 院 (courtyard/institution). A medical institution — hospital!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Medicine forms meets courtyard forms near the old gate.",
+        "story": "Ambulances stop outside the medical center all night.",
         "components": [
           {
             "hanzi": "医",
@@ -2295,7 +2295,7 @@
       "mnemonic": "椅 = 木 (wood) + 奇 (strange/wonderful). A wonderful wooden invention to sit on — a chair!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Wood forms meets strange forms near the old gate.",
+        "story": "He pulls up a stool and sits nearby.",
         "components": [
           {
             "hanzi": "木",
@@ -2373,7 +2373,7 @@
       "mnemonic": "怎 = 乍 (suddenly) + 心 (heart). 么 = what. Your heart suddenly wonders — how?",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Suddenly forms meets a chest beat near the old gate.",
+        "story": "By what method did you solve this puzzle?",
         "components": [
           {
             "hanzi": "乍",
@@ -2393,7 +2393,7 @@
       "mnemonic": "怎么 (how) + 样 (manner/appearance). How is the manner of things — how about it?",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Lantern smoke curls above stones beside a quiet gate.",
+        "story": "What is your opinion on this plan?",
         "components": [
           {
             "hanzi": "怎么",
@@ -2433,7 +2433,7 @@
       "mnemonic": "中 (middle) + 午 (the noon hour). The middle of the day — noon!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Lantern smoke curls above stones beside a quiet gate.",
+        "story": "At midday, the sun stands high over the street.",
         "components": [
           {
             "hanzi": "中",
@@ -2453,7 +2453,7 @@
       "mnemonic": "亻(person) + 主 (master/owner). A person who is master of their place — they live there!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "A lone figure meets master forms near the old gate.",
+        "story": "After moving in, they remain in that house.",
         "components": [
           {
             "hanzi": "亻",
@@ -2473,7 +2473,7 @@
       "mnemonic": "桌 = 卜 + 日 on top of 木 (wood). A flat wooden surface lit by the sun — a table!",
       "mnemonicData": {
         "soundAnchor": "",
-        "story": "Wood forms moves through the courtyard at dusk.",
+        "story": "Books and pens spread across the wooden surface.",
         "components": [
           {
             "hanzi": "木",
