@@ -39,6 +39,7 @@ function extractConstNumber(source, name, fallback) {
 function loadModel(rootDir) {
   const source = readIndexHtml(rootDir);
   const vocab = extractConstArray(source, "VOCAB");
+  const radicals = extractConstArray(source, "RADICAL_DECK_CARDS");
   const tidbits = extractConstArray(source, "CLASSICAL_TIDBITS_RAW");
   const synonyms = extractConstObject(source, "TOKEN_SYNONYMS");
   const assignMatch = source.match(/Object\.assign\(TOKEN_SYNONYMS, \{([\s\S]*?)\n\}\);/);
@@ -94,11 +95,12 @@ function loadModel(rootDir) {
     return count;
   }
 
+  const cards = [...vocab, ...radicals];
   const cardMeaningTokens = new Map(
-    vocab.map((card) => [card.hanzi, extractMeaningTokens(card.english)])
+    cards.map((card) => [card.hanzi, extractMeaningTokens(card.english)])
   );
   const cardRawMeaningTokens = new Map(
-    vocab.map((card) => [card.hanzi, extractRawMeaningTokens(card.english)])
+    cards.map((card) => [card.hanzi, extractRawMeaningTokens(card.english)])
   );
   const tidbitMeta = tidbits.map((tidbit, index) => ({
     tidbit,
@@ -111,6 +113,8 @@ function loadModel(rootDir) {
   return {
     source,
     vocab,
+    radicals,
+    cards,
     tidbits,
     maxQuoteChars,
     cardMeaningTokens,

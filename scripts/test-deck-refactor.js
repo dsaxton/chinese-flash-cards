@@ -47,7 +47,8 @@ function testDeckData(source) {
     assert(typeof card.hanzi === "string" && card.hanzi, `${id} missing hanzi`);
     assert(typeof card.pinyin === "string" && card.pinyin, `${id} missing pinyin`);
     assert(typeof card.english === "string" && card.english, `${id} missing english`);
-    assert(typeof card.mnemonic === "string" && card.mnemonic, `${id} missing mnemonic`);
+    assert(typeof card.mnemonic === "string", `${id} missing mnemonic`);
+    assert(card.mnemonicData && typeof card.mnemonicData === "object", `${id} missing mnemonicData`);
   }
 }
 
@@ -79,220 +80,97 @@ function testRoutes(source) {
     /const route = \["decks", "study"\]\.includes\(path\) \? path : "decks";/.test(source),
     "parseRoute should only allow decks/study routes"
   );
-  assert(!/\["review", "pinyin", "radicals"\]/.test(source), "Old review/pinyin/radicals route set still found");
 }
 
-function testEnglishToHanziHintStage(source) {
-  const branchStart = source.indexOf("if (isEnglishToHanzi) {");
-  assert(branchStart !== -1, "Missing isEnglishToHanzi render branch");
-  const branchEnd = source.indexOf("} else {", branchStart);
-  assert(branchEnd !== -1, "Could not find end of isEnglishToHanzi branch");
-  const branch = source.slice(branchStart, branchEnd);
-
+function testUniversalStageFlow(source) {
+  assert(/const finalStage = 2;/.test(source), "finalStage should be fixed at 2 for universal 3-step flow");
   assert(
-    /if \(stage >= 1 && hintMnemonic\.text\)/.test(branch),
-    "English->Hanzi hint should remain visible from stage 1 onward"
-  );
-  assert(
-    /if \(stage >= 2 && stage < finalStage\)/.test(branch),
-    "English->Hanzi pinyin stage should appear at stage 2 before final reveal"
-  );
-  assert(
-    /if \(stage >= finalStage\)/.test(branch),
-    "English->Hanzi should have a final reveal block"
-  );
-  assert(
-    !/if \(stage === 1\)/.test(branch),
-    "English->Hanzi should not use stage-equality gating that drops prior info"
-  );
-  assert(
-    branch.includes("includeSoundAnchor: false"),
-    "English->Hanzi hint should disable sound-anchor phonetic clues"
-  );
-  assert(
-    branch.includes("includeChips: false"),
-    "English->Hanzi hint should hide component chips"
-  );
-  assert(
-    branch.includes("forbidPinyin: true"),
-    "English->Hanzi hint should sanitize pinyin from mnemonic hint text"
-  );
-  assert(
-    branch.includes("forbidEnglishAnswer: true"),
-    "English->Hanzi hint should sanitize English-answer leakage from hints"
-  );
-  assert(
-    branch.includes("forbidPhoneticCue: true"),
-    "English->Hanzi hint should sanitize phonetic-cue phrasing from hints"
-  );
-  assert(
-    branch.includes("forbidLiteralShapeHints: true"),
-    "English->Hanzi hint should suppress literal shape-description hints"
-  );
-  assert(
-    branch.includes("class=\"pinyin\""),
-    "English->Hanzi stage 2 should include a pinyin reveal"
-  );
-  assert(
-    branch.includes("class=\"hanzi\""),
-    "English->Hanzi final stage should include hanzi reveal"
-  );
-  assert(
-    branch.includes("related-radicals"),
-    "English->Hanzi final stage should include component chips"
-  );
-}
-
-function testHanziToEnglishIntermediateMnemonicStage(source) {
-  const elseStart = source.indexOf("} else {");
-  assert(elseStart !== -1, "Missing non-English->Hanzi render branch");
-  const branchEnd = source.indexOf("\n    if (stage >= finalStage) {", elseStart);
-  assert(branchEnd !== -1, "Could not locate end of non-English->Hanzi branch");
-  const branch = source.slice(elseStart, branchEnd);
-
-  const stage2Start = branch.indexOf("if (isHanziToEnglish && stage >= 2");
-  assert(stage2Start !== -1, "Missing Hanzi->English stage 2 mnemonic-only block");
-  const stage2Block = branch.slice(stage2Start, branch.indexOf("if (stage >= finalStage) {", stage2Start));
-  assert(
-    /const hintMnemonic = isHanziToEnglish[\s\S]*includeSoundAnchor: false/.test(branch),
-    "Hanzi->English stage 2 hint should disable sound-anchor phonetic clues"
-  );
-  assert(
-    /const hintMnemonic = isHanziToEnglish[\s\S]*includeChips: false/.test(branch),
-    "Hanzi->English stage 2 should render mnemonic without chips"
-  );
-  assert(
-    /const hintMnemonic = isHanziToEnglish[\s\S]*forbidEnglishAnswer: true/.test(branch),
-    "Hanzi->English stage 2 should sanitize English-answer leakage"
-  );
-  assert(
-    /const hintMnemonic = isHanziToEnglish[\s\S]*forbidPhoneticCue: true/.test(branch),
-    "Hanzi->English stage 2 should sanitize phonetic-cue phrasing"
-  );
-  assert(
-    !stage2Block.includes("class=\"english\""),
-    "Hanzi->English stage 2 should not reveal English yet"
-  );
-  assert(
-    !/if \(isHanziToEnglish && stage === 2\)/.test(branch),
-    "Hanzi->English should not use stage-equality gating that drops prior info"
-  );
-}
-
-function testFinalStageFlow(source) {
-  assert(
-    /const finalStage = isHanziToEnglish \|\| isEnglishToHanzi \? 3 : 2;/.test(source),
-    "finalStage should be 3 for Hanzi->English and English->Hanzi, else 2"
-  );
-  assert(
-    /if \(stage >= finalStage\) \{[\s\S]*difficulty-buttons/.test(source),
-    "Difficulty buttons should appear only at final stage"
-  );
-  assert(
-    /if \(stage < finalStage\) \{[\s\S]*const hints =/.test(source),
-    "Tap hints should be shown only before final stage"
-  );
-  assert(
-    /if \(stage < finalStage\) \{[\s\S]*addEventListener\("click"/.test(source),
-    "Card click-to-advance should stop at final stage"
-  );
-  assert(
-    /\["tap to reveal mnemonic hint", "tap to reveal pinyin", "tap to reveal hanzi \+ full reveal"\]/.test(source),
-    "English->Hanzi should define 3 hint stages"
-  );
-  assert(
-    /\["tap to reveal pinyin", "tap to reveal mnemonic hint", "tap to reveal meaning"\]/.test(source),
-    "Hanzi->English should define 3 hint stages"
-  );
-}
-
-function testStageSkipLogic(source) {
-  assert(
-    /if \(isEnglishToHanzi && stage === 1\) \{[\s\S]*includeSoundAnchor: false,[\s\S]*forbidPinyin: true,[\s\S]*forbidEnglishAnswer: true,[\s\S]*forbidPhoneticCue: true,[\s\S]*forbidLiteralShapeHints: true,[\s\S]*if \(!hint\.text\) stage\+\+;[\s\S]*\}/.test(source),
-    "English->Hanzi should skip empty stage-1 mnemonic hint"
-  );
-  assert(
-    /if \(isEnglishToHanzi && stage === 2 && pinyinToAudioKeys\(card\.pinyin\)\.length === 0\) \{\s*stage\+\+;[\s\S]*\}/.test(source),
-    "English->Hanzi should skip stage-2 pinyin-only reveal when no playable pinyin keys exist"
-  );
-  assert(
-    /if \(isHanziToEnglish && stage === 2\) \{[\s\S]*includeSoundAnchor: false,[\s\S]*includeChips: false,[\s\S]*forbidEnglishAnswer: true,[\s\S]*forbidPhoneticCue: true,[\s\S]*if \(!hint\.text\) stage\+\+;[\s\S]*\}/.test(source),
-    "Hanzi->English should skip empty stage-2 mnemonic hint"
-  );
-}
-
-function testProgressiveRevealMonotonic(source) {
-  assert(
-    /if \(stage >= 1 && hintMnemonic\.text\)/.test(source),
-    "Progressive reveal: E2H hint should remain visible once revealed"
-  );
-  assert(
-    /if \(isHanziToEnglish && stage >= 2 && hintMnemonic && hintMnemonic\.text\)/.test(source),
-    "Progressive reveal: H2E hint should remain visible once revealed"
+    /const hints = \["tap to reveal pinyin", "tap to reveal full answer"\];/.test(source),
+    "All decks should use one shared hint sequence"
   );
   assert(
     /if \(stage >= 1\) \{[\s\S]*class="pinyin"/.test(source),
-    "Progressive reveal: pinyin shown at stage 1 should persist through later H2E stages"
+    "Stage 1 should reveal pinyin/audio for all decks"
   );
   assert(
-    /if \(stage >= finalStage\) \{[\s\S]*class="pinyin"[\s\S]*class="mnemonic"/.test(source),
-    "Progressive reveal: final stage should include accumulated reveal information"
+    /if \(stage >= finalStage\) \{[\s\S]*class="mnemonic"[\s\S]*related-radicals/.test(source),
+    "Final stage should reveal mnemonic and chips"
+  );
+  assert(
+    /if \(stage >= finalStage\) \{[\s\S]*class="cultural-tidbit"/.test(source),
+    "Final stage should include tidbit block when available"
+  );
+  assert(
+    /if \(isEnglishToHanzi\) \{[\s\S]*class="english"[\s\S]*\} else \{[\s\S]*class="hanzi"/.test(source),
+    "Prompt stage should branch by deck mode"
+  );
+  assert(
+    /if \(isEnglishToHanzi\) \{[\s\S]*class="hanzi"[\s\S]*\} else \{[\s\S]*class="english"/.test(source),
+    "Final reveal should show the opposite side of the prompt"
   );
 }
 
-function testLiteralShapeHintGuardrails(source) {
-  const literalBlockMatch = source.match(/const LITERAL_SHAPE_HINT_PATTERNS = \[([\s\S]*?)\n\];/);
-  assert(literalBlockMatch, "Missing LITERAL_SHAPE_HINT_PATTERNS");
-  const block = literalBlockMatch[1];
-  const requiredTokens = [
-    "looks like",
-    "shape",
-    "stroke",
-    "line",
-    "hook",
-    "vertical",
-    "horizontal",
+function testTidbitTokenCoverageIncludesRadicals(source) {
+  assert(
+    /const ALL_TIDBIT_CARDS = \[\.\.\.HSK1_VOCAB, \.\.\.RADICAL_DECK_CARDS\];/.test(source),
+    "Tidbit token maps should include radicals and HSK1 cards"
+  );
+  assert(
+    /ALL_TIDBIT_CARDS\.map\(\(card\) => \[card\.hanzi, extractMeaningTokens\(card\.english\)\]\)/.test(source) &&
+      /ALL_TIDBIT_CARDS\.map\(\(card\) => \[card\.hanzi, extractRawMeaningTokens\(card\.english\)\]\)/.test(source),
+    "Tidbit token maps should be derived from ALL_TIDBIT_CARDS"
+  );
+}
+
+function testRemovedHintStageLogic(source) {
+  const forbiddenPatterns = [
+    /forbidPinyin/,
+    /forbidLiteralShapeHints/,
+    /forbidEnglishAnswer/,
+    /forbidPhoneticCue/,
+    /hintContainsPinyin\(/,
+    /hintContainsEnglishAnswer\(/,
+    /hintContainsPhoneticCue\(/,
+    /isLiteralShapeHint\(/,
+    /tap to reveal mnemonic hint/,
+    /if \(isEnglishToHanzi && stage === 1\)/,
+    /if \(isHanziToEnglish && stage === 2\)/,
   ];
-  for (const token of requiredTokens) {
-    assert(
-      block.includes(token),
-      `LITERAL_SHAPE_HINT_PATTERNS should include a guard for "${token}"`
-    );
+
+  for (const pattern of forbiddenPatterns) {
+    assert(!pattern.test(source), `Old mnemonic hint stage logic should be removed (${pattern})`);
   }
+}
+
+function testNoSelfReferentialChips(source) {
   assert(
-    /if \(forbidLiteralShapeHints && isLiteralShapeHint\(story\)\) story = "";\s*/.test(source),
-    "Mnemonic builder should drop literal shape hints when forbidLiteralShapeHints is enabled"
+    /const filtered = chips\.filter\(\(item\) => item\.hanzi !== card\.hanzi\);/.test(source),
+    "buildMnemonicAndChips should filter out self-referential chips"
   );
 }
 
-function testHintSafetyHelpers(source) {
+function testRadicalSideFormDisplaySupport(source) {
   assert(
-    /function extractEnglishAnswerTokens\(english\)/.test(source),
-    "Missing extractEnglishAnswerTokens helper"
+    /const RADICAL_SIDE_FORM_FULL_FORM = \{[\s\S]*"讠": "言"[\s\S]*"扌": "手"[\s\S]*"阝": "阜"[\s\S]*\};/.test(source),
+    "Radical side-form mapping should include full-form references"
   );
   assert(
-    /function hintContainsEnglishAnswer\(text, english\)/.test(source),
-    "Missing hintContainsEnglishAnswer helper"
+    /function getRadicalSideFormFullForm\(deck, card\) \{[\s\S]*deck\.mode !== "radicals_to_english"[\s\S]*RADICAL_SIDE_FORM_FULL_FORM\[card\.hanzi\] \|\| "";[\s\S]*\}/.test(source),
+    "Side-form helper should return full-form reference for radicals deck cards"
   );
   assert(
-    /function hintContainsPhoneticCue\(text\)/.test(source),
-    "Missing hintContainsPhoneticCue helper"
+    /const RADICAL_SIDE_FORM_SHIFT = \{[\s\S]*"阝": "0\.16em"[\s\S]*\};/.test(source),
+    "Side-form mapping should include optical centering shifts"
   );
   assert(
-    /function hintContainsPinyin\(text, pinyin\)/.test(source),
-    "Missing hintContainsPinyin helper"
+    /function getRadicalSideFormShift\(deck, card\) \{[\s\S]*deck\.mode !== "radicals_to_english"[\s\S]*RADICAL_SIDE_FORM_SHIFT\[card\.hanzi\] \|\| "";[\s\S]*\}/.test(source),
+    "Side-form shift helper should return per-glyph optical centering offset"
   );
   assert(
-    /if \(forbidPinyin && hintContainsPinyin\(story, card\.pinyin\)\) story = "";/.test(source),
-    "Mnemonic builder should reject hints containing pinyin when forbidPinyin is enabled"
-  );
-  assert(
-    /if \(forbidEnglishAnswer && hintContainsEnglishAnswer\(story, card\.english\)\) story = "";/.test(source),
-    "Mnemonic builder should reject hints containing English answer leakage when forbidEnglishAnswer is enabled"
-  );
-  assert(
-    /if \(forbidPhoneticCue && hintContainsPhoneticCue\(story\)\) story = "";/.test(source),
-    "Mnemonic builder should reject hints containing phonetic-cue phrasing when forbidPhoneticCue is enabled"
+    /class="hanzi">\$\{escapeHtml\(card\.hanzi\)\}<\/div>/.test(source) &&
+      /class="radical-side-glyph" style="--side-shift:\$\{escapeHtml\(sideFormShift\)\}">\$\{escapeHtml\(card\.hanzi\)\}<\/span>/.test(source) &&
+      /if \(sideFormFullForm\) \{[\s\S]*class="radical-side-note">side form of \$\{escapeHtml\(sideFormFullForm\)\}<\/div>/.test(source),
+    "Radical side-form cards should apply optical centering and show a full-form note below"
   );
 }
 
@@ -314,32 +192,8 @@ function testStructuredMnemonicPipeline(source) {
     "Missing mergeSoundAnchorAndStory helper"
   );
   assert(
-    /function buildIntelligibleAnchorPhrase\(words\)/.test(source),
-    "Missing buildIntelligibleAnchorPhrase helper"
-  );
-  assert(
     /const upperWords = words\.map\(\(word\) => word\.toUpperCase\(\)\);/.test(source),
     "Sound-anchor words should be normalized to ALL CAPS"
-  );
-  assert(
-    /return `Think of \$\{words\.join\(", then "\)\}\.`;/.test(source),
-    "Sound anchor should be rendered as an intelligible English phrase"
-  );
-  assert(
-    /^.*if \(!parts\.every\(\(part\) => isEnglishAnchorWord\(part\)\)\) return "";.*$/m.test(source),
-    "Sound anchors must be English words only (no pronunciation fragments)"
-  );
-  assert(
-    /const soundAnchor = canonicalizeSoundAnchorPhrase\(raw\.soundAnchor\);/.test(source),
-    "Structured mnemonicData sound anchors should be canonicalized"
-  );
-  assert(
-    /const anchor = canonicalizeSoundAnchorPhrase\(soundAnchor\);/.test(source),
-    "mergeSoundAnchorAndStory should canonicalize sound anchors before rendering"
-  );
-  assert(
-    /const anchorPattern = new RegExp\(escapedAnchor, "i"\);/.test(source),
-    "mergeSoundAnchorAndStory should replace non-canonical case variants with canonical ALL-CAPS anchor"
   );
   assert(
     !/Sounds like:/.test(source),
@@ -349,8 +203,15 @@ function testStructuredMnemonicPipeline(source) {
 
 function testAudioFallbackIsSingleShot(source) {
   assert(
-    /function speak\(text, pinyin\) \{[\s\S]*let didFallback = false;[\s\S]*const fallbackToPinyin = \(\) => \{[\s\S]*if \(didFallback\) return;[\s\S]*didFallback = true;[\s\S]*if \(pinyin\) speakPinyin\(pinyin\);[\s\S]*\};[\s\S]*audio\.play\(\)\.catch\(\(\) => \{[\s\S]*fallbackToPinyin\(\);[\s\S]*\}\);[\s\S]*audio\.addEventListener\(\"error\", \(\) => \{[\s\S]*fallbackToPinyin\(\);[\s\S]*\}, \{ once: true \}\);[\s\S]*\}/.test(source),
+    /function speak\(text, pinyin\) \{[\s\S]*let didFallback = false;[\s\S]*const fallbackToPinyin = \(\) => \{[\s\S]*if \(didFallback\) return;[\s\S]*didFallback = true;[\s\S]*if \(pinyin\) speakPinyin\(pinyin\);[\s\S]*\};[\s\S]*audio\.play\(\)\.catch\(\(\) => \{[\s\S]*fallbackToPinyin\(\);[\s\S]*\}\);[\s\S]*audio\.addEventListener\("error", \(\) => \{[\s\S]*fallbackToPinyin\(\);[\s\S]*\}, \{ once: true \}\);[\s\S]*\}/.test(source),
     "speak() should use a single-shot pinyin fallback to avoid duplicate audio playback"
+  );
+}
+
+function testRadicalsUsePinyinAudio(source) {
+  assert(
+    /if \(deck\.mode === "radicals_to_english"\) speakPinyin\(card\.pinyin\);\s*else speak\(card\.hanzi, card\.pinyin\);/.test(source),
+    "Radicals deck speaker should use direct pinyin syllable audio instead of character file audio"
   );
 }
 
@@ -361,15 +222,14 @@ function main() {
   testDeckData(source);
   testStorageKeysAndMigration(source);
   testRoutes(source);
-  testEnglishToHanziHintStage(source);
-  testHanziToEnglishIntermediateMnemonicStage(source);
-  testFinalStageFlow(source);
-  testStageSkipLogic(source);
-  testProgressiveRevealMonotonic(source);
-  testLiteralShapeHintGuardrails(source);
-  testHintSafetyHelpers(source);
+  testUniversalStageFlow(source);
+  testTidbitTokenCoverageIncludesRadicals(source);
+  testRemovedHintStageLogic(source);
+  testNoSelfReferentialChips(source);
+  testRadicalSideFormDisplaySupport(source);
   testStructuredMnemonicPipeline(source);
   testAudioFallbackIsSingleShot(source);
+  testRadicalsUsePinyinAudio(source);
 
   console.log("deck refactor regression test passed");
 }

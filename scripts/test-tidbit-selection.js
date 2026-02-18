@@ -16,6 +16,12 @@ function findCard(hanzi) {
   return card;
 }
 
+function findAnyCard(hanzi) {
+  const card = (model.cards || []).find((item) => item.hanzi === hanzi);
+  if (!card) throw new Error(`Missing card: ${hanzi}`);
+  return card;
+}
+
 function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
@@ -42,8 +48,29 @@ for (const hanzi of ["的", "得", "些"]) {
   assert(!picked, `Expected no tidbit for ${hanzi}, got ${picked && picked.quote}`);
 }
 
+// Radicals should be eligible when meaning overlap is strong, without forcing weak overlaps.
+const woodRadical = findAnyCard("木");
+const woodTidbit = pickTidbitForCard(model, woodRadical, opts);
+assert(woodTidbit, "Expected a tidbit for radical 木");
+assert(
+  new Set(["桃李不言，下自成蹊。"]).has(woodTidbit.quote),
+  `Unexpected tidbit for radical 木: ${woodTidbit.quote}`
+);
+
+const waterRadical = findAnyCard("水");
+const waterTidbit = pickTidbitForCard(model, waterRadical, opts);
+assert(waterTidbit, "Expected a tidbit for radical 水");
+assert(
+  new Set(["上善若水。", "兵无常势，水无常形。"]).has(waterTidbit.quote),
+  `Unexpected tidbit for radical 水: ${waterTidbit.quote}`
+);
+
+const weakRadical = findAnyCard("阝");
+const weakTidbit = pickTidbitForCard(model, weakRadical, opts);
+assert(!weakTidbit, `Expected no forced tidbit for radical 阝, got ${weakTidbit && weakTidbit.quote}`);
+
 // Candidate pool should stay bounded to reduce repetition.
-for (const card of model.vocab) {
+for (const card of model.cards || model.vocab) {
   const { candidates } = getCandidatesForCard(model, card);
   assert(candidates.length <= 6, `Candidate pool exceeds 6 for ${card.hanzi}`);
 }

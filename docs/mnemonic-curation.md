@@ -42,9 +42,9 @@ node scripts/migrate-mnemonic-data.js
 ## Quality rules
 
 - No English answer tokens in story text.
-- No direct pinyin or pinyin-like fragments in hint-stage text.
+- No direct pinyin or pinyin-like fragments in story text.
 - No explicit phonetic cue phrasing (`sounds like`, `think of`) in story text.
-- No literal shape-descriptor phrasing for English-to-Hanzi hint stories.
+- No literal shape-descriptor phrasing in stories.
 - Sound anchors, when used, must be canonical `Think of ALL CAPS.` English phrases.
 
 ## Structured format
@@ -59,4 +59,4 @@ mnemonicData: {
 }
 ```
 
-If a card cannot meet rules, leave the story empty and the mnemonic hint stage will be skipped.
+If a card cannot meet rules, leave the story empty and no mnemonic text will be shown on full reveal.

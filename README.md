@@ -35,23 +35,11 @@ The app now uses a three-deck system with a deck selection landing screen:
 
 Each deck has independent SM-2 progress in `localStorage`.
 
-### `Hanzi -> English` flow
+### Universal Card Flow (all decks)
 
-1. Stage 0: hanzi
-2. Stage 1: pinyin + audio button
-3. Stage 2: mnemonic hint only (no English)
-4. Stage 3: full reveal (English + mnemonic + chips + difficulty buttons + optional cultural tidbit)
-
-### `English -> Hanzi` flow
-
-1. Stage 0: English prompt
-2. Stage 1: mnemonic hint (English-only; no hanzi, no pinyin, no chips)
-3. Stage 2: pinyin + audio only
-4. Stage 3: full reveal (hanzi + pinyin + audio + mnemonic + chips + difficulty buttons)
-
-### `Radicals -> English` flow
-
-Uses a curated common-radicals set and the same reveal pattern as Hanzi to English.
+1. Stage 0: prompt (`hanzi`, `english`, or `radical`)
+2. Stage 1: prompt + pinyin + audio
+3. Stage 2: full reveal (prompt + answer + pinyin/audio + mnemonic + chips + difficulty buttons + optional cultural tidbit)
 
 ## Spaced Repetition
 
@@ -106,16 +94,9 @@ Guardrails:
 - Sound anchors must resolve to intelligible English phrase output and use ALL CAPS for clue words (for example: `Think of TEA.`).
 - Non-English pronunciation fragments are rejected as anchors.
 - Structured `mnemonicData.soundAnchor` values are normalized to the same canonical ALL-CAPS format.
-- In `English -> Hanzi` stage 1:
-  - no pinyin
-  - no hanzi/chips
-  - no direct English-answer tokens
-  - no phonetic cue phrases (for example `think of ...` / `sounds like ...`)
-  - literal shape-description hints are suppressed (`looks like`, `stroke`, `line`, etc.)
-- In hint-only stages (`English -> Hanzi` stage 1, `Hanzi -> English` stage 2):
-  - sound anchors are disabled
-  - invalid stories are skipped (not rewritten)
-  - empty stories intentionally skip the mnemonic hint stage
+- Mnemonics appear only on full reveal (not intermediate stages).
+- Invalid stories are skipped at data level (not rewritten at runtime).
+- Empty stories intentionally hide the mnemonic line for that card.
 
 ## Mnemonic Curation
 
@@ -141,7 +122,7 @@ See `docs/mnemonic-curation.md` for full workflow details.
 
 ## Cultural Tidbits
 
-Short quotes from classical Chinese sources are selected via English-meaning token overlap and displayed on `Hanzi to English` cards when a strong match exists.
+Short quotes from classical Chinese sources are selected via English-meaning token overlap and displayed on full-reveal cards across all decks when a strong match exists.
 
 ## Tests
 

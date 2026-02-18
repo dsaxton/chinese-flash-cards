@@ -1,44 +1,59 @@
-# Current State
+# Plan
 
-Implemented:
+## Priority 1: Mnemonic Quality Cleanup
 
-- 3-deck flow with per-deck progress + migration from legacy single-deck storage.
-- Stage-flow refactor:
-  - `Hanzi to English`: Hanzi -> pinyin/audio -> mnemonic hint -> full reveal.
-  - `English to Hanzi`: English -> mnemonic hint -> pinyin/audio -> full reveal.
-  - `Radicals to English`: unchanged 2-stage reveal to full answer.
-- Hint-safety guardrails in hint-only stages:
-  - no direct pinyin leakage (where applicable),
-  - no English-answer token leakage,
-  - no explicit phonetic cue phrases (`think of ...`, `sounds like ...`),
-  - no literal shape-description hints in E2H stage 1.
-- Mnemonic cleanup/migration completed:
-  - every card now has structured `mnemonicData` (`soundAnchor`, `story`, `components`),
-  - stories that violate constraints are removed from data (empty story), and mnemonic hint stage is skipped for those cards,
-  - radicals deck is fully curated with non-empty compliant stories,
-  - HSK1 deck has no hint-safety violations (audit clean).
-- Tooling added:
-  - `scripts/build-mnemonic-seeds.js` (Make Me a Hanzi + optional cross-reference imports),
-  - `scripts/audit-mnemonics.js` (deck-level quality audit),
-  - `scripts/migrate-mnemonic-data.js` (one-time migration to structured data),
-  - `scripts/test-mnemonic-curation.js` (data-first regression checks).
-- Regression coverage includes full-deck hint safety + mnemonic curation tests.
+### Goal
+Upgrade mnemonic content so every retained story is a real memory aid (not structural filler), while preserving the no-answer/no-pronunciation-leak rules.
 
-# Remaining Work
+### Work
+1. Audit both decks for non-mnemonic stories.
+2. Remove non-mnemonic story text directly from source data.
+3. Rewrite replacements using Make Me a Hanzi + community story references.
+4. Keep only stories that are concrete, visual, and non-leaking.
+5. **Write sound anchors — currently missing from every card (all 311
+   `soundAnchor` fields are empty).** The infrastructure exists but the data
+   was never written. A sound anchor is an English word or phrase that
+   approximates the syllable sound, written in ALL CAPS and integrated
+   naturally into the story sentence. Example: 好 (hǎo) — "HOW wonderful
+   when a woman and child are together." without one, the mnemonic only aids
+   meaning recall, not pronunciation. Rules:
+   - Must be a real English word/phrase, not a phonetic fragment
+   - Must read naturally in the sentence (not feel bolted on)
+   - ALL CAPS so it stands out visually
+   - Must not leak the English meaning of the card
 
-## Mnemonics
+### Acceptance
+1. `scripts/audit-mnemonics.js` reports no violations.
+2. Story quality spot checks pass for a representative HSK1 subset.
 
-1. Increase non-empty curated story coverage for HSK1 (currently many cards intentionally skip hint stage).
-2. Improve sound-anchor quality for full-reveal contexts.
-   - keep anchors intelligible, natural, and in ALL CAPS,
-   - continue rejecting non-English pronunciation fragments.
+## Priority 2: Cultural Tidbit Quality Expansion
 
-## Tests
+### Goal
+Improve quote quality/coverage now that tidbits are available across all decks.
 
-1. Add stronger curated fixture snapshots for a larger HSK1 subset.
-2. Add a CI gate for `scripts/audit-mnemonics.js --fail-on-violations`.
+### Work
+1. Expand tidbit corpus for more radical concepts with concrete semantic overlap.
+2. Curate/adjust relevance tags for better radical matches while preserving precision.
+3. Add spot-check fixtures for additional radicals beyond `木` and `水`.
+
+### Acceptance
+1. More radical cards surface high-quality tidbits where overlap is meaningful.
+2. Weak/abstract radicals still return `null` (no forced matches).
+
+## Priority 3: Test/Quality Gates
+
+### Goal
+Strengthen guardrails for future data updates.
+
+### Work
+1. Add stronger mnemonic fixture snapshots for larger HSK1 subsets.
+2. Add CI gate for `scripts/audit-mnemonics.js --fail-on-violations`.
+
+### Acceptance
+1. CI fails on mnemonic audit regressions.
+2. Fixture tests catch narrative-quality regressions early.
 
 ## Future
 
-- Study tips / guidance on how to combine the three decks effectively.
-- Tone imagery system pilot (evaluate memory benefit vs cognitive load).
+1. Study guidance for combining decks effectively.
+2. Tone imagery pilot (measure recall benefit vs added cognitive load).

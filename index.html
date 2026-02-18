@@ -76,9 +76,20 @@ header h1 {
   margin-bottom: 12px;
 }
 
+.radical-side-glyph {
+  display: inline-block;
+  transform: translateX(var(--side-shift, 0));
+}
+
 .pinyin {
   font-size: 1.4rem;
   color: #666;
+  margin-bottom: 8px;
+}
+
+.radical-side-note {
+  font-size: 0.82rem;
+  color: #8a8a8a;
   margin-bottom: 8px;
 }
 
@@ -1101,11 +1112,12 @@ function overlapCount(a, b) {
   return count;
 }
 
+const ALL_TIDBIT_CARDS = [...HSK1_VOCAB, ...RADICAL_DECK_CARDS];
 const CARD_MEANING_TOKENS = new Map(
-  HSK1_VOCAB.map((card) => [card.hanzi, extractMeaningTokens(card.english)])
+  ALL_TIDBIT_CARDS.map((card) => [card.hanzi, extractMeaningTokens(card.english)])
 );
 const CARD_RAW_MEANING_TOKENS = new Map(
-  HSK1_VOCAB.map((card) => [card.hanzi, extractRawMeaningTokens(card.english)])
+  ALL_TIDBIT_CARDS.map((card) => [card.hanzi, extractRawMeaningTokens(card.english)])
 );
 
 function normalizeHanText(text) {
@@ -1427,66 +1439,6 @@ function normalizeMnemonicData(card) {
   };
 }
 
-function hintContainsPinyin(text, pinyin) {
-  const rawText = String(text || "");
-  const lowered = rawText.toLowerCase();
-  const raw = String(pinyin || "").trim();
-  if (!raw) return false;
-  if (lowered.includes(raw.toLowerCase())) return true;
-  const plain = pinyinToAudioKeys(raw)
-    .map((key) => key.replace(/[1-5]$/, "").replaceAll("v", "u"))
-    .join(" ");
-  const tokens = plain.split(/\s+/).filter(Boolean);
-  return tokens.some((token) => new RegExp(`\\b${token}\\b`, "i").test(rawText));
-}
-
-const ENGLISH_MEANING_STOPWORDS = new Set([
-  "a", "an", "and", "are", "as", "at", "be", "for", "from", "in", "is", "of", "on",
-  "or", "the", "to", "too", "very", "with",
-]);
-
-function extractEnglishAnswerTokens(english) {
-  const words = String(english || "")
-    .toLowerCase()
-    .match(/[a-z]+/g) || [];
-  const out = [];
-  for (const word of words) {
-    if (word.length < 3) continue;
-    if (ENGLISH_MEANING_STOPWORDS.has(word)) continue;
-    out.push(word);
-  }
-  return out;
-}
-
-function hintContainsEnglishAnswer(text, english) {
-  const rawText = String(text || "");
-  return extractEnglishAnswerTokens(english)
-    .some((token) => new RegExp(`\\b${token}\\b`, "i").test(rawText));
-}
-
-function hintContainsPhoneticCue(text) {
-  return /\b(?:sounds?|sound)\s+like\b/i.test(String(text || "")) || /\bthink of\b/i.test(String(text || ""));
-}
-
-const LITERAL_SHAPE_HINT_PATTERNS = [
-  /\blooks like\b/i,
-  /\bshape\b/i,
-  /\bstroke(s)?\b/i,
-  /\bline(s)?\b/i,
-  /\bbox(es)?\b/i,
-  /\brectangle\b/i,
-  /\bcross\b/i,
-  /\bhook\b/i,
-  /\bvertical\b/i,
-  /\bhorizontal\b/i,
-];
-
-function isLiteralShapeHint(text) {
-  const normalized = String(text || "").trim();
-  if (!normalized) return false;
-  return LITERAL_SHAPE_HINT_PATTERNS.some((pattern) => pattern.test(normalized));
-}
-
 function playAudioSequence(urls) {
   if (urls.length === 0) return;
   let i = 0;
@@ -1750,6 +1702,26 @@ const resetBtn = document.getElementById("reset-btn");
 const RADICAL_MEANINGS = Object.fromEntries(
   RADICAL_DECK_CARDS.map((card) => [card.hanzi, card.english])
 );
+const RADICAL_SIDE_FORM_FULL_FORM = {
+  "讠": "言",
+  "氵": "水",
+  "扌": "手",
+  "忄": "心",
+  "亻": "人",
+  "钅": "金",
+  "纟": "糸",
+  "阝": "阜",
+};
+const RADICAL_SIDE_FORM_SHIFT = {
+  "讠": "0.12em",
+  "氵": "0.1em",
+  "扌": "0.1em",
+  "忄": "0.1em",
+  "亻": "0.1em",
+  "钅": "0.1em",
+  "纟": "0.1em",
+  "阝": "0.16em",
+};
 
 let activeDeckId = null;
 let progress = {};
@@ -1767,6 +1739,16 @@ function setActiveDeck(deckId) {
   saveActiveDeckId(deckId);
   progress = loadDeckProgress(deckId);
   startNewLessonFromProgress();
+}
+
+function getRadicalSideFormFullForm(deck, card) {
+  if (deck.mode !== "radicals_to_english") return "";
+  return RADICAL_SIDE_FORM_FULL_FORM[card.hanzi] || "";
+}
+
+function getRadicalSideFormShift(deck, card) {
+  if (deck.mode !== "radicals_to_english") return "";
+  return RADICAL_SIDE_FORM_SHIFT[card.hanzi] || "";
 }
 
 function startNewLessonFromProgress() {
@@ -1845,10 +1827,6 @@ function parseMnemonic(card) {
 function buildMnemonicAndChips(card, options = {}) {
   const includeSoundAnchor = options.includeSoundAnchor !== false;
   const includeChips = options.includeChips !== false;
-  const forbidPinyin = options.forbidPinyin === true;
-  const forbidEnglishAnswer = options.forbidEnglishAnswer === true;
-  const forbidPhoneticCue = options.forbidPhoneticCue === true;
-  const forbidLiteralShapeHints = options.forbidLiteralShapeHints === true;
   const mnemonicData = normalizeMnemonicData(card);
   const chips = [];
   const seen = new Set();
@@ -1890,12 +1868,14 @@ function buildMnemonicAndChips(card, options = {}) {
     }
     if (chips.length === 0) pushChip(card.hanzi, "word component");
   }
+  if (includeChips) {
+    // Avoid self-referential chips (notably radical cards like 木 -> "木 wood/tree").
+    const filtered = chips.filter((item) => item.hanzi !== card.hanzi);
+    chips.length = 0;
+    chips.push(...filtered);
+  }
 
-  let story = String(mnemonicData.story || "");
-  if (forbidPinyin && hintContainsPinyin(story, card.pinyin)) story = "";
-  if (forbidEnglishAnswer && hintContainsEnglishAnswer(story, card.english)) story = "";
-  if (forbidPhoneticCue && hintContainsPhoneticCue(story)) story = "";
-  if (forbidLiteralShapeHints && isLiteralShapeHint(story)) story = "";
+  const story = String(mnemonicData.story || "");
   const text = includeSoundAnchor
     ? mergeSoundAnchorAndStory(mnemonicData.soundAnchor, story)
     : story.trim();
@@ -1965,100 +1945,60 @@ function renderStudyDeck() {
 
   function render() {
     const isEnglishToHanzi = deck.mode === "english_to_hanzi";
-    const isHanziToEnglish = deck.mode === "hanzi_to_english";
-    const finalStage = isHanziToEnglish || isEnglishToHanzi ? 3 : 2;
-    const sameText = (a, b) => String(a || "").trim().toLowerCase() === String(b || "").trim().toLowerCase();
+    const finalStage = 2;
+    const sideFormFullForm = getRadicalSideFormFullForm(deck, card);
+    const sideFormShift = getRadicalSideFormShift(deck, card);
     let html = '<div class="card" id="flashcard">';
+    const parsedMnemonic = stage >= finalStage ? buildMnemonicAndChips(card) : null;
+    const tidbit = stage >= finalStage ? getCulturalTidbitForCard(card) : null;
 
     if (isEnglishToHanzi) {
-      const hintMnemonic = buildMnemonicAndChips(card, {
-        includeSoundAnchor: false,
-        includeChips: false,
-        forbidPinyin: true,
-        forbidEnglishAnswer: true,
-        forbidPhoneticCue: true,
-        forbidLiteralShapeHints: true,
-      });
-      const fullMnemonic = stage >= finalStage
-        ? buildMnemonicAndChips(card, {
-          includeSoundAnchor: true,
-          includeChips: true,
-        })
-        : null;
       html += `<div class="english">${card.english}</div>`;
-      if (stage >= 1 && hintMnemonic.text) {
-        if (stage < finalStage || !sameText(hintMnemonic.text, fullMnemonic?.text)) {
-          html += `<div class="mnemonic">${escapeHtml(hintMnemonic.text)}</div>`;
-        }
-      }
-      if (stage >= 2 && stage < finalStage) {
-        html += `<div class="pinyin">${card.pinyin}</div>`;
-        html += '<button class="speaker-btn" id="speak-btn" title="Play pronunciation">&#128264;</button>';
-      }
-      if (stage >= finalStage) {
-        const parsedMnemonic = fullMnemonic;
-        html += `<div class="hanzi">${card.hanzi}</div>`;
-        html += `<div class="pinyin">${card.pinyin}</div>`;
-        html += '<button class="speaker-btn" id="speak-btn" title="Play pronunciation">&#128264;</button>';
-        if (parsedMnemonic.text) {
-          html += `<div class="mnemonic">${escapeHtml(parsedMnemonic.text)}</div>`;
-        }
-        if (parsedMnemonic.chips.length > 0) {
-          html += '<div class="related-radicals">';
-          for (const item of parsedMnemonic.chips) {
-            html += `<span class="chip-link">${escapeHtml(item.hanzi)} ${escapeHtml(item.meaning)}</span>`;
-          }
-          html += "</div>";
-        }
-      }
     } else {
-      const hintMnemonic = isHanziToEnglish
-        ? buildMnemonicAndChips(card, {
-          includeSoundAnchor: false,
-          includeChips: false,
-          forbidEnglishAnswer: true,
-          forbidPhoneticCue: true,
-        })
-        : null;
-      const fullMnemonic = stage >= finalStage ? buildMnemonicAndChips(card) : null;
-      html += `<div class="hanzi">${card.hanzi}</div>`;
-      if (stage >= 1) {
-        html += `<div class="pinyin">${card.pinyin}</div>`;
-        html += '<button class="speaker-btn" id="speak-btn" title="Play pronunciation">&#128264;</button>';
+      if (sideFormShift) {
+        html += `<div class="hanzi"><span class="radical-side-glyph" style="--side-shift:${escapeHtml(sideFormShift)}">${escapeHtml(card.hanzi)}</span></div>`;
+      } else {
+        html += `<div class="hanzi">${escapeHtml(card.hanzi)}</div>`;
       }
-      if (isHanziToEnglish && stage >= 2 && hintMnemonic && hintMnemonic.text) {
-        if (stage < finalStage || !sameText(hintMnemonic.text, fullMnemonic?.text)) {
-          html += `<div class="mnemonic">${escapeHtml(hintMnemonic.text)}</div>`;
-        }
+      if (sideFormFullForm) {
+        html += `<div class="radical-side-note">side form of ${escapeHtml(sideFormFullForm)}</div>`;
       }
-      if (stage >= finalStage) {
-        const parsedMnemonic = fullMnemonic;
-        const tidbit = isHanziToEnglish ? getCulturalTidbitForCard(card) : null;
+    }
+
+    if (stage >= 1) {
+      html += `<div class="pinyin">${card.pinyin}</div>`;
+      html += '<button class="speaker-btn" id="speak-btn" title="Play pronunciation">&#128264;</button>';
+    }
+
+    if (stage >= finalStage) {
+      if (isEnglishToHanzi) {
+        html += `<div class="hanzi">${card.hanzi}</div>`;
+      } else {
         html += `<div class="english">${card.english}</div>`;
-        if (parsedMnemonic.text) {
-          html += `<div class="mnemonic">${escapeHtml(parsedMnemonic.text)}</div>`;
+      }
+      if (parsedMnemonic.text) {
+        html += `<div class="mnemonic">${escapeHtml(parsedMnemonic.text)}</div>`;
+      }
+      if (parsedMnemonic.chips.length > 0) {
+        html += '<div class="related-radicals">';
+        for (const item of parsedMnemonic.chips) {
+          html += `<span class="chip-link">${escapeHtml(item.hanzi)} ${escapeHtml(item.meaning)}</span>`;
         }
-        if (parsedMnemonic.chips.length > 0) {
-          html += '<div class="related-radicals">';
-          for (const item of parsedMnemonic.chips) {
-            html += `<span class="chip-link">${escapeHtml(item.hanzi)} ${escapeHtml(item.meaning)}</span>`;
-          }
-          html += "</div>";
+        html += "</div>";
+      }
+      if (tidbit) {
+        html += '<div class="cultural-tidbit">';
+        html += `<div class="cultural-quote">${escapeHtml(tidbit.quote)}</div>`;
+        if (tidbit.translation) {
+          html += `<div class="cultural-translation">${escapeHtml(tidbit.translation)}</div>`;
         }
-        if (tidbit) {
-          html += '<div class="cultural-tidbit">';
-          html += `<div class="cultural-quote">${escapeHtml(tidbit.quote)}</div>`;
-          if (tidbit.translation) {
-            html += `<div class="cultural-translation">${escapeHtml(tidbit.translation)}</div>`;
-          }
-          const attribution = getTidbitAttribution(tidbit);
-          html += '<div class="cultural-source">';
-          html += `&mdash; ${escapeHtml(attribution)}`;
-          html += ` · ${escapeHtml(tidbit.source)} · `;
-          html += `<a href="${escapeHtml(tidbit.url)}" target="_blank" rel="noopener noreferrer">source</a>`;
-          html += "</div>";
-          html += "</div>";
-        }
+        const attribution = getTidbitAttribution(tidbit);
+        html += '<div class="cultural-source">';
+        html += `&mdash; ${escapeHtml(attribution)}`;
+        html += ` · ${escapeHtml(tidbit.source)} · `;
+        html += `<a href="${escapeHtml(tidbit.url)}" target="_blank" rel="noopener noreferrer">source</a>`;
+        html += "</div>";
+        html += "</div>";
       }
     }
 
@@ -2072,11 +2012,7 @@ function renderStudyDeck() {
     }
 
     if (stage < finalStage) {
-      const hints = isEnglishToHanzi
-        ? ["tap to reveal mnemonic hint", "tap to reveal pinyin", "tap to reveal hanzi + full reveal"]
-        : isHanziToEnglish
-          ? ["tap to reveal pinyin", "tap to reveal mnemonic hint", "tap to reveal meaning"]
-          : ["tap to reveal pinyin", "tap to reveal meaning"];
+      const hints = ["tap to reveal pinyin", "tap to reveal full answer"];
       html += `<div class="hint">${hints[stage]}</div>`;
     }
 
@@ -2088,29 +2024,6 @@ function renderStudyDeck() {
     if (stage < finalStage) {
       document.getElementById("flashcard").addEventListener("click", () => {
         stage++;
-        if (isEnglishToHanzi && stage === 1) {
-          const hint = buildMnemonicAndChips(card, {
-            includeSoundAnchor: false,
-            includeChips: false,
-            forbidPinyin: true,
-            forbidEnglishAnswer: true,
-            forbidPhoneticCue: true,
-            forbidLiteralShapeHints: true,
-          });
-          if (!hint.text) stage++;
-        }
-        if (isEnglishToHanzi && stage === 2 && pinyinToAudioKeys(card.pinyin).length === 0) {
-          stage++;
-        }
-        if (isHanziToEnglish && stage === 2) {
-          const hint = buildMnemonicAndChips(card, {
-            includeSoundAnchor: false,
-            includeChips: false,
-            forbidEnglishAnswer: true,
-            forbidPhoneticCue: true,
-          });
-          if (!hint.text) stage++;
-        }
         render();
       });
     }
@@ -2120,7 +2033,8 @@ function renderStudyDeck() {
     if (speakBtn) {
       speakBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        speak(card.hanzi, card.pinyin);
+        if (deck.mode === "radicals_to_english") speakPinyin(card.pinyin);
+        else speak(card.hanzi, card.pinyin);
       });
     }
 
