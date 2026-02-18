@@ -110,7 +110,7 @@ All mnemonic content in `data/deck-data.json` is **original or LLM-generated**. 
 
 **Stories (`story`):** Initial stories were hand-written. Problem stories (fragments, answer leakers, incoherent anchors) were later rewritten by LLM and applied via `scripts/apply-story-rewrites.js`. External sources such as Koohii, Heisig/Arthur CSV, and Make Me a Hanzi are referenced as optional seed inputs in `build-mnemonic-seeds.js` but were never used to populate the committed data.
 
-**Coverage (current):** 90 HSK1 vocab cards have both anchor + story; 53 have story only; 0 have neither. All 35 radical cards have story only.
+**Coverage (current):** 90 HSK1 vocab cards have both anchor + story; 53 have story only; 0 have neither. All 35 radical cards now have both anchor + story.
 
 ### Tooling
 

@@ -165,6 +165,9 @@ function testRadicalsFullyCurated(radicals) {
       card.mnemonicData && typeof card.mnemonicData === "object",
       `${label}: radicals deck entries must use mnemonicData`
     );
+    const anchor = String(card.mnemonicData.soundAnchor || "").trim();
+    assert(anchor.length > 0, `${label}: radical cards must include soundAnchor`);
+    assertCanonicalSoundAnchor(anchor, label);
     const story = getStoryText(card);
     assert(story.length > 0, `${label}: story must be non-empty`);
     assert(!hintContainsEnglishAnswer(story, card.english), `${label}: story leaks English answer token`);
@@ -175,10 +178,15 @@ function testRadicalsFullyCurated(radicals) {
     assert(!isLikelyIncoherentStory(story), `${label}: story appears incoherent`);
     assert(!isLikelyAbstractStory(story), `${label}: story appears abstract/non-scene`);
     assert(
-      !isLikelyComponentOnlyStory(story, { hasSoundAnchor: false, english: card.english }),
+      !isLikelyComponentOnlyStory(story, { hasSoundAnchor: true, english: card.english }),
       `${label}: story appears to rely only on component/radical explanation`
     );
-    assertCanonicalSoundAnchor(card.mnemonicData.soundAnchor, label);
+    const anchorWords = extractAnchorWords(anchor);
+    assert(anchorWords.length > 0, `${label}: unable to parse anchor word`);
+    assert(
+      anchorIntegratedInStory(anchorWords, story),
+      `${label}: anchor must be integrated in story text`
+    );
   }
 }
 

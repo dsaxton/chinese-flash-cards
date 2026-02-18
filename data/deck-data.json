@@ -5217,8 +5217,8 @@
       "english": "mouth",
       "mnemonic": "An open mouth shape, like a square speaking.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "At the village gate, a speaker calls everyone to gather.",
+        "soundAnchor": "Think of CO.",
+        "story": "CO bell calls villagers together at the old gate.",
         "components": []
       }
     },
@@ -5229,8 +5229,8 @@
       "english": "person",
       "mnemonic": "Two legs walking together form a person.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A lone traveler strides between two roads at dawn.",
+        "soundAnchor": "Think of RUN.",
+        "story": "RUN footsteps mark one traveler crossing the dawn road.",
         "components": []
       }
     },
@@ -5241,8 +5241,8 @@
       "english": "woman",
       "mnemonic": "A kneeling figure traditionally used for woman.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "An old pictograph shows a calm figure in a respectful posture.",
+        "soundAnchor": "Think of NEW.",
+        "story": "NEW etiquette honors a calm figure with lowered gaze.",
         "components": []
       }
     },
@@ -5253,8 +5253,8 @@
       "english": "child",
       "mnemonic": "A child with outstretched arms learning to walk.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "An heir takes first steps while family watches nearby.",
+        "soundAnchor": "Think of ZOO.",
+        "story": "ZOO applause erupts as the heir takes first steps.",
         "components": []
       }
     },
@@ -5265,8 +5265,8 @@
       "english": "hand",
       "mnemonic": "Looks like fingers and palm reaching out.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A helper reaches forward to pass a tool to a friend.",
+        "soundAnchor": "Think of SHOW.",
+        "story": "SHOW palms pass a tool across the crowded bench.",
         "components": []
       }
     },
@@ -5277,8 +5277,8 @@
       "english": "heart",
       "mnemonic": "The shape suggests chambers and emotion inside.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A quiet center holds feeling, resolve, and intention together.",
+        "soundAnchor": "Think of SIGH.",
+        "story": "SIGH, resolve steadies when danger closes in.",
         "components": []
       }
     },
@@ -5289,8 +5289,8 @@
       "english": "water",
       "mnemonic": "A central stream with side splashes: flowing water.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Streams branch from one source and rush outward through a valley.",
+        "soundAnchor": "Think of SWAY.",
+        "story": "SWAY currents split from one source through the valley.",
         "components": []
       }
     },
@@ -5301,8 +5301,8 @@
       "english": "fire",
       "mnemonic": "Flames rising from a central spark.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A camp spark jumps to dry wood and grows bright by night.",
+        "soundAnchor": "Think of WORE.",
+        "story": "WORE sparks leap to dry branches at midnight.",
         "components": []
       }
     },
@@ -5313,8 +5313,8 @@
       "english": "wood; tree",
       "mnemonic": "Trunk, branches, and roots form a tree.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Timbers are stacked by a workshop after a storm.",
+        "soundAnchor": "Think of MOO.",
+        "story": "MOO carts unload timber beside the workshop wall.",
         "components": []
       }
     },
@@ -5325,8 +5325,8 @@
       "english": "sun; day",
       "mnemonic": "A boxed sun with a mark inside.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Dawn arrives and the market opens at first light.",
+        "soundAnchor": "Think of RIB.",
+        "story": "RIB clocks strike as first light opens the market.",
         "components": []
       }
     },
@@ -5337,8 +5337,8 @@
       "english": "moon; body",
       "mnemonic": "A crescent-like form for moon and flesh.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A night lantern hangs over the harbor and marks a cycle.",
+        "soundAnchor": "Think of YOU.",
+        "story": "YOU lantern hangs above the harbor through one cycle.",
         "components": []
       }
     },
@@ -5349,8 +5349,8 @@
       "english": "speech",
       "mnemonic": "Words stacked above a mouth line.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A public declaration is announced before the crowd.",
+        "soundAnchor": "Think of YEN.",
+        "story": "YEN banners announce a formal declaration before the crowd.",
         "components": []
       }
     },
@@ -5361,8 +5361,8 @@
       "english": "eat; food",
       "mnemonic": "A lid above food being eaten.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Steam rises from a shared meal in a busy kitchen.",
+        "soundAnchor": "Think of SHE.",
+        "story": "SHE steam rises as bowls arrive from the kitchen.",
         "components": []
       }
     },
@@ -5373,8 +5373,8 @@
       "english": "door; gate",
       "mnemonic": "A doorway seen from the front.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A city entrance swings wide for new visitors.",
+        "soundAnchor": "Think of MAN.",
+        "story": "MAN guards swing the city entrance wide for newcomers.",
         "components": []
       }
     },
@@ -5385,8 +5385,8 @@
       "english": "walk; movement",
       "mnemonic": "A path mark showing motion forward.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A traveler follows a winding route across town.",
+        "soundAnchor": "Think of CHAIR.",
+        "story": "CHAIR wheels roll as the traveler follows the route.",
         "components": []
       }
     },
@@ -5397,8 +5397,8 @@
       "english": "grass; plant",
       "mnemonic": "Sprouting strokes on top of plant words.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Fresh herbs spread across the hillside after rain.",
+        "soundAnchor": "Think of COW.",
+        "story": "COW bells ring over fresh herbs on the hillside.",
         "components": []
       }
     },
@@ -5409,8 +5409,8 @@
       "english": "speech (side form)",
       "mnemonic": "Compressed speech radical on the left side.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A low voice slips through the doorway before dawn.",
+        "soundAnchor": "Think of YEN.",
+        "story": "YEN whispers slip through the doorway before dawn.",
         "components": []
       }
     },
@@ -5421,8 +5421,8 @@
       "english": "water (side form)",
       "mnemonic": "Three drops of water on the left.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A narrow stream runs down dark stone into a basin.",
+        "soundAnchor": "Think of SWAY.",
+        "story": "SWAY stream runs along dark stone into a basin.",
         "components": []
       }
     },
@@ -5433,8 +5433,8 @@
       "english": "hand (side form)",
       "mnemonic": "Hand radical squeezed to fit the left side.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Fingers grip a rope and yank with sudden force.",
+        "soundAnchor": "Think of SHOW.",
+        "story": "SHOW grip tightens as fingers yank the rope hard.",
         "components": []
       }
     },
@@ -5445,8 +5445,8 @@
       "english": "heart (side form)",
       "mnemonic": "Heart radical in narrow side form.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A chest beat quickens as footsteps near the gate.",
+        "soundAnchor": "Think of SIGH.",
+        "story": "SIGH pulse quickens when footsteps near the gate.",
         "components": []
       }
     },
@@ -5457,8 +5457,8 @@
       "english": "person (side form)",
       "mnemonic": "Narrow person radical standing on the left.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A lone figure leans forward mid-step on the road.",
+        "soundAnchor": "Think of RUN.",
+        "story": "RUN silhouette leans forward mid-step on the road.",
         "components": []
       }
     },
@@ -5469,8 +5469,8 @@
       "english": "roof",
       "mnemonic": "A sheltering roof over what is below.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A shelter sign is set above a household scene.",
+        "soundAnchor": "Think of MEAN.",
+        "story": "MEAN weather tests the shelter set above the household.",
         "components": []
       }
     },
@@ -5481,8 +5481,8 @@
       "english": "earth; soil",
       "mnemonic": "A mound of ground crossing a base line.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Packed ground sits firm under a village wall.",
+        "soundAnchor": "Think of TOO.",
+        "story": "TOO much rain packs the ground firm by the wall.",
         "components": []
       }
     },
@@ -5493,8 +5493,8 @@
       "english": "metal; gold",
       "mnemonic": "Metal pieces gathered under a roof-like top.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Forged coins cool on the workbench after casting.",
+        "soundAnchor": "Think of GIN.",
+        "story": "GIN coins cool on the bench after casting.",
         "components": []
       }
     },
@@ -5505,8 +5505,8 @@
       "english": "metal (side form)",
       "mnemonic": "Compressed metal radical used in compounds.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "An iron blade rings once on the workshop anvil.",
+        "soundAnchor": "Think of GIN.",
+        "story": "GIN hammer rings once against the anvil.",
         "components": []
       }
     },
@@ -5517,8 +5517,8 @@
       "english": "rain",
       "mnemonic": "Drops falling from a sky frame.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Dark clouds burst and streets turn slick.",
+        "soundAnchor": "Think of YOU.",
+        "story": "YOU hear clouds burst and alleys turn slick.",
         "components": []
       }
     },
@@ -5529,8 +5529,8 @@
       "english": "eye",
       "mnemonic": "An eye shape with pupil-like center.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A steady gaze locks onto a distant target.",
+        "soundAnchor": "Think of MOO.",
+        "story": "MOO gaze locks onto a distant moving target.",
         "components": []
       }
     },
@@ -5541,8 +5541,8 @@
       "english": "foot",
       "mnemonic": "A foot stepping forward from the ground.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A runner pushes off the track in one stride.",
+        "soundAnchor": "Think of ZOO.",
+        "story": "ZOO sprinter launches from the track in one stride.",
         "components": []
       }
     },
@@ -5553,8 +5553,8 @@
       "english": "mound; place",
       "mnemonic": "Slope/place marker at the side of characters.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A steep hillside path bends around wind-carved earth.",
+        "soundAnchor": "Think of FOO.",
+        "story": "FOO path bends around steep wind-carved earth.",
         "components": []
       }
     },
@@ -5565,8 +5565,8 @@
       "english": "grain",
       "mnemonic": "A stalk of grain with bending leaves.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Ripe stalks bend over fields at harvest time.",
+        "soundAnchor": "Think of HUH.",
+        "story": "HUH, ripe stalks bow low at harvest.",
         "components": []
       }
     },
@@ -5577,8 +5577,8 @@
       "english": "rice",
       "mnemonic": "Rice grains scattered from a center.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Loose kernels scatter from a sack in the pantry.",
+        "soundAnchor": "Think of ME.",
+        "story": "ME kernels scatter from a torn pantry sack.",
         "components": []
       }
     },
@@ -5589,8 +5589,8 @@
       "english": "silk thread",
       "mnemonic": "Three thread strokes for silk-related words.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A cocoon strand unspools across the loom in one pull.",
+        "soundAnchor": "Think of SEE.",
+        "story": "SEE strand unspools across the loom in one pull.",
         "components": []
       }
     },
@@ -5601,8 +5601,8 @@
       "english": "shell; money",
       "mnemonic": "Cowrie shell once used as currency.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Cowrie currency moved through ancient markets.",
+        "soundAnchor": "Think of BAY.",
+        "story": "BAY traders carried cowrie currency through crowded markets.",
         "components": []
       }
     },
@@ -5613,8 +5613,8 @@
       "english": "vehicle",
       "mnemonic": "An axle and wheels viewed from above.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Wheels and axle carry cargo down a long road.",
+        "soundAnchor": "Think of CHAIR.",
+        "story": "CHAIR axles rumble while wheels haul cargo downhill.",
         "components": []
       }
     },
@@ -5625,8 +5625,8 @@
       "english": "horse",
       "mnemonic": "A horse with mane and tail simplified.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A fast mount dashes across open ground.",
+        "soundAnchor": "Think of MAMA.",
+        "story": "MAMA reins snap as the fast mount crosses open ground.",
         "components": []
       }
     }

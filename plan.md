@@ -91,6 +91,7 @@ node scripts/validate-anchor-stories.js
 4. No literal shape-description filler.
 5. No multi-word comma-separated `soundAnchor` values (single-word ALL CAPS only).
 6. No "flashes into the scene" boilerplate.
+7. Radical cards require canonical `soundAnchor` + integrated anchor usage in story.
 
 ## Coherence Review Workflow
 

@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 // scripts/validate-anchor-stories.js
 //
-// Checks that all HSK1 cards with sound anchors have a canonical single-word
+// Checks that cards with sound anchors have a canonical single-word
 // anchor ("Think of WORD."), integrated in ALL CAPS within the story text.
 // Also flags stories that still contain forbidden "Think of" / "sounds like"
 // phonetic cue phrases.
 //
 // Usage:
 //   node scripts/validate-anchor-stories.js
+//   node scripts/validate-anchor-stories.js --mode all|hsk1|radicals
 //   node scripts/validate-anchor-stories.js --fail-on-missing
 
 const path = require("path");
@@ -34,8 +35,14 @@ function anchorIntegratedInStory(anchorWords, story) {
 
 function main() {
   const failOnMissing = process.argv.includes("--fail-on-missing");
+  const modeArgIndex = process.argv.indexOf("--mode");
+  const mode = modeArgIndex !== -1 ? String(process.argv[modeArgIndex + 1] || "all") : "all";
   const root = path.resolve(__dirname, "..");
-  const { hsk1Cards } = collectDeckCards(root);
+  const { hsk1Cards, radicals } = collectDeckCards(root);
+  const cards =
+    mode === "hsk1" ? hsk1Cards :
+      mode === "radicals" ? radicals :
+        [...hsk1Cards, ...radicals];
 
   let total = 0;
   let integrated = 0;
@@ -43,7 +50,7 @@ function main() {
   const cuePhraseLeaks = [];
   const malformedAnchors = [];
 
-  for (const card of hsk1Cards) {
+  for (const card of cards) {
     const md = card.mnemonicData || {};
     const soundAnchor = String(md.soundAnchor || "").trim();
     if (!soundAnchor) continue;
@@ -69,6 +76,7 @@ function main() {
   }
 
   const pct = total > 0 ? Math.round((100 * integrated) / total) : 0;
+  console.log(`Cards checked (${mode}):    ${cards.length}`);
   console.log(`Cards with sound anchors:   ${total}`);
   console.log(`Anchor integrated in story: ${integrated} / ${total} (${pct}%)`);
   console.log(`Not yet integrated:         ${missing.length}`);

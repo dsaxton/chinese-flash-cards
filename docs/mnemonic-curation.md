@@ -120,8 +120,8 @@ mnemonicData: {
 
 ```bash
 node scripts/audit-mnemonics.js --mode all --fail-on-violations   # full vocab + radicals quality gate
-node scripts/validate-anchor-stories.js             # anchor integration coverage
-node scripts/test-mnemonic-curation.js              # includes single-char HSK1 sound-anchor coverage >= 95%
+node scripts/validate-anchor-stories.js             # anchor integration coverage (HSK1 + radicals)
+node scripts/test-mnemonic-curation.js              # includes single-char HSK1 sound-anchor coverage >= 95% and radical anchor presence
 ```
 
 Note: coherence / concreteness / component-only checks are implemented as
