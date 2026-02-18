@@ -4,7 +4,7 @@ const path = require("path");
 
 const ENGLISH_MEANING_STOPWORDS = new Set([
   "a", "an", "and", "are", "as", "at", "be", "for", "from", "in", "is", "of", "on",
-  "or", "the", "to", "too", "very", "with",
+  "or", "the", "to", "with",
 ]);
 
 const LITERAL_SHAPE_HINT_PATTERNS = [
@@ -28,8 +28,8 @@ function loadDeckData(rootDir) {
   return readJson(path.join(rootDir, "data", "deck-data.json"));
 }
 
-function loadMnemonicData(rootDir) {
-  return readJson(path.join(rootDir, "data", "mnemonic-data.json"));
+function loadPhoneticConfig(rootDir) {
+  return readJson(path.join(rootDir, "data", "phonetic-config.json"));
 }
 
 function normalizePinyinAscii(pinyin) {
@@ -102,10 +102,12 @@ function extractEnglishAnswerTokens(english) {
 
 function hintContainsPinyin(text, pinyin) {
   const rawText = String(text || "");
-  const lowered = rawText.toLowerCase();
   const raw = String(pinyin || "").trim();
   if (!raw) return false;
-  if (lowered.includes(raw.toLowerCase())) return true;
+  const escapedRaw = raw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  if (new RegExp(`(?<![\\p{L}])${escapedRaw}(?![\\p{L}])`, "iu").test(rawText)) {
+    return true;
+  }
   const plain = normalizePinyinAscii(raw);
   const tokens = plain.split(/\s+/).filter(Boolean);
   return tokens.some((token) => new RegExp(`\\b${token}\\b`, "i").test(rawText));
@@ -114,7 +116,7 @@ function hintContainsPinyin(text, pinyin) {
 function hintContainsEnglishAnswer(text, english) {
   const rawText = String(text || "");
   return extractEnglishAnswerTokens(english)
-    .some((token) => new RegExp(`\\b${token}\\b`, "i").test(rawText));
+    .some((token) => new RegExp(`\\b${token}`, "i").test(rawText));
 }
 
 function hintContainsPhoneticCue(text) {
@@ -157,5 +159,5 @@ module.exports = {
   hintContainsPinyin,
   isLiteralShapeHint,
   loadDeckData,
-  loadMnemonicData,
+  loadPhoneticConfig,
 };

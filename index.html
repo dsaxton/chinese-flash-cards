@@ -332,7 +332,7 @@ function loadJsonSync(path) {
 // ---------------------------------------------------------------------------
 // Vocabulary data source — HSK 1 + HSK 2 (decks use HSK 1 subset + radicals set)
 // ---------------------------------------------------------------------------
-const DECK_DATA = loadJsonSync("./data/deck-data.proposed.json");
+const DECK_DATA = loadJsonSync("./data/deck-data.json");
 const VOCAB = DECK_DATA.vocab;
 const HSK1_CARD_COUNT = DECK_DATA.hsk1CardCount;
 const HSK1_VOCAB = VOCAB.slice(0, HSK1_CARD_COUNT);
@@ -634,9 +634,9 @@ function pinyinToAudioKeys(pinyin) {
 }
 
 // Candidate pinyin-to-anchor map. Only entries that pass English-word guardrails are used.
-const MNEMONIC_DATA = loadJsonSync("./data/mnemonic-data.json");
-const PHONETIC_ANCHOR_CANDIDATES = MNEMONIC_DATA.phoneticAnchorCandidates;
-const ENGLISH_SOUND_ANCHOR_WORDS = new Set(MNEMONIC_DATA.englishSoundAnchorWords);
+const PHONETIC_CONFIG = loadJsonSync("./data/phonetic-config.json");
+const PHONETIC_ANCHOR_CANDIDATES = PHONETIC_CONFIG.phoneticAnchorCandidates;
+const ENGLISH_SOUND_ANCHOR_WORDS = new Set(PHONETIC_CONFIG.englishSoundAnchorWords);
 
 function isEnglishAnchorWord(word) {
   return ENGLISH_SOUND_ANCHOR_WORDS.has(String(word || "").toUpperCase());
@@ -677,6 +677,17 @@ function mergeSoundAnchorAndStory(soundAnchor, story) {
   const text = String(story || "").trim();
   if (!anchor) return text;
   if (!text) return anchor;
+  const anchorWords = anchor
+    .replace(/^Think of\s+/i, "")
+    .replace(/[.?!]+$/, "")
+    .split(/,\s*/)
+    .map((word) => word.trim())
+    .filter(Boolean);
+  const hasAllAnchorWords = anchorWords.every((word) => {
+    const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return new RegExp(`(?<![A-Z\\-])${escaped}(?![A-Z\\-])`).test(text);
+  });
+  if (hasAllAnchorWords) return text;
   const escapedAnchor = anchor.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const anchorPattern = new RegExp(escapedAnchor, "i");
   if (anchorPattern.test(text)) return text.replace(anchorPattern, anchor);

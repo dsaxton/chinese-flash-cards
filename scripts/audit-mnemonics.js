@@ -39,11 +39,12 @@ function usage() {
   );
 }
 
-function collectViolations(card, profile) {
+function collectViolations(card, profile, options = {}) {
   const text = getStoryText(card);
   if (!text) return [];
   const violations = [];
-  if (profile.forbidEnglishAnswer && hintContainsEnglishAnswer(text, card.english)) {
+  const hasSoundAnchor = Boolean(options.hasSoundAnchor);
+  if (profile.forbidEnglishAnswer && !hasSoundAnchor && hintContainsEnglishAnswer(text, card.english)) {
     violations.push("english_answer_leak");
   }
   if (profile.forbidPinyin && hintContainsPinyin(text, card.pinyin)) {
@@ -113,8 +114,9 @@ function main() {
     const h2e = [];
     for (const card of hsk1Cards) {
       const text = getStoryText(card);
-      const e2hViolations = collectViolations(card, e2hProfile);
-      const h2eViolations = collectViolations(card, h2eProfile);
+      const hasSoundAnchor = Boolean(String(card.mnemonicData?.soundAnchor || "").trim());
+      const e2hViolations = collectViolations(card, e2hProfile, { hasSoundAnchor });
+      const h2eViolations = collectViolations(card, h2eProfile, { hasSoundAnchor });
       if (e2hViolations.length > 0) e2h.push({ ...card, text, violations: e2hViolations });
       if (h2eViolations.length > 0) h2e.push({ ...card, text, violations: h2eViolations });
     }

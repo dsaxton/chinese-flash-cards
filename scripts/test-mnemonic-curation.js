@@ -23,8 +23,8 @@ function assertCanonicalSoundAnchor(anchor, cardLabel) {
 
 function readAllowedAnchorWords() {
   const root = path.resolve(__dirname, "..");
-  const mnemonicPath = path.join(root, "data", "mnemonic-data.json");
-  const data = JSON.parse(fs.readFileSync(mnemonicPath, "utf8"));
+  const configPath = path.join(root, "data", "phonetic-config.json");
+  const data = JSON.parse(fs.readFileSync(configPath, "utf8"));
   const values = Array.isArray(data.englishSoundAnchorWords) ? data.englishSoundAnchorWords : [];
   return new Set(values.map((value) => String(value).toUpperCase()));
 }
@@ -37,9 +37,18 @@ function extractAnchorWords(anchor) {
   return body.match(/[A-Z]+/g) || [];
 }
 
+function anchorIntegratedInStory(anchorWords, story) {
+  const text = String(story || "");
+  return anchorWords.every((word) => {
+    const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return new RegExp(`(?<![A-Z\\-])${escaped}(?![A-Z\\-])`).test(text);
+  });
+}
+
 function testMnemonicDataCoverage(cards, minNonEmpty) {
   for (const card of cards) {
     const label = `${card.hanzi} (${card.english})`;
+    const hasSoundAnchor = Boolean(String(card.mnemonicData && card.mnemonicData.soundAnchor || "").trim());
     assert(
       card.mnemonicData && typeof card.mnemonicData === "object",
       `${label}: missing mnemonicData object`
@@ -52,7 +61,9 @@ function testMnemonicDataCoverage(cards, minNonEmpty) {
 
     const story = getStoryText(card);
     if (!story) continue;
-    assert(!hintContainsEnglishAnswer(story, card.english), `${label}: story leaks English answer token`);
+    if (!hasSoundAnchor) {
+      assert(!hintContainsEnglishAnswer(story, card.english), `${label}: story leaks English answer token`);
+    }
     assert(!hintContainsPinyin(story, card.pinyin), `${label}: story leaks pinyin token`);
     assert(!hintContainsPhoneticCue(story), `${label}: story uses forbidden phonetic cue phrasing`);
     assert(!isLiteralShapeHint(story), `${label}: story uses forbidden literal shape phrasing`);
@@ -67,6 +78,7 @@ function testMnemonicDataCoverage(cards, minNonEmpty) {
 
 function testSoundAnchorBatch(cards, allowedWords, minAnchors) {
   let anchorCount = 0;
+  let integratedAnchorCount = 0;
   for (const card of cards) {
     const label = `${card.hanzi} (${card.english})`;
     const anchor = String(card.mnemonicData && card.mnemonicData.soundAnchor || "").trim();
@@ -80,15 +92,19 @@ function testSoundAnchorBatch(cards, allowedWords, minAnchors) {
       assert(allowedWords.has(word), `${label}: anchor word "${word}" is outside allowed English anchor set`);
     }
 
-    assert(!hintContainsEnglishAnswer(anchor, card.english), `${label}: soundAnchor leaks English answer token`);
-
-    const mergedHint = `${anchor} ${story}`.trim();
-    assert(!hintContainsEnglishAnswer(mergedHint, card.english), `${label}: merged hint leaks English answer token`);
+    const anchorWords = extractAnchorWords(anchor);
+    if (anchorWords.length > 0 && anchorIntegratedInStory(anchorWords, story)) {
+      integratedAnchorCount++;
+    }
   }
 
   assert(
     anchorCount >= minAnchors,
     `Expected at least ${minAnchors} HSK1 cards with sound anchors, got ${anchorCount}`
+  );
+  assert(
+    integratedAnchorCount >= 75,
+    `Expected at least 75 HSK1 sound anchors integrated into stories, got ${integratedAnchorCount}`
   );
 }
 
@@ -109,6 +125,28 @@ function testRadicalsFullyCurated(radicals) {
   }
 }
 
+function testAnchorNarrativeRegressions(cards) {
+  const byHanzi = new Map(cards.map((card) => [card.hanzi, card]));
+  const checks = [
+    { hanzi: "喂", mustContain: ["hello", "phone"], mustNotContain: ["crackles first"] },
+    { hanzi: "会", mustContain: ["can"] },
+    { hanzi: "回", mustContain: ["return"] },
+    { hanzi: "块", mustContain: ["money"] },
+  ];
+
+  for (const check of checks) {
+    const card = byHanzi.get(check.hanzi);
+    assert(card, `Missing regression card ${check.hanzi}`);
+    const story = getStoryText(card).toLowerCase();
+    for (const token of check.mustContain || []) {
+      assert(story.includes(token), `${check.hanzi}: expected story to include "${token}"`);
+    }
+    for (const token of check.mustNotContain || []) {
+      assert(!story.includes(token), `${check.hanzi}: story should not include "${token}"`);
+    }
+  }
+}
+
 function main() {
   const root = path.resolve(__dirname, "..");
   const { hsk1Cards, radicals } = collectDeckCards(root);
@@ -118,6 +156,7 @@ function main() {
   testSoundAnchorBatch(hsk1Cards, allowedAnchorWords, 80);
   testMnemonicDataCoverage(radicals, radicals.length);
   testRadicalsFullyCurated(radicals);
+  testAnchorNarrativeRegressions(hsk1Cards);
 
   console.log("mnemonic curation test passed");
 }

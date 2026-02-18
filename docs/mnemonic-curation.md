@@ -59,11 +59,13 @@ node scripts/migrate-mnemonic-data.js
 
 ## Quality rules
 
-- No English answer tokens in story text.
+- For non-anchored stories: no English answer tokens in story text.
+- For anchored stories (`soundAnchor` non-empty): explicitly link anchor + meaning in one coherent scene.
 - No direct pinyin or pinyin-like fragments in story text.
 - No explicit phonetic cue phrasing (`sounds like`, `think of`) in story text.
 - No literal shape-descriptor phrasing in stories.
 - Sound anchors, when used, must be canonical `Think of ALL CAPS.` English phrases.
+- Avoid boilerplate templates; each story should be a natural sentence.
 
 ## Structured format
 
@@ -71,8 +73,8 @@ Use `mnemonicData` on cards:
 
 ```js
 mnemonicData: {
-  soundAnchor: "Think of SUN, then LIGHT.",
-  story: "A clear image that cues recall without revealing the answer.",
+  soundAnchor: "Think of CHEW.",
+  story: "CHEW every bite slowly when you need to eat.",
   components: [{ hanzi: "日", meaning: "sun" }],
 }
 ```

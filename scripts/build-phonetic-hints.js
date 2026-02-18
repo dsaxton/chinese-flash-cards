@@ -3,7 +3,7 @@ const path = require("path");
 const {
   collectDeckCards,
   collectHsk1UniqueChars,
-  loadMnemonicData,
+  loadPhoneticConfig,
 } = require("./mnemonic-quality-lib");
 const {
   buildAnchorSuggestion,
@@ -132,10 +132,10 @@ function generatePhoneticHints(args) {
   const { hsk1Cards } = collectDeckCards(root);
   const hsk1Chars = collectHsk1UniqueChars(hsk1Cards);
 
-  const mnemonicData = loadMnemonicData(root);
-  const anchorMap = mnemonicData.phoneticAnchorCandidates || {};
-  const englishWords = Array.isArray(mnemonicData.englishSoundAnchorWords)
-    ? mnemonicData.englishSoundAnchorWords
+  const phoneticConfig = loadPhoneticConfig(root);
+  const anchorMap = phoneticConfig.phoneticAnchorCandidates || {};
+  const englishWords = Array.isArray(phoneticConfig.englishSoundAnchorWords)
+    ? phoneticConfig.englishSoundAnchorWords
     : [];
   const englishWordSet = new Set(englishWords.map((w) => String(w).toUpperCase()));
 

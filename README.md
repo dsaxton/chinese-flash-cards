@@ -94,6 +94,8 @@ Guardrails:
 - Sound anchors must resolve to intelligible English phrase output and use ALL CAPS for clue words (for example: `Think of TEA.`).
 - Non-English pronunciation fragments are rejected as anchors.
 - Structured `mnemonicData.soundAnchor` values are normalized to the same canonical ALL-CAPS format.
+- Anchored stories must be coherent English and tie the anchor to the card meaning.
+- For anchored stories, meaning words are allowed by design; for non-anchored stories, answer leakage remains forbidden.
 - Mnemonics appear only on full reveal (not intermediate stages).
 - Invalid stories are skipped at data level (not rewritten at runtime).
 - Empty stories intentionally hide the mnemonic line for that card.
@@ -159,7 +161,7 @@ node scripts/report-unmatched-tidbits.js
 - `index.html`: app UI, data, routing, SM-2 logic
 - `data/deck-data.json`: raw deck data used by runtime loader
 - `data/tidbit-data.json`: raw tidbit data used by runtime loader
-- `data/mnemonic-data.json`: raw mnemonic/anchor data used by runtime loader
+- `data/phonetic-config.json`: phonetic anchor candidate + allow-list config
 - `sw.js`, `manifest.webmanifest`, `icons/`: PWA shell assets
 - `scripts/`: validation and coverage tooling
 
