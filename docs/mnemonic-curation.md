@@ -7,6 +7,8 @@ This project keeps runtime guardrails in the app, but mnemonic quality should be
 Preferred open sources for draft seeds:
 
 - Make Me a Hanzi (`dictionary.txt`) for structural etymology hints.
+- Unihan (`Unihan_Readings.txt`, `kPhonetic`) for phonetic-family classes.
+- CC-CEDICT (`cedict_ts.u8`) for character-level pinyin fallback.
 - Optional cross-reference stories from Arthur944 / Koohii exports.
 
 ## Build seed file
@@ -30,6 +32,22 @@ Fail CI-style when violations remain:
 ```bash
 node scripts/audit-mnemonics.js --mode hsk1 --fail-on-violations
 ```
+
+## Build phonetic hint suggestions
+
+```bash
+node scripts/build-phonetic-hints.js \
+  --makemeahanzi /path/to/dictionary.txt \
+  --unihan /path/to/Unihan_Readings.txt \
+  --cedict /path/to/cedict_ts.u8 \
+  --out data/mnemonic-seeds/hsk1-phonetic-hints.json
+```
+
+Output is per-character and includes:
+
+- pinyin source provenance (`deck` or `cedict`)
+- phonetic-family profile (MMH + Unihan)
+- scored `Think of ALL CAPS.` anchor suggestions for manual review
 
 ## Migrate legacy data
 

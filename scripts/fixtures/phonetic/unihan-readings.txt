@@ -1,0 +1,3 @@
+U+597D	kPhonetic	子
+U+5417	kPhonetic	马
+U+8A00	kPhonetic	言

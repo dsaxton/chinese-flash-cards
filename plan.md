@@ -10,17 +10,20 @@ Upgrade mnemonic content so every retained story is a real memory aid (not struc
 2. Remove non-mnemonic story text directly from source data.
 3. Rewrite replacements using Make Me a Hanzi + community story references.
 4. Keep only stories that are concrete, visual, and non-leaking.
-5. **Write sound anchors — currently missing from every card (all 311
-   `soundAnchor` fields are empty).** The infrastructure exists but the data
-   was never written. A sound anchor is an English word or phrase that
-   approximates the syllable sound, written in ALL CAPS and integrated
-   naturally into the story sentence. Example: 好 (hǎo) — "HOW wonderful
-   when a woman and child are together." without one, the mnemonic only aids
-   meaning recall, not pronunciation. Rules:
-   - Must be a real English word/phrase, not a phonetic fragment
-   - Must read naturally in the sentence (not feel bolted on)
-   - ALL CAPS so it stands out visually
-   - Must not leak the English meaning of the card
+5. **Expand sound-anchor coverage — currently 8/311 cards have anchors.**
+   - Build `scripts/suggest-sound-anchors.js` to ingest Make Me a Hanzi
+     (`phonetic`), Unihan (`kPhonetic`, `kMandarin`), and CC-CEDICT pinyin
+     to propose anchors for each syllable.
+   - Score candidates by phonetic-family agreement + English-word validity,
+     minus penalties for meaning leakage and overuse; emit top 1–3 into
+     `data/sound-anchor-suggestions.json` for manual review.
+   - Curate and write approved anchors into `mnemonicData.soundAnchor`,
+     integrating them naturally into story text with ALL-CAPS anchors and no
+     English-answer leakage.
+   - Add a CI check to fail when anchor coverage < 90% of HSK1 cards or when
+     any anchor is not ALL CAPS / not an English word.
+6. Purge filler “shape/side-form” blurbs (e.g., “This compact component appears in…”)
+   and replace with actual mnemonic imagery or leave empty to hide the line.
 
 ### Acceptance
 1. `scripts/audit-mnemonics.js` reports no violations.
@@ -57,3 +60,6 @@ Strengthen guardrails for future data updates.
 
 1. Study guidance for combining decks effectively.
 2. Tone imagery pilot (measure recall benefit vs added cognitive load).
+3. Post-lesson “Expand/Continue” option so learners can keep going after the daily queue:
+   offer to start the next lesson immediately (same deck), with an optional small cap
+   on extra new cards; include a simple replay of finished cards without timers.

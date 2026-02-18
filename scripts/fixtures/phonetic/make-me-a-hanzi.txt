@@ -1,0 +1,3 @@
+{"character":"好","decomposition":"女子","etymology":{"type":"ideographic","phonetic":"子","semantic":"女","hint":"woman + child"}}
+{"character":"吗","decomposition":"口马","etymology":{"type":"pictophonetic","phonetic":"马","semantic":"口","hint":"mouth + horse"}}
+{"character":"言","decomposition":"亠二口","etymology":{"type":"ideographic","phonetic":"","semantic":"言","hint":"speech"}}

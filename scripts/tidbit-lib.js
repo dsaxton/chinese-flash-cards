@@ -6,6 +6,9 @@ const RAW_STOPWORDS = new Set([
   "a", "an", "the", "to", "of", "and", "or", "is", "are", "be", "in", "on", "at", "for", "with",
   "from", "it", "its", "this", "that", "these", "those",
 ]);
+const NOISY_MEANING_TOKENS = new Set([
+  "side", "form", "particle", "measure", "general", "possessive",
+]);
 
 const GENERIC_CANONICAL_TOKENS = new Set([
   "exist", "continuation", "quantity",
@@ -71,6 +74,7 @@ function loadModel(rootDir) {
       const tok = raw.trim();
       if (!tok || tok.length < 2) continue;
       if (RAW_STOPWORDS.has(tok)) continue;
+      if (NOISY_MEANING_TOKENS.has(tok)) continue;
       tokens.add(tok);
     }
     return tokens;
@@ -80,6 +84,7 @@ function loadModel(rootDir) {
     const normalized = normalizeEnglishText(text);
     const tokens = new Set();
     for (const raw of normalized.split(" ")) {
+      if (NOISY_MEANING_TOKENS.has(raw.trim())) continue;
       const tok = canonicalToken(raw.trim());
       if (!tok || tok.length < 2) continue;
       tokens.add(tok);

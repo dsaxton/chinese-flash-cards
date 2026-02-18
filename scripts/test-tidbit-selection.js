@@ -65,9 +65,40 @@ assert(
   `Unexpected tidbit for radical 水: ${waterTidbit.quote}`
 );
 
+const earthRadical = findAnyCard("土");
+const earthTidbit = pickTidbitForCard(model, earthRadical, opts);
+assert(earthTidbit, "Expected a tidbit for radical 土");
+assert(
+  new Set(["道大，天大，地大，王亦大。"]).has(earthTidbit.quote),
+  `Unexpected tidbit for radical 土: ${earthTidbit.quote}`
+);
+
+const metalRadical = findAnyCard("金");
+const metalTidbit = pickTidbitForCard(model, metalRadical, opts);
+assert(metalTidbit, "Expected a tidbit for radical 金");
+assert(
+  new Set(["锲而不舍，金石可镂。"]).has(metalTidbit.quote),
+  `Unexpected tidbit for radical 金: ${metalTidbit.quote}`
+);
+
+const rainRadical = findAnyCard("雨");
+const rainTidbit = pickTidbitForCard(model, rainRadical, opts);
+assert(rainTidbit, "Expected a tidbit for radical 雨");
+assert(
+  new Set(["上善若水。", "兵无常势，水无常形。"]).has(rainTidbit.quote),
+  `Unexpected tidbit for radical 雨: ${rainTidbit.quote}`
+);
+
 const weakRadical = findAnyCard("阝");
 const weakTidbit = pickTidbitForCard(model, weakRadical, opts);
 assert(!weakTidbit, `Expected no forced tidbit for radical 阝, got ${weakTidbit && weakTidbit.quote}`);
+
+const weakSpeechSideForm = findAnyCard("讠");
+const weakSpeechSideFormTidbit = pickTidbitForCard(model, weakSpeechSideForm, opts);
+assert(
+  !weakSpeechSideFormTidbit,
+  `Expected no forced tidbit for radical 讠, got ${weakSpeechSideFormTidbit && weakSpeechSideFormTidbit.quote}`
+);
 
 // Candidate pool should stay bounded to reduce repetition.
 for (const card of model.cards || model.vocab) {

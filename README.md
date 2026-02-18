@@ -106,6 +106,16 @@ Use open-source datasets to generate draft seed material, then curate into `mnem
 node scripts/build-mnemonic-seeds.js --makemeahanzi /path/to/dictionary.txt --out data/mnemonic-seeds/hsk1-seeds.json
 ```
 
+Generate phonetic-anchor suggestion candidates (character-first scoring pipeline):
+
+```bash
+node scripts/build-phonetic-hints.js \
+  --makemeahanzi /path/to/dictionary.txt \
+  --unihan /path/to/Unihan_Readings.txt \
+  --cedict /path/to/cedict_ts.u8 \
+  --out data/mnemonic-seeds/hsk1-phonetic-hints.json
+```
+
 One-time migration helper (legacy `mnemonic` -> validated `mnemonicData`):
 
 ```bash
@@ -134,6 +144,7 @@ node scripts/test-tidbit-selection.js
 node scripts/test-deck-refactor.js
 node scripts/test-hint-safety.js
 node scripts/test-mnemonic-curation.js
+node scripts/test-phonetic-hint-pipeline.js
 ```
 
 Optional curation helpers:

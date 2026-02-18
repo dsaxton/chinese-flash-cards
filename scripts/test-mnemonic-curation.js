@@ -21,6 +21,21 @@ function assertCanonicalSoundAnchor(anchor, cardLabel) {
   assert(!/\b(?:sounds?|sound)\s+like\b/i.test(text), `${cardLabel}: soundAnchor cannot use "sounds like"`);
 }
 
+function readAllowedAnchorWords(source) {
+  const match = source.match(/const ENGLISH_SOUND_ANCHOR_WORDS = new Set\(\[([\s\S]*?)\]\);/);
+  assert(match, "Could not read ENGLISH_SOUND_ANCHOR_WORDS from index source");
+  const values = eval(`[${match[1]}]`);
+  return new Set(values.map((value) => String(value).toUpperCase()));
+}
+
+function extractAnchorWords(anchor) {
+  const body = String(anchor || "")
+    .replace(/^Think of\s+/i, "")
+    .replace(/[.?!]+$/, "")
+    .trim();
+  return body.match(/[A-Z]+/g) || [];
+}
+
 function testMnemonicDataCoverage(cards, minNonEmpty) {
   for (const card of cards) {
     const label = `${card.hanzi} (${card.english})`;
@@ -49,6 +64,33 @@ function testMnemonicDataCoverage(cards, minNonEmpty) {
   );
 }
 
+function testSoundAnchorBatch(cards, allowedWords, minAnchors) {
+  let anchorCount = 0;
+  for (const card of cards) {
+    const label = `${card.hanzi} (${card.english})`;
+    const anchor = String(card.mnemonicData && card.mnemonicData.soundAnchor || "").trim();
+    const story = getStoryText(card);
+    if (!anchor) continue;
+
+    anchorCount++;
+    assertCanonicalSoundAnchor(anchor, label);
+
+    for (const word of extractAnchorWords(anchor)) {
+      assert(allowedWords.has(word), `${label}: anchor word "${word}" is outside allowed English anchor set`);
+    }
+
+    assert(!hintContainsEnglishAnswer(anchor, card.english), `${label}: soundAnchor leaks English answer token`);
+
+    const mergedHint = `${anchor} ${story}`.trim();
+    assert(!hintContainsEnglishAnswer(mergedHint, card.english), `${label}: merged hint leaks English answer token`);
+  }
+
+  assert(
+    anchorCount >= minAnchors,
+    `Expected at least ${minAnchors} HSK1 cards with sound anchors, got ${anchorCount}`
+  );
+}
+
 function testRadicalsFullyCurated(radicals) {
   for (const card of radicals) {
     const label = `${card.hanzi} (${card.english})`;
@@ -70,8 +112,10 @@ function main() {
   const root = path.resolve(__dirname, "..");
   const source = readIndexHtml(root);
   const { hsk1Cards, radicals } = collectDeckCards(source);
+  const allowedAnchorWords = readAllowedAnchorWords(source);
 
   testMnemonicDataCoverage(hsk1Cards, 25);
+  testSoundAnchorBatch(hsk1Cards, allowedAnchorWords, 80);
   testMnemonicDataCoverage(radicals, radicals.length);
   testRadicalsFullyCurated(radicals);
 
