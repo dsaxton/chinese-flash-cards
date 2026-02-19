@@ -24,15 +24,17 @@ node scripts/test-hint-safety.js
 - All 311 stories now pass the full curation test suite.
 - Sound anchor audit: fixed 11 anchor-syllable mismatches where anchors poorly approximated the Chinese sound (e.g. DAY→DONG for 懂 dǒng, MAMA→MEN for 门 mén, CHAIN→SWORE for 错 cuò). Rewrote 2 additional stories for broken grammar (让) and missing meaning link (非常).
 - Pinyin-leak exclusion: audit and test scripts now exclude the anchor word itself from pinyin-leak detection — anchors that match the romanization are by design, not leaks.
+- Conservative anchor diversification: replaced 5 more family-anchor mismatches with precise per-syllable matches (KEY→CHEE for 七 qī, HAN→HEN for 很 hěn, YOU→YIN for 阴 yīn, JAR→GIN for 近/进 jìn). Added YIN to allowed list.
+- Grammar particle review: rewrote 着 story to demonstrate ongoing action through scene rather than naming the function.
+- Vocab anchor grammar gate audit: 125 vocab stories flagged, but nearly all are false positives (SHE/YOU/HOW as natural pronoun/adverb subjects). Gate stays radical-only until the heuristic is improved.
+- 次 cì (CHAIN): confirmed no clean English word for the Mandarin "ts" initial; CHAIN kept as best available affricate.
 
 ### Next Steps (Mnemonic)
-1. Address remaining `anchored_no_meaning_hit` stories (score 75) — grammar particles, abstract meanings.
-2. Extend anchor grammar gate to vocab stories (currently enforced for radicals only).
-3. Expand `phoneticAnchorAliases` for anchors where exact token usage harms sentence quality.
-4. Add a small fixed snapshot set for narrative quality in CI to catch accidental template drift.
-5. Pilot stricter anchor-placement cap (reduce max anchor-at-start from 60% to 40% if quality holds).
-6. Diversify "family anchors" — SHE/ZOO/YOU/SHEER each cover 18–21 syllables; find more precise per-syllable anchors where feasible.
-7. Find a better anchor for 次 cì (CHAIN) — Mandarin "ts" initial has no clean English single-word equivalent.
+1. Expand `phoneticAnchorAliases` for anchors where exact token usage harms sentence quality.
+2. Add a small fixed snapshot set for narrative quality in CI to catch accidental template drift.
+3. Pilot stricter anchor-placement cap (reduce max anchor-at-start from 60% to 40% if quality holds).
+4. Diversify remaining "family anchors" — SHE/ZOO/YOU/SHEER still cover 15–20 syllables each; further per-syllable splits need new anchor words or alias support.
+5. Improve anchor grammar gate heuristic to reduce false positives on natural pronoun/adverb subjects before enabling for vocab.
 
 ---
 
@@ -114,3 +116,68 @@ mnemonicData: {
   learner doesn't have yet (violating the existing design rule).
 - For complex/abstract characters, forcing a visual description may hurt more
   than it helps — leave `shapeHint` empty for those.
+
+### Sentence Deck
+
+Add a fourth deck of full Chinese sentences to bridge the gap between
+single-word recall and reading comprehension.
+
+**Card shape:**
+
+```json
+{
+  "id": "tatoeba-1234",
+  "hanzi": "我喜欢西瓜。",
+  "pinyin": "wǒ xǐhuān xīguā.",
+  "english": "I like watermelon.",
+  "audioId": 1234,
+  "vocabWords": ["我", "喜欢", "西瓜"]
+}
+```
+
+**Data sources (ranked):**
+
+| Source | License | Sentences | Audio | Notes |
+|--------|---------|-----------|-------|-------|
+| [Tatoeba](https://tatoeba.org/en/downloads) | CC BY 2.0 FR (some CC0) | ~40 k+ Mandarin with English translations | 5,814 Mandarin recordings | Bulk TSV exports for sentences, translation links, audio IDs, and pinyin transcriptions |
+| LLM-generated | Original (no license concern) | Unlimited | None (syllable fallback or TTS) | Full editorial control; can constrain vocab to HSK1/HSK2 words the learner already knows |
+
+**Recommended approach — hybrid:**
+
+1. Write a build script (like `build-phonetic-hints.js`) that ingests Tatoeba
+   exports, filters for sentences where all/most characters come from the
+   HSK1 vocab set, and keeps only entries with audio recordings.
+2. Curate ~50–100 sentences into `data/sentence-data.json`.
+3. Supplement with LLM-generated sentences for vocab words that Tatoeba
+   doesn't cover well.
+4. Sentence audio at runtime: `https://tatoeba.org/audio/download/{audioId}`
+   (same CDN-at-runtime pattern as `hugolpz/audio-cmn`). Fallback to
+   syllable-by-syllable `speakPinyin()` for sentences without recordings.
+
+**UI/UX:**
+
+- Reuse the existing three-stage card flow: stage 0 shows the Chinese
+  sentence, stage 1 adds pinyin + audio, stage 2 reveals the English
+  translation plus word-by-word gloss chips (e.g. `我 I` · `喜欢 like` ·
+  `西瓜 watermelon`).
+- The gloss chips reuse the existing `.chip-link` styling.
+- New deck entry in `DECKS` (`sentence_to_english`) + `DECK_STORAGE_KEYS`.
+
+**Implementation cost:**
+
+| Task | Effort |
+|------|--------|
+| Build script to filter/curate Tatoeba exports | Medium |
+| New `data/sentence-data.json` with curated entries | Medium |
+| Register deck in `DECKS` + storage key | Low |
+| Sentence audio playback (Tatoeba URL or syllable fallback) | Low–Medium |
+| Word-by-word gloss chips on reveal | Medium |
+
+**Open questions:**
+
+- Should sentences be graded by lesson (e.g. "Lesson 1 sentences use only the
+  first 10 vocab words") or offered as a single flat pool?
+- Is a reverse mode (`english_to_sentence`) valuable, or is comprehension-only
+  enough to start?
+- Minimum audio-coverage threshold: skip sentences without audio, or accept
+  the syllable fallback?

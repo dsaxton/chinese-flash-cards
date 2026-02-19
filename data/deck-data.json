@@ -641,8 +641,8 @@
       "english": "very",
       "mnemonic": "彳(step) + 艮 (stubborn/tough). Taking tough steps — going very far!",
       "mnemonicData": {
-        "soundAnchor": "Think of HAN.",
-        "story": "HAN dynasty walls stand very tall against the sunset.",
+        "soundAnchor": "Think of HEN.",
+        "story": "A HEN clucks very loudly from the old barn roof.",
         "components": [
           {
             "hanzi": "彳",
@@ -1325,8 +1325,8 @@
       "english": "seven",
       "mnemonic": "Looks like a cross with a bent leg — seven cuts across.",
       "mnemonicData": {
-        "soundAnchor": "Think of KEY.",
-        "story": "A KEY ring holds exactly seven brass charms.",
+        "soundAnchor": "Think of CHEE.",
+        "story": "One loud CHEE from the nest — seven chicks peek out.",
         "components": []
       }
     },
@@ -3299,8 +3299,8 @@
       "english": "near; close",
       "mnemonic": "辶 (walk) + 斤 (axe/short). A short walk — near!",
       "mnemonicData": {
-        "soundAnchor": "Think of JAR.",
-        "story": "A JAR sits near the edge — almost close enough to grab.",
+        "soundAnchor": "Think of GIN.",
+        "story": "The GIN bottle sits near the edge, almost within reach.",
         "components": [
           {
             "hanzi": "辶",
@@ -3319,8 +3319,8 @@
       "english": "to enter",
       "mnemonic": "辶 (walk) + 井 (well). Walking into the well area — entering!",
       "mnemonicData": {
-        "soundAnchor": "Think of JET.",
-        "story": "A JET of steam hisses as she enters the old bathhouse.",
+        "soundAnchor": "Think of GIN.",
+        "story": "A GIN fizz arrives the moment she enters the dim bar.",
         "components": [
           {
             "hanzi": "辶",
@@ -4838,8 +4838,8 @@
       "english": "cloudy; overcast",
       "mnemonic": "阝(hill/mound) + 月 (moon). The moon behind a hill — shadowy, cloudy!",
       "mnemonicData": {
-        "soundAnchor": "Think of YOU.",
-        "story": "YOU glance up — thick cloudy skies block every ray.",
+        "soundAnchor": "Think of YIN.",
+        "story": "The YIN of winter — heavy clouds block all the light.",
         "components": [
           {
             "hanzi": "阝",
@@ -5026,7 +5026,7 @@
       "mnemonic": "羊 (sheep) + 目 (eye). Keeping an eye on the sheep — an ongoing, continuous action!",
       "mnemonicData": {
         "soundAnchor": "Think of ZOO.",
-        "story": "ZOO elephants are still splashing — the fun is ongoing.",
+        "story": "ZOO elephants keep splashing long after the crowd leaves.",
         "components": [
           {
             "hanzi": "羊",
