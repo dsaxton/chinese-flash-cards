@@ -17,13 +17,18 @@ node scripts/test-hint-safety.js
 - Meta-template ban: added `isMetaTemplateStory()` detector to quality lib, `-40` penalty in scorer, hard assertion in test suite.
 - Rewrote all 272 meta-template stories as concrete, pictureable scenes.
 - Clarified dual-proximity doctrine: dual proximity is a property of the *story*, not the anchor word.
+- Anchor grammar gate: added `isAnchorGrammaticallyIsolated()` detector to catch anchors jammed before nouns with no connector, `-30` penalty in scorer, hard assertion for radical cards.
+- Shared-anchor distinctness gate: cards sharing the same anchor word must have low story word-overlap.
+- Per-deck anchor placement cap: radical stories held to ≤ 50% anchor-first (global cap remains 60%).
+- Rewrote 26 radical stories — anchors now fill real grammatical slots, placement diversity at 14%.
 - All 311 stories now pass the full curation test suite.
 
 ### Next Steps (Mnemonic)
 1. Address remaining `anchored_no_meaning_hit` stories (score 75) — grammar particles, abstract meanings.
-2. Expand `phoneticAnchorAliases` for anchors where exact token usage harms sentence quality.
-3. Add a small fixed snapshot set for narrative quality in CI to catch accidental template drift.
-4. Pilot stricter anchor-placement cap (reduce max anchor-at-start from 60% to 40% if quality holds).
+2. Extend anchor grammar gate to vocab stories (currently enforced for radicals only).
+3. Expand `phoneticAnchorAliases` for anchors where exact token usage harms sentence quality.
+4. Add a small fixed snapshot set for narrative quality in CI to catch accidental template drift.
+5. Pilot stricter anchor-placement cap (reduce max anchor-at-start from 60% to 40% if quality holds).
 
 ---
 

@@ -127,8 +127,18 @@ cleared (empty is better than broken).
     and similar self-referential wording are forbidden. If the story describes
     the act of remembering instead of creating a memorable image, it provides
     no recall benefit over rote memorization.
-12. **Template diversity required** — avoid repeated sentence scaffolds across cards.
-13. **Anchor placement diversity required** — anchored stories should not mostly begin with the anchor token.
+12. **Anchor must fill a grammatical slot** — the ALL-CAPS anchor word must
+    function as a real part of speech in the sentence (adverb, noun, verb,
+    interjection, etc.). Jamming the anchor before a noun with no connector
+    ("WORE sparks leap", "SHE steam rises") is forbidden. Valid patterns
+    include: natural adverb ("TOO much rain…"), interjection with comma
+    ("HUH, ripe stalks…"), imperative verb + object ("SHOW me your grip…"),
+    or mid-sentence placement ("She WORE ash-dusted gloves…").
+13. **Template diversity required** — avoid repeated sentence scaffolds across cards.
+14. **Anchor placement diversity required** — anchored stories should not mostly begin with the anchor token.
+    Radical stories are held to a stricter cap (≤ 50% anchor-first).
+15. **Shared-anchor distinctness** — when two cards share the same anchor word,
+    their stories must be meaningfully distinct (low word overlap).
 
 ---
 
@@ -185,6 +195,7 @@ The scorer assigns 0–100 per story. Key penalty flags:
 |------|-------------|---------|
 | `meta_template` | −40 | Story narrates the mnemonic system instead of painting a scene |
 | `anchor_not_integrated` | −35 | Anchor word absent from story |
+| `anchor_isolated` | −30 | Anchor jammed before a noun with no grammatical connector |
 | `incoherent` | −30 | Story fails basic coherence checks |
 | `anchored_no_meaning_hit` | −25 | Anchored story has no meaning cue |
 | `abstract` | −20 | Story uses abstract meta-language |

@@ -6,6 +6,7 @@ const {
   extractEnglishAnswerTokens,
   getStoryText,
   hasBoilerplateStoryPhrase,
+  isAnchorGrammaticallyIsolated,
   isLikelyAbstractStory,
   isLikelyComponentOnlyStory,
   isLikelyIncoherentStory,
@@ -295,6 +296,10 @@ function scoreCard(card, anchorAliasMap) {
   if (isMetaTemplateStory(story)) {
     score -= 40;
     reasons.push("meta_template");
+  }
+  if (isAnchorGrammaticallyIsolated(soundAnchor, story)) {
+    score -= 30;
+    reasons.push("anchor_isolated");
   }
   if (isLikelyIncoherentStory(story)) {
     score -= 30;

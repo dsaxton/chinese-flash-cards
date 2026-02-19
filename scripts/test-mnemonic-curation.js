@@ -11,13 +11,16 @@ const {
   hintContainsEnglishAnswer,
   hintContainsPhoneticCue,
   hintContainsPinyin,
+  isAnchorGrammaticallyIsolated,
   isLikelyAbstractStory,
   isLikelyComponentOnlyStory,
   isLikelyIncoherentStory,
   isLiteralShapeHint,
   isMetaTemplateStory,
+  jaccardSimilarity,
   loadPhoneticConfig,
   normalizeAnchorAliasMap,
+  storyContentWords,
 } = require("./mnemonic-quality-lib");
 
 function assert(condition, message) {
@@ -197,12 +200,44 @@ function testRadicalsFullyCurated(radicals, anchorAliasMap) {
       `${label}: story appears to rely only on component/radical explanation`
     );
     assert(!isMetaTemplateStory(story), `${label}: story uses forbidden meta-template language (narrates the mnemonic system instead of painting a scene)`);
+    assert(
+      !isAnchorGrammaticallyIsolated(anchor, story),
+      `${label}: anchor is grammatically isolated (jammed before a noun with no connector)`
+    );
     const anchorForms = anchorFormsForStory(anchor, anchorAliasMap);
     assert(anchorForms.length > 0, `${label}: unable to derive anchor forms`);
     assert(
       anchorIntegratedInStoryWithAliases(anchor, story, anchorAliasMap),
       `${label}: anchor must be integrated in story text`
     );
+  }
+}
+
+function testSharedAnchorDistinctness(cards, maxSimilarity) {
+  const byAnchor = new Map();
+  for (const card of cards) {
+    const aw = extractCanonicalAnchorWord(card.mnemonicData?.soundAnchor || "");
+    if (!aw) continue;
+    if (!byAnchor.has(aw)) byAnchor.set(aw, []);
+    byAnchor.get(aw).push(card);
+  }
+  for (const [anchor, group] of byAnchor) {
+    if (group.length < 2) continue;
+    for (let i = 0; i < group.length; i++) {
+      for (let j = i + 1; j < group.length; j++) {
+        const a = group[i];
+        const b = group[j];
+        if (a.hanzi === b.hanzi) continue;
+        const wordsA = storyContentWords(getStoryText(a), anchor);
+        const wordsB = storyContentWords(getStoryText(b), anchor);
+        const sim = jaccardSimilarity(wordsA, wordsB);
+        assert(
+          sim <= maxSimilarity,
+          `${a.hanzi} (${a.english}) and ${b.hanzi} (${b.english}) share anchor ${anchor} ` +
+          `and have too-similar stories (Jaccard ${(sim * 100).toFixed(0)}% > ${(maxSimilarity * 100).toFixed(0)}%)`
+        );
+      }
+    }
   }
 }
 
@@ -392,6 +427,8 @@ function main() {
   testNoPlaceholderTemplateLanguage(radicals);
   testStoryTemplateDiversity([...vocab, ...radicals], anchorAliasMap, 8);
   testAnchorPlacementDiversity([...vocab, ...radicals], anchorAliasMap, 0.6);
+  testAnchorPlacementDiversity(radicals, anchorAliasMap, 0.5);
+  testSharedAnchorDistinctness([...vocab, ...radicals], 0.3);
   testStoryWordCount(vocab, 12);
   testStoryWordCount(radicals, 12);
 

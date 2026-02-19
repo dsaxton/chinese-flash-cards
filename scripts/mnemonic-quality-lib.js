@@ -258,6 +258,33 @@ function hasBoilerplateStoryPhrase(text) {
   return BOILERPLATE_STORY_PATTERNS.some((pattern) => pattern.test(normalized));
 }
 
+const ANCHOR_SAFE_FOLLOWERS = new Set([
+  "a", "an", "the", "this", "that", "these", "those",
+  "my", "your", "his", "her", "its", "our", "their",
+  "much", "many", "more", "most", "less", "little", "few",
+  "very", "quite", "so", "really", "never", "always", "just",
+  "and", "or", "but", "if", "when", "while", "as",
+  "of", "in", "on", "at", "to", "for", "with", "from",
+  "no", "not", "all", "each", "every", "some", "any",
+  "me", "us", "it", "him", "them",
+  "up", "out", "off", "down", "away", "back", "over", "around", "through",
+]);
+
+function isAnchorGrammaticallyIsolated(soundAnchor, story) {
+  const anchorWord = extractCanonicalAnchorWord(soundAnchor);
+  if (!anchorWord) return false;
+  const text = String(story || "").trim();
+  if (!text) return false;
+  const tokens = text.split(/\s+/);
+  if (tokens[0] !== anchorWord) return false;
+  if (tokens.length < 2) return false;
+  const raw1 = tokens[1] || "";
+  if (/^[,—–!;:]/.test(raw1)) return false;
+  if (/[,—–!;:]$/.test(tokens[0])) return false;
+  const follower = raw1.replace(/[^a-zA-Z]/g, "").toLowerCase();
+  return !ANCHOR_SAFE_FOLLOWERS.has(follower);
+}
+
 function isLikelyIncoherentStory(text) {
   const normalized = String(text || "").trim();
   if (!normalized) return false;
@@ -310,6 +337,22 @@ function collectHsk1UniqueChars(hsk1Cards) {
   return [...chars];
 }
 
+function storyContentWords(story, anchorWord) {
+  return String(story || "").toLowerCase()
+    .replace(/[^a-z\s]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length >= 3 && w !== anchorWord.toLowerCase());
+}
+
+function jaccardSimilarity(setA, setB) {
+  const a = new Set(setA);
+  const b = new Set(setB);
+  let intersection = 0;
+  for (const w of a) if (b.has(w)) intersection++;
+  const union = a.size + b.size - intersection;
+  return union > 0 ? intersection / union : 0;
+}
+
 module.exports = {
   collectDeckCards,
   collectHsk1UniqueChars,
@@ -319,15 +362,18 @@ module.exports = {
   hintContainsPhoneticCue,
   hintContainsPinyin,
   hasBoilerplateStoryPhrase,
+  isAnchorGrammaticallyIsolated,
   isLikelyAbstractStory,
   isLikelyComponentOnlyStory,
   isLikelyIncoherentStory,
   isLiteralShapeHint,
   isMetaTemplateStory,
+  jaccardSimilarity,
   loadDeckData,
   loadPhoneticConfig,
   extractCanonicalAnchorWord,
   normalizeAnchorAliasMap,
   anchorFormsForStory,
   anchorIntegratedInStoryWithAliases,
+  storyContentWords,
 };
