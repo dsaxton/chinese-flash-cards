@@ -70,3 +70,43 @@ Strengthen guardrails for future data updates.
 3. Post-lesson "Expand/Continue" option so learners can keep going after the daily queue:
    offer to start the next lesson immediately (same deck), with an optional small cap
    on extra new cards; include a simple replay of finished cards without timers.
+
+### Visual Shape Hints for Hanzi
+
+Stories currently carry two hooks: **sound** (phonetic anchor) and **meaning**
+(scene). A third hook — **visual shape** of the character — could strengthen
+recall, especially for simple pictographic characters.
+
+**Approaches, ranked by feasibility:**
+
+| Approach | Difficulty | Coverage | Notes |
+|----------|-----------|----------|-------|
+| Separate `shapeHint` field | Low | ~60-70 simple chars | Decoupled from story; UI renders as a small visual note |
+| Shape woven into story (pictographs) | Medium | ~20-30 chars | Tight 12-word budget when story also needs anchor + meaning |
+| Component layout in story | Hard | ~100+ compound chars | Conflicts with design rule: stories must not rely on radical knowledge |
+| Stroke-level narratives | Very Hard | All chars | Essentially a different mnemonic system (Heisig-style) |
+
+**Recommended starting point:** Add an optional `shapeHint` field to
+`mnemonicData` for the 35 radicals, where visual form ≈ meaning (口 is a
+square = mouth, 人 is two legs = person). Display it below the story without
+touching story text. Evaluate whether it measurably helps recall before
+expanding to compound characters.
+
+```json
+mnemonicData: {
+  soundAnchor: "Think of RUN.",
+  story: "A lone traveler breaks into a RUN across the empty bridge.",
+  shapeHint: "Two legs, one striding forward",
+  components: []
+}
+```
+
+**Key challenges:**
+- Authoring quality shape descriptions requires knowing what each character
+  looks like to a first-time learner — a different skill from writing phonetic
+  stories. LLM generation would need character images or reliable pictographic
+  etymology data.
+- For compound characters, shape hints risk requiring radical knowledge the
+  learner doesn't have yet (violating the existing design rule).
+- For complex/abstract characters, forcing a visual description may hurt more
+  than it helps — leave `shapeHint` empty for those.
