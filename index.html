@@ -725,10 +725,18 @@ function playAudioSequence(urls) {
   playNext();
 }
 
+const SYLLABLE_CHAR_AUDIO_OVERRIDES = {
+  "yan1": "烟", "yan2": "言", "yan3": "眼", "yan4": "验",
+};
+
 function speakPinyin(pinyin) {
   const keys = pinyinToAudioKeys(pinyin);
   if (keys.length === 0) return;
-  const urls = keys.map((key) => `${AUDIO_BASE_SYLLABLES}/cmn-${encodeURIComponent(key)}.mp3`);
+  const urls = keys.map((key) => {
+    const charOverride = SYLLABLE_CHAR_AUDIO_OVERRIDES[key];
+    if (charOverride) return `${AUDIO_BASE}/cmn-${encodeURIComponent(charOverride)}.mp3`;
+    return `${AUDIO_BASE_SYLLABLES}/cmn-${encodeURIComponent(key)}.mp3`;
+  });
   playAudioSequence(urls);
 }
 

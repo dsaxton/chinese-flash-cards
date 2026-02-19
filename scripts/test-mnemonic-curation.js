@@ -265,11 +265,7 @@ function testAnchorNarrativeRegressions(cards) {
 
 function testAliasIntegrationRegressions(cards, anchorAliasMap) {
   const byHanzi = new Map(cards.map((card) => [card.hanzi, card]));
-  const checks = [
-    { hanzi: "金", expectedAlias: "begins?", anchorMustBeAbsent: true },
-    { hanzi: "钅", expectedAlias: "forging", anchorMustBeAbsent: true },
-    { hanzi: "阝", expectedAlias: "foothill", anchorMustBeAbsent: true },
-  ];
+  const checks = [];
 
   for (const check of checks) {
     const card = byHanzi.get(check.hanzi);

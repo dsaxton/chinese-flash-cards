@@ -410,8 +410,8 @@
       "english": "restaurant; hotel",
       "mnemonic": "饭 (cooked rice/meal) + 店 (shop). A shop that serves meals — restaurant!",
       "mnemonicData": {
-        "soundAnchor": "Think of FOO.",
-        "story": "FOO steam pours from the busy restaurant kitchen all evening.",
+        "soundAnchor": "Think of FAN.",
+        "story": "A ceiling FAN whirs above the packed dining counter.",
         "components": [
           {
             "hanzi": "饭",
@@ -430,8 +430,8 @@
       "english": "airplane",
       "mnemonic": "飞 (to fly) + 机 (machine). A flying machine — airplane!",
       "mnemonicData": {
-        "soundAnchor": "Think of FOO.",
-        "story": "FOO clouds part as the airplane breaks through at sunrise.",
+        "soundAnchor": "Think of FAY.",
+        "story": "FAY shimmer coats the wing as it climbs through dawn clouds.",
         "components": [
           {
             "hanzi": "飞",
@@ -450,8 +450,8 @@
       "english": "minute",
       "mnemonic": "分 (to divide) + 钟 (bell/clock). Dividing the clock into parts — minutes.",
       "mnemonicData": {
-        "soundAnchor": "Think of FOO.",
-        "story": "A FOO alarm blares for exactly one tense minute.",
+        "soundAnchor": "Think of FUN.",
+        "story": "One FUN lap on the carousel spins past in a flash.",
         "components": [
           {
             "hanzi": "分",
@@ -621,8 +621,8 @@
       "english": "and",
       "mnemonic": "禾 (grain) + 口 (mouth). Grain and mouths together — harmony, togetherness, 'and'.",
       "mnemonicData": {
-        "soundAnchor": "Think of HUH.",
-        "story": "HUH — bread and butter both vanished from the table.",
+        "soundAnchor": "Think of HUNDRED.",
+        "story": "A HUNDRED drums pound together when the parade starts.",
         "components": [
           {
             "hanzi": "禾",
@@ -1694,7 +1694,7 @@
       "mnemonic": "睡 = 目 (eye) + 垂 (droop). 觉 = to feel. Your eyes are drooping — time to sleep!",
       "mnemonicData": {
         "soundAnchor": "Think of SHE.",
-        "story": "With SHE in front, we sleep now.",
+        "story": "SHE tugs the blanket up tight and her eyes drift shut.",
         "components": [
           {
             "hanzi": "目",
@@ -1876,7 +1876,7 @@
     },
     {
       "hanzi": "喂",
-      "pinyin": "wèi",
+      "pinyin": "wéi",
       "english": "hello (on phone)",
       "mnemonic": "口 (mouth) + 畏 (fear/awe). You open your mouth cautiously when answering the phone — hello?",
       "mnemonicData": {
@@ -2876,8 +2876,8 @@
       "english": "room",
       "mnemonic": "房 = 户 (door) + 方 (square). 间 = 门 (gate) + 日 (sun). A square space behind a door where sunlight enters — a room!",
       "mnemonicData": {
-        "soundAnchor": "Think of FOO.",
-        "story": "A FOO draft rattles the room's only window frame.",
+        "soundAnchor": "Think of FANG.",
+        "story": "A FANG-shaped crack runs across the dark ceiling overhead.",
         "components": [
           {
             "hanzi": "户",
@@ -2904,8 +2904,8 @@
       "english": "very; extremely",
       "mnemonic": "非 (not) + 常 (ordinary). Not ordinary at all — extremely!",
       "mnemonicData": {
-        "soundAnchor": "Think of FOO.",
-        "story": "A FOO wind howls — the storm is extremely fierce tonight.",
+        "soundAnchor": "Think of FAY.",
+        "story": "FAY light flickers — the old forest is eerily still tonight.",
         "components": [
           {
             "hanzi": "非",
@@ -2924,8 +2924,8 @@
       "english": "waiter; attendant",
       "mnemonic": "服务 (to serve) + 员 (person/member). A person who serves — waiter!",
       "mnemonicData": {
-        "soundAnchor": "Think of FOO.",
-        "story": "A FOO gust blows the waiter's tray across the patio.",
+        "soundAnchor": "Think of FOOD.",
+        "story": "FOOD steams on the tray as the server weaves through tables.",
         "components": [
           {
             "hanzi": "服务",
@@ -4323,8 +4323,8 @@
       "english": "to finish; complete",
       "mnemonic": "宀 (roof) + 元 (origin/first). Under the roof from start to finish — complete!",
       "mnemonicData": {
-        "soundAnchor": "Think of WORE.",
-        "story": "She WORE out the last page and finished the novel.",
+        "soundAnchor": "Think of WAND.",
+        "story": "One WAND tap and every scattered piece falls into place.",
         "components": [
           {
             "hanzi": "宀",
@@ -4343,8 +4343,8 @@
       "english": "to play; to have fun",
       "mnemonic": "王 (king) + 元 (origin). Even kings need to return to their origins and play!",
       "mnemonicData": {
-        "soundAnchor": "Think of WORE.",
-        "story": "Kids WORE costumes and played in the yard all afternoon.",
+        "soundAnchor": "Think of WAND.",
+        "story": "A WAND waves and bubbles float across the sunny yard.",
         "components": [
           {
             "hanzi": "王",
@@ -4363,8 +4363,8 @@
       "english": "evening; night",
       "mnemonic": "晚 = 日 (sun) + 免 (exempt). The sun is exempt from shining — evening! 上 (on/during).",
       "mnemonicData": {
-        "soundAnchor": "Think of WORE.",
-        "story": "She WORE a long coat through the chilly evening streets.",
+        "soundAnchor": "Think of WAND.",
+        "story": "A WAND of moonlight stretches across the quiet dark lane.",
         "components": [
           {
             "hanzi": "日",
@@ -4387,8 +4387,8 @@
       "english": "toward; in the direction of",
       "mnemonic": "彳(step) + 主 (master). Stepping toward the master — heading in a direction!",
       "mnemonicData": {
-        "soundAnchor": "Think of WORE.",
-        "story": "She WORE boots and marched toward the distant hilltop.",
+        "soundAnchor": "Think of WAND.",
+        "story": "A WAND points ahead — boots crunch along the gravel ridge.",
         "components": [
           {
             "hanzi": "彳",
@@ -4407,8 +4407,8 @@
       "english": "why",
       "mnemonic": "为 (for/because) + 什么 (what). For what reason — why?",
       "mnemonicData": {
-        "soundAnchor": "Think of WORE.",
-        "story": "She WORE a puzzled look, asking why nobody came.",
+        "soundAnchor": "Think of WAY.",
+        "story": "No WAY — she paces the floor, baffled by the empty room.",
         "components": [
           {
             "hanzi": "为",
@@ -4427,8 +4427,8 @@
       "english": "to ask",
       "mnemonic": "门 (door) + 口 (mouth). A mouth at the door — asking to come in!",
       "mnemonicData": {
-        "soundAnchor": "Think of WORE.",
-        "story": "Seeing WORE, we quickly ask.",
+        "soundAnchor": "Think of WON.",
+        "story": "Who WON the race? — the whole crowd demands to know.",
         "components": [
           {
             "hanzi": "门",
@@ -4447,8 +4447,8 @@
       "english": "question; problem",
       "mnemonic": "问 (ask) + 题 (topic). Asking about a topic — a question or problem!",
       "mnemonicData": {
-        "soundAnchor": "Think of WORE.",
-        "story": "She WORE a frown, puzzling over the difficult question.",
+        "soundAnchor": "Think of WON.",
+        "story": "WON at last — the toughest riddle on the board finally solved.",
         "components": [
           {
             "hanzi": "问",
@@ -5254,7 +5254,7 @@
       "mnemonic": "A child with outstretched arms learning to walk.",
       "mnemonicData": {
         "soundAnchor": "Think of ZOO.",
-        "story": "At the ZOO, the youngest one takes wobbly first steps.",
+        "story": "At the ZOO, a toddler stretches both arms toward the penguins.",
         "components": []
       }
     },
@@ -5493,8 +5493,8 @@
       "english": "metal; gold",
       "mnemonic": "Metal pieces gathered under a roof-like top.",
       "mnemonicData": {
-        "soundAnchor": "Think of GIN.",
-        "story": "As forging begins, coins cool on the bench.",
+        "soundAnchor": "Think of JINGLE.",
+        "story": "Coins JINGLE across the anvil after each hammer blow.",
         "components": []
       }
     },
@@ -5505,8 +5505,8 @@
       "english": "metal (side form)",
       "mnemonic": "Compressed metal radical used in compounds.",
       "mnemonicData": {
-        "soundAnchor": "Think of GIN.",
-        "story": "After forging, one hammer rings on the anvil.",
+        "soundAnchor": "Think of JINGLE.",
+        "story": "Keys JINGLE on the locksmith's heavy iron ring.",
         "components": []
       }
     },
@@ -5553,8 +5553,8 @@
       "english": "mound; place",
       "mnemonic": "Slope/place marker at the side of characters.",
       "mnemonicData": {
-        "soundAnchor": "Think of FOO.",
-        "story": "A foothill path bends around a steep embankment.",
+        "soundAnchor": "Think of FOOT.",
+        "story": "A tired FOOT kicks loose gravel down the steep slope.",
         "components": []
       }
     },
@@ -5565,8 +5565,8 @@
       "english": "grain",
       "mnemonic": "A stalk of grain with bending leaves.",
       "mnemonicData": {
-        "soundAnchor": "Think of HUH.",
-        "story": "HUH, ripe stalks bow low at harvest.",
+        "soundAnchor": "Think of HUNDRED.",
+        "story": "A HUNDRED golden stalks sway in the harvest breeze.",
         "components": []
       }
     },

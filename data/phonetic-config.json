@@ -31,14 +31,14 @@
     "fang": "fong",
     "fei": "fay",
     "fen": "fun",
-    "fu": "foo",
+    "fu": "food",
     "ge": "guh",
     "gou": "go",
     "guo": "go",
     "hai": "high",
     "han": "hahn",
     "hao": "how",
-    "he": "huh",
+    "he": "hundred",
     "hen": "hun",
     "hong": "hong",
     "hou": "hoe",
@@ -49,6 +49,7 @@
     "ji": "jee",
     "jia": "jee-ah",
     "jie": "jee-eh",
+    "jin": "jingle",
     "jing": "jing",
     "jiu": "jee-oh",
     "ju": "joo",
@@ -275,7 +276,6 @@
     "FIRST",
     "FISH",
     "FLOWER",
-    "FOO",
     "FOOD",
     "FOOT",
     "FRIEND",
@@ -312,7 +312,7 @@
     "HOT",
     "HOUR",
     "HOW",
-    "HUH",
+    "HUNDRED",
     "HUSBAND",
     "IN",
     "INSIDE",
@@ -321,6 +321,7 @@
     "JEEP",
     "JEN",
     "JET",
+    "JINGLE",
     "JEW",
     "JICH",
     "JIDA",
@@ -545,20 +546,10 @@
     "ZOW"
   ],
   "phoneticAnchorAliases": {
-    "GIN": [
-      "begin",
-      "begins",
-      "beginning",
-      "forging"
-    ],
     "BAY": [
       "obey",
       "bayfront",
       "harbor"
-    ],
-    "FOO": [
-      "foothill",
-      "footpath"
     ]
   }
 }
