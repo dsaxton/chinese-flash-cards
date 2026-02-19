@@ -34,7 +34,7 @@
     "fu": "foo",
     "ge": "guh",
     "gou": "go",
-    "guo": "gwor",
+    "guo": "go",
     "hai": "high",
     "han": "hahn",
     "hao": "how",
@@ -166,7 +166,9 @@
     "zhu": "joo",
     "zi": "dzuh",
     "zou": "zoe",
-    "zuo": "dzwo"
+    "zuo": "dzwo",
+    "chuan": "churn",
+    "deng": "dong"
   },
   "englishSoundAnchorWords": [
     "AFTERNOON",
@@ -212,6 +214,7 @@
     "CHIN",
     "CHINESE",
     "CHOOSE",
+    "CHURN",
     "CLASS",
     "CLASSMATE",
     "CLASSROOM",
@@ -540,5 +543,22 @@
     "ZOE",
     "ZOO",
     "ZOW"
-  ]
+  ],
+  "phoneticAnchorAliases": {
+    "GIN": [
+      "begin",
+      "begins",
+      "beginning",
+      "forging"
+    ],
+    "BAY": [
+      "obey",
+      "bayfront",
+      "harbor"
+    ],
+    "FOO": [
+      "foothill",
+      "footpath"
+    ]
+  }
 }

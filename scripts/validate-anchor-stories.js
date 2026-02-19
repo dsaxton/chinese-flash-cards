@@ -2,7 +2,8 @@
 // scripts/validate-anchor-stories.js
 //
 // Checks that cards with sound anchors have a canonical single-word
-// anchor ("Think of WORD."), integrated in ALL CAPS within the story text.
+// anchor ("Think of WORD."), integrated in story text either by exact anchor
+// token or configured alias fragment.
 // Also flags stories that still contain forbidden "Think of" / "sounds like"
 // phonetic cue phrases.
 //
@@ -13,25 +14,14 @@
 
 const path = require("path");
 const {
+  anchorFormsForStory,
+  anchorIntegratedInStoryWithAliases,
   collectDeckCards,
+  extractCanonicalAnchorWord,
   hintContainsPhoneticCue,
+  loadPhoneticConfig,
+  normalizeAnchorAliasMap,
 } = require("./mnemonic-quality-lib");
-
-function extractAnchorWords(soundAnchor) {
-  const text = String(soundAnchor || "").trim();
-  if (!text) return [];
-  const match = text.match(/^Think of ([A-Z]+)\.$/);
-  if (!match) return [];
-  return [match[1]];
-}
-
-function anchorIntegratedInStory(anchorWords, story) {
-  const text = String(story || "");
-  return anchorWords.every((word) => {
-    const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    return new RegExp(`(?<![A-Z\\-])${escaped}(?![A-Z\\-])`).test(text);
-  });
-}
 
 function main() {
   const failOnMissing = process.argv.includes("--fail-on-missing");
@@ -39,6 +29,8 @@ function main() {
   const mode = modeArgIndex !== -1 ? String(process.argv[modeArgIndex + 1] || "all") : "all";
   const root = path.resolve(__dirname, "..");
   const { hsk1Cards, radicals } = collectDeckCards(root);
+  const phoneticConfig = loadPhoneticConfig(root);
+  const anchorAliasMap = normalizeAnchorAliasMap(phoneticConfig.phoneticAnchorAliases);
   const cards =
     mode === "hsk1" ? hsk1Cards :
       mode === "radicals" ? radicals :
@@ -55,8 +47,9 @@ function main() {
     const soundAnchor = String(md.soundAnchor || "").trim();
     if (!soundAnchor) continue;
 
-    const anchorWords = extractAnchorWords(soundAnchor);
-    if (anchorWords.length === 0) {
+    const anchorWord = extractCanonicalAnchorWord(soundAnchor);
+    const anchorForms = anchorFormsForStory(soundAnchor, anchorAliasMap);
+    if (!anchorWord) {
       malformedAnchors.push({ hanzi: card.hanzi, pinyin: card.pinyin, soundAnchor });
       continue;
     }
@@ -64,10 +57,10 @@ function main() {
     total++;
     const story = String(md.story || "").trim();
 
-    if (anchorIntegratedInStory(anchorWords, story)) {
+    if (anchorIntegratedInStoryWithAliases(soundAnchor, story, anchorAliasMap)) {
       integrated++;
     } else {
-      missing.push({ hanzi: card.hanzi, pinyin: card.pinyin, anchorWords, story });
+      missing.push({ hanzi: card.hanzi, pinyin: card.pinyin, anchorWord, anchorForms, story });
     }
 
     if (hintContainsPhoneticCue(story)) {
@@ -86,8 +79,8 @@ function main() {
   if (missing.length > 0) {
     console.log("\nNeeds integration:");
     for (const r of missing) {
-      const anchor = r.anchorWords.join(", ");
-      console.log(`  ${r.hanzi} (${r.pinyin}) [${anchor}] "${r.story}"`);
+      const forms = r.anchorForms.join(", ");
+      console.log(`  ${r.hanzi} (${r.pinyin}) [${forms}] "${r.story}"`);
     }
   }
 

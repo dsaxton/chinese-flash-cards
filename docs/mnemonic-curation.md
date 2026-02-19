@@ -29,7 +29,7 @@ on its own, but they must never be the primary hook.
 
 | Hook | When to use | How |
 |------|------------|-----|
-| **Sound** | Card has a `soundAnchor` | Anchor word in ALL CAPS, placed early in the sentence, causally linked to the meaning |
+| **Sound** | Card has a `soundAnchor` | Anchor word in ALL CAPS, placed wherever the sentence is most natural, causally linked to the meaning |
 | **Shape** | Character has a distinctive, iconic visual form | Describe what it looks like; works best for simple characters (人, 口, 日, 大, 山, 木) |
 | **Meaning** | Always | State or evoke the English meaning in the scene. Required for anchored stories; evoked (not stated outright) for unanchored stories |
 
@@ -56,6 +56,11 @@ scene.
 
 When no ideal dual-fit anchor exists, prefer one that allows an *indirect but
 plausible* scene connection over a purely phonetic choice with no handle.
+
+If forcing the exact anchor token makes the sentence unnatural, the story may
+use a natural English alias/fragment listed in
+`data/phonetic-config.json::phoneticAnchorAliases` (for example, anchor `GIN`
+integrated via `begins` / `forging`).
 
 ---
 
@@ -120,6 +125,8 @@ cleared (empty is better than broken).
    characters related to X" is not a mnemonic.
 10. **No multi-word `soundAnchor`** — anchors must be canonical single-word
     format: `Think of WORD.`
+11. **Template diversity required** — avoid repeated sentence scaffolds across cards.
+12. **Anchor placement diversity required** — anchored stories should not mostly begin with the anchor token.
 
 ---
 
@@ -147,7 +154,8 @@ mnemonicData: {
 ```bash
 node scripts/audit-mnemonics.js --mode all --fail-on-violations   # full vocab + radicals quality gate
 node scripts/validate-anchor-stories.js             # anchor integration coverage (HSK1 + radicals)
-node scripts/test-mnemonic-curation.js              # includes single-char HSK1 sound-anchor coverage >= 95% and radical anchor presence
+node scripts/test-mnemonic-curation.js              # includes coverage, template-diversity, and anchor-placement-diversity gates
+node scripts/test-hint-safety.js                    # hint profile safety checks (no pinyin/answer leakage)
 ```
 
 Note: coherence / concreteness / component-only checks are implemented as
@@ -202,8 +210,8 @@ Give the agent `work/relevance.json` and the following prompt:
 >
 > For each entry with `score < 100`, rewrite the `story` so that it:
 >
-> 1. If `soundAnchor` is non-empty (e.g. `"Think of BOO."`): opens with or
->    prominently features the anchor word in ALL CAPS, and the scene must
+> 1. If `soundAnchor` is non-empty (e.g. `"Think of BOO."`): naturally includes
+>    the anchor word in ALL CAPS somewhere in the sentence, and the scene must
 >    directly involve or cause something related to the English meaning.
 >    Both the sound hook and the meaning hook must appear in the same clause —
 >    do not separate them with a semicolon.
@@ -266,6 +274,14 @@ node scripts/score-story-relevance.js --non-empty --out work/relevance.json
 node scripts/export-problem-stories.js > work/phase1-input.json   # broken / leakers / context-desc / multi-anchor
 node scripts/export-missing-stories.js > work/phase2-input.json   # cards with no story
 node scripts/export-anchor-stories.js --needs-rewrite > work/phase3-input.json  # anchored, not yet integrated
+
+# Inspect LLM-flagged cards
+node -e "
+const d = require('./work/coherence-review-flags.json');
+const flagged = d.filter(r => r.flag);
+console.log(flagged.length + ' flagged:');
+flagged.forEach(r => console.log(r.hanzi, ':', r.reason));
+"
 
 # Apply LLM-generated rewrites (works for both vocab and radical cards)
 node scripts/apply-story-rewrites.js --input work/output.json --dry-run

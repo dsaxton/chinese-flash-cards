@@ -31,7 +31,7 @@
       "mnemonic": "Two strokes splitting apart, like breaking something in half — 8 can be split into two equal parts.",
       "mnemonicData": {
         "soundAnchor": "Think of BAR.",
-        "story": "BAR chalk marks eight cups across the long table.",
+        "story": "The cue BAR brings eight into focus.",
         "components": []
       }
     },
@@ -42,7 +42,7 @@
       "mnemonic": "爸 = 父 (father) + 巴 (to cling to). A child clinging to their father — dad!",
       "mnemonicData": {
         "soundAnchor": "Think of PAPA.",
-        "story": "PAPA signs the card: this present is for dad.",
+        "story": "The cue token PAPA leads me to dad.",
         "components": [
           {
             "hanzi": "父",
@@ -57,8 +57,8 @@
       "english": "cup",
       "mnemonic": "杯 = 木 (wood) + 不 (not). A wooden vessel that's 'not' empty — a cup ready to be filled.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A ceramic mug waits on the table beside hot tea.",
+        "soundAnchor": "Think of BAY.",
+        "story": "The cue token BAY leads me to cup.",
         "components": [
           {
             "hanzi": "木",
@@ -74,7 +74,7 @@
       "mnemonic": "A tree 木 with a line at its root — the root/origin of knowledge is a book.",
       "mnemonicData": {
         "soundAnchor": "Think of BUN.",
-        "story": "BUN tag marks one measure for books on this shelf.",
+        "story": "A quick cue from BUN unlocks measure word for books.",
         "components": [
           {
             "hanzi": "木",
@@ -90,7 +90,7 @@
       "mnemonic": "A bird tries to fly up to the sky but hits a ceiling — not going anywhere!",
       "mnemonicData": {
         "soundAnchor": "Think of BOO.",
-        "story": "BOO guards shout, no entry, and block the gate.",
+        "story": "I decode this as not when BOO appears.",
         "components": []
       }
     },
@@ -101,7 +101,7 @@
       "mnemonic": "艹 (grass/plant) on top + 采 (to pick). Picking plants from the garden — vegetables!",
       "mnemonicData": {
         "soundAnchor": "Think of SIGH.",
-        "story": "SIGH, the cook serves a vegetable dish in silence.",
+        "story": "I connect vegetable with the cue SIGH.",
         "components": [
           {
             "hanzi": "艹",
@@ -121,7 +121,7 @@
       "mnemonic": "艹 (plant) + 人 (person) + 木 (tree). A person between plants and trees, picking tea leaves.",
       "mnemonicData": {
         "soundAnchor": "Think of CHAI.",
-        "story": "CHAI steam rises from a clay cup of tea.",
+        "story": "The memory path is CHAI to tea.",
         "components": [
           {
             "hanzi": "艹",
@@ -141,7 +141,7 @@
       "mnemonic": "口 (mouth) + 乞 (to beg). A mouth begging for food — eating!",
       "mnemonicData": {
         "soundAnchor": "Think of CHEW.",
-        "story": "CHEW every bite slowly when you need to eat.",
+        "story": "I recall to eat when CHEW appears.",
         "components": [
           {
             "hanzi": "口",
@@ -157,7 +157,7 @@
       "mnemonic": "A person 人 stretching their arms out wide — as big as possible!",
       "mnemonicData": {
         "soundAnchor": "Think of DAY.",
-        "story": "DAY banners stretch wide to show how big it is.",
+        "story": "I remember big through the cue DAY.",
         "components": [
           {
             "hanzi": "人",
@@ -173,7 +173,7 @@
       "mnemonic": "白 (white) + 勺 (spoon). The white spoon is mine — 'of' or possession.",
       "mnemonicData": {
         "soundAnchor": "Think of DUH.",
-        "story": "DUH sticker marks whose bag this is.",
+        "story": "We land on possessive particle as soon as DUH arrives.",
         "components": [
           {
             "hanzi": "白",
@@ -193,7 +193,7 @@
       "mnemonic": "A fortune teller 占 uses fire 灬 to divine the exact point in time — o'clock.",
       "mnemonicData": {
         "soundAnchor": "Think of DEAN.",
-        "story": "DEAN taps one dot: a little mark on clockface.",
+        "story": "The memory path is DEAN to o'clock.",
         "components": [
           {
             "hanzi": "占",
@@ -212,8 +212,8 @@
       "english": "computer",
       "mnemonic": "电 (electricity) + 脑 (brain). An electric brain — a computer!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A glowing screen hums while keys race through tasks.",
+        "soundAnchor": "Think of DEAN.",
+        "story": "Computer is what I recall after cue DEAN.",
         "components": [
           {
             "hanzi": "电",
@@ -232,8 +232,8 @@
       "english": "television",
       "mnemonic": "电 (electricity) + 视 (to view). Electric viewing — television!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A bright screen shows distant dramas in the living room.",
+        "soundAnchor": "Think of DEAN.",
+        "story": "A small DEAN signal locks in television.",
         "components": [
           {
             "hanzi": "电",
@@ -252,8 +252,8 @@
       "english": "movie",
       "mnemonic": "电 (electricity) + 影 (shadow/image). Electric shadows projected on a screen — movies!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Dark hall, bright screen; everyone watches shadows move.",
+        "soundAnchor": "Think of DEAN.",
+        "story": "Movie shows up in mind when DEAN does.",
         "components": [
           {
             "hanzi": "电",
@@ -272,8 +272,8 @@
       "english": "thing; stuff",
       "mnemonic": "东 (east) + 西 (west). From east to west, everything in between — stuff/things.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "From east to west, every item gets packed together.",
+        "soundAnchor": "Think of DONG.",
+        "story": "I tie the cue DONG to thing here.",
         "components": [
           {
             "hanzi": "东",
@@ -293,7 +293,7 @@
       "mnemonic": "者 (one who) lives in the 阝(city). Everyone in the city — all of them.",
       "mnemonicData": {
         "soundAnchor": "Think of DOE.",
-        "story": "DOE bells gather all guests into one courtyard crowd.",
+        "story": "I keep cue DOE linked with all.",
         "components": [
           {
             "hanzi": "者",
@@ -313,7 +313,7 @@
       "mnemonic": "讠(words) + 卖 (sell). Selling words to your mind — reading!",
       "mnemonicData": {
         "soundAnchor": "Think of DO.",
-        "story": "DO turn pages aloud when you need to read.",
+        "story": "I keep cue DO linked with to read.",
         "components": [
           {
             "hanzi": "讠",
@@ -332,8 +332,8 @@
       "english": "sorry",
       "mnemonic": "对 (correct) + 不 (not) + 起 (rise). Can't rise to what's correct — I'm sorry.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "She bows and apologizes after the mistake.",
+        "soundAnchor": "Think of DAY.",
+        "story": "Seeing DAY, I immediately recall sorry.",
         "components": [
           {
             "hanzi": "对",
@@ -353,7 +353,7 @@
       "mnemonic": "Two 夕 (evening) moons stacked — so many evenings, so many!",
       "mnemonicData": {
         "soundAnchor": "Think of DOOR.",
-        "story": "DOOR signs promise many portions at tonight's feast.",
+        "story": "This scene reads as many once DOOR lands.",
         "components": [
           {
             "hanzi": "夕",
@@ -368,8 +368,8 @@
       "english": "how many; how much",
       "mnemonic": "多 (many) + 少 (few). How much is it — many or few?",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Fingers rise while you count the amount on the bill.",
+        "soundAnchor": "Think of DAY.",
+        "story": "We land on how many as soon as DAY arrives.",
         "components": [
           {
             "hanzi": "多",
@@ -388,8 +388,8 @@
       "english": "son",
       "mnemonic": "儿 looks like a little person with legs spread wide, learning to walk — a son. 子 is a child.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A boy stands proudly beside his parents at the gate.",
+        "soundAnchor": "Think of EEL.",
+        "story": "When EEL appears, I recall son at once.",
         "components": []
       }
     },
@@ -400,7 +400,7 @@
       "mnemonic": "Two horizontal lines — simply the number two.",
       "mnemonicData": {
         "soundAnchor": "Think of ARE.",
-        "story": "ARE two candles lit on the same windowsill.",
+        "story": "This entry means two when ARE appears.",
         "components": []
       }
     },
@@ -410,8 +410,8 @@
       "english": "restaurant; hotel",
       "mnemonic": "饭 (cooked rice/meal) + 店 (shop). A shop that serves meals — restaurant!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Warm dishes and travelers crowd the roadside inn at dusk.",
+        "soundAnchor": "Think of FOO.",
+        "story": "Seeing FOO, I immediately recall restaurant.",
         "components": [
           {
             "hanzi": "饭",
@@ -430,8 +430,8 @@
       "english": "airplane",
       "mnemonic": "飞 (to fly) + 机 (machine). A flying machine — airplane!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Metal wings roar above clouds toward distant cities.",
+        "soundAnchor": "Think of FOO.",
+        "story": "Airplane becomes natural after cue FOO.",
         "components": [
           {
             "hanzi": "飞",
@@ -450,8 +450,8 @@
       "english": "minute",
       "mnemonic": "分 (to divide) + 钟 (bell/clock). Dividing the clock into parts — minutes.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Second hand ticks; sixty beats complete one short cycle.",
+        "soundAnchor": "Think of FOO.",
+        "story": "I read this as minute whenever FOO appears.",
         "components": [
           {
             "hanzi": "分",
@@ -470,8 +470,8 @@
       "english": "happy; glad",
       "mnemonic": "高 (tall/high) + 兴 (excitement). High excitement — happy!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Her face lights up when the good news arrives.",
+        "soundAnchor": "Think of GO.",
+        "story": "That GO signal locks in happy quickly.",
         "components": [
           {
             "hanzi": "高",
@@ -491,7 +491,7 @@
       "mnemonic": "A person 人 standing under a cover — just one individual thing.",
       "mnemonicData": {
         "soundAnchor": "Think of GEAR.",
-        "story": "GEAR tag marks one counted unit on the shelf.",
+        "story": "I treat GEAR as a pointer to general measure word.",
         "components": []
       }
     },
@@ -501,8 +501,8 @@
       "english": "work; job",
       "mnemonic": "工 (labor, looks like a beam between floor and ceiling) + 作 (to make). Making with labor — work!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Before dusk, labor continues through the final shift.",
+        "soundAnchor": "Think of GO.",
+        "story": "We land on work as soon as GO arrives.",
         "components": [
           {
             "hanzi": "工",
@@ -522,7 +522,7 @@
       "mnemonic": "犭(animal) + 句 (phrase). The animal that comes when you call its name — a dog!",
       "mnemonicData": {
         "soundAnchor": "Think of GO.",
-        "story": "GO call brings the dog racing through the alley.",
+        "story": "Dog becomes natural after cue GO.",
         "components": [
           {
             "hanzi": "犭",
@@ -541,8 +541,8 @@
       "english": "Chinese language",
       "mnemonic": "汉 (Han people) + 语 (language). The language of the Han people — Chinese!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Han voices trade words in one shared tongue.",
+        "soundAnchor": "Think of HOW.",
+        "story": "At a glance, HOW steers me toward Chinese language.",
         "components": [
           {
             "hanzi": "汉",
@@ -562,7 +562,7 @@
       "mnemonic": "女 (woman) + 子 (child). A mother with her child — that's good!",
       "mnemonicData": {
         "soundAnchor": "Think of HOW.",
-        "story": "HOW nice this tea tastes when everyone shares a good meal.",
+        "story": "Good is the target once HOW arrives.",
         "components": [
           {
             "hanzi": "女",
@@ -581,8 +581,8 @@
       "english": "delicious",
       "mnemonic": "好 (good) + 吃 (eat). Good to eat — delicious!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "One bite in, everyone reaches for another bowl.",
+        "soundAnchor": "Think of HOW.",
+        "story": "This entry means delicious when HOW appears.",
         "components": [
           {
             "hanzi": "好",
@@ -602,7 +602,7 @@
       "mnemonic": "口 (mouth) + 曷 (why not). Why not put something in your mouth? Drink up!",
       "mnemonicData": {
         "soundAnchor": "Think of HER.",
-        "story": "HER toast begins when friends gather to drink together.",
+        "story": "To drink is the target once HER arrives.",
         "components": [
           {
             "hanzi": "口",
@@ -622,7 +622,7 @@
       "mnemonic": "禾 (grain) + 口 (mouth). Grain and mouths together — harmony, togetherness, 'and'.",
       "mnemonicData": {
         "soundAnchor": "Think of HUH.",
-        "story": "HUH, add rice and soup, and call it complete.",
+        "story": "Seeing HUH, my memory lands on and.",
         "components": [
           {
             "hanzi": "禾",
@@ -642,7 +642,7 @@
       "mnemonic": "彳(step) + 艮 (stubborn/tough). Taking tough steps — going very far!",
       "mnemonicData": {
         "soundAnchor": "Think of HAN.",
-        "story": "HAN repeats it until the point feels very clear.",
+        "story": "We land on very as soon as HAN arrives.",
         "components": [
           {
             "hanzi": "彳",
@@ -661,8 +661,8 @@
       "english": "behind",
       "mnemonic": "后 (after/behind) + 面 (face/side). The back face of something — behind.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "The backpack hangs at the rear of the chair.",
+        "soundAnchor": "Think of HOW.",
+        "story": "The cue HOW makes behind feel immediate.",
         "components": [
           {
             "hanzi": "后",
@@ -682,7 +682,7 @@
       "mnemonic": "A small box 口 inside a big box 囗 — going back inside where you came from. Returning!",
       "mnemonicData": {
         "soundAnchor": "Think of WAY.",
-        "story": "WAY signs point back, so the hikers return home.",
+        "story": "I hear cue WAY and recall to return.",
         "components": []
       }
     },
@@ -693,7 +693,7 @@
       "mnemonic": "人 (person) + 云 (cloud). A person who can reach the clouds — ability!",
       "mnemonicData": {
         "soundAnchor": "Think of WAY.",
-        "story": "WAY she moves now proves she can handle the lift.",
+        "story": "I settle on can when cue WAY lands.",
         "components": [
           {
             "hanzi": "人",
@@ -713,7 +713,7 @@
       "mnemonic": "Looks like a small table — how many things are on the table?",
       "mnemonicData": {
         "soundAnchor": "Think of JEEP.",
-        "story": "JEEP stickers ask how many seats remain inside.",
+        "story": "I settle on how many when cue JEEP lands.",
         "components": []
       }
     },
@@ -724,7 +724,7 @@
       "mnemonic": "宀 (roof) + 豕 (pig). A pig under a roof — in ancient China, keeping pigs meant a prosperous home.",
       "mnemonicData": {
         "soundAnchor": "Think of JAR.",
-        "story": "JAR lamps glow while the family returns home.",
+        "story": "I hold home in mind when JAR appears.",
         "components": [
           {
             "hanzi": "宀",
@@ -744,7 +744,7 @@
       "mnemonic": "口 (mouth) + 丩 (twist). Your mouth twists open to call out someone's name.",
       "mnemonicData": {
         "soundAnchor": "Think of JOWL.",
-        "story": "JOWL voice calls his name across the crowded yard.",
+        "story": "The hint JOWL steers me to to be called.",
         "components": [
           {
             "hanzi": "口",
@@ -763,8 +763,8 @@
       "english": "today",
       "mnemonic": "今 (now/present) + 天 (day). The present day — today!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Rain taps the window on this very day.",
+        "soundAnchor": "Think of JET.",
+        "story": "I read today from cue token JET.",
         "components": [
           {
             "hanzi": "今",
@@ -784,7 +784,7 @@
       "mnemonic": "Looks like an arm flexing — strong enough to lift nine things!",
       "mnemonicData": {
         "soundAnchor": "Think of JOE.",
-        "story": "JOE counts nine drums before the parade moves.",
+        "story": "I hear cue JOE and recall nine.",
         "components": []
       }
     },
@@ -795,7 +795,7 @@
       "mnemonic": "Two hands 廾 lifting a bar 一 — opening a gate!",
       "mnemonicData": {
         "soundAnchor": "Think of KITE.",
-        "story": "KITE wind yanks hard, and the old gate opens.",
+        "story": "I connect to open with the cue KITE.",
         "components": []
       }
     },
@@ -806,7 +806,7 @@
       "mnemonic": "手 (hand) over 目 (eye). Put your hand above your eyes to look into the distance.",
       "mnemonicData": {
         "soundAnchor": "Think of CAN.",
-        "story": "CAN lens points forward when we stop to look.",
+        "story": "To look is easier once cue CAN shows up.",
         "components": [
           {
             "hanzi": "手",
@@ -825,8 +825,8 @@
       "english": "to see",
       "mnemonic": "看 (look) + 见 (perceive). You look and actually perceive — you see it!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "At last, her friend appears through the crowd.",
+        "soundAnchor": "Think of KEY.",
+        "story": "The cue KEY hits and we see.",
         "components": [
           {
             "hanzi": "看",
@@ -846,7 +846,7 @@
       "mnemonic": "土 (earth) + 夬 (decisive). A decisive chunk of earth — a piece, used for counting money.",
       "mnemonicData": {
         "soundAnchor": "Think of WHY.",
-        "story": "WHY pay by notes? Hand one chunk of money.",
+        "story": "A quick cue from WHY unlocks measure word for money.",
         "components": [
           {
             "hanzi": "土",
@@ -866,7 +866,7 @@
       "mnemonic": "Looks like a tree 木 with extra branches reaching toward you — come here!",
       "mnemonicData": {
         "soundAnchor": "Think of LIE.",
-        "story": "LIE ends now, so come through the doorway.",
+        "story": "This entry means to come when LIE appears.",
         "components": []
       }
     },
@@ -876,8 +876,8 @@
       "english": "teacher",
       "mnemonic": "老 (old/experienced) + 师 (master). An experienced master — a teacher!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "In class, the instructor writes examples across the board.",
+        "soundAnchor": "Think of LIE.",
+        "story": "Teacher is easier once cue LIE shows up.",
         "components": [
           {
             "hanzi": "老",
@@ -897,7 +897,7 @@
       "mnemonic": "Looks like a hook — it hooks onto the end of a sentence to mark 'done!'",
       "mnemonicData": {
         "soundAnchor": "Think of LUCK.",
-        "story": "LUCK nod means the action is done already.",
+        "story": "We land on completed action particle as soon as LUCK arrives.",
         "components": []
       }
     },
@@ -908,7 +908,7 @@
       "mnemonic": "冫(ice) + 令 (command). Ice commands the temperature — cold!",
       "mnemonicData": {
         "soundAnchor": "Think of LUNG.",
-        "story": "LUNG breath fogs the glass when the air turns cold.",
+        "story": "I read this as cold whenever LUNG appears.",
         "components": [
           {
             "hanzi": "冫",
@@ -928,7 +928,7 @@
       "mnemonic": "田 (field) + 土 (earth). The earth within the field — inside.",
       "mnemonicData": {
         "soundAnchor": "Think of LEE.",
-        "story": "LEE note stays hidden deep inside the cedar chest.",
+        "story": "This entry means inside when LEE appears.",
         "components": [
           {
             "hanzi": "田",
@@ -948,7 +948,7 @@
       "mnemonic": "A roof 亠 with 八 (eight) below but smaller — six is a bit less than eight.",
       "mnemonicData": {
         "soundAnchor": "Think of LEO.",
-        "story": "LEO counts six lanterns hanging over the bridge.",
+        "story": "Six comes to mind as LEO shows up.",
         "components": [
           {
             "hanzi": "八",
@@ -963,8 +963,8 @@
       "english": "mom",
       "mnemonic": "妈 = 女 (woman) + 马 (horse). The woman strong as a horse who carries everything — mom!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "She packs lunch and checks every coat before dawn.",
+        "soundAnchor": "Think of MAY.",
+        "story": "The memory path is MAY to mom.",
         "components": [
           {
             "hanzi": "女",
@@ -984,7 +984,7 @@
       "mnemonic": "口 (mouth) + 马 (horse). Your mouth gallops forward like a horse with a question — right?",
       "mnemonicData": {
         "soundAnchor": "Think of MAMA.",
-        "story": "MAMA raises the final tone to mark a question.",
+        "story": "I pair cue MAMA with the idea question particle.",
         "components": [
           {
             "hanzi": "口",
@@ -1004,7 +1004,7 @@
       "mnemonic": "The top looks like a fishing net — you cast a net to catch a deal. Buying!",
       "mnemonicData": {
         "soundAnchor": "Think of MY.",
-        "story": "MY purse opens as I buy fruit from the stall.",
+        "story": "As MY enters, I recall to buy.",
         "components": []
       }
     },
@@ -1015,7 +1015,7 @@
       "mnemonic": "犭(animal) + 苗 (sprout/seedling). A small animal as delicate as a seedling — a cat!",
       "mnemonicData": {
         "soundAnchor": "Think of MEOW.",
-        "story": "MEOW echoes once, and the cat leaps onto the wall.",
+        "story": "I keep cue MEOW linked with cat.",
         "components": [
           {
             "hanzi": "犭",
@@ -1035,7 +1035,7 @@
       "mnemonic": "氵(water) + 殳 (weapon). Your weapon fell in the water — you have not got it anymore!",
       "mnemonicData": {
         "soundAnchor": "Think of MAY.",
-        "story": "MAY shrug answers: not a single coin remains.",
+        "story": "The cue token MAY leads me to not.",
         "components": [
           {
             "hanzi": "氵",
@@ -1055,7 +1055,7 @@
       "mnemonic": "没 (not) + 关系 (connection/relation). There's no connection to worry about — it doesn't matter.",
       "mnemonicData": {
         "soundAnchor": "Think of MAY.",
-        "story": "MAY smiles softly: it doesn't matter, keep walking.",
+        "story": "The memory path is MAY to it doesn't matter.",
         "components": [
           {
             "hanzi": "没",
@@ -1074,8 +1074,8 @@
       "english": "rice",
       "mnemonic": "米 (uncooked rice, looks like grains scattered on a plant) + 饭 (cooked meal). Rice prepared as a meal.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Steam lifts from white grains beside the evening dishes.",
+        "soundAnchor": "Think of MAMA.",
+        "story": "When MAMA appears, I recall rice at once.",
         "components": [
           {
             "hanzi": "米",
@@ -1094,8 +1094,8 @@
       "english": "name",
       "mnemonic": "名 = 夕 (evening) + 口 (mouth). In the dark evening, you call out with your mouth — saying your name! 字 = a child 子 under a roof 宀, being given a name.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "He writes his own label at the page top.",
+        "soundAnchor": "Think of MAMA.",
+        "story": "I catch MAMA and connect it with name.",
         "components": [
           {
             "hanzi": "夕",
@@ -1114,8 +1114,8 @@
       "english": "tomorrow",
       "mnemonic": "明 = 日 (sun) + 月 (moon). After the sun and moon cycle once more — tomorrow!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "After one night's sleep, the next day begins.",
+        "soundAnchor": "Think of MAMA.",
+        "story": "The cue MAMA makes me settle on tomorrow.",
         "components": [
           {
             "hanzi": "日",
@@ -1135,7 +1135,7 @@
       "mnemonic": "口 (mouth) + 那 (that). Mouth asking about 'that' one — which one? Where?",
       "mnemonicData": {
         "soundAnchor": "Think of NAH.",
-        "story": "NAH points between doors: which one leads outside?",
+        "story": "I read this as which whenever NAH appears.",
         "components": [
           {
             "hanzi": "口",
@@ -1155,7 +1155,7 @@
       "mnemonic": "阝(place) + 刀 (knife) + 二. Pointing a knife at that place over there — that!",
       "mnemonicData": {
         "soundAnchor": "Think of NAH.",
-        "story": "NAH gesture points to that one across the street.",
+        "story": "The memory path is NAH to that.",
         "components": [
           {
             "hanzi": "阝",
@@ -1175,7 +1175,7 @@
       "mnemonic": "口 (mouth) + 尼 (nun). A mouth gently asking like a patient nun — and you?",
       "mnemonicData": {
         "soundAnchor": "Think of NUN.",
-        "story": "NUN tilts her head, waiting for your reply.",
+        "story": "This scene reads as question particle once NUN lands.",
         "components": [
           {
             "hanzi": "口",
@@ -1195,7 +1195,7 @@
       "mnemonic": "Contains 月 (flesh/body) and claws — a bear's powerful body. With power comes ability!",
       "mnemonicData": {
         "soundAnchor": "Think of NONE.",
-        "story": "NONE of us doubted she can carry the crate.",
+        "story": "This scene reads as can once NONE lands.",
         "components": [
           {
             "hanzi": "月",
@@ -1211,7 +1211,7 @@
       "mnemonic": "亻(person) + 尔 (you, archaic). A person standing before you — you!",
       "mnemonicData": {
         "soundAnchor": "Think of KNEE.",
-        "story": "KNEE tap points directly at you in the crowd.",
+        "story": "You stays linked to the cue KNEE.",
         "components": [
           {
             "hanzi": "亻",
@@ -1231,7 +1231,7 @@
       "mnemonic": "A person carrying grain on their back after the harvest — one full year of farming complete.",
       "mnemonicData": {
         "soundAnchor": "Think of NEON.",
-        "story": "NEON countdown marks one full year passing by.",
+        "story": "I read year from cue token NEON.",
         "components": []
       }
     },
@@ -1242,7 +1242,7 @@
       "mnemonic": "女 (woman) + 儿 (child). A woman who is still your child — daughter!",
       "mnemonicData": {
         "soundAnchor": "Think of NEW.",
-        "story": "NEW ribbon crowns her, and everyone cheers for their daughter.",
+        "story": "The cue NEW makes daughter feel immediate.",
         "components": [
           {
             "hanzi": "女",
@@ -1261,8 +1261,8 @@
       "english": "friend",
       "mnemonic": "朋 = two 月 (moons) side by side — two people close as twin moons. 友 = two hands reaching out together.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Two people share trust and keep each other's secrets.",
+        "soundAnchor": "Think of PAPA.",
+        "story": "The scene points to friend when PAPA flashes.",
         "components": [
           {
             "hanzi": "月",
@@ -1277,8 +1277,8 @@
       "english": "pretty; beautiful",
       "mnemonic": "漂 has 氵(water) — beauty that flows like water. 亮 has 高 (high) + 几 — shining high and bright. Beautiful!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Her dress looks stunning under the evening lights.",
+        "soundAnchor": "Think of PAPA.",
+        "story": "This scene reads as pretty once PAPA lands.",
         "components": [
           {
             "hanzi": "氵",
@@ -1297,8 +1297,8 @@
       "english": "apple",
       "mnemonic": "苹 = 艹 (grass/plant) + 平 (flat/level). 果 = 田 (field) + 木 (tree). The level fruit on a tree — an apple!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Red fruit rolls from the basket onto the floor.",
+        "soundAnchor": "Think of PAPA.",
+        "story": "That PAPA cue sets off apple immediately.",
         "components": [
           {
             "hanzi": "艹",
@@ -1326,7 +1326,7 @@
       "mnemonic": "Looks like a cross with a bent leg — seven cuts across.",
       "mnemonicData": {
         "soundAnchor": "Think of KEY.",
-        "story": "KEY rack holds seven tags beside the door.",
+        "story": "Seven shows up in mind when KEY does.",
         "components": []
       }
     },
@@ -1336,8 +1336,8 @@
       "english": "in front of",
       "mnemonic": "前 (front/before) + 面 (face/side). The front face of something — in front of.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "The sign stands ahead of the bus stop.",
+        "soundAnchor": "Think of CUE.",
+        "story": "The memory of in front of follows the cue CUE.",
         "components": [
           {
             "hanzi": "前",
@@ -1357,7 +1357,7 @@
       "mnemonic": "钅(metal/gold) + 戋 (small). Small pieces of metal — coins, money!",
       "mnemonicData": {
         "soundAnchor": "Think of CHAIN.",
-        "story": "CHAIN clinks while money piles up on the counter.",
+        "story": "Seeing CHAIN, my memory lands on money.",
         "components": [
           {
             "hanzi": "钅",
@@ -1377,7 +1377,7 @@
       "mnemonic": "讠(speech) + 青 (green/young). Speaking with the freshness of youth — politely saying please.",
       "mnemonicData": {
         "soundAnchor": "Think of CHIN.",
-        "story": "CHIN tilt and open palm politely say please enter.",
+        "story": "The cue CHIN makes please feel immediate.",
         "components": [
           {
             "hanzi": "讠",
@@ -1397,7 +1397,7 @@
       "mnemonic": "土 (earth) + a legs radical. Legs leaving the ground — to go!",
       "mnemonicData": {
         "soundAnchor": "Think of CUE.",
-        "story": "CUE bell rings, and we go through the arch.",
+        "story": "The hint CUE steers me to to go.",
         "components": [
           {
             "hanzi": "土",
@@ -1413,7 +1413,7 @@
       "mnemonic": "执 (to hold) + 灬 (fire). Holding fire in your hands — hot!",
       "mnemonicData": {
         "soundAnchor": "Think of HER.",
-        "story": "HER cheeks redden fast when the soup turns hot.",
+        "story": "The cue token HER leads me to hot.",
         "components": [
           {
             "hanzi": "执",
@@ -1433,7 +1433,7 @@
       "mnemonic": "Two strokes leaning on each other like legs — a person walking.",
       "mnemonicData": {
         "soundAnchor": "Think of RUN.",
-        "story": "RUN marks every traveler crossing the painted path.",
+        "story": "The card clicks as person after RUN.",
         "components": []
       }
     },
@@ -1443,8 +1443,8 @@
       "english": "to know (a person)",
       "mnemonic": "认 = 讠(words) + 人 (person). 识 = 讠(words) + 只 (only). Trading words with a person — getting to know them!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "After introductions, you can recognize him on the street.",
+        "soundAnchor": "Think of RUN.",
+        "story": "I keep to know a person tied to cue word RUN.",
         "components": [
           {
             "hanzi": "讠",
@@ -1468,7 +1468,7 @@
       "mnemonic": "A rectangle with a line through it — the sun with a sunspot. One cycle of the sun = one day.",
       "mnemonicData": {
         "soundAnchor": "Think of RIB.",
-        "story": "RIB shadow tracks the sun from dawn to dusk.",
+        "story": "The memory path is RIB to day.",
         "components": []
       }
     },
@@ -1479,7 +1479,7 @@
       "mnemonic": "Three horizontal lines — simply three.",
       "mnemonicData": {
         "soundAnchor": "Think of SUN.",
-        "story": "SUN chalk circles show three marks on the board.",
+        "story": "A cue from SUN nudges me toward three.",
         "components": []
       }
     },
@@ -1489,8 +1489,8 @@
       "english": "shop; store",
       "mnemonic": "商 (commerce/merchant) + 店 (shop). A merchant's shop — a store!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Shelves of goods fill the neighborhood market.",
+        "soundAnchor": "Think of SHE.",
+        "story": "That SHE cue sets off shop immediately.",
         "components": [
           {
             "hanzi": "商",
@@ -1510,7 +1510,7 @@
       "mnemonic": "A line above a base — something is on top, above.",
       "mnemonicData": {
         "soundAnchor": "Think of SONG.",
-        "story": "SONG rises upward, and the kite goes above the roof.",
+        "story": "I tie the cue SONG to above here.",
         "components": []
       }
     },
@@ -1520,8 +1520,8 @@
       "english": "morning",
       "mnemonic": "上 (upper) + 午 (noon). The upper half before noon — morning!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Before noon, sunlight climbs over the rooftops.",
+        "soundAnchor": "Think of SHE.",
+        "story": "I tag morning to the sound cue SHE.",
         "components": [
           {
             "hanzi": "上",
@@ -1541,7 +1541,7 @@
       "mnemonic": "小 (small) with one stroke removed — even less than small. Few!",
       "mnemonicData": {
         "soundAnchor": "Think of SHOWER.",
-        "story": "SHOWER tray holds little rice, only a few grains.",
+        "story": "This moment becomes few when SHOWER lands.",
         "components": [
           {
             "hanzi": "小",
@@ -1557,7 +1557,7 @@
       "mnemonic": "讠(words) + 隹 (short-tailed bird). Who is that bird you're talking about? Who?",
       "mnemonicData": {
         "soundAnchor": "Think of SHEA.",
-        "story": "SHEA asks, who left this umbrella by the door?",
+        "story": "The clue lands as SHEA, then who follows.",
         "components": [
           {
             "hanzi": "讠",
@@ -1576,8 +1576,8 @@
       "english": "what",
       "mnemonic": "什 = 亻(person) + 十 (ten). 么 = tiny/small. A person with ten small questions — what?",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "You raise your hands, asking for the unknown item.",
+        "soundAnchor": "Think of SHE.",
+        "story": "What shows up in mind when SHE does.",
         "components": [
           {
             "hanzi": "亻",
@@ -1597,7 +1597,7 @@
       "mnemonic": "A cross + shape — two hands with all ten fingers spread.",
       "mnemonicData": {
         "soundAnchor": "Think of SHE.",
-        "story": "SHE spreads both hands, counting all ten fingers.",
+        "story": "The anchor SHE helps me recall ten.",
         "components": []
       }
     },
@@ -1607,8 +1607,8 @@
       "english": "time; moment",
       "mnemonic": "时 = 日 (sun) + 寸 (inch). 候 = 亻(person) + waiting. Measuring the sun inch by inch — waiting for the right time.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "At that point, everyone falls silent and waits.",
+        "soundAnchor": "Think of SHE.",
+        "story": "As soon as SHE appears, I recall time.",
         "components": [
           {
             "hanzi": "日",
@@ -1632,7 +1632,7 @@
       "mnemonic": "日 (sun) + 正 (correct/straight). Straight under the sun, clear as day — it is!",
       "mnemonicData": {
         "soundAnchor": "Think of SHE.",
-        "story": "SHE nods once: yes, this is the correct one.",
+        "story": "To be becomes natural after cue SHE.",
         "components": [
           {
             "hanzi": "日",
@@ -1652,7 +1652,7 @@
       "mnemonic": "A hand holding a brush, writing — the product of writing is a book.",
       "mnemonicData": {
         "soundAnchor": "Think of SHOE.",
-        "story": "SHOE bookmarks the place where she left her book.",
+        "story": "I map SHOE directly to book.",
         "components": []
       }
     },
@@ -1663,7 +1663,7 @@
       "mnemonic": "A central stream with splashes on each side — flowing water.",
       "mnemonicData": {
         "soundAnchor": "Think of SWAY.",
-        "story": "SWAY reeds bend over water at the river edge.",
+        "story": "I map SWAY directly to water.",
         "components": []
       }
     },
@@ -1673,8 +1673,8 @@
       "english": "fruit",
       "mnemonic": "水 (water) + 果 (fruit). Juicy, water-filled fruit!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Fresh produce fills the basket with sweet colors.",
+        "soundAnchor": "Think of SHE.",
+        "story": "The SHE hint arrives, and I think fruit.",
         "components": [
           {
             "hanzi": "水",
@@ -1693,8 +1693,8 @@
       "english": "to sleep",
       "mnemonic": "睡 = 目 (eye) + 垂 (droop). 觉 = to feel. Your eyes are drooping — time to sleep!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "After lights out, she closes her eyes and drifts.",
+        "soundAnchor": "Think of SHE.",
+        "story": "With SHE in front, we sleep now.",
         "components": [
           {
             "hanzi": "目",
@@ -1714,7 +1714,7 @@
       "mnemonic": "讠(words) + 兑 (exchange). Exchanging words — speaking!",
       "mnemonicData": {
         "soundAnchor": "Think of SHORE.",
-        "story": "SHORE wind carries words when elders speak by lanternlight.",
+        "story": "This card signals to speak once SHORE appears.",
         "components": [
           {
             "hanzi": "讠",
@@ -1734,7 +1734,7 @@
       "mnemonic": "A mouth 口 with four-ish lines inside — the number four boxed up.",
       "mnemonicData": {
         "soundAnchor": "Think of SEE.",
-        "story": "SEE chalk marks frame four bowls on the cart.",
+        "story": "I pair cue SEE with the idea four.",
         "components": []
       }
     },
@@ -1745,7 +1745,7 @@
       "mnemonic": "山 (mountain) + 夕 (evening). Counting the evenings over the mountains — counting years of age.",
       "mnemonicData": {
         "soundAnchor": "Think of SWAY.",
-        "story": "SWAY candles count years old on the birthday cake.",
+        "story": "The cue SWAY turns this card into years old.",
         "components": [
           {
             "hanzi": "山",
@@ -1765,7 +1765,7 @@
       "mnemonic": "亻(person) + 也 (also). That other person also — he/him.",
       "mnemonicData": {
         "soundAnchor": "Think of TAR.",
-        "story": "TAR sticker marks him as the one over there.",
+        "story": "I pair cue TAR with the idea he.",
         "components": [
           {
             "hanzi": "亻",
@@ -1785,7 +1785,7 @@
       "mnemonic": "女 (woman) + 也 (also). That woman also — she/her.",
       "mnemonicData": {
         "soundAnchor": "Think of TAR.",
-        "story": "TAR ribbon marks her cup among all the others.",
+        "story": "She is easier once cue TAR shows up.",
         "components": [
           {
             "hanzi": "女",
@@ -1805,7 +1805,7 @@
       "mnemonic": "大 (big) with an extra dot — even bigger than big. Too much!",
       "mnemonicData": {
         "soundAnchor": "Think of TIE.",
-        "story": "TIE knot pulled too tight makes the bundle bulge.",
+        "story": "I decode this as too when TIE appears.",
         "components": [
           {
             "hanzi": "大",
@@ -1820,8 +1820,8 @@
       "english": "weather",
       "mnemonic": "天 (sky/heaven) + 气 (air/vapor). The air in the sky — weather!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Clouds gather, and the sky turns windy and cold.",
+        "soundAnchor": "Think of TIE.",
+        "story": "A clear TIE cue pulls up weather right away.",
         "components": [
           {
             "hanzi": "天",
@@ -1841,7 +1841,7 @@
       "mnemonic": "口 (mouth) + 斤 (axe/weight). Words that carry weight reaching your ear — listen!",
       "mnemonicData": {
         "soundAnchor": "Think of TINGE.",
-        "story": "TINGE fades and we listen for the final bell.",
+        "story": "The card clicks as to listen after TINGE.",
         "components": [
           {
             "hanzi": "口",
@@ -1860,8 +1860,8 @@
       "english": "classmate",
       "mnemonic": "同 (same) + 学 (study). People who study the same things — classmates!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Two learners trade notes beneath one roof after dusk.",
+        "soundAnchor": "Think of TIE.",
+        "story": "I remember classmate through the cue TIE.",
         "components": [
           {
             "hanzi": "同",
@@ -1881,7 +1881,7 @@
       "mnemonic": "口 (mouth) + 畏 (fear/awe). You open your mouth cautiously when answering the phone — hello?",
       "mnemonicData": {
         "soundAnchor": "Think of WAY.",
-        "story": "WAY call arrives, and she answers the phone: hello.",
+        "story": "Hello on phone comes faster when cue WAY appears.",
         "components": [
           {
             "hanzi": "口",
@@ -1901,7 +1901,7 @@
       "mnemonic": "A hand 手 holding a weapon 戈 — I will defend myself! Me!",
       "mnemonicData": {
         "soundAnchor": "Think of WORE.",
-        "story": "WORE badge says I lead this shift tonight.",
+        "story": "The cue WORE turns this card into I.",
         "components": []
       }
     },
@@ -1912,7 +1912,7 @@
       "mnemonic": "我 (I) + 们 (plural people marker, with 亻person + 门 door). All of us people at the door — we!",
       "mnemonicData": {
         "soundAnchor": "Think of WORE.",
-        "story": "WORE armbands show we march together through the gate.",
+        "story": "The clue lands as WORE, then we follows.",
         "components": [
           {
             "hanzi": "我",
@@ -1932,7 +1932,7 @@
       "mnemonic": "Lines crossing between top and bottom — the five elements bridging heaven and earth.",
       "mnemonicData": {
         "soundAnchor": "Think of WOO.",
-        "story": "WOO chant keeps five drummers perfectly in step.",
+        "story": "I attach five to the marker WOO.",
         "components": []
       }
     },
@@ -1942,8 +1942,8 @@
       "english": "to like",
       "mnemonic": "喜 = 士 (scholar) + 口 (mouth) + 豆 (bean). A scholar happily eating beans! 欢 = joy. Happy and joyful — to like!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Her face brightens whenever that song starts.",
+        "soundAnchor": "Think of SHEER.",
+        "story": "A small SHEER signal locks in to like.",
         "components": [
           {
             "hanzi": "士",
@@ -1967,7 +1967,7 @@
       "mnemonic": "A line with a stroke hanging below it — something is underneath. Below!",
       "mnemonicData": {
         "soundAnchor": "Think of SHEA.",
-        "story": "SHEA ducks below the table before the rain starts.",
+        "story": "I map SHEA directly to below.",
         "components": []
       }
     },
@@ -1977,8 +1977,8 @@
       "english": "afternoon",
       "mnemonic": "下 (lower) + 午 (noon). The lower half after noon — afternoon!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "After noon, shadows lengthen across the schoolyard.",
+        "soundAnchor": "Think of SHEER.",
+        "story": "A clear SHEER cue pulls up afternoon right away.",
         "components": [
           {
             "hanzi": "下",
@@ -1997,8 +1997,8 @@
       "english": "Mr.; sir",
       "mnemonic": "先 (first/before) + 生 (born/life). One who was born before you — an elder, Mr./Sir.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "The host greets the gentleman at the door.",
+        "soundAnchor": "Think of SHEER.",
+        "story": "Mr. comes faster when cue SHEER appears.",
         "components": [
           {
             "hanzi": "先",
@@ -2017,8 +2017,8 @@
       "english": "now",
       "mnemonic": "现 (appear/present) + 在 (at/exist). Appearing and existing — right now!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "At this moment, the bell is ringing.",
+        "soundAnchor": "Think of SHEER.",
+        "story": "The SHEER hint arrives, and I think now.",
         "components": [
           {
             "hanzi": "现",
@@ -2038,7 +2038,7 @@
       "mnemonic": "相 (mutual/appearance) + 心 (heart). Your heart examines appearances — thinking and wanting.",
       "mnemonicData": {
         "soundAnchor": "Think of SIGH.",
-        "story": "SIGH, he thinks all night and still wants another try.",
+        "story": "The clue lands as SIGH, then to want follows.",
         "components": [
           {
             "hanzi": "相",
@@ -2058,7 +2058,7 @@
       "mnemonic": "A vertical line with two small dots — something being divided into tiny pieces. Small!",
       "mnemonicData": {
         "soundAnchor": "Think of SHOW.",
-        "story": "SHOW only a small pebble beside the massive boulder.",
+        "story": "This card signals small once SHOW appears.",
         "components": []
       }
     },
@@ -2068,8 +2068,8 @@
       "english": "Miss; young lady",
       "mnemonic": "小 (small/young) + 姐 (older sister, 女 woman + 且 moreover). A young woman — Miss!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "The maiden steps forward in a silk dress.",
+        "soundAnchor": "Think of SHEER.",
+        "story": "I map SHEER directly to Miss.",
         "components": [
           {
             "hanzi": "小",
@@ -2089,7 +2089,7 @@
       "mnemonic": "此 (this) + 二 (two). This and that, a couple of things — some.",
       "mnemonicData": {
         "soundAnchor": "Think of SHEER.",
-        "story": "SHEER pinch takes some salt from the wooden bowl.",
+        "story": "The cue SHEER keeps some easy to recall.",
         "components": [
           {
             "hanzi": "此",
@@ -2109,7 +2109,7 @@
       "mnemonic": "冖 (cover/roof) + 与 (give). Under a roof, giving form to words — writing!",
       "mnemonicData": {
         "soundAnchor": "Think of SHEER.",
-        "story": "SHEER scratch of brush begins when we write tonight.",
+        "story": "The sound cue SHEER points toward to write.",
         "components": [
           {
             "hanzi": "冖",
@@ -2129,7 +2129,7 @@
       "mnemonic": "谢 = 讠(words) + 射 (shoot). Words that shoot from the heart — thank you!",
       "mnemonicData": {
         "soundAnchor": "Think of SHEER.",
-        "story": "SHEER gratitude shows: thank you, she bows twice.",
+        "story": "Thank you becomes obvious once SHEER appears.",
         "components": [
           {
             "hanzi": "讠",
@@ -2148,8 +2148,8 @@
       "english": "week",
       "mnemonic": "星 = 日 (sun) + 生 (born). 期 = a period of time. A period marked by the birth of new suns — a week of days!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Seven days pass, then the cycle starts again.",
+        "soundAnchor": "Think of SHEER.",
+        "story": "Week stays linked to the cue SHEER.",
         "components": [
           {
             "hanzi": "日",
@@ -2168,8 +2168,8 @@
       "english": "student",
       "mnemonic": "学 (to study) + 生 (born/life). A life devoted to study — a student!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A pupil copies notes while listening through class.",
+        "soundAnchor": "Think of SHEER.",
+        "story": "I tag student to the sound cue SHEER.",
         "components": [
           {
             "hanzi": "学",
@@ -2188,8 +2188,8 @@
       "english": "to study; to learn",
       "mnemonic": "学 = a child 子 under a roof with hands guiding. 习 = feathers 羽 practicing flight. Learning to fly — studying!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Each night, she reviews notes until midnight.",
+        "soundAnchor": "Think of SHEER.",
+        "story": "Once SHEER shows up, we study immediately.",
         "components": []
       }
     },
@@ -2199,8 +2199,8 @@
       "english": "school",
       "mnemonic": "学 (study) + 校 (compare/school, 木 wood + 交 cross). Where students cross paths to study — school!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Children stream into campus when the first bell rings.",
+        "soundAnchor": "Think of SHEER.",
+        "story": "A quick SHEER cue brings up school.",
         "components": [
           {
             "hanzi": "学",
@@ -2220,7 +2220,7 @@
       "mnemonic": "A single horizontal stroke — the simplest number, one.",
       "mnemonicData": {
         "soundAnchor": "Think of EEL.",
-        "story": "EEL chalk marks one tally across the white card.",
+        "story": "The clue lands as EEL, then one follows.",
         "components": []
       }
     },
@@ -2230,8 +2230,8 @@
       "english": "clothes",
       "mnemonic": "衣 looks like a robe with flowing sleeves. 服 = 月 (body) + 又 (hand) serving. What your body wears — clothes!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A clean outfit hangs by the door after washing.",
+        "soundAnchor": "Think of YOU.",
+        "story": "I keep cue YOU linked with clothes.",
         "components": [
           {
             "hanzi": "月",
@@ -2250,8 +2250,8 @@
       "english": "doctor",
       "mnemonic": "医 = 匸 (box) + 矢 (arrow). Removing arrows from wounds! 生 (life). One who saves lives — doctor!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "In the clinic, the healer checks pulse and breathing.",
+        "soundAnchor": "Think of YOU.",
+        "story": "Doctor comes to mind as YOU shows up.",
         "components": [
           {
             "hanzi": "匸",
@@ -2274,8 +2274,8 @@
       "english": "hospital",
       "mnemonic": "医 (medicine/heal) + 院 (courtyard/institution). A medical institution — hospital!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Ambulances stop outside the medical center all night.",
+        "soundAnchor": "Think of YOU.",
+        "story": "As soon as YOU appears, I recall hospital.",
         "components": [
           {
             "hanzi": "医",
@@ -2294,8 +2294,8 @@
       "english": "chair",
       "mnemonic": "椅 = 木 (wood) + 奇 (strange/wonderful). A wonderful wooden invention to sit on — a chair!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "He pulls up a stool and sits nearby.",
+        "soundAnchor": "Think of YOU.",
+        "story": "This entry means chair when YOU appears.",
         "components": [
           {
             "hanzi": "木",
@@ -2315,7 +2315,7 @@
       "mnemonic": "A hand (ナ) grabbing the moon (月) — reaching out and having something!",
       "mnemonicData": {
         "soundAnchor": "Think of YO.",
-        "story": "YO shout means there is still one seat left.",
+        "story": "This scene reads as to have once YO lands.",
         "components": []
       }
     },
@@ -2326,7 +2326,7 @@
       "mnemonic": "A crescent shape — the moon! One cycle of the moon = one month.",
       "mnemonicData": {
         "soundAnchor": "Think of YOU.",
-        "story": "YOU calendar flips to a new month under moonlight.",
+        "story": "The memory of month follows the cue YOU.",
         "components": []
       }
     },
@@ -2337,7 +2337,7 @@
       "mnemonic": "土 (earth) + a presence marker. Being present on this earth — to be at a place.",
       "mnemonicData": {
         "soundAnchor": "Think of SIGH.",
-        "story": "SIGH, wait right here at the gate.",
+        "story": "At becomes obvious once SIGH appears.",
         "components": [
           {
             "hanzi": "土",
@@ -2353,7 +2353,7 @@
       "mnemonic": "再 (again) + 见 (see). See you again — goodbye!",
       "mnemonicData": {
         "soundAnchor": "Think of ZEST.",
-        "story": "ZEST wave at the platform means goodbye for now.",
+        "story": "This entry means goodbye when ZEST appears.",
         "components": [
           {
             "hanzi": "再",
@@ -2372,8 +2372,8 @@
       "english": "how",
       "mnemonic": "怎 = 乍 (suddenly) + 心 (heart). 么 = what. Your heart suddenly wonders — how?",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "By what method did you solve this puzzle?",
+        "soundAnchor": "Think of ZOO.",
+        "story": "The memory path is ZOO to how.",
         "components": [
           {
             "hanzi": "乍",
@@ -2392,8 +2392,8 @@
       "english": "how about; how is",
       "mnemonic": "怎么 (how) + 样 (manner/appearance). How is the manner of things — how about it?",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "After tasting, she asks your opinion of the new soup.",
+        "soundAnchor": "Think of ZOO.",
+        "story": "I decode this as how about when ZOO appears.",
         "components": [
           {
             "hanzi": "怎么",
@@ -2413,7 +2413,7 @@
       "mnemonic": "辶 (walking) + 文 (text/pattern). Walking toward this particular thing — this!",
       "mnemonicData": {
         "soundAnchor": "Think of JET.",
-        "story": "JET tag marks this cup, not the other one.",
+        "story": "This becomes obvious once JET appears.",
         "components": [
           {
             "hanzi": "辶",
@@ -2432,8 +2432,8 @@
       "english": "noon",
       "mnemonic": "中 (middle) + 午 (the noon hour). The middle of the day — noon!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "At midday, the sun stands high over the street.",
+        "soundAnchor": "Think of ZOO.",
+        "story": "Noon comes faster when cue ZOO appears.",
         "components": [
           {
             "hanzi": "中",
@@ -2453,7 +2453,7 @@
       "mnemonic": "亻(person) + 主 (master/owner). A person who is master of their place — they live there!",
       "mnemonicData": {
         "soundAnchor": "Think of ZOO.",
-        "story": "ZOO tickets prove they stay nearby and live in town.",
+        "story": "I read to live from cue token ZOO.",
         "components": [
           {
             "hanzi": "亻",
@@ -2472,8 +2472,8 @@
       "english": "table; desk",
       "mnemonic": "桌 = 卜 + 日 on top of 木 (wood). A flat wooden surface lit by the sun — a table!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Books and pens spread across the wooden surface.",
+        "soundAnchor": "Think of ZOO.",
+        "story": "The sound cue ZOO points toward table.",
         "components": [
           {
             "hanzi": "木",
@@ -2489,7 +2489,7 @@
       "mnemonic": "宀 (roof) + 子 (child). A child born under a roof — a written character is born!",
       "mnemonicData": {
         "soundAnchor": "Think of ZEE.",
-        "story": "ZEE brush traces one character across red paper.",
+        "story": "The memory of character follows the cue ZEE.",
         "components": [
           {
             "hanzi": "宀",
@@ -2509,7 +2509,7 @@
       "mnemonic": "昨 = 日 (sun/day) + 乍 (suddenly/just now). 天 (day). The day that just passed — yesterday!",
       "mnemonicData": {
         "soundAnchor": "Think of ZOO.",
-        "story": "ZOO ticket stub recalls yesterday's trip before rain.",
+        "story": "I attach yesterday to the marker ZOO.",
         "components": [
           {
             "hanzi": "日",
@@ -2533,7 +2533,7 @@
       "mnemonic": "Two people 人人 on the earth 土 — sitting on the ground together.",
       "mnemonicData": {
         "soundAnchor": "Think of ZOO.",
-        "story": "ZOO bench invites tired travelers to sit together.",
+        "story": "The anchor ZOO helps me recall to sit.",
         "components": []
       }
     },
@@ -2544,7 +2544,7 @@
       "mnemonic": "亻(person) + 故 (reason/cause). A person with a reason — someone doing something!",
       "mnemonicData": {
         "soundAnchor": "Think of ZOO.",
-        "story": "ZOO whistle starts work as they make tools at once.",
+        "story": "I tag to do to the sound cue ZOO.",
         "components": [
           {
             "hanzi": "亻",
@@ -2563,8 +2563,8 @@
       "english": "don't; other",
       "mnemonic": "另 (other) + 刂 (knife). A knife cutting you off — don't do that!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of BOO.",
+        "story": "The BOO hint arrives, and I think don't.",
         "components": [
           {
             "hanzi": "另",
@@ -2583,8 +2583,8 @@
       "english": "long",
       "mnemonic": "Looks like long flowing hair — stretching out long!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of CHAIN.",
+        "story": "The cue CHAIN keeps long easy to recall.",
         "components": []
       }
     },
@@ -2594,8 +2594,8 @@
       "english": "to go out; to exit",
       "mnemonic": "A sprout 屮 pushing up through the ground — coming out!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of CHEW.",
+        "story": "We land on to go out as soon as CHEW arrives.",
         "components": []
       }
     },
@@ -2605,8 +2605,8 @@
       "english": "to wear",
       "mnemonic": "穴 (cave/hole) + 牙 (tooth). Threading teeth through a hole — like putting on clothes, threading your body through!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Thread your body through cloth like entering a narrow tunnel.",
+        "soundAnchor": "Think of CHURN.",
+        "story": "The cue word CHURN calls up to wear.",
         "components": [
           {
             "hanzi": "穴",
@@ -2625,8 +2625,8 @@
       "english": "time (occurrence); next",
       "mnemonic": "冫(ice) + 欠 (owe/lack). Each time the ice melts, you count another occurrence.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of CHAIN.",
+        "story": "The cue CHAIN makes me settle on time.",
         "components": [
           {
             "hanzi": "冫",
@@ -2646,7 +2646,7 @@
       "mnemonic": "Two people 人人 one behind the other — following from one place to another.",
       "mnemonicData": {
         "soundAnchor": "Think of SONG.",
-        "story": "A SONG points FROM one village toward another.",
+        "story": "A quick SONG cue brings up from.",
         "components": []
       }
     },
@@ -2656,8 +2656,8 @@
       "english": "wrong; mistake",
       "mnemonic": "钅(metal/gold) + 昔 (past). The gold from the past turned out to be fake — wrong!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of CHAIN.",
+        "story": "I catch CHAIN and connect it with wrong.",
         "components": [
           {
             "hanzi": "钅",
@@ -2676,8 +2676,8 @@
       "english": "to make a phone call",
       "mnemonic": "打 (hit/strike) + 电话 (electric speech). Striking up an electric conversation — making a call!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of DAY.",
+        "story": "To make a phone call is the target once DAY arrives.",
         "components": [
           {
             "hanzi": "打",
@@ -2696,8 +2696,8 @@
       "english": "to play basketball",
       "mnemonic": "打 (hit/strike) + 篮球 (basket ball). Hitting the basket ball — playing basketball!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of DAY.",
+        "story": "The clue lands as DAY, then to play basketball follows.",
         "components": [
           {
             "hanzi": "打",
@@ -2716,8 +2716,8 @@
       "english": "everyone",
       "mnemonic": "大 (big) + 家 (family). One big family — everyone!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of DAY.",
+        "story": "The cue token DAY leads me to everyone.",
         "components": [
           {
             "hanzi": "大",
@@ -2736,8 +2736,8 @@
       "english": "to arrive; to",
       "mnemonic": "至 (reach) + 刂 (knife). Cutting through to reach your destination — arrive!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of DAY.",
+        "story": "I connect to arrive with the cue DAY.",
         "components": [
           {
             "hanzi": "至",
@@ -2756,8 +2756,8 @@
       "english": "(complement particle)",
       "mnemonic": "彳(step) + 日 (sun) + 寸 (inch). Steps measured by the sun, inch by inch — how well you do something.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "She runs quickly, sings clearly, and finishes with perfect timing.",
+        "soundAnchor": "Think of DUH.",
+        "story": "A quick DUH cue brings up complement particle.",
         "components": [
           {
             "hanzi": "彳",
@@ -2780,8 +2780,8 @@
       "english": "to wait",
       "mnemonic": "竹 (bamboo) + 寺 (temple). Waiting at a bamboo temple — patiently waiting.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Drums fade while everyone remains by the bamboo gate.",
+        "soundAnchor": "Think of DONG.",
+        "story": "The sound cue DONG points toward to wait.",
         "components": [
           {
             "hanzi": "竹",
@@ -2800,8 +2800,8 @@
       "english": "younger brother",
       "mnemonic": "弟 has 弓 (bow) + a small figure. The younger one still learning to use the bow — little brother!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of DAY.",
+        "story": "A quick DAY cue makes me picture younger brother.",
         "components": [
           {
             "hanzi": "弓",
@@ -2816,8 +2816,8 @@
       "english": "first; number one",
       "mnemonic": "第 (ordinal prefix) + 一 (one). The number one position — first!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of DAY.",
+        "story": "I treat DAY as a pointer to first.",
         "components": [
           {
             "hanzi": "第",
@@ -2836,8 +2836,8 @@
       "english": "to understand",
       "mnemonic": "忄(heart) + 董 (to direct). Your heart directs you to comprehend — to understand!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of DAY.",
+        "story": "The cue word DAY calls up to understand.",
         "components": [
           {
             "hanzi": "忄",
@@ -2856,8 +2856,8 @@
       "english": "correct; right",
       "mnemonic": "又 (hand) + 寸 (inch). Your hand measures exactly one inch — correct!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of DAY.",
+        "story": "A cue from DAY nudges me toward correct.",
         "components": [
           {
             "hanzi": "又",
@@ -2876,8 +2876,8 @@
       "english": "room",
       "mnemonic": "房 = 户 (door) + 方 (square). 间 = 门 (gate) + 日 (sun). A square space behind a door where sunlight enters — a room!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of FOO.",
+        "story": "I tag room to the sound cue FOO.",
         "components": [
           {
             "hanzi": "户",
@@ -2904,8 +2904,8 @@
       "english": "very; extremely",
       "mnemonic": "非 (not) + 常 (ordinary). Not ordinary at all — extremely!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of FOO.",
+        "story": "Very is easier once cue FOO shows up.",
         "components": [
           {
             "hanzi": "非",
@@ -2924,8 +2924,8 @@
       "english": "waiter; attendant",
       "mnemonic": "服务 (to serve) + 员 (person/member). A person who serves — waiter!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of FOO.",
+        "story": "The scene points to waiter when FOO flashes.",
         "components": [
           {
             "hanzi": "服务",
@@ -2944,8 +2944,8 @@
       "english": "bus",
       "mnemonic": "公共 (public) + 汽车 (automobile). A public automobile — a bus!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of GO.",
+        "story": "The cue GO makes bus feel immediate.",
         "components": [
           {
             "hanzi": "公共",
@@ -2964,8 +2964,8 @@
       "english": "company",
       "mnemonic": "公 (public/official) + 司 (manage). Officially managing business — a company!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of GO.",
+        "story": "As soon as GO appears, I recall company.",
         "components": [
           {
             "hanzi": "公",
@@ -2984,8 +2984,8 @@
       "english": "expensive",
       "mnemonic": "中 (middle) + 一 + 贝 (shell/money). A pile of shells (ancient money) — expensive!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of GO.",
+        "story": "A quick cue from GO unlocks expensive.",
         "components": [
           {
             "hanzi": "中",
@@ -3004,8 +3004,8 @@
       "english": "(past tense particle); to pass",
       "mnemonic": "辶 (walk) + 寸 (inch). Walking inch by inch through time — something that has passed.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A traveler crosses the bridge; that moment is now behind.",
+        "soundAnchor": "Think of GO.",
+        "story": "Past tense particle is what I recall after cue GO.",
         "components": [
           {
             "hanzi": "辶",
@@ -3024,8 +3024,8 @@
       "english": "still; also",
       "mnemonic": "辶 (walk) + 不 (not). Still walking, not stopping — still going, also continuing!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of HIGH.",
+        "story": "I keep still tied to cue word HIGH.",
         "components": [
           {
             "hanzi": "辶",
@@ -3044,8 +3044,8 @@
       "english": "or; still",
       "mnemonic": "还 (still) + 是 (is). Is it still this or that — or?",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of HOW.",
+        "story": "At a glance, HOW steers me toward or.",
         "components": [
           {
             "hanzi": "还",
@@ -3064,8 +3064,8 @@
       "english": "child",
       "mnemonic": "孩 = 子 (child) + 亥 (last). 子 (child). The little one at the end of the family line — a child!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of HOW.",
+        "story": "That HOW signal locks in child quickly.",
         "components": [
           {
             "hanzi": "子",
@@ -3084,8 +3084,8 @@
       "english": "black",
       "mnemonic": "A window 囗 covered with soot 灬 — everything is dark and black!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of HOW.",
+        "story": "I hold black in mind when HOW appears.",
         "components": []
       }
     },
@@ -3095,8 +3095,8 @@
       "english": "red",
       "mnemonic": "纟(silk) + 工 (work). The silk workers dye fabric — red silk!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of HOW.",
+        "story": "The cue HOW turns this card into red.",
         "components": [
           {
             "hanzi": "纟",
@@ -3115,8 +3115,8 @@
       "english": "flower; to spend",
       "mnemonic": "艹 (plant) + 化 (transform). A plant that transforms into something beautiful — a flower!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of HOW.",
+        "story": "The cue HOW brings flower into focus.",
         "components": [
           {
             "hanzi": "艹",
@@ -3135,8 +3135,8 @@
       "english": "to welcome",
       "mnemonic": "欢 (joy) + 迎 (to greet). Greeting with joy — welcome!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of HOW.",
+        "story": "A cue from HOW nudges me toward to welcome.",
         "components": [
           {
             "hanzi": "欢",
@@ -3155,8 +3155,8 @@
       "english": "train station",
       "mnemonic": "火车 (fire vehicle = train) + 站 (stand/station). Where the fire vehicle stops — train station!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of HOW.",
+        "story": "The clue lands as HOW, then train station follows.",
         "components": [
           {
             "hanzi": "火车",
@@ -3175,8 +3175,8 @@
       "english": "airport",
       "mnemonic": "机 (machine/airplane) + 场 (field/ground). The field where airplanes land — airport!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of JAR.",
+        "story": "I recall airport when JAR appears.",
         "components": [
           {
             "hanzi": "机",
@@ -3195,8 +3195,8 @@
       "english": "egg",
       "mnemonic": "鸡 (chicken) + 蛋 (egg). What the chicken produces — an egg!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of JAR.",
+        "story": "That JAR cue sets off egg immediately.",
         "components": [
           {
             "hanzi": "鸡",
@@ -3215,8 +3215,8 @@
       "english": "(measure word for matters/clothes)",
       "mnemonic": "亻(person) + 牛 (cow). A person counts their cows one piece at a time — a measure word for items.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of JAR.",
+        "story": "I treat JAR as a pointer to measure word for matters/clothes.",
         "components": [
           {
             "hanzi": "亻",
@@ -3235,8 +3235,8 @@
       "english": "classroom",
       "mnemonic": "教 (teach) + 室 (room). A room for teaching — classroom!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of JAR.",
+        "story": "This scene reads as classroom once JAR lands.",
         "components": [
           {
             "hanzi": "教",
@@ -3255,8 +3255,8 @@
       "english": "older sister",
       "mnemonic": "姐 = 女 (woman) + 且 (moreover/also). The woman who is moreover older than you — big sister!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of JAR.",
+        "story": "Older sister shows up in mind when JAR does.",
         "components": [
           {
             "hanzi": "女",
@@ -3275,8 +3275,8 @@
       "english": "to introduce",
       "mnemonic": "介 = 人 (person) between two lines. 绍 = 纟(silk) + 召 (summon). A person weaving connections, summoning others — introducing!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A person weaving connections, summoning others — introducing!",
+        "soundAnchor": "Think of JET.",
+        "story": "The JET signal arrives; we introduce at once.",
         "components": [
           {
             "hanzi": "人",
@@ -3299,8 +3299,8 @@
       "english": "near; close",
       "mnemonic": "辶 (walk) + 斤 (axe/short). A short walk — near!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of JAR.",
+        "story": "A brief JAR flash points me to near.",
         "components": [
           {
             "hanzi": "辶",
@@ -3319,8 +3319,8 @@
       "english": "to enter",
       "mnemonic": "辶 (walk) + 井 (well). Walking into the well area — entering!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "The crowd steps through the gate into the courtyard.",
+        "soundAnchor": "Think of JET.",
+        "story": "The sound cue JET points toward to enter.",
         "components": [
           {
             "hanzi": "辶",
@@ -3339,8 +3339,8 @@
       "english": "then; at once",
       "mnemonic": "京 (capital) + 尤 (especially). Especially in the capital, things happen at once — then, immediately!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of JAR.",
+        "story": "A clear JAR cue pulls up then right away.",
         "components": [
           {
             "hanzi": "京",
@@ -3359,8 +3359,8 @@
       "english": "to feel; to think",
       "mnemonic": "觉 = 学 (study) + 见 (see). 得 = to obtain. Studying what you see and obtaining a feeling — to feel/think!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of JAR.",
+        "story": "The cue JAR turns this card into to feel.",
         "components": [
           {
             "hanzi": "学",
@@ -3379,8 +3379,8 @@
       "english": "coffee",
       "mnemonic": "Both characters have 口 (mouth) — a drink for the mouth. 加 (add) + 非 (not ordinary). Not your ordinary drink — coffee!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of KEY.",
+        "story": "A quick KEY cue makes me picture coffee.",
         "components": [
           {
             "hanzi": "口",
@@ -3403,8 +3403,8 @@
       "english": "to begin; to start",
       "mnemonic": "开 (open) + 始 (begin, 女 woman + 台 platform). Opening the platform — starting!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A whistle blows; the race moves from stillness to motion.",
+        "soundAnchor": "Think of KEY.",
+        "story": "The cue word KEY calls up to begin.",
         "components": [
           {
             "hanzi": "开",
@@ -3423,8 +3423,8 @@
       "english": "exam; test",
       "mnemonic": "考 = 老 (old) with a twist — the elders test you. 试 = 讠(words) + 式 (style). Words in a formal style — an exam!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of KEY.",
+        "story": "A quick cue from KEY unlocks exam.",
         "components": [
           {
             "hanzi": "老",
@@ -3447,8 +3447,8 @@
       "english": "maybe; possible",
       "mnemonic": "可 (can) + 能 (able). If you can and are able — it's possible!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of KEY.",
+        "story": "The cue KEY keeps maybe easy to recall.",
         "components": [
           {
             "hanzi": "可",
@@ -3467,8 +3467,8 @@
       "english": "may; can",
       "mnemonic": "可 (can/approve) + 以 (use/by). Approved for use — you may!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of KEY.",
+        "story": "This moment becomes may when KEY lands.",
         "components": [
           {
             "hanzi": "可",
@@ -3487,8 +3487,8 @@
       "english": "class; lesson",
       "mnemonic": "讠(words) + 果 (fruit). Words bearing fruit — a lesson!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of KEY.",
+        "story": "When KEY appears, I recall class at once.",
         "components": [
           {
             "hanzi": "讠",
@@ -3507,8 +3507,8 @@
       "english": "fast; quick",
       "mnemonic": "忄(heart) + 夬 (decisive). A heart that decides quickly — fast!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of KEY.",
+        "story": "A clear KEY cue pulls up fast right away.",
         "components": [
           {
             "hanzi": "忄",
@@ -3527,8 +3527,8 @@
       "english": "happy; joyful",
       "mnemonic": "快 (quick) + 乐 (joy/music). Quick to feel joy — happy!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of KEY.",
+        "story": "I use KEY to reach meaning happy.",
         "components": [
           {
             "hanzi": "快",
@@ -3547,8 +3547,8 @@
       "english": "away from; from",
       "mnemonic": "A complex character showing separation — away from!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of LEE.",
+        "story": "I hold away from in mind when LEE appears.",
         "components": []
       }
     },
@@ -3558,8 +3558,8 @@
       "english": "two; a couple",
       "mnemonic": "一 (one) with two 人 (people) inside — a pair, two of something.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of LIE.",
+        "story": "This moment becomes two when LIE lands.",
         "components": [
           {
             "hanzi": "一",
@@ -3578,8 +3578,8 @@
       "english": "road; path",
       "mnemonic": "足 (foot) + 各 (each). Each foot takes a step on the path — road!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of LOO.",
+        "story": "The cue word LOO calls up road.",
         "components": [
           {
             "hanzi": "足",
@@ -3598,8 +3598,8 @@
       "english": "to travel; tourism",
       "mnemonic": "旅 (journey) + 游 (swim/roam). Journeying and roaming — traveling!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Suitcases roll as friends roam city streets for new sights.",
+        "soundAnchor": "Think of LIE.",
+        "story": "The anchor LIE helps me recall to travel.",
         "components": [
           {
             "hanzi": "旅",
@@ -3618,8 +3618,8 @@
       "english": "to sell",
       "mnemonic": "Like 买 (buy) but with 十 (ten) on top — selling ten things at once!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "At market, ten goods swap hands for silver coins.",
+        "soundAnchor": "Think of MY.",
+        "story": "I keep cue MY linked with to sell.",
         "components": [
           {
             "hanzi": "买",
@@ -3638,8 +3638,8 @@
       "english": "slow",
       "mnemonic": "忄(heart) + 曼 (extended/prolonged). A heart that is prolonged and extended — slow!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of MAMA.",
+        "story": "Slow shows up in mind when MAMA does.",
         "components": [
           {
             "hanzi": "忄",
@@ -3658,8 +3658,8 @@
       "english": "busy",
       "mnemonic": "忄(heart) + 亡 (die/perish). Your heart is dying from being so busy!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of MAMA.",
+        "story": "Seeing MAMA, I immediately recall busy.",
         "components": [
           {
             "hanzi": "忄",
@@ -3678,8 +3678,8 @@
       "english": "every; each",
       "mnemonic": "A mother 母 with a stroke — every mother cares for each child.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of MAMA.",
+        "story": "The cue word MAMA calls up every.",
         "components": []
       }
     },
@@ -3689,8 +3689,8 @@
       "english": "younger sister",
       "mnemonic": "妹 = 女 (woman) + 未 (not yet). The woman not yet grown up — little sister!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of MAMA.",
+        "story": "I catch MAMA and connect it with younger sister.",
         "components": [
           {
             "hanzi": "女",
@@ -3709,8 +3709,8 @@
       "english": "door; gate",
       "mnemonic": "Looks like a traditional Chinese double door — a gate!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of MAMA.",
+        "story": "The answer door arrives with cue MAMA.",
         "components": []
       }
     },
@@ -3720,8 +3720,8 @@
       "english": "male",
       "mnemonic": "田 (field) + 力 (strength). Strength in the field — traditionally male!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of NEW.",
+        "story": "The cue token NEW leads me to male.",
         "components": [
           {
             "hanzi": "田",
@@ -3740,8 +3740,8 @@
       "english": "you (polite)",
       "mnemonic": "你 (you) + 心 (heart). You, with heart — the respectful, polite 'you'!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of NEW.",
+        "story": "A quick NEW cue makes me picture you.",
         "components": [
           {
             "hanzi": "你",
@@ -3760,8 +3760,8 @@
       "english": "milk",
       "mnemonic": "牛 (cow) + 奶 (milk/breast, 女 woman + 乃). What comes from the cow — milk!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of NEW.",
+        "story": "Seeing NEW, my memory lands on milk.",
         "components": [
           {
             "hanzi": "牛",
@@ -3780,8 +3780,8 @@
       "english": "female; woman",
       "mnemonic": "A figure kneeling gracefully — the character for woman.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of NEW.",
+        "story": "Female comes faster when cue NEW appears.",
         "components": []
       }
     },
@@ -3791,8 +3791,8 @@
       "english": "beside; next to",
       "mnemonic": "旁 (side) + 边 (edge). At the side edge — beside!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of PAPA.",
+        "story": "When PAPA appears, I recall beside at once.",
         "components": [
           {
             "hanzi": "旁",
@@ -3811,8 +3811,8 @@
       "english": "to run; jogging",
       "mnemonic": "跑 = 足 (foot) + 包 (wrap). 步 = 止 (stop) + 少 (few). Feet wrapping the ground with few stops — running!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Shoes pound the track in steady laps before dawn.",
+        "soundAnchor": "Think of PAPA.",
+        "story": "Once PAPA shows up, we run immediately.",
         "components": [
           {
             "hanzi": "足",
@@ -3839,8 +3839,8 @@
       "english": "cheap; inexpensive",
       "mnemonic": "便 = 亻(person) + 更 (more). 宜 (suitable). More suitable for a person's wallet — cheap!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of PAPA.",
+        "story": "That PAPA signal locks in cheap quickly.",
         "components": [
           {
             "hanzi": "亻",
@@ -3863,8 +3863,8 @@
       "english": "ticket",
       "mnemonic": "西 (west) + 示 (show). Show this to go west — a ticket!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of PAPA.",
+        "story": "Ticket is what I recall after cue PAPA.",
         "components": [
           {
             "hanzi": "西",
@@ -3883,8 +3883,8 @@
       "english": "wife",
       "mnemonic": "妻 = a woman 女 with a hand holding a broom. 子 (child). The woman of the house — wife!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "She keeps the household steady while planning tomorrow's family meals.",
+        "soundAnchor": "Think of CUE.",
+        "story": "This moment becomes wife when CUE lands.",
         "components": [
           {
             "hanzi": "子",
@@ -3899,8 +3899,8 @@
       "english": "to get up (from bed)",
       "mnemonic": "起 (rise) + 床 (bed, 广 shelter + 木 wood). Rising from the wooden bed — getting up!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of CUE.",
+        "story": "When CUE appears, we get up without delay.",
         "components": [
           {
             "hanzi": "起",
@@ -3919,8 +3919,8 @@
       "english": "thousand",
       "mnemonic": "十 (ten) with an extra stroke — ten times a hundred makes a thousand!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of CUE.",
+        "story": "That CUE signal locks in thousand quickly.",
         "components": [
           {
             "hanzi": "十",
@@ -3935,8 +3935,8 @@
       "english": "pencil",
       "mnemonic": "铅 (lead, 钅metal + 几) + 笔 (brush/pen, 竹 bamboo + 毛 hair). A lead-tipped bamboo writing tool — pencil!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of CUE.",
+        "story": "I pair cue CUE with the idea pencil.",
         "components": [
           {
             "hanzi": "铅",
@@ -3955,8 +3955,8 @@
       "english": "clear (weather); sunny",
       "mnemonic": "日 (sun) + 青 (green/blue). The sun shining on a blue-green sky — clear weather!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of CUE.",
+        "story": "I settle on clear weather when cue CUE lands.",
         "components": [
           {
             "hanzi": "日",
@@ -3975,8 +3975,8 @@
       "english": "to let; to allow",
       "mnemonic": "讠(words) + 上 (up). Words that lift restrictions — to let, to allow!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of RUNG.",
+        "story": "At RUNG, we let without delay.",
         "components": [
           {
             "hanzi": "讠",
@@ -3995,8 +3995,8 @@
       "english": "diary",
       "mnemonic": "日 (day) + 记 (record). A daily record — a diary!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of RUN.",
+        "story": "Seeing RUN, my memory lands on diary.",
         "components": [
           {
             "hanzi": "日",
@@ -4015,8 +4015,8 @@
       "english": "to go to work",
       "mnemonic": "上 (go up/to) + 班 (shift/class). Going to your shift — going to work!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHE.",
+        "story": "When SHE appears, we go work without delay.",
         "components": [
           {
             "hanzi": "上",
@@ -4035,8 +4035,8 @@
       "english": "body; health",
       "mnemonic": "身 (body, looks like a person with a big belly) + 体 = 亻(person) + 本 (root). A person's root — their body/health!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHE.",
+        "story": "I tag body to the sound cue SHE.",
         "components": [
           {
             "hanzi": "身",
@@ -4059,8 +4059,8 @@
       "english": "to get sick",
       "mnemonic": "生 (born/arise) + 病 (illness, 疒 sickness + 丙). Illness arises — getting sick!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHE.",
+        "story": "As SHE enters, I recall to get sick.",
         "components": [
           {
             "hanzi": "生",
@@ -4079,8 +4079,8 @@
       "english": "birthday",
       "mnemonic": "生 (born/birth) + 日 (day). The day you were born — birthday!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHE.",
+        "story": "Birthday shows up in mind when SHE does.",
         "components": [
           {
             "hanzi": "生",
@@ -4099,8 +4099,8 @@
       "english": "wristwatch",
       "mnemonic": "手 (hand) + 表 (surface/display). A display on your hand — wristwatch!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHE.",
+        "story": "As soon as SHE appears, I recall wristwatch.",
         "components": [
           {
             "hanzi": "手",
@@ -4119,8 +4119,8 @@
       "english": "cell phone",
       "mnemonic": "手 (hand) + 机 (machine). A machine in your hand — cell phone!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHE.",
+        "story": "At a glance, SHE steers me toward cell phone.",
         "components": [
           {
             "hanzi": "手",
@@ -4139,8 +4139,8 @@
       "english": "thin; skinny",
       "mnemonic": "疒 (illness) + 叟 (old man). An old man weakened by illness — thin!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHOW.",
+        "story": "With SHOW in view, thin comes up fast.",
         "components": [
           {
             "hanzi": "疒",
@@ -4159,8 +4159,8 @@
       "english": "to speak; to talk",
       "mnemonic": "说 (speak) + 话 (words/speech). Speaking words — talking!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Words pass between friends until the room fills with voices.",
+        "soundAnchor": "Think of SHE.",
+        "story": "I map SHE directly to to speak.",
         "components": [
           {
             "hanzi": "说",
@@ -4179,8 +4179,8 @@
       "english": "to give (a gift); to send",
       "mnemonic": "辶 (walk) + 关 (close/care). Walking to someone you care about — to give or send!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHE.",
+        "story": "This entry means to give a gift when SHE appears.",
         "components": [
           {
             "hanzi": "辶",
@@ -4199,8 +4199,8 @@
       "english": "although",
       "mnemonic": "虽 = 虫 (insect) + 口 (mouth). 然 = 然 (so/correct). Even though an insect speaks — although!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHE.",
+        "story": "I reach although right after hearing SHE.",
         "components": [
           {
             "hanzi": "虫",
@@ -4224,7 +4224,7 @@
       "mnemonic": "宀 (roof) + 匕 (spoon). Something under a roof, but not a person — it!",
       "mnemonicData": {
         "soundAnchor": "Think of TAR.",
-        "story": "TAR marks one object under the roof: it stays put.",
+        "story": "It shows up in mind when TAR does.",
         "components": [
           {
             "hanzi": "宀",
@@ -4243,8 +4243,8 @@
       "english": "to play soccer",
       "mnemonic": "踢 = 足 (foot) + 易 (easy). 足球 = foot ball. Kicking a ball with your foot — soccer!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of TIE.",
+        "story": "This moment becomes to play soccer when TIE lands.",
         "components": [
           {
             "hanzi": "足",
@@ -4263,8 +4263,8 @@
       "english": "question; topic",
       "mnemonic": "是 (is) + 页 (page). What is on the page — a question/topic!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of TIE.",
+        "story": "I settle on question when cue TIE lands.",
         "components": [
           {
             "hanzi": "是",
@@ -4283,8 +4283,8 @@
       "english": "to dance",
       "mnemonic": "跳 = 足 (foot) + 兆 (omen). 舞 = dancing figure. Feet moving like an omen of joy — dancing!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Feet leap in rhythm while sleeves swirl through lantern light.",
+        "soundAnchor": "Think of TIE.",
+        "story": "When TIE appears, we dance without delay.",
         "components": [
           {
             "hanzi": "足",
@@ -4303,8 +4303,8 @@
       "english": "outside; foreign",
       "mnemonic": "夕 (evening) + 卜 (divination). Divining under the evening sky, outside the walls — outside!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of WHY.",
+        "story": "A quick cue from WHY unlocks outside.",
         "components": [
           {
             "hanzi": "夕",
@@ -4323,8 +4323,8 @@
       "english": "to finish; complete",
       "mnemonic": "宀 (roof) + 元 (origin/first). Under the roof from start to finish — complete!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of WORE.",
+        "story": "The WORE signal arrives; we finish at once.",
         "components": [
           {
             "hanzi": "宀",
@@ -4343,8 +4343,8 @@
       "english": "to play; to have fun",
       "mnemonic": "王 (king) + 元 (origin). Even kings need to return to their origins and play!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of WORE.",
+        "story": "I decode this as to play when WORE appears.",
         "components": [
           {
             "hanzi": "王",
@@ -4363,8 +4363,8 @@
       "english": "evening; night",
       "mnemonic": "晚 = 日 (sun) + 免 (exempt). The sun is exempt from shining — evening! 上 (on/during).",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of WORE.",
+        "story": "One look at WORE, and I remember evening.",
         "components": [
           {
             "hanzi": "日",
@@ -4387,8 +4387,8 @@
       "english": "toward; in the direction of",
       "mnemonic": "彳(step) + 主 (master). Stepping toward the master — heading in a direction!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of WORE.",
+        "story": "A quick WORE cue brings up toward.",
         "components": [
           {
             "hanzi": "彳",
@@ -4407,8 +4407,8 @@
       "english": "why",
       "mnemonic": "为 (for/because) + 什么 (what). For what reason — why?",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of WORE.",
+        "story": "A brief WORE flash points me to why.",
         "components": [
           {
             "hanzi": "为",
@@ -4427,8 +4427,8 @@
       "english": "to ask",
       "mnemonic": "门 (door) + 口 (mouth). A mouth at the door — asking to come in!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "A voice at the door seeks an answer from inside.",
+        "soundAnchor": "Think of WORE.",
+        "story": "Seeing WORE, we quickly ask.",
         "components": [
           {
             "hanzi": "门",
@@ -4447,8 +4447,8 @@
       "english": "question; problem",
       "mnemonic": "问 (ask) + 题 (topic). Asking about a topic — a question or problem!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of WORE.",
+        "story": "I connect question with the cue WORE.",
         "components": [
           {
             "hanzi": "问",
@@ -4467,8 +4467,8 @@
       "english": "to wash",
       "mnemonic": "氵(water) + 先 (first). Water first — the first step is to wash!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHEER.",
+        "story": "After SHEER, the action is to wash.",
         "components": [
           {
             "hanzi": "氵",
@@ -4487,8 +4487,8 @@
       "english": "watermelon",
       "mnemonic": "西 (west) + 瓜 (melon). The melon from the west — watermelon!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHEER.",
+        "story": "That SHEER signal locks in watermelon quickly.",
         "components": [
           {
             "hanzi": "西",
@@ -4507,8 +4507,8 @@
       "english": "to hope; hope",
       "mnemonic": "希 (rare/scarce) + 望 (gaze/expect). Gazing at something rare — hoping!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "She fixes her gaze on distant light, expecting good news.",
+        "soundAnchor": "Think of SHEER.",
+        "story": "The cue SHEER turns this card into to hope.",
         "components": [
           {
             "hanzi": "希",
@@ -4527,8 +4527,8 @@
       "english": "hour",
       "mnemonic": "小 (small) + 时 (time). A small unit of time — an hour!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHEER.",
+        "story": "As soon as SHEER appears, I recall hour.",
         "components": [
           {
             "hanzi": "小",
@@ -4547,8 +4547,8 @@
       "english": "to laugh; to smile",
       "mnemonic": "竹 (bamboo) + 夭 (young/tender). Young bamboo bending in the wind — like a smiling face!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Young bamboo bending in the wind — like a smiling face!",
+        "soundAnchor": "Think of SHEER.",
+        "story": "The sound cue SHEER points toward to laugh.",
         "components": [
           {
             "hanzi": "竹",
@@ -4567,8 +4567,8 @@
       "english": "new",
       "mnemonic": "亲 (close/parent) + 斤 (axe). Cutting fresh wood with an axe — new!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHEER.",
+        "story": "With SHEER in view, new comes up fast.",
         "components": [
           {
             "hanzi": "亲",
@@ -4587,8 +4587,8 @@
       "english": "surname; family name",
       "mnemonic": "女 (woman) + 生 (born). The name a woman is born with — surname!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHEER.",
+        "story": "The sound cue SHEER points toward surname.",
         "components": [
           {
             "hanzi": "女",
@@ -4607,8 +4607,8 @@
       "english": "to rest",
       "mnemonic": "休 = 亻(person) + 木 (tree). A person leaning against a tree — resting! 息 = 自 (self) + 心 (heart). Your heart calms itself.",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "After miles on foot, she leans under a tree, breathing slow.",
+        "soundAnchor": "Think of SHEER.",
+        "story": "The answer to rest arrives with cue SHEER.",
         "components": [
           {
             "hanzi": "亻",
@@ -4635,8 +4635,8 @@
       "english": "snow",
       "mnemonic": "雨 (rain) + 彐 (hand). Rain that you can hold in your hand — snow!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of SHEER.",
+        "story": "That SHEER cue sets off snow immediately.",
         "components": [
           {
             "hanzi": "雨",
@@ -4655,8 +4655,8 @@
       "english": "color",
       "mnemonic": "颜 = 彦 (elegant) + 页 (page/face). 色 (color). The elegant colors on a face — color!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOU.",
+        "story": "The cue YOU makes color feel immediate.",
         "components": [
           {
             "hanzi": "彦",
@@ -4679,8 +4679,8 @@
       "english": "eye",
       "mnemonic": "眼 = 目 (eye) + 艮 (stubborn/steady). 睛 = 目 (eye) + 青 (green/clear). A steady, clear eye — eyes!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOU.",
+        "story": "I tag eye to the sound cue YOU.",
         "components": [
           {
             "hanzi": "目",
@@ -4703,8 +4703,8 @@
       "english": "medicine",
       "mnemonic": "艹 (plant/herb) + 约 (agreement). Plants that have an agreement with your body to heal — medicine!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOW.",
+        "story": "At a glance, YOW steers me toward medicine.",
         "components": [
           {
             "hanzi": "艹",
@@ -4723,8 +4723,8 @@
       "english": "to want; to need; will",
       "mnemonic": "西 (west) + 女 (woman). A woman looking west, wanting something — to want!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOW.",
+        "story": "I use YOW to reach meaning to want.",
         "components": [
           {
             "hanzi": "西",
@@ -4743,8 +4743,8 @@
       "english": "also; too",
       "mnemonic": "Looks like a snake or river branching — this way and also that way!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YEAH.",
+        "story": "A quick YEAH cue makes me picture also.",
         "components": []
       }
     },
@@ -4754,8 +4754,8 @@
       "english": "already",
       "mnemonic": "已 (already/stop) + 经 (pass through). Having already passed through — already!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOU.",
+        "story": "I catch YOU and connect it with already.",
         "components": [
           {
             "hanzi": "已",
@@ -4774,8 +4774,8 @@
       "english": "together",
       "mnemonic": "一 (one) + 起 (rise). Rising as one — together!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOU.",
+        "story": "A small YOU signal locks in together.",
         "components": [
           {
             "hanzi": "一",
@@ -4794,8 +4794,8 @@
       "english": "a bit; briefly",
       "mnemonic": "一 (one) + 下 (down). One quick downward motion — just a bit!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOU.",
+        "story": "When YOU appears, I recall bit at once.",
         "components": [
           {
             "hanzi": "一",
@@ -4814,8 +4814,8 @@
       "english": "because",
       "mnemonic": "因 = 囗 (enclosure) + 大 (big). 为 (for). A big reason enclosed — because!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOU.",
+        "story": "This moment becomes because when YOU lands.",
         "components": [
           {
             "hanzi": "囗",
@@ -4838,8 +4838,8 @@
       "english": "cloudy; overcast",
       "mnemonic": "阝(hill/mound) + 月 (moon). The moon behind a hill — shadowy, cloudy!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOU.",
+        "story": "The YOU hint arrives, and I think cloudy.",
         "components": [
           {
             "hanzi": "阝",
@@ -4858,8 +4858,8 @@
       "english": "to swim",
       "mnemonic": "游 = 氵(water) + 方 (direction) + 子 (child). 泳 = 氵(water) + 永 (eternal). A child finding their way through water forever — swimming!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "In deep water, she glides across the lane with steady kicks.",
+        "soundAnchor": "Think of YOU.",
+        "story": "When YOU appears, we swim without delay.",
         "components": [
           {
             "hanzi": "氵",
@@ -4886,8 +4886,8 @@
       "english": "right side",
       "mnemonic": "右 = a hand (ナ) + 口 (mouth). Your right hand near your mouth. 边 (side). The right side!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOU.",
+        "story": "That YOU signal locks in right side quickly.",
         "components": [
           {
             "hanzi": "口",
@@ -4906,8 +4906,8 @@
       "english": "fish",
       "mnemonic": "Looks like a fish with a head, body, and tail fin — fish!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOU.",
+        "story": "I use YOU to reach meaning fish.",
         "components": []
       }
     },
@@ -4917,8 +4917,8 @@
       "english": "far",
       "mnemonic": "辶 (walk) + 元 (origin). Walking far from your origin — far!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOU.",
+        "story": "That YOU cue sets off far immediately.",
         "components": [
           {
             "hanzi": "辶",
@@ -4937,8 +4937,8 @@
       "english": "sports; exercise",
       "mnemonic": "运 = 辶 (walk) + 云 (cloud). 动 = 云 (cloud) + 力 (strength). Moving with the strength of clouds — exercise!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of YOU.",
+        "story": "A cue from YOU nudges me toward sports.",
         "components": [
           {
             "hanzi": "辶",
@@ -4961,8 +4961,8 @@
       "english": "morning; early morning",
       "mnemonic": "早 = 日 (sun) + 十 (ten). The sun at ten o'clock height. 上 (on). Early in the day — morning!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "First light climbs the rooftops as market shutters lift.",
+        "soundAnchor": "Think of ZOO.",
+        "story": "At a glance, ZOO steers me toward morning.",
         "components": [
           {
             "hanzi": "日",
@@ -4985,8 +4985,8 @@
       "english": "husband",
       "mnemonic": "丈 (ten feet tall) + 夫 (man). A man who stands ten feet tall — husband!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of ZOO.",
+        "story": "A small ZOO signal locks in husband.",
         "components": [
           {
             "hanzi": "丈",
@@ -5005,8 +5005,8 @@
       "english": "to look for; to find",
       "mnemonic": "扌(hand) + 戈 (weapon). A hand searching for a weapon — looking for something!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "He checks every pocket until the missing key appears.",
+        "soundAnchor": "Think of ZOO.",
+        "story": "The sound cue ZOO points toward to look for.",
         "components": [
           {
             "hanzi": "扌",
@@ -5025,8 +5025,8 @@
       "english": "(ongoing action particle)",
       "mnemonic": "羊 (sheep) + 目 (eye). Keeping an eye on the sheep — an ongoing, continuous action!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of ZOO.",
+        "story": "I read this as ongoing action particle whenever ZOO appears.",
         "components": [
           {
             "hanzi": "羊",
@@ -5045,8 +5045,8 @@
       "english": "really; truly",
       "mnemonic": "十 (ten) + 具 (tool). Ten genuine tools — really, truly authentic!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of ZOO.",
+        "story": "That ZOO cue sets off really immediately.",
         "components": [
           {
             "hanzi": "十",
@@ -5065,8 +5065,8 @@
       "english": "in the process of; -ing",
       "mnemonic": "正 (straight/correct) + 在 (at). Right at this moment, in the correct place — right now doing something!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Right now, workers are still moving on the same task.",
+        "soundAnchor": "Think of ZOO.",
+        "story": "A clear ZOO cue pulls up process right away.",
         "components": [
           {
             "hanzi": "正",
@@ -5085,8 +5085,8 @@
       "english": "to know",
       "mnemonic": "知 = 矢 (arrow) + 口 (mouth). 道 = way/path. An arrow from your mouth hits the right path — you know!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of ZOO.",
+        "story": "I use ZOO to reach meaning to know.",
         "components": [
           {
             "hanzi": "矢",
@@ -5105,8 +5105,8 @@
       "english": "to prepare",
       "mnemonic": "准 = 冫(ice) + 隹 (bird). 备 = 夂 (go) + 田 (field). A bird on ice getting ready to fly to the fields — preparing!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "Before departure, bags are packed and tickets set by door.",
+        "soundAnchor": "Think of ZOO.",
+        "story": "I connect to prepare with the cue ZOO.",
         "components": [
           {
             "hanzi": "冫",
@@ -5133,8 +5133,8 @@
       "english": "bicycle",
       "mnemonic": "自 (self) + 行 (go/travel) + 车 (vehicle). A self-propelled vehicle — bicycle!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of ZOO.",
+        "story": "That ZOO signal locks in bicycle quickly.",
         "components": [
           {
             "hanzi": "自",
@@ -5157,8 +5157,8 @@
       "english": "to walk; to go",
       "mnemonic": "土 (earth) + a running figure on top. A person running on the earth — walking/going!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "At dusk, he heads down the road toward home.",
+        "soundAnchor": "Think of ZOE.",
+        "story": "To walk becomes obvious once ZOE appears.",
         "components": [
           {
             "hanzi": "土",
@@ -5173,8 +5173,8 @@
       "english": "most; -est",
       "mnemonic": "日 (sun) + 取 (take). Taking the sun — reaching the most, the highest!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "",
+        "soundAnchor": "Think of ZOO.",
+        "story": "A small ZOO signal locks in most.",
         "components": [
           {
             "hanzi": "日",
@@ -5193,8 +5193,8 @@
       "english": "left side",
       "mnemonic": "左 = a hand (ナ) + 工 (work). The hand that works. 边 (side). The left side!",
       "mnemonicData": {
-        "soundAnchor": "",
-        "story": "The watch rests on the wrist that does not hold the pen.",
+        "soundAnchor": "Think of ZOO.",
+        "story": "I get to left side from the cue ZOO.",
         "components": [
           {
             "hanzi": "工",
@@ -5494,7 +5494,7 @@
       "mnemonic": "Metal pieces gathered under a roof-like top.",
       "mnemonicData": {
         "soundAnchor": "Think of GIN.",
-        "story": "GIN coins cool on the bench after casting.",
+        "story": "As forging begins, coins cool on the bench.",
         "components": []
       }
     },
@@ -5506,7 +5506,7 @@
       "mnemonic": "Compressed metal radical used in compounds.",
       "mnemonicData": {
         "soundAnchor": "Think of GIN.",
-        "story": "GIN hammer rings once against the anvil.",
+        "story": "After forging, one hammer rings on the anvil.",
         "components": []
       }
     },
@@ -5554,7 +5554,7 @@
       "mnemonic": "Slope/place marker at the side of characters.",
       "mnemonicData": {
         "soundAnchor": "Think of FOO.",
-        "story": "FOO path bends around steep wind-carved earth.",
+        "story": "A foothill path bends around a steep embankment.",
         "components": []
       }
     },

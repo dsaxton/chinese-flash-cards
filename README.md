@@ -94,6 +94,7 @@ Guardrails:
 - Sound anchors must resolve to intelligible English phrase output and use ALL CAPS for clue words (for example: `Think of TEA.`).
 - Non-English pronunciation fragments are rejected as anchors.
 - Structured `mnemonicData.soundAnchor` values are normalized to the same canonical ALL-CAPS format.
+- Stories may integrate a configured phonetic alias fragment (see `phoneticAnchorAliases`) when forcing the raw anchor token would make the sentence unnatural.
 - Anchored stories must be coherent English and tie the anchor to the card meaning.
 - For anchored stories, meaning words are allowed by design; for non-anchored stories, answer leakage remains forbidden.
 - Mnemonics appear only on full reveal (not intermediate stages).
@@ -110,7 +111,7 @@ All mnemonic content in `data/deck-data.json` is **original or LLM-generated**. 
 
 **Stories (`story`):** Initial stories were hand-written. Problem stories (fragments, answer leakers, incoherent anchors) were later rewritten by LLM and applied via `scripts/apply-story-rewrites.js`. External sources such as Koohii, Heisig/Arthur CSV, and Make Me a Hanzi are referenced as optional seed inputs in `build-mnemonic-seeds.js` but were never used to populate the committed data.
 
-**Coverage (current):** 90 HSK1 vocab cards have both anchor + story; 53 have story only; 0 have neither. All 35 radical cards now have both anchor + story.
+**Coverage (current):** 311/311 cards (vocab + radicals) have both anchor + story; 0 cards are missing either field.
 
 ### Tooling
 
@@ -121,6 +122,8 @@ node scripts/audit-mnemonics.js --mode all --fail-on-violations
 node scripts/validate-anchor-stories.js
 node scripts/test-mnemonic-curation.js
 ```
+
+`test-mnemonic-curation.js` now also enforces story-template diversity and anchor-placement diversity so repetitive, anchor-first phrasing regresses fast.
 
 Review and rewrite workflow:
 

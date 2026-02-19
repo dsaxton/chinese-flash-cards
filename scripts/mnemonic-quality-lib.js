@@ -63,6 +63,47 @@ function loadPhoneticConfig(rootDir) {
   return readJson(path.join(rootDir, "data", "phonetic-config.json"));
 }
 
+function extractCanonicalAnchorWord(soundAnchor) {
+  const text = String(soundAnchor || "").trim();
+  const match = text.match(/^Think of ([A-Z]+)\.$/);
+  return match ? match[1] : "";
+}
+
+function normalizeAnchorAliasMap(rawMap) {
+  if (!rawMap || typeof rawMap !== "object") return {};
+  const out = {};
+  for (const [anchorWord, aliases] of Object.entries(rawMap)) {
+    const key = String(anchorWord || "").toUpperCase().trim();
+    if (!key) continue;
+    const nextAliases = Array.isArray(aliases)
+      ? aliases
+        .map((x) => String(x || "").trim().toLowerCase())
+        .filter(Boolean)
+      : [];
+    out[key] = [...new Set(nextAliases)];
+  }
+  return out;
+}
+
+function anchorFormsForStory(soundAnchor, aliasMap = {}) {
+  const anchorWord = extractCanonicalAnchorWord(soundAnchor);
+  if (!anchorWord) return [];
+  const key = anchorWord.toUpperCase();
+  const aliases = Array.isArray(aliasMap[key]) ? aliasMap[key] : [];
+  return [key, ...aliases];
+}
+
+function anchorIntegratedInStoryWithAliases(soundAnchor, story, aliasMap = {}) {
+  const forms = anchorFormsForStory(soundAnchor, aliasMap);
+  const text = String(story || "");
+  if (forms.length === 0) return false;
+  return forms.some((form) => {
+    if (!form) return false;
+    const escaped = String(form).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return new RegExp(`\\b${escaped}\\b`, "i").test(text);
+  });
+}
+
 function normalizePinyinAscii(pinyin) {
   return String(pinyin || "")
     .toLowerCase()
@@ -227,4 +268,8 @@ module.exports = {
   isLiteralShapeHint,
   loadDeckData,
   loadPhoneticConfig,
+  extractCanonicalAnchorWord,
+  normalizeAnchorAliasMap,
+  anchorFormsForStory,
+  anchorIntegratedInStoryWithAliases,
 };

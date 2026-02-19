@@ -2,7 +2,10 @@
 const path = require("path");
 const fs = require("fs");
 const {
+  anchorFormsForStory,
+  anchorIntegratedInStoryWithAliases,
   collectDeckCards,
+  extractCanonicalAnchorWord,
   getStoryText,
   hasBoilerplateStoryPhrase,
   hintContainsEnglishAnswer,
@@ -12,6 +15,8 @@ const {
   isLikelyComponentOnlyStory,
   isLikelyIncoherentStory,
   isLiteralShapeHint,
+  loadPhoneticConfig,
+  normalizeAnchorAliasMap,
 } = require("./mnemonic-quality-lib");
 
 function assert(condition, message) {
@@ -31,22 +36,6 @@ function readAllowedAnchorWords() {
   const data = JSON.parse(fs.readFileSync(configPath, "utf8"));
   const values = Array.isArray(data.englishSoundAnchorWords) ? data.englishSoundAnchorWords : [];
   return new Set(values.map((value) => String(value).toUpperCase()));
-}
-
-function extractAnchorWords(anchor) {
-  const body = String(anchor || "")
-    .replace(/^Think of\s+/i, "")
-    .replace(/[.?!]+$/, "")
-    .trim();
-  return body.match(/[A-Z]+/g) || [];
-}
-
-function anchorIntegratedInStory(anchorWords, story) {
-  const text = String(story || "");
-  return anchorWords.every((word) => {
-    const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    return new RegExp(`(?<![A-Z\\-])${escaped}(?![A-Z\\-])`).test(text);
-  });
 }
 
 function testMnemonicDataCoverage(cards, minNonEmpty) {
@@ -114,7 +103,7 @@ function testStorySafety(cards, { requireNonEmpty = false } = {}) {
   }
 }
 
-function testSoundAnchorBatch(cards, allowedWords, minAnchors) {
+function testSoundAnchorBatch(cards, allowedWords, anchorAliasMap, minAnchors) {
   let anchorCount = 0;
   let integratedAnchorCount = 0;
   for (const card of cards) {
@@ -126,12 +115,14 @@ function testSoundAnchorBatch(cards, allowedWords, minAnchors) {
     anchorCount++;
     assertCanonicalSoundAnchor(anchor, label);
 
-    for (const word of extractAnchorWords(anchor)) {
-      assert(allowedWords.has(word), `${label}: anchor word "${word}" is outside allowed English anchor set`);
-    }
+    const anchorWord = extractCanonicalAnchorWord(anchor);
+    assert(anchorWord, `${label}: unable to parse canonical anchor word`);
+    assert(
+      allowedWords.has(anchorWord),
+      `${label}: anchor word "${anchorWord}" is outside allowed English anchor set`
+    );
 
-    const anchorWords = extractAnchorWords(anchor);
-    if (anchorWords.length > 0 && anchorIntegratedInStory(anchorWords, story)) {
+    if (anchorIntegratedInStoryWithAliases(anchor, story, anchorAliasMap)) {
       integratedAnchorCount++;
     }
   }
@@ -158,7 +149,28 @@ function testSingleCharAnchorCoverage(cards, minRatio) {
   );
 }
 
-function testRadicalsFullyCurated(radicals) {
+function testNonHsk1Coverage(vocab, hsk1Count, minStoryRatio, minAnchorRatio) {
+  const nonHsk1 = vocab.slice(hsk1Count);
+  const withStory = nonHsk1.filter((card) => getStoryText(card).length > 0).length;
+  const withAnchor = nonHsk1.filter((card) => String(card.mnemonicData?.soundAnchor || "").trim()).length;
+  const storyRatio = nonHsk1.length > 0 ? withStory / nonHsk1.length : 1;
+  const anchorRatio = nonHsk1.length > 0 ? withAnchor / nonHsk1.length : 1;
+  const storyPct = Math.round(storyRatio * 1000) / 10;
+  const anchorPct = Math.round(anchorRatio * 1000) / 10;
+  const minStoryPct = Math.round(minStoryRatio * 1000) / 10;
+  const minAnchorPct = Math.round(minAnchorRatio * 1000) / 10;
+
+  assert(
+    storyRatio >= minStoryRatio,
+    `Expected at least ${minStoryPct}% non-HSK1 vocab story coverage, got ${storyPct}% (${withStory}/${nonHsk1.length})`
+  );
+  assert(
+    anchorRatio >= minAnchorRatio,
+    `Expected at least ${minAnchorPct}% non-HSK1 vocab anchor coverage, got ${anchorPct}% (${withAnchor}/${nonHsk1.length})`
+  );
+}
+
+function testRadicalsFullyCurated(radicals, anchorAliasMap) {
   for (const card of radicals) {
     const label = `${card.hanzi} (${card.english})`;
     assert(
@@ -181,10 +193,10 @@ function testRadicalsFullyCurated(radicals) {
       !isLikelyComponentOnlyStory(story, { hasSoundAnchor: true, english: card.english }),
       `${label}: story appears to rely only on component/radical explanation`
     );
-    const anchorWords = extractAnchorWords(anchor);
-    assert(anchorWords.length > 0, `${label}: unable to parse anchor word`);
+    const anchorForms = anchorFormsForStory(anchor, anchorAliasMap);
+    assert(anchorForms.length > 0, `${label}: unable to derive anchor forms`);
     assert(
-      anchorIntegratedInStory(anchorWords, story),
+      anchorIntegratedInStoryWithAliases(anchor, story, anchorAliasMap),
       `${label}: anchor must be integrated in story text`
     );
   }
@@ -209,6 +221,37 @@ function testAnchorNarrativeRegressions(cards) {
     for (const token of check.mustNotContain || []) {
       assert(!story.includes(token), `${check.hanzi}: story should not include "${token}"`);
     }
+  }
+}
+
+function testAliasIntegrationRegressions(cards, anchorAliasMap) {
+  const byHanzi = new Map(cards.map((card) => [card.hanzi, card]));
+  const checks = [
+    { hanzi: "金", expectedAlias: "begins?", anchorMustBeAbsent: true },
+    { hanzi: "钅", expectedAlias: "forging", anchorMustBeAbsent: true },
+    { hanzi: "阝", expectedAlias: "foothill", anchorMustBeAbsent: true },
+  ];
+
+  for (const check of checks) {
+    const card = byHanzi.get(check.hanzi);
+    assert(card, `Missing alias regression card ${check.hanzi}`);
+    const story = getStoryText(card);
+    const anchorWord = extractCanonicalAnchorWord(card.mnemonicData?.soundAnchor || "");
+    assert(anchorWord, `${check.hanzi}: missing canonical anchor`);
+    if (check.anchorMustBeAbsent) {
+      assert(
+        !new RegExp(`\\b${anchorWord}\\b`, "i").test(story),
+        `${check.hanzi}: story should avoid forced anchor token ${anchorWord}`
+      );
+    }
+    assert(
+      new RegExp(`\\b${check.expectedAlias}\\b`, "i").test(story),
+      `${check.hanzi}: expected alias token "${check.expectedAlias}" in story`
+    );
+    assert(
+      anchorIntegratedInStoryWithAliases(card.mnemonicData?.soundAnchor || "", story, anchorAliasMap),
+      `${check.hanzi}: alias should satisfy anchor integration`
+    );
   }
 }
 
@@ -243,20 +286,108 @@ function testStoryWordCount(cards, maxWords) {
   }
 }
 
+function escapeRegex(token) {
+  return String(token || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function englishMeaningTokens(english) {
+  return String(english || "")
+    .toLowerCase()
+    .match(/[a-z]+/g) || [];
+}
+
+function normalizeStoryTemplate(card, story, anchorAliasMap) {
+  let normalized = String(story || "").toLowerCase();
+  const anchorForms = anchorFormsForStory(card.mnemonicData?.soundAnchor || "", anchorAliasMap);
+  for (const form of anchorForms) {
+    normalized = normalized.replace(new RegExp(`\\b${escapeRegex(String(form).toLowerCase())}\\b`, "gi"), " {anchor} ");
+  }
+  for (const token of englishMeaningTokens(card.english)) {
+    if (token.length < 3) continue;
+    normalized = normalized.replace(new RegExp(`\\b${escapeRegex(token)}\\b`, "gi"), " {meaning} ");
+  }
+  return normalized
+    .replace(/[^a-z{}\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function testStoryTemplateDiversity(cards, anchorAliasMap, maxTemplateReuse) {
+  const storyCards = cards.filter((card) => getStoryText(card));
+  const buckets = new Map();
+  for (const card of storyCards) {
+    const story = getStoryText(card);
+    const template = normalizeStoryTemplate(card, story, anchorAliasMap);
+    if (!template) continue;
+    if (!buckets.has(template)) buckets.set(template, []);
+    buckets.get(template).push(card);
+  }
+
+  const repeated = [...buckets.entries()]
+    .filter(([, list]) => list.length > maxTemplateReuse)
+    .sort((a, b) => b[1].length - a[1].length);
+
+  if (repeated.length > 0) {
+    const details = repeated.slice(0, 5).map(([template, list]) => {
+      const sample = list.slice(0, 5).map((card) => `${card.hanzi} (${card.english})`).join(", ");
+      return `template=${JSON.stringify(template)} count=${list.length} sample=[${sample}]`;
+    });
+    throw new Error(
+      `Story template diversity regression: found ${repeated.length} templates reused more than ${maxTemplateReuse} times.\n` +
+      details.join("\n")
+    );
+  }
+}
+
+function testAnchorPlacementDiversity(cards, anchorAliasMap, maxStartRatio) {
+  let anchoredStories = 0;
+  let anchorAtStart = 0;
+
+  for (const card of cards) {
+    const story = getStoryText(card);
+    if (!story) continue;
+    const anchorForms = anchorFormsForStory(card.mnemonicData?.soundAnchor || "", anchorAliasMap);
+    if (!anchorForms.length) continue;
+    if (!anchorIntegratedInStoryWithAliases(card.mnemonicData?.soundAnchor || "", story, anchorAliasMap)) continue;
+
+    anchoredStories++;
+    const firstToken = story.split(/\s+/)[0]?.replace(/[^A-Za-z-]/g, "") || "";
+    if (
+      anchorForms.some((form) => new RegExp(`^${escapeRegex(String(form))}$`, "i").test(firstToken))
+    ) {
+      anchorAtStart++;
+    }
+  }
+
+  const ratio = anchoredStories > 0 ? anchorAtStart / anchoredStories : 0;
+  const ratioPct = Math.round(ratio * 1000) / 10;
+  const maxPct = Math.round(maxStartRatio * 1000) / 10;
+  assert(
+    ratio <= maxStartRatio,
+    `Anchor placement diversity regression: ${ratioPct}% of anchored stories start with anchor token (max ${maxPct}%).`
+  );
+}
+
 function main() {
   const root = path.resolve(__dirname, "..");
   const { vocab, hsk1Cards, radicals } = collectDeckCards(root);
+  const phoneticConfig = loadPhoneticConfig(root);
+  const anchorAliasMap = normalizeAnchorAliasMap(phoneticConfig.phoneticAnchorAliases);
   const allowedAnchorWords = readAllowedAnchorWords();
 
   testStorySafety(vocab);
   testMnemonicDataCoverage(hsk1Cards, 25);
-  testSoundAnchorBatch(hsk1Cards, allowedAnchorWords, 80);
+  testSoundAnchorBatch(hsk1Cards, allowedAnchorWords, anchorAliasMap, 80);
   testSingleCharAnchorCoverage(hsk1Cards, 0.95);
+  testNonHsk1Coverage(vocab, hsk1Cards.length, 0.95, 0.8);
   testMnemonicDataCoverage(radicals, radicals.length);
-  testRadicalsFullyCurated(radicals);
+  testRadicalsFullyCurated(radicals, anchorAliasMap);
   testAnchorNarrativeRegressions(hsk1Cards);
+  testAliasIntegrationRegressions([...hsk1Cards, ...radicals], anchorAliasMap);
   testNoPlaceholderTemplateLanguage(vocab);
   testNoPlaceholderTemplateLanguage(radicals);
+  testStoryTemplateDiversity([...vocab, ...radicals], anchorAliasMap, 8);
+  testAnchorPlacementDiversity([...vocab, ...radicals], anchorAliasMap, 0.6);
   testStoryWordCount(vocab, 12);
   testStoryWordCount(radicals, 12);
 

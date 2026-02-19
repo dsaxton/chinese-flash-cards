@@ -2,6 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 const {
+  anchorIntegratedInStoryWithAliases,
   extractEnglishAnswerTokens,
   getStoryText,
   hasBoilerplateStoryPhrase,
@@ -12,6 +13,8 @@ const {
   hintContainsPhoneticCue,
   hintContainsPinyin,
   loadDeckData,
+  loadPhoneticConfig,
+  normalizeAnchorAliasMap,
 } = require("./mnemonic-quality-lib");
 
 function parseArgs(argv) {
@@ -232,16 +235,16 @@ function collectMeaningCues(english, englishTokens) {
   return [...out];
 }
 
-function scoreCard(card) {
+function scoreCard(card, anchorAliasMap) {
   const story = getStoryText(card);
   const soundAnchor = String(card.mnemonicData?.soundAnchor || "").trim();
   const englishTokens = extractEnglishAnswerTokens(card.english || "");
   const meaningCues = collectMeaningCues(card.english, englishTokens);
   const hasAnchor = Boolean(soundAnchor);
   const anchorWord = ((soundAnchor.match(/^Think of ([A-Z]+)\.$/) || [])[1]) || "";
-  const anchorIntegrated = anchorWord
-    ? new RegExp(`\\b${anchorWord}\\b`).test(story)
-    : !hasAnchor;
+  const anchorIntegrated = hasAnchor
+    ? anchorIntegratedInStoryWithAliases(soundAnchor, story, anchorAliasMap)
+    : true;
 
   if (!story) {
     return {
@@ -341,9 +344,11 @@ function main() {
 
   const root = path.resolve(__dirname, "..");
   const deck = loadDeckData(root);
+  const phoneticConfig = loadPhoneticConfig(root);
+  const anchorAliasMap = normalizeAnchorAliasMap(phoneticConfig.phoneticAnchorAliases);
   const cards = [...(deck.vocab || []), ...(deck.radicals || [])];
   let rows = cards.map((card) => {
-    const score = scoreCard(card);
+    const score = scoreCard(card, anchorAliasMap);
     return {
       hanzi: card.hanzi,
       pinyin: card.pinyin,
