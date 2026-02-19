@@ -10,6 +10,7 @@ const {
   isLikelyComponentOnlyStory,
   isLikelyIncoherentStory,
   isLiteralShapeHint,
+  isMetaTemplateStory,
   hintContainsPhoneticCue,
   hintContainsPinyin,
   loadDeckData,
@@ -290,6 +291,10 @@ function scoreCard(card, anchorAliasMap) {
       score -= 12;
       reasons.push("anchor_meaning_split");
     }
+  }
+  if (isMetaTemplateStory(story)) {
+    score -= 40;
+    reasons.push("meta_template");
   }
   if (isLikelyIncoherentStory(story)) {
     score -= 30;

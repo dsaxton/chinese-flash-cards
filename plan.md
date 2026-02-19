@@ -13,11 +13,17 @@ node scripts/test-mnemonic-curation.js
 node scripts/test-hint-safety.js
 ```
 
+### Completed
+- Meta-template ban: added `isMetaTemplateStory()` detector to quality lib, `-40` penalty in scorer, hard assertion in test suite.
+- Rewrote all 272 meta-template stories as concrete, pictureable scenes.
+- Clarified dual-proximity doctrine: dual proximity is a property of the *story*, not the anchor word.
+- All 311 stories now pass the full curation test suite.
+
 ### Next Steps (Mnemonic)
-1. Curate low-scoring stories from `node scripts/score-story-relevance.js --non-empty --limit 40` with priority on non-HSK1 vocab.
-2. Expand `phoneticAnchorAliases` for weak anchors where exact token usage still harms sentence quality.
+1. Address remaining `anchored_no_meaning_hit` stories (score 75) — grammar particles, abstract meanings.
+2. Expand `phoneticAnchorAliases` for anchors where exact token usage harms sentence quality.
 3. Add a small fixed snapshot set for narrative quality in CI to catch accidental template drift.
-4. Pilot stricter anchor-placement cap after one more rewrite pass (reduce max anchor-at-start from 60% to 40% if quality holds).
+4. Pilot stricter anchor-placement cap (reduce max anchor-at-start from 60% to 40% if quality holds).
 
 ---
 

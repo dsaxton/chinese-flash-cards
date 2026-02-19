@@ -96,6 +96,7 @@ Guardrails:
 - Structured `mnemonicData.soundAnchor` values are normalized to the same canonical ALL-CAPS format.
 - Stories may integrate a configured phonetic alias fragment (see `phoneticAnchorAliases`) when forcing the raw anchor token would make the sentence unnatural.
 - Anchored stories must be coherent English and tie the anchor to the card meaning.
+- Stories must paint a concrete, pictureable scene — meta-template language that narrates the mnemonic system (e.g. "I recall X when Y appears") is forbidden.
 - For anchored stories, meaning words are allowed by design; for non-anchored stories, answer leakage remains forbidden.
 - Mnemonics appear only on full reveal (not intermediate stages).
 - Invalid stories are skipped at data level (not rewritten at runtime).
@@ -123,7 +124,7 @@ node scripts/validate-anchor-stories.js
 node scripts/test-mnemonic-curation.js
 ```
 
-`test-mnemonic-curation.js` now also enforces story-template diversity and anchor-placement diversity so repetitive, anchor-first phrasing regresses fast.
+`test-mnemonic-curation.js` enforces story-template diversity, anchor-placement diversity, and a meta-template ban so repetitive, anchor-first, or system-narrating phrasing regresses fast.
 
 Review and rewrite workflow:
 

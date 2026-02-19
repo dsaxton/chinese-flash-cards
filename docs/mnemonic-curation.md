@@ -33,29 +33,25 @@ on its own, but they must never be the primary hook.
 | **Shape** | Character has a distinctive, iconic visual form | Describe what it looks like; works best for simple characters (人, 口, 日, 大, 山, 木) |
 | **Meaning** | Always | State or evoke the English meaning in the scene. Required for anchored stories; evoked (not stated outright) for unanchored stories |
 
-### Sound anchor selection: dual proximity
+### Sound anchor selection
 
-A sound anchor word must satisfy **two constraints simultaneously**:
+A sound anchor word must closely approximate the Chinese syllable(s) when
+spoken aloud. That is its only hard requirement.
 
-1. **Phonetic proximity** — the anchor must closely approximate the Chinese
-   syllable(s) when spoken aloud.
-2. **Semantic tractability** — the anchor must be naturally usable in a scene
-   that connects to the English meaning. If no plausible scene bridge exists,
-   the anchor is wrong regardless of how close it sounds.
+**Dual proximity is a property of the story, not the anchor.** An ideal anchor
+happens to have a natural semantic bridge to the meaning (e.g. CHAI → tea,
+BOO → not), but many valid anchors have no inherent connection (e.g. SHOE for
+书 "book"). The *story* is responsible for building a vivid, concrete scene
+that links the anchor sound to the English meaning — even when the two are
+semantically distant. A good story can bridge any gap; a bad story fails even
+with a perfect dual-fit anchor.
 
-An anchor that satisfies only the phonetic constraint forces the story to work
-harder to link sound to meaning. The result is often a strained or forgettable
-scene.
-
-| Anchor | Hanzi | English | Assessment |
-|--------|-------|---------|------------|
-| CHAI | 茶 chá | tea | Chai *is* a kind of tea — perfect dual fit |
-| BOO | 不 bù | not; no | Boo evokes rejection/negation — dual fit |
-| CHEW | 吃 chī | to eat | Chewing is part of eating — dual fit |
-| SHOE | 书 shū | book | Phonetic match; shoe has no connection to books — weak |
-
-When no ideal dual-fit anchor exists, prefer one that allows an *indirect but
-plausible* scene connection over a purely phonetic choice with no handle.
+| Anchor | Hanzi | English | Notes |
+|--------|-------|---------|-------|
+| CHAI | 茶 chá | tea | Natural overlap — story writes itself |
+| BOO | 不 bù | not; no | Boo evokes rejection — easy bridge |
+| CHEW | 吃 chī | to eat | Chewing is eating — easy bridge |
+| SHOE | 书 shū | book | No inherent link — story must build the bridge (e.g. "A SHOE props the bookcase door open.") |
 
 If forcing the exact anchor token makes the sentence unnatural, the story may
 use a natural English alias/fragment listed in
@@ -125,8 +121,14 @@ cleared (empty is better than broken).
    characters related to X" is not a mnemonic.
 10. **No multi-word `soundAnchor`** — anchors must be canonical single-word
     format: `Think of WORD.`
-11. **Template diversity required** — avoid repeated sentence scaffolds across cards.
-12. **Anchor placement diversity required** — anchored stories should not mostly begin with the anchor token.
+11. **No meta-template language** — the story must paint a scene, not narrate
+    the mnemonic system. Phrases like "I recall X when Y appears", "the cue
+    leads me to", "becomes obvious once", "stays linked to", "I map X to Y",
+    and similar self-referential wording are forbidden. If the story describes
+    the act of remembering instead of creating a memorable image, it provides
+    no recall benefit over rote memorization.
+12. **Template diversity required** — avoid repeated sentence scaffolds across cards.
+13. **Anchor placement diversity required** — anchored stories should not mostly begin with the anchor token.
 
 ---
 
@@ -181,12 +183,13 @@ The scorer assigns 0–100 per story. Key penalty flags:
 
 | Flag | Points lost | Meaning |
 |------|-------------|---------|
+| `meta_template` | −40 | Story narrates the mnemonic system instead of painting a scene |
 | `anchor_not_integrated` | −35 | Anchor word absent from story |
-| `anchored_no_meaning_hit` | −25 | Anchored story has no meaning cue |
-| `anchor_meaning_split` | −12 | Anchor and meaning are in different `;`-clauses |
-| `unanchored_no_meaning_hit` | −18 | Unanchored story has no meaning cue |
 | `incoherent` | −30 | Story fails basic coherence checks |
+| `anchored_no_meaning_hit` | −25 | Anchored story has no meaning cue |
 | `abstract` | −20 | Story uses abstract meta-language |
+| `unanchored_no_meaning_hit` | −18 | Unanchored story has no meaning cue |
+| `anchor_meaning_split` | −12 | Anchor and meaning are in different `;`-clauses |
 
 Use the output JSON as input for an LLM coherence pass on the bottom tier.
 
@@ -220,9 +223,12 @@ Give the agent `work/relevance.json` and the following prompt:
 >    word directly.
 > 3. Is a single, concrete, pictureable scene (≤ 12 words).
 > 4. Uses natural English with no Chinese characters, no pinyin, no
->    "Think of", "sounds like", or "flashes into the scene".
+>    "Think of", "sounds like", "flashes into the scene", and no
+>    meta-template language that narrates the mnemonic system (e.g.
+>    "I recall", "the cue", "comes to mind", "becomes obvious").
 >
 > `reasons` tells you what is wrong with the current story:
+> - `meta_template` — the story narrates the mnemonic system ("I recall X when Y appears") instead of painting a scene; rewrite as a vivid, concrete image
 > - `anchor_not_integrated` — the anchor word does not appear in the story at all
 > - `anchored_no_meaning_hit` — the story has no word or synonym related to the English meaning
 > - `anchor_meaning_split` — the anchor and the meaning are in different clauses (separated by `;`)
@@ -236,10 +242,11 @@ Give the agent `work/relevance.json` and the following prompt:
 > output `"rewrittenStory": ""` — an empty story is shown as nothing rather
 > than as a bad mnemonic.
 >
-> **Dual proximity rule for anchors:** If the anchor word has no natural
-> semantic connection to the English meaning, note this in a `"anchorNote"`
-> field (e.g. `"SHOE has no connection to 'book'; consider replacing with
-> SHELF or SCROLL"`). Do not let a weak anchor force a strained story.
+> **Dual proximity lives in the story, not the anchor.** Even when the
+> anchor word has no inherent semantic connection to the English meaning
+> (e.g. SHOE for "book"), write a scene that bridges the two through
+> concrete action or imagery. Only flag an `"anchorNote"` if you genuinely
+> cannot construct a natural scene linking the anchor to the meaning.
 >
 > Output a JSON array:
 > ```json

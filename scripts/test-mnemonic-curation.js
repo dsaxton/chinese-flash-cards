@@ -15,6 +15,7 @@ const {
   isLikelyComponentOnlyStory,
   isLikelyIncoherentStory,
   isLiteralShapeHint,
+  isMetaTemplateStory,
   loadPhoneticConfig,
   normalizeAnchorAliasMap,
 } = require("./mnemonic-quality-lib");
@@ -67,6 +68,7 @@ function testMnemonicDataCoverage(cards, minNonEmpty) {
       !isLikelyComponentOnlyStory(story, { hasSoundAnchor, english: card.english }),
       `${label}: story appears to rely only on component/radical explanation`
     );
+    assert(!isMetaTemplateStory(story), `${label}: story uses forbidden meta-template language (narrates the mnemonic system instead of painting a scene)`);
   }
 
   const nonEmptyCount = cards.filter((card) => getStoryText(card).length > 0).length;
@@ -100,6 +102,7 @@ function testStorySafety(cards, { requireNonEmpty = false } = {}) {
       !isLikelyComponentOnlyStory(story, { hasSoundAnchor, english: card.english }),
       `${label}: story appears to rely only on component/radical explanation`
     );
+    assert(!isMetaTemplateStory(story), `${label}: story uses forbidden meta-template language (narrates the mnemonic system instead of painting a scene)`);
   }
 }
 
@@ -193,6 +196,7 @@ function testRadicalsFullyCurated(radicals, anchorAliasMap) {
       !isLikelyComponentOnlyStory(story, { hasSoundAnchor: true, english: card.english }),
       `${label}: story appears to rely only on component/radical explanation`
     );
+    assert(!isMetaTemplateStory(story), `${label}: story uses forbidden meta-template language (narrates the mnemonic system instead of painting a scene)`);
     const anchorForms = anchorFormsForStory(anchor, anchorAliasMap);
     assert(anchorForms.length > 0, `${label}: unable to derive anchor forms`);
     assert(

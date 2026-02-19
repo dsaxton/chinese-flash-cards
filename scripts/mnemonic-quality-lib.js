@@ -24,6 +24,57 @@ const BOILERPLATE_STORY_PATTERNS = [
   /\bflashes?\s+into\s+the\s+scene\b/i,
 ];
 
+const META_TEMPLATE_PATTERNS = [
+  /\bI recall\b/i,
+  /\bI remember\b/i,
+  /\bthe cue\b/i,
+  /\bcue [A-Z][A-Z]+\b/,
+  /\bcomes? to mind\b/i,
+  /\bshows up\b/i,
+  /\bis the target\b/i,
+  /\bstays linked\b/i,
+  /\bbecomes? obvious\b/i,
+  /\bbecomes? natural\b/i,
+  /\bI connect\b/i,
+  /\bI decode\b/i,
+  /\bI pair\b/i,
+  /\bI tag\b/i,
+  /\bmemory path\b/i,
+  /\bsteers me\b/i,
+  /\bI map\b/i,
+  /\bI attach\b/i,
+  /\bcard signals?\b/i,
+  /\bsignal locks? in\b/i,
+  /\bsignal arrives\b/i,
+  /\bwe land on\b/i,
+  /\bI immediately recall\b/i,
+  /\bI hold .* in mind\b/i,
+  /\bI read this as\b/i,
+  /\bI treat\b/i,
+  /\bthe clue\b/i,
+  /\bthe card clicks\b/i,
+  /\bhint arrives\b/i,
+  /\bI catch\b/i,
+  /\bthe anchor\b/i,
+  /\blocks in\b/i,
+  /\bpoints me to\b/i,
+  /\bpoints to .* when\b/i,
+  /\bthis entry means\b/i,
+  /\bthis scene reads\b/i,
+  /\bthis moment becomes\b/i,
+  /\bI keep cue\b/i,
+  /\bmy memory lands\b/i,
+  /\bI settle on\b/i,
+  /\bI use .* to reach\b/i,
+  /\breach meaning\b/i,
+  /\bthe action is to\b/i,
+  /\bcomes up fast\b/i,
+  /\bI reach .* right after\b/i,
+  /\bin view,? .* comes\b/i,
+  /\bwhen [A-Z][\w]* appears\b/i,
+  /\ba .* signal\b/i,
+];
+
 const ABSTRACT_STORY_PATTERNS = [
   /\bconcept of\b/i,
   /\bidea of\b/i,
@@ -222,6 +273,12 @@ function isLikelyAbstractStory(text) {
   return ABSTRACT_STORY_PATTERNS.some((pattern) => pattern.test(normalized));
 }
 
+function isMetaTemplateStory(text) {
+  const normalized = String(text || "").trim();
+  if (!normalized) return false;
+  return META_TEMPLATE_PATTERNS.some((pattern) => pattern.test(normalized));
+}
+
 function isLikelyComponentOnlyStory(text, options = {}) {
   const normalized = String(text || "").trim();
   if (!normalized) return false;
@@ -266,6 +323,7 @@ module.exports = {
   isLikelyComponentOnlyStory,
   isLikelyIncoherentStory,
   isLiteralShapeHint,
+  isMetaTemplateStory,
   loadDeckData,
   loadPhoneticConfig,
   extractCanonicalAnchorWord,
