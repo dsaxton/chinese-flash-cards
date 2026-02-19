@@ -13,28 +13,12 @@ node scripts/test-mnemonic-curation.js
 node scripts/test-hint-safety.js
 ```
 
-### Completed
-- Meta-template ban: added `isMetaTemplateStory()` detector to quality lib, `-40` penalty in scorer, hard assertion in test suite.
-- Rewrote all 272 meta-template stories as concrete, pictureable scenes.
-- Clarified dual-proximity doctrine: dual proximity is a property of the *story*, not the anchor word.
-- Anchor grammar gate: added `isAnchorGrammaticallyIsolated()` detector to catch anchors jammed before nouns with no connector, `-30` penalty in scorer, hard assertion for radical cards.
-- Shared-anchor distinctness gate: cards sharing the same anchor word must have low story word-overlap.
-- Per-deck anchor placement cap: radical stories held to ≤ 50% anchor-first (global cap remains 60%).
-- Rewrote 26 radical stories — anchors now fill real grammatical slots, placement diversity at 14%.
-- All 311 stories now pass the full curation test suite.
-- Sound anchor audit: fixed 11 anchor-syllable mismatches where anchors poorly approximated the Chinese sound (e.g. DAY→DONG for 懂 dǒng, MAMA→MEN for 门 mén, CHAIN→SWORE for 错 cuò). Rewrote 2 additional stories for broken grammar (让) and missing meaning link (非常).
-- Pinyin-leak exclusion: audit and test scripts now exclude the anchor word itself from pinyin-leak detection — anchors that match the romanization are by design, not leaks.
-- Conservative anchor diversification: replaced 5 more family-anchor mismatches with precise per-syllable matches (KEY→CHEE for 七 qī, HAN→HEN for 很 hěn, YOU→YIN for 阴 yīn, JAR→GIN for 近/进 jìn). Added YIN to allowed list.
-- Grammar particle review: rewrote 着 story to demonstrate ongoing action through scene rather than naming the function.
-- Vocab anchor grammar gate audit: 125 vocab stories flagged, but nearly all are false positives (SHE/YOU/HOW as natural pronoun/adverb subjects). Gate stays radical-only until the heuristic is improved.
-- 次 cì (CHAIN): confirmed no clean English word for the Mandarin "ts" initial; CHAIN kept as best available affricate.
-
-### Next Steps (Mnemonic)
+### Next Steps
 1. Expand `phoneticAnchorAliases` for anchors where exact token usage harms sentence quality.
-2. Add a small fixed snapshot set for narrative quality in CI to catch accidental template drift.
+2. Add narrative quality snapshot fixtures in CI to catch accidental template drift.
 3. Pilot stricter anchor-placement cap (reduce max anchor-at-start from 60% to 40% if quality holds).
 4. Diversify remaining "family anchors" — SHE/ZOO/YOU/SHEER still cover 15–20 syllables each; further per-syllable splits need new anchor words or alias support.
-5. Improve anchor grammar gate heuristic to reduce false positives on natural pronoun/adverb subjects before enabling for vocab.
+5. Improve anchor grammar gate heuristic to reduce false positives on natural pronoun/adverb subjects before enabling for vocab (125 false positives at current sensitivity).
 
 ---
 
