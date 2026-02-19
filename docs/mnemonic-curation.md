@@ -113,7 +113,10 @@ cleared (empty is better than broken).
 4. **≤ 12 words** — shorter is more memorable.
 5. **No English answer leakage** — *except* in anchored stories, where the
    meaning is required.
-6. **No pinyin in story text** (English-to-Hanzi direction).
+6. **No pinyin in story text** (English-to-Hanzi direction). The anchor word
+   itself is excluded from this check — when the best English approximation
+   happens to match the romanized pinyin (e.g. DONG for dǒng, SONG for sòng),
+   that is a feature of a good phonetic match, not a leak.
 7. **No explicit phonetic cue phrases** — no "Think of", "sounds like",
    "rhymes with".
 8. **No "flashes into the scene" boilerplate.**

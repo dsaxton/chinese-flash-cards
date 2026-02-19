@@ -21,6 +21,7 @@ const {
   loadPhoneticConfig,
   normalizeAnchorAliasMap,
   storyContentWords,
+  storyTextExcludingAnchor,
 } = require("./mnemonic-quality-lib");
 
 function assert(condition, message) {
@@ -61,7 +62,8 @@ function testMnemonicDataCoverage(cards, minNonEmpty) {
     if (!hasSoundAnchor) {
       assert(!hintContainsEnglishAnswer(story, card.english), `${label}: story leaks English answer token`);
     }
-    assert(!hintContainsPinyin(story, card.pinyin), `${label}: story leaks pinyin token`);
+    const storyForPinyin = storyTextExcludingAnchor(story, card.mnemonicData.soundAnchor);
+    assert(!hintContainsPinyin(storyForPinyin, card.pinyin), `${label}: story leaks pinyin token`);
     assert(!hintContainsPhoneticCue(story), `${label}: story uses forbidden phonetic cue phrasing`);
     assert(!isLiteralShapeHint(story), `${label}: story uses forbidden literal shape phrasing`);
     assert(!hasBoilerplateStoryPhrase(story), `${label}: story uses forbidden boilerplate phrasing`);
@@ -95,7 +97,8 @@ function testStorySafety(cards, { requireNonEmpty = false } = {}) {
     if (!hasSoundAnchor) {
       assert(!hintContainsEnglishAnswer(story, card.english), `${label}: story leaks English answer token`);
     }
-    assert(!hintContainsPinyin(story, card.pinyin), `${label}: story leaks pinyin token`);
+    const storyForPinyin = storyTextExcludingAnchor(story, card.mnemonicData?.soundAnchor);
+    assert(!hintContainsPinyin(storyForPinyin, card.pinyin), `${label}: story leaks pinyin token`);
     assert(!hintContainsPhoneticCue(story), `${label}: story uses forbidden phonetic cue phrasing`);
     assert(!isLiteralShapeHint(story), `${label}: story uses forbidden literal shape phrasing`);
     assert(!hasBoilerplateStoryPhrase(story), `${label}: story uses forbidden boilerplate phrasing`);
@@ -189,7 +192,8 @@ function testRadicalsFullyCurated(radicals, anchorAliasMap) {
     const story = getStoryText(card);
     assert(story.length > 0, `${label}: story must be non-empty`);
     assert(!hintContainsEnglishAnswer(story, card.english), `${label}: story leaks English answer token`);
-    assert(!hintContainsPinyin(story, card.pinyin), `${label}: story leaks pinyin token`);
+    const storyForPinyin = storyTextExcludingAnchor(story, anchor);
+    assert(!hintContainsPinyin(storyForPinyin, card.pinyin), `${label}: story leaks pinyin token`);
     assert(!hintContainsPhoneticCue(story), `${label}: story uses forbidden phonetic cue phrasing`);
     assert(!isLiteralShapeHint(story), `${label}: story uses forbidden literal shape phrasing`);
     assert(!hasBoilerplateStoryPhrase(story), `${label}: story uses forbidden boilerplate phrasing`);

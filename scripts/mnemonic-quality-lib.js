@@ -353,8 +353,15 @@ function jaccardSimilarity(setA, setB) {
   return union > 0 ? intersection / union : 0;
 }
 
+function storyTextExcludingAnchor(story, soundAnchor) {
+  const anchorWord = extractCanonicalAnchorWord(soundAnchor);
+  if (!anchorWord) return String(story || "");
+  return String(story || "").replace(new RegExp(`\\b${anchorWord}\\b`, "gi"), "");
+}
+
 module.exports = {
   collectDeckCards,
+  storyTextExcludingAnchor,
   collectHsk1UniqueChars,
   extractEnglishAnswerTokens,
   getStoryText,

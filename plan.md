@@ -22,6 +22,8 @@ node scripts/test-hint-safety.js
 - Per-deck anchor placement cap: radical stories held to ≤ 50% anchor-first (global cap remains 60%).
 - Rewrote 26 radical stories — anchors now fill real grammatical slots, placement diversity at 14%.
 - All 311 stories now pass the full curation test suite.
+- Sound anchor audit: fixed 11 anchor-syllable mismatches where anchors poorly approximated the Chinese sound (e.g. DAY→DONG for 懂 dǒng, MAMA→MEN for 门 mén, CHAIN→SWORE for 错 cuò). Rewrote 2 additional stories for broken grammar (让) and missing meaning link (非常).
+- Pinyin-leak exclusion: audit and test scripts now exclude the anchor word itself from pinyin-leak detection — anchors that match the romanization are by design, not leaks.
 
 ### Next Steps (Mnemonic)
 1. Address remaining `anchored_no_meaning_hit` stories (score 75) — grammar particles, abstract meanings.
@@ -29,6 +31,8 @@ node scripts/test-hint-safety.js
 3. Expand `phoneticAnchorAliases` for anchors where exact token usage harms sentence quality.
 4. Add a small fixed snapshot set for narrative quality in CI to catch accidental template drift.
 5. Pilot stricter anchor-placement cap (reduce max anchor-at-start from 60% to 40% if quality holds).
+6. Diversify "family anchors" — SHE/ZOO/YOU/SHEER each cover 18–21 syllables; find more precise per-syllable anchors where feasible.
+7. Find a better anchor for 次 cì (CHAIN) — Mandarin "ts" initial has no clean English single-word equivalent.
 
 ---
 

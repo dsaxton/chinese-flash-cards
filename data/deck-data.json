@@ -845,8 +845,8 @@
       "english": "(measure word for money)",
       "mnemonic": "土 (earth) + 夬 (decisive). A decisive chunk of earth — a piece, used for counting money.",
       "mnemonicData": {
-        "soundAnchor": "Think of WHY.",
-        "story": "WHY waste good money on one block of stale cheese?",
+        "soundAnchor": "Think of KITE.",
+        "story": "A KITE seller counts money — three per kite at the stall.",
         "components": [
           {
             "hanzi": "土",
@@ -2563,8 +2563,8 @@
       "english": "don't; other",
       "mnemonic": "另 (other) + 刂 (knife). A knife cutting you off — don't do that!",
       "mnemonicData": {
-        "soundAnchor": "Think of BOO.",
-        "story": "BOO — don't touch that electric fence, kid!",
+        "soundAnchor": "Think of BEE.",
+        "story": "A BEE hovers close — don't swat, just stay still.",
         "components": [
           {
             "hanzi": "另",
@@ -2656,8 +2656,8 @@
       "english": "wrong; mistake",
       "mnemonic": "钅(metal/gold) + 昔 (past). The gold from the past turned out to be fake — wrong!",
       "mnemonicData": {
-        "soundAnchor": "Think of CHAIN.",
-        "story": "The CHAIN snaps — something went wrong with the weakest link.",
+        "soundAnchor": "Think of SWORE.",
+        "story": "She SWORE the answer was right, but it was wrong.",
         "components": [
           {
             "hanzi": "钅",
@@ -2836,8 +2836,8 @@
       "english": "to understand",
       "mnemonic": "忄(heart) + 董 (to direct). Your heart directs you to comprehend — to understand!",
       "mnemonicData": {
-        "soundAnchor": "Think of DAY.",
-        "story": "DAY by DAY the student finally starts to understand it.",
+        "soundAnchor": "Think of DONG.",
+        "story": "DONG — the deep chime echoes and she finally understands.",
         "components": [
           {
             "hanzi": "忄",
@@ -2856,8 +2856,8 @@
       "english": "correct; right",
       "mnemonic": "又 (hand) + 寸 (inch). Your hand measures exactly one inch — correct!",
       "mnemonicData": {
-        "soundAnchor": "Think of DAY.",
-        "story": "DAY one — every answer on the quiz is correct.",
+        "soundAnchor": "Think of DUET.",
+        "story": "Every note in the DUET lands correct and clean.",
         "components": [
           {
             "hanzi": "又",
@@ -2905,7 +2905,7 @@
       "mnemonic": "非 (not) + 常 (ordinary). Not ordinary at all — extremely!",
       "mnemonicData": {
         "soundAnchor": "Think of FAY.",
-        "story": "FAY light flickers — the old forest is eerily still tonight.",
+        "story": "FAY glow burns extremely bright inside the tiny lantern.",
         "components": [
           {
             "hanzi": "非",
@@ -3709,8 +3709,8 @@
       "english": "door; gate",
       "mnemonic": "Looks like a traditional Chinese double door — a gate!",
       "mnemonicData": {
-        "soundAnchor": "Think of MAMA.",
-        "story": "MAMA knocks twice and the front door swings wide open.",
+        "soundAnchor": "Think of MEN.",
+        "story": "The MEN heave open the heavy iron gate at dawn.",
         "components": []
       }
     },
@@ -3720,8 +3720,8 @@
       "english": "male",
       "mnemonic": "田 (field) + 力 (strength). Strength in the field — traditionally male!",
       "mnemonicData": {
-        "soundAnchor": "Think of NEW.",
-        "story": "A NEW recruit — the young male soldier stands at attention.",
+        "soundAnchor": "Think of NAN.",
+        "story": "NAN crumbles on the plate as the man reaches for more.",
         "components": [
           {
             "hanzi": "田",
@@ -3863,8 +3863,8 @@
       "english": "ticket",
       "mnemonic": "西 (west) + 示 (show). Show this to go west — a ticket!",
       "mnemonicData": {
-        "soundAnchor": "Think of PAPA.",
-        "story": "PAPA digs through his pockets and finds the lost ticket.",
+        "soundAnchor": "Think of PIANO.",
+        "story": "Tucked inside the PIANO bench, she finds the lost ticket.",
         "components": [
           {
             "hanzi": "西",
@@ -3976,7 +3976,7 @@
       "mnemonic": "讠(words) + 上 (up). Words that lift restrictions — to let, to allow!",
       "mnemonicData": {
         "soundAnchor": "Think of RUNG.",
-        "story": "At RUNG, we let without delay.",
+        "story": "She grips the RUNG and lets the next climber through.",
         "components": [
           {
             "hanzi": "讠",
@@ -4179,8 +4179,8 @@
       "english": "to give (a gift); to send",
       "mnemonic": "辶 (walk) + 关 (close/care). Walking to someone you care about — to give or send!",
       "mnemonicData": {
-        "soundAnchor": "Think of SHE.",
-        "story": "SHE wraps the ribbon and sends the gift by morning post.",
+        "soundAnchor": "Think of SONG.",
+        "story": "A farewell SONG plays as she sends the gift away.",
         "components": [
           {
             "hanzi": "辶",
@@ -5277,8 +5277,8 @@
       "english": "heart",
       "mnemonic": "The shape suggests chambers and emotion inside.",
       "mnemonicData": {
-        "soundAnchor": "Think of SIGH.",
-        "story": "SIGH, resolve steadies when danger closes in.",
+        "soundAnchor": "Think of SHIN.",
+        "story": "A bruised SHIN throbs — each pulse echoes deep in her chest.",
         "components": []
       }
     },
@@ -5445,8 +5445,8 @@
       "english": "heart (side form)",
       "mnemonic": "Heart radical in narrow side form.",
       "mnemonicData": {
-        "soundAnchor": "Think of SIGH.",
-        "story": "With a SIGH, her pulse steadies before the final leap.",
+        "soundAnchor": "Think of SHIN.",
+        "story": "A crack on the SHIN sends a jolt through her chest.",
         "components": []
       }
     },

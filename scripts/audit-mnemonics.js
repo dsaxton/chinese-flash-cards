@@ -11,6 +11,7 @@ const {
   isLikelyComponentOnlyStory,
   isLikelyIncoherentStory,
   isLiteralShapeHint,
+  storyTextExcludingAnchor,
 } = require("./mnemonic-quality-lib");
 
 function parseArgs(argv) {
@@ -53,8 +54,11 @@ function collectViolations(card, profile, options = {}) {
   if (profile.forbidEnglishAnswer && !hasSoundAnchor && hintContainsEnglishAnswer(text, card.english)) {
     violations.push("english_answer_leak");
   }
-  if (profile.forbidPinyin && hintContainsPinyin(text, card.pinyin)) {
-    violations.push("pinyin_leak");
+  if (profile.forbidPinyin) {
+    const textForPinyin = storyTextExcludingAnchor(text, card.mnemonicData?.soundAnchor);
+    if (hintContainsPinyin(textForPinyin, card.pinyin)) {
+      violations.push("pinyin_leak");
+    }
   }
   if (profile.forbidPhoneticCue && hintContainsPhoneticCue(text)) {
     violations.push("explicit_phonetic_cue");
