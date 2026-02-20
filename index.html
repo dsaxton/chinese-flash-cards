@@ -8,7 +8,7 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png">
-<title>Chinese Flash Cards — Three Decks</title>
+<title>Chinese Flash Cards — Four Decks</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -629,11 +629,36 @@ const GENERIC_CANONICAL_TOKENS = new Set([
 // ---------------------------------------------------------------------------
 // Audio — local MP3s generated with edge-tts (zh-CN-XiaoxiaoNeural)
 // ---------------------------------------------------------------------------
-function speak(hanzi) {
-  const filename = AUDIO_MANIFEST[hanzi];
-  if (!filename) return;
+function speakPinyin(pinyin) {
+  if (!pinyin) return;
+  try {
+    const utterance = new SpeechSynthesisUtterance(pinyin);
+    utterance.lang = "zh-CN";
+    speechSynthesis.speak(utterance);
+  } catch {
+    // speechSynthesis unavailable — silently ignore
+  }
+}
+
+function speak(text, pinyin) {
+  const filename = AUDIO_MANIFEST[text];
+  if (!filename) {
+    if (pinyin) speakPinyin(pinyin);
+    return;
+  }
   const audio = new Audio(`./data/audio/${filename}`);
-  audio.play().catch(() => {});
+  let didFallback = false;
+  const fallbackToPinyin = () => {
+    if (didFallback) return;
+    didFallback = true;
+    if (pinyin) speakPinyin(pinyin);
+  };
+  audio.play().catch(() => {
+    fallbackToPinyin();
+  });
+  audio.addEventListener("error", () => {
+    fallbackToPinyin();
+  }, { once: true });
 }
 
 const PINYIN_TONE_CHAR_MAP = {
@@ -1269,7 +1294,7 @@ function renderSentenceCard(deck, card) {
     if (speakBtn) {
       speakBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        speak(card.hanzi);
+        speak(card.hanzi, card.pinyin);
       });
     }
 
@@ -1421,7 +1446,8 @@ function renderStudyDeck() {
     if (speakBtn) {
       speakBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        speak(card.hanzi);
+        if (deck.mode === "radicals_to_english") speakPinyin(card.pinyin);
+        else speak(card.hanzi, card.pinyin);
       });
     }
 

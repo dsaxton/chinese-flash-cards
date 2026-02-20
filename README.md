@@ -27,11 +27,12 @@ python3 -m http.server 8787 --bind 127.0.0.1
 
 ## Decks
 
-The app now uses a three-deck system with a deck selection landing screen:
+The app now uses a four-deck system with a deck selection landing screen:
 
 1. `Hanzi to English`
 2. `English to Hanzi`
 3. `Radicals to English`
+4. `Sentences (Sentence to English)`
 
 Each deck has independent SM-2 progress in `localStorage`.
 
@@ -184,6 +185,7 @@ Run all regression checks:
 node scripts/test-tidbit-data.js
 node scripts/test-tidbit-selection.js
 node scripts/test-deck-refactor.js
+node scripts/test-audio-coverage.js
 node scripts/test-hint-safety.js
 node scripts/test-mnemonic-curation.js
 node scripts/test-phonetic-hint-pipeline.js

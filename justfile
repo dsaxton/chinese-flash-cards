@@ -1,7 +1,7 @@
 serve port="8787":
     bash scripts/dev-server.sh {{port}}
 
-test: test-deck test-hints test-mnemonics test-phonetic test-tidbit-data test-tidbit-selection
+test: test-deck test-hints test-mnemonics test-phonetic test-tidbit-data test-tidbit-selection test-audio
 
 test-deck:
     node scripts/test-deck-refactor.js
@@ -20,6 +20,9 @@ test-tidbit-data:
 
 test-tidbit-selection:
     node scripts/test-tidbit-selection.js
+
+test-audio:
+    node scripts/test-audio-coverage.js
 
 check: check-coverage audit validate
 
