@@ -1467,8 +1467,8 @@
       "english": "day; sun",
       "mnemonic": "A rectangle with a line through it — the sun with a sunspot. One cycle of the sun = one day.",
       "mnemonicData": {
-        "soundAnchor": "Think of RIB.",
-        "story": "At dawn, warm light touches a cracked RIB by the shore.",
+        "soundAnchor": "Think of REACH.",
+        "story": "At dawn, the light REACHes across the water.",
         "components": []
       }
     },
@@ -5325,8 +5325,8 @@
       "english": "sun; day",
       "mnemonic": "A boxed sun with a mark inside.",
       "mnemonicData": {
-        "soundAnchor": "Think of RIB.",
-        "story": "At dawn, warm light touches a cracked RIB by the shore.",
+        "soundAnchor": "Think of REACH.",
+        "story": "At dawn, the light REACHes across the water.",
         "components": []
       }
     },
@@ -5602,7 +5602,7 @@
       "mnemonic": "Cowrie shell once used as currency.",
       "mnemonicData": {
         "soundAnchor": "Think of BAY.",
-        "story": "By the BAY, cowrie once bought the morning's catch.",
+        "story": "By the BAY, what washes up buys the morning's catch.",
         "components": []
       }
     },
