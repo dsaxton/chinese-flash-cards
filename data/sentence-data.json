@@ -1,0 +1,557 @@
+{
+  "sentences": [
+    {
+      "id": "sent-001",
+      "hanzi": "我喜欢吃米饭。",
+      "pinyin": "wǒ xǐhuan chī mǐfàn.",
+      "english": "I like to eat rice.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "喜欢", "pinyin": "xǐhuan", "english": "to like" },
+        { "hanzi": "吃", "pinyin": "chī", "english": "to eat" },
+        { "hanzi": "米饭", "pinyin": "mǐfàn", "english": "rice" }
+      ]
+    },
+    {
+      "id": "sent-002",
+      "hanzi": "今天天气很好。",
+      "pinyin": "jīntiān tiānqì hěn hǎo.",
+      "english": "The weather is very good today.",
+      "vocabWords": [
+        { "hanzi": "今天", "pinyin": "jīntiān", "english": "today" },
+        { "hanzi": "天气", "pinyin": "tiānqì", "english": "weather" },
+        { "hanzi": "很", "pinyin": "hěn", "english": "very" },
+        { "hanzi": "好", "pinyin": "hǎo", "english": "good" }
+      ]
+    },
+    {
+      "id": "sent-003",
+      "hanzi": "你叫什么名字？",
+      "pinyin": "nǐ jiào shénme míngzi?",
+      "english": "What is your name?",
+      "vocabWords": [
+        { "hanzi": "你", "pinyin": "nǐ", "english": "you" },
+        { "hanzi": "叫", "pinyin": "jiào", "english": "to be called" },
+        { "hanzi": "什么", "pinyin": "shénme", "english": "what" },
+        { "hanzi": "名字", "pinyin": "míngzi", "english": "name" }
+      ]
+    },
+    {
+      "id": "sent-004",
+      "hanzi": "我想喝茶。",
+      "pinyin": "wǒ xiǎng hē chá.",
+      "english": "I want to drink tea.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "想", "pinyin": "xiǎng", "english": "to want" },
+        { "hanzi": "喝", "pinyin": "hē", "english": "to drink" },
+        { "hanzi": "茶", "pinyin": "chá", "english": "tea" }
+      ]
+    },
+    {
+      "id": "sent-005",
+      "hanzi": "他在学校工作。",
+      "pinyin": "tā zài xuéxiào gōngzuò.",
+      "english": "He works at a school.",
+      "vocabWords": [
+        { "hanzi": "他", "pinyin": "tā", "english": "he" },
+        { "hanzi": "在", "pinyin": "zài", "english": "at" },
+        { "hanzi": "学校", "pinyin": "xuéxiào", "english": "school" },
+        { "hanzi": "工作", "pinyin": "gōngzuò", "english": "to work" }
+      ]
+    },
+    {
+      "id": "sent-006",
+      "hanzi": "这个苹果很好吃。",
+      "pinyin": "zhè ge píngguǒ hěn hǎochī.",
+      "english": "This apple is very delicious.",
+      "vocabWords": [
+        { "hanzi": "这", "pinyin": "zhè", "english": "this" },
+        { "hanzi": "个", "pinyin": "ge", "english": "(measure word)" },
+        { "hanzi": "苹果", "pinyin": "píngguǒ", "english": "apple" },
+        { "hanzi": "很", "pinyin": "hěn", "english": "very" },
+        { "hanzi": "好吃", "pinyin": "hǎochī", "english": "delicious" }
+      ]
+    },
+    {
+      "id": "sent-007",
+      "hanzi": "请坐。",
+      "pinyin": "qǐng zuò.",
+      "english": "Please sit down.",
+      "vocabWords": [
+        { "hanzi": "请", "pinyin": "qǐng", "english": "please" },
+        { "hanzi": "坐", "pinyin": "zuò", "english": "to sit" }
+      ]
+    },
+    {
+      "id": "sent-008",
+      "hanzi": "我有一个儿子。",
+      "pinyin": "wǒ yǒu yī ge érzi.",
+      "english": "I have a son.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "有", "pinyin": "yǒu", "english": "to have" },
+        { "hanzi": "一", "pinyin": "yī", "english": "one" },
+        { "hanzi": "个", "pinyin": "ge", "english": "(measure word)" },
+        { "hanzi": "儿子", "pinyin": "érzi", "english": "son" }
+      ]
+    },
+    {
+      "id": "sent-009",
+      "hanzi": "你去哪？",
+      "pinyin": "nǐ qù nǎ?",
+      "english": "Where are you going?",
+      "vocabWords": [
+        { "hanzi": "你", "pinyin": "nǐ", "english": "you" },
+        { "hanzi": "去", "pinyin": "qù", "english": "to go" },
+        { "hanzi": "哪", "pinyin": "nǎ", "english": "where" }
+      ]
+    },
+    {
+      "id": "sent-010",
+      "hanzi": "她是我的妈妈。",
+      "pinyin": "tā shì wǒ de māma.",
+      "english": "She is my mom.",
+      "vocabWords": [
+        { "hanzi": "她", "pinyin": "tā", "english": "she" },
+        { "hanzi": "是", "pinyin": "shì", "english": "to be" },
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I; my" },
+        { "hanzi": "的", "pinyin": "de", "english": "(possessive)" },
+        { "hanzi": "妈妈", "pinyin": "māma", "english": "mom" }
+      ]
+    },
+    {
+      "id": "sent-011",
+      "hanzi": "我不喜欢冷天气。",
+      "pinyin": "wǒ bù xǐhuan lěng tiānqì.",
+      "english": "I don't like cold weather.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "不", "pinyin": "bù", "english": "not" },
+        { "hanzi": "喜欢", "pinyin": "xǐhuan", "english": "to like" },
+        { "hanzi": "冷", "pinyin": "lěng", "english": "cold" },
+        { "hanzi": "天气", "pinyin": "tiānqì", "english": "weather" }
+      ]
+    },
+    {
+      "id": "sent-012",
+      "hanzi": "他会说汉语。",
+      "pinyin": "tā huì shuō Hànyǔ.",
+      "english": "He can speak Chinese.",
+      "vocabWords": [
+        { "hanzi": "他", "pinyin": "tā", "english": "he" },
+        { "hanzi": "会", "pinyin": "huì", "english": "can" },
+        { "hanzi": "说", "pinyin": "shuō", "english": "to speak" },
+        { "hanzi": "汉语", "pinyin": "Hànyǔ", "english": "Chinese language" }
+      ]
+    },
+    {
+      "id": "sent-013",
+      "hanzi": "现在几点？",
+      "pinyin": "xiànzài jǐ diǎn?",
+      "english": "What time is it now?",
+      "vocabWords": [
+        { "hanzi": "现在", "pinyin": "xiànzài", "english": "now" },
+        { "hanzi": "几", "pinyin": "jǐ", "english": "how many" },
+        { "hanzi": "点", "pinyin": "diǎn", "english": "o'clock" }
+      ]
+    },
+    {
+      "id": "sent-014",
+      "hanzi": "我想买一些水果。",
+      "pinyin": "wǒ xiǎng mǎi yīxiē shuǐguǒ.",
+      "english": "I want to buy some fruit.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "想", "pinyin": "xiǎng", "english": "to want" },
+        { "hanzi": "买", "pinyin": "mǎi", "english": "to buy" },
+        { "hanzi": "一些", "pinyin": "yīxiē", "english": "some" },
+        { "hanzi": "水果", "pinyin": "shuǐguǒ", "english": "fruit" }
+      ]
+    },
+    {
+      "id": "sent-015",
+      "hanzi": "老师在前面。",
+      "pinyin": "lǎoshī zài qiánmiàn.",
+      "english": "The teacher is in front.",
+      "vocabWords": [
+        { "hanzi": "老师", "pinyin": "lǎoshī", "english": "teacher" },
+        { "hanzi": "在", "pinyin": "zài", "english": "to be at" },
+        { "hanzi": "前面", "pinyin": "qiánmiàn", "english": "in front of" }
+      ]
+    },
+    {
+      "id": "sent-016",
+      "hanzi": "谢谢你！",
+      "pinyin": "xièxie nǐ!",
+      "english": "Thank you!",
+      "vocabWords": [
+        { "hanzi": "谢谢", "pinyin": "xièxie", "english": "thank you" },
+        { "hanzi": "你", "pinyin": "nǐ", "english": "you" }
+      ]
+    },
+    {
+      "id": "sent-017",
+      "hanzi": "他的狗很小。",
+      "pinyin": "tā de gǒu hěn xiǎo.",
+      "english": "His dog is very small.",
+      "vocabWords": [
+        { "hanzi": "他", "pinyin": "tā", "english": "his" },
+        { "hanzi": "的", "pinyin": "de", "english": "(possessive)" },
+        { "hanzi": "狗", "pinyin": "gǒu", "english": "dog" },
+        { "hanzi": "很", "pinyin": "hěn", "english": "very" },
+        { "hanzi": "小", "pinyin": "xiǎo", "english": "small" }
+      ]
+    },
+    {
+      "id": "sent-018",
+      "hanzi": "我明天去学校。",
+      "pinyin": "wǒ míngtiān qù xuéxiào.",
+      "english": "I'm going to school tomorrow.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "明天", "pinyin": "míngtiān", "english": "tomorrow" },
+        { "hanzi": "去", "pinyin": "qù", "english": "to go" },
+        { "hanzi": "学校", "pinyin": "xuéxiào", "english": "school" }
+      ]
+    },
+    {
+      "id": "sent-019",
+      "hanzi": "你有猫吗？",
+      "pinyin": "nǐ yǒu māo ma?",
+      "english": "Do you have a cat?",
+      "vocabWords": [
+        { "hanzi": "你", "pinyin": "nǐ", "english": "you" },
+        { "hanzi": "有", "pinyin": "yǒu", "english": "to have" },
+        { "hanzi": "猫", "pinyin": "māo", "english": "cat" },
+        { "hanzi": "吗", "pinyin": "ma", "english": "(question particle)" }
+      ]
+    },
+    {
+      "id": "sent-020",
+      "hanzi": "她在看书。",
+      "pinyin": "tā zài kàn shū.",
+      "english": "She is reading a book.",
+      "vocabWords": [
+        { "hanzi": "她", "pinyin": "tā", "english": "she" },
+        { "hanzi": "在", "pinyin": "zài", "english": "(ongoing action)" },
+        { "hanzi": "看", "pinyin": "kàn", "english": "to read" },
+        { "hanzi": "书", "pinyin": "shū", "english": "book" }
+      ]
+    },
+    {
+      "id": "sent-021",
+      "hanzi": "我爸爸是医生。",
+      "pinyin": "wǒ bàba shì yīshēng.",
+      "english": "My dad is a doctor.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "my" },
+        { "hanzi": "爸爸", "pinyin": "bàba", "english": "dad" },
+        { "hanzi": "是", "pinyin": "shì", "english": "to be" },
+        { "hanzi": "医生", "pinyin": "yīshēng", "english": "doctor" }
+      ]
+    },
+    {
+      "id": "sent-022",
+      "hanzi": "这个杯子太大了。",
+      "pinyin": "zhè ge bēizi tài dà le.",
+      "english": "This cup is too big.",
+      "vocabWords": [
+        { "hanzi": "这", "pinyin": "zhè", "english": "this" },
+        { "hanzi": "个", "pinyin": "ge", "english": "(measure word)" },
+        { "hanzi": "杯子", "pinyin": "bēizi", "english": "cup" },
+        { "hanzi": "太", "pinyin": "tài", "english": "too" },
+        { "hanzi": "大", "pinyin": "dà", "english": "big" },
+        { "hanzi": "了", "pinyin": "le", "english": "(particle)" }
+      ]
+    },
+    {
+      "id": "sent-023",
+      "hanzi": "你认识她吗？",
+      "pinyin": "nǐ rènshi tā ma?",
+      "english": "Do you know her?",
+      "vocabWords": [
+        { "hanzi": "你", "pinyin": "nǐ", "english": "you" },
+        { "hanzi": "认识", "pinyin": "rènshi", "english": "to know" },
+        { "hanzi": "她", "pinyin": "tā", "english": "her" },
+        { "hanzi": "吗", "pinyin": "ma", "english": "(question particle)" }
+      ]
+    },
+    {
+      "id": "sent-024",
+      "hanzi": "我很高兴认识你。",
+      "pinyin": "wǒ hěn gāoxìng rènshi nǐ.",
+      "english": "I'm very glad to meet you.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "很", "pinyin": "hěn", "english": "very" },
+        { "hanzi": "高兴", "pinyin": "gāoxìng", "english": "happy" },
+        { "hanzi": "认识", "pinyin": "rènshi", "english": "to meet" },
+        { "hanzi": "你", "pinyin": "nǐ", "english": "you" }
+      ]
+    },
+    {
+      "id": "sent-025",
+      "hanzi": "你想吃什么？",
+      "pinyin": "nǐ xiǎng chī shénme?",
+      "english": "What do you want to eat?",
+      "vocabWords": [
+        { "hanzi": "你", "pinyin": "nǐ", "english": "you" },
+        { "hanzi": "想", "pinyin": "xiǎng", "english": "to want" },
+        { "hanzi": "吃", "pinyin": "chī", "english": "to eat" },
+        { "hanzi": "什么", "pinyin": "shénme", "english": "what" }
+      ]
+    },
+    {
+      "id": "sent-026",
+      "hanzi": "我的朋友喜欢看电影。",
+      "pinyin": "wǒ de péngyou xǐhuan kàn diànyǐng.",
+      "english": "My friend likes to watch movies.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "my" },
+        { "hanzi": "的", "pinyin": "de", "english": "(possessive)" },
+        { "hanzi": "朋友", "pinyin": "péngyou", "english": "friend" },
+        { "hanzi": "喜欢", "pinyin": "xǐhuan", "english": "to like" },
+        { "hanzi": "看", "pinyin": "kàn", "english": "to watch" },
+        { "hanzi": "电影", "pinyin": "diànyǐng", "english": "movie" }
+      ]
+    },
+    {
+      "id": "sent-027",
+      "hanzi": "请喝水。",
+      "pinyin": "qǐng hē shuǐ.",
+      "english": "Please have some water.",
+      "vocabWords": [
+        { "hanzi": "请", "pinyin": "qǐng", "english": "please" },
+        { "hanzi": "喝", "pinyin": "hē", "english": "to drink" },
+        { "hanzi": "水", "pinyin": "shuǐ", "english": "water" }
+      ]
+    },
+    {
+      "id": "sent-028",
+      "hanzi": "昨天很冷。",
+      "pinyin": "zuótiān hěn lěng.",
+      "english": "Yesterday was very cold.",
+      "vocabWords": [
+        { "hanzi": "昨天", "pinyin": "zuótiān", "english": "yesterday" },
+        { "hanzi": "很", "pinyin": "hěn", "english": "very" },
+        { "hanzi": "冷", "pinyin": "lěng", "english": "cold" }
+      ]
+    },
+    {
+      "id": "sent-029",
+      "hanzi": "我不会写这个字。",
+      "pinyin": "wǒ bù huì xiě zhè ge zì.",
+      "english": "I can't write this character.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "不", "pinyin": "bù", "english": "not" },
+        { "hanzi": "会", "pinyin": "huì", "english": "can" },
+        { "hanzi": "写", "pinyin": "xiě", "english": "to write" },
+        { "hanzi": "这", "pinyin": "zhè", "english": "this" },
+        { "hanzi": "个", "pinyin": "ge", "english": "(measure word)" },
+        { "hanzi": "字", "pinyin": "zì", "english": "character" }
+      ]
+    },
+    {
+      "id": "sent-030",
+      "hanzi": "他有三本书。",
+      "pinyin": "tā yǒu sān běn shū.",
+      "english": "He has three books.",
+      "vocabWords": [
+        { "hanzi": "他", "pinyin": "tā", "english": "he" },
+        { "hanzi": "有", "pinyin": "yǒu", "english": "to have" },
+        { "hanzi": "三", "pinyin": "sān", "english": "three" },
+        { "hanzi": "本", "pinyin": "běn", "english": "(measure word for books)" },
+        { "hanzi": "书", "pinyin": "shū", "english": "book" }
+      ]
+    },
+    {
+      "id": "sent-031",
+      "hanzi": "你在做什么？",
+      "pinyin": "nǐ zài zuò shénme?",
+      "english": "What are you doing?",
+      "vocabWords": [
+        { "hanzi": "你", "pinyin": "nǐ", "english": "you" },
+        { "hanzi": "在", "pinyin": "zài", "english": "(ongoing action)" },
+        { "hanzi": "做", "pinyin": "zuò", "english": "to do" },
+        { "hanzi": "什么", "pinyin": "shénme", "english": "what" }
+      ]
+    },
+    {
+      "id": "sent-032",
+      "hanzi": "她很漂亮。",
+      "pinyin": "tā hěn piàoliang.",
+      "english": "She is very pretty.",
+      "vocabWords": [
+        { "hanzi": "她", "pinyin": "tā", "english": "she" },
+        { "hanzi": "很", "pinyin": "hěn", "english": "very" },
+        { "hanzi": "漂亮", "pinyin": "piàoliang", "english": "pretty" }
+      ]
+    },
+    {
+      "id": "sent-033",
+      "hanzi": "我住在学校后面。",
+      "pinyin": "wǒ zhù zài xuéxiào hòumiàn.",
+      "english": "I live behind the school.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "住", "pinyin": "zhù", "english": "to live" },
+        { "hanzi": "在", "pinyin": "zài", "english": "at" },
+        { "hanzi": "学校", "pinyin": "xuéxiào", "english": "school" },
+        { "hanzi": "后面", "pinyin": "hòumiàn", "english": "behind" }
+      ]
+    },
+    {
+      "id": "sent-034",
+      "hanzi": "对不起，我不会说汉语。",
+      "pinyin": "duìbuqǐ, wǒ bù huì shuō Hànyǔ.",
+      "english": "Sorry, I can't speak Chinese.",
+      "vocabWords": [
+        { "hanzi": "对不起", "pinyin": "duìbuqǐ", "english": "sorry" },
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "不", "pinyin": "bù", "english": "not" },
+        { "hanzi": "会", "pinyin": "huì", "english": "can" },
+        { "hanzi": "说", "pinyin": "shuō", "english": "to speak" },
+        { "hanzi": "汉语", "pinyin": "Hànyǔ", "english": "Chinese language" }
+      ]
+    },
+    {
+      "id": "sent-035",
+      "hanzi": "你的女儿几岁？",
+      "pinyin": "nǐ de nǚ'ér jǐ suì?",
+      "english": "How old is your daughter?",
+      "vocabWords": [
+        { "hanzi": "你", "pinyin": "nǐ", "english": "your" },
+        { "hanzi": "的", "pinyin": "de", "english": "(possessive)" },
+        { "hanzi": "女儿", "pinyin": "nǚ'ér", "english": "daughter" },
+        { "hanzi": "几", "pinyin": "jǐ", "english": "how many" },
+        { "hanzi": "岁", "pinyin": "suì", "english": "years old" }
+      ]
+    },
+    {
+      "id": "sent-036",
+      "hanzi": "我喜欢这个饭店。",
+      "pinyin": "wǒ xǐhuan zhè ge fàndiàn.",
+      "english": "I like this restaurant.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "喜欢", "pinyin": "xǐhuan", "english": "to like" },
+        { "hanzi": "这", "pinyin": "zhè", "english": "this" },
+        { "hanzi": "个", "pinyin": "ge", "english": "(measure word)" },
+        { "hanzi": "饭店", "pinyin": "fàndiàn", "english": "restaurant" }
+      ]
+    },
+    {
+      "id": "sent-037",
+      "hanzi": "我想看电视。",
+      "pinyin": "wǒ xiǎng kàn diànshì.",
+      "english": "I want to watch TV.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "想", "pinyin": "xiǎng", "english": "to want" },
+        { "hanzi": "看", "pinyin": "kàn", "english": "to watch" },
+        { "hanzi": "电视", "pinyin": "diànshì", "english": "television" }
+      ]
+    },
+    {
+      "id": "sent-038",
+      "hanzi": "多少钱？",
+      "pinyin": "duōshao qián?",
+      "english": "How much money?",
+      "vocabWords": [
+        { "hanzi": "多少", "pinyin": "duōshao", "english": "how much" },
+        { "hanzi": "钱", "pinyin": "qián", "english": "money" }
+      ]
+    },
+    {
+      "id": "sent-039",
+      "hanzi": "我的同学在商店买东西。",
+      "pinyin": "wǒ de tóngxué zài shāngdiàn mǎi dōngxi.",
+      "english": "My classmate is buying things at the store.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "my" },
+        { "hanzi": "的", "pinyin": "de", "english": "(possessive)" },
+        { "hanzi": "同学", "pinyin": "tóngxué", "english": "classmate" },
+        { "hanzi": "在", "pinyin": "zài", "english": "at" },
+        { "hanzi": "商店", "pinyin": "shāngdiàn", "english": "store" },
+        { "hanzi": "买", "pinyin": "mǎi", "english": "to buy" },
+        { "hanzi": "东西", "pinyin": "dōngxi", "english": "things" }
+      ]
+    },
+    {
+      "id": "sent-040",
+      "hanzi": "我们学习汉语。",
+      "pinyin": "wǒmen xuéxí Hànyǔ.",
+      "english": "We are studying Chinese.",
+      "vocabWords": [
+        { "hanzi": "我们", "pinyin": "wǒmen", "english": "we" },
+        { "hanzi": "学习", "pinyin": "xuéxí", "english": "to study" },
+        { "hanzi": "汉语", "pinyin": "Hànyǔ", "english": "Chinese language" }
+      ]
+    },
+    {
+      "id": "sent-041",
+      "hanzi": "你能听吗？",
+      "pinyin": "nǐ néng tīng ma?",
+      "english": "Can you hear?",
+      "vocabWords": [
+        { "hanzi": "你", "pinyin": "nǐ", "english": "you" },
+        { "hanzi": "能", "pinyin": "néng", "english": "can" },
+        { "hanzi": "听", "pinyin": "tīng", "english": "to listen" },
+        { "hanzi": "吗", "pinyin": "ma", "english": "(question particle)" }
+      ]
+    },
+    {
+      "id": "sent-042",
+      "hanzi": "学生在读书。",
+      "pinyin": "xuésheng zài dú shū.",
+      "english": "The student is reading.",
+      "vocabWords": [
+        { "hanzi": "学生", "pinyin": "xuésheng", "english": "student" },
+        { "hanzi": "在", "pinyin": "zài", "english": "(ongoing action)" },
+        { "hanzi": "读", "pinyin": "dú", "english": "to read" },
+        { "hanzi": "书", "pinyin": "shū", "english": "book" }
+      ]
+    },
+    {
+      "id": "sent-043",
+      "hanzi": "桌子上有一个苹果。",
+      "pinyin": "zhuōzi shàng yǒu yī ge píngguǒ.",
+      "english": "There is an apple on the table.",
+      "vocabWords": [
+        { "hanzi": "桌子", "pinyin": "zhuōzi", "english": "table" },
+        { "hanzi": "上", "pinyin": "shàng", "english": "on" },
+        { "hanzi": "有", "pinyin": "yǒu", "english": "there is" },
+        { "hanzi": "一", "pinyin": "yī", "english": "one" },
+        { "hanzi": "个", "pinyin": "ge", "english": "(measure word)" },
+        { "hanzi": "苹果", "pinyin": "píngguǒ", "english": "apple" }
+      ]
+    },
+    {
+      "id": "sent-044",
+      "hanzi": "她的衣服很漂亮。",
+      "pinyin": "tā de yīfu hěn piàoliang.",
+      "english": "Her clothes are very pretty.",
+      "vocabWords": [
+        { "hanzi": "她", "pinyin": "tā", "english": "her" },
+        { "hanzi": "的", "pinyin": "de", "english": "(possessive)" },
+        { "hanzi": "衣服", "pinyin": "yīfu", "english": "clothes" },
+        { "hanzi": "很", "pinyin": "hěn", "english": "very" },
+        { "hanzi": "漂亮", "pinyin": "piàoliang", "english": "pretty" }
+      ]
+    },
+    {
+      "id": "sent-045",
+      "hanzi": "我想回家。",
+      "pinyin": "wǒ xiǎng huí jiā.",
+      "english": "I want to go home.",
+      "vocabWords": [
+        { "hanzi": "我", "pinyin": "wǒ", "english": "I" },
+        { "hanzi": "想", "pinyin": "xiǎng", "english": "to want" },
+        { "hanzi": "回", "pinyin": "huí", "english": "to return" },
+        { "hanzi": "家", "pinyin": "jiā", "english": "home" }
+      ]
+    }
+  ]
+}

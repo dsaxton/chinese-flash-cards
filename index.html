@@ -291,11 +291,59 @@ footer {
 
 .reset-btn:hover { border-color: #999; color: #666; }
 
+.sentence-hanzi {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
+.sentence-pinyin {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.sentence-english {
+  font-size: 1.1rem;
+  color: #999;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.word-gloss-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.word-gloss-chip {
+  text-decoration: none;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+  background: #fff7ed;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  display: inline-flex;
+  gap: 4px;
+  align-items: baseline;
+}
+
+.word-gloss-chip .chip-hanzi {
+  font-size: 0.95rem;
+}
+
 @media (max-width: 480px) {
   body { justify-content: flex-start; }
   header { margin-bottom: 14px; }
   .card { min-height: clamp(240px, 54dvh, 380px); }
   .hanzi { font-size: clamp(52px, 16vw, 64px); }
+  .sentence-hanzi { font-size: clamp(24px, 7vw, 32px); }
   .pinyin { font-size: 1.15rem; }
   .english { font-size: 1rem; }
   .mnemonic { font-size: 0.82rem; }
@@ -337,6 +385,9 @@ const VOCAB = DECK_DATA.vocab;
 const HSK1_CARD_COUNT = DECK_DATA.hsk1CardCount;
 const HSK1_VOCAB = VOCAB.slice(0, HSK1_CARD_COUNT);
 const RADICAL_DECK_CARDS = DECK_DATA.radicals;
+
+const SENTENCE_DATA = loadJsonSync("./data/sentence-data.json");
+const SENTENCE_CARDS = SENTENCE_DATA.sentences;
 
 // ---------------------------------------------------------------------------
 // Cultural tidbits — curated classical quotes with source citations.
@@ -760,6 +811,7 @@ const DECK_STORAGE_KEYS = {
   hanzi_to_english: "hanzi_to_english_progress",
   english_to_hanzi: "english_to_hanzi_progress",
   radicals_to_english: "radicals_to_english_progress",
+  sentence_to_english: "sentence_to_english_progress",
 };
 const ACTIVE_DECK_STORAGE_KEY = "chinese-flash-cards-active-deck";
 const TIDBIT_SALT_KEY = "chinese-flash-cards-tidbit-salt";
@@ -786,6 +838,13 @@ const DECKS = {
     subtitle: "See radicals, recall the English meaning.",
     cards: RADICAL_DECK_CARDS,
     mode: "radicals_to_english",
+  },
+  sentence_to_english: {
+    id: "sentence_to_english",
+    title: "Sentences",
+    subtitle: "See a sentence, recall the English meaning.",
+    cards: SENTENCE_CARDS,
+    mode: "sentence_to_english",
   },
 };
 
@@ -1190,6 +1249,90 @@ function renderDeckSelection() {
   app.innerHTML = html;
 }
 
+function renderSentenceCard(deck, card) {
+  stage = 0;
+  render();
+
+  function render() {
+    const finalStage = 2;
+    let html = '<div class="card" id="flashcard">';
+
+    html += `<div class="sentence-hanzi">${escapeHtml(card.hanzi)}</div>`;
+
+    if (stage >= 1) {
+      html += `<div class="sentence-pinyin">${escapeHtml(card.pinyin)}</div>`;
+      html += '<button class="speaker-btn" id="speak-btn" title="Play pronunciation">&#128264;</button>';
+    }
+
+    if (stage >= finalStage) {
+      html += `<div class="sentence-english">${escapeHtml(card.english)}</div>`;
+
+      const vocabWords = card.vocabWords || [];
+      if (vocabWords.length > 0) {
+        html += '<div class="word-gloss-chips">';
+        for (const word of vocabWords) {
+          html += '<span class="word-gloss-chip">';
+          html += `<span class="chip-hanzi">${escapeHtml(word.hanzi)}</span>`;
+          html += ` ${escapeHtml(word.english)}`;
+          html += "</span>";
+        }
+        html += "</div>";
+      }
+    }
+
+    if (stage >= finalStage) {
+      html += '<div class="difficulty-buttons">';
+      html += '<button class="btn-easy" data-difficulty="easy">Easy</button>';
+      html += '<button class="btn-medium" data-difficulty="medium">Medium</button>';
+      html += '<button class="btn-hard" data-difficulty="hard">Hard</button>';
+      html += "</div>";
+      html += '<button class="reset-btn reset-card-btn" id="reset-card-btn">Reset card</button>';
+    }
+
+    if (stage < finalStage) {
+      const hints = ["tap to reveal pinyin", "tap to reveal translation"];
+      html += `<div class="hint">${hints[stage]}</div>`;
+    }
+
+    html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
+    html += "</div>";
+    app.innerHTML = html;
+
+    if (stage < finalStage) {
+      document.getElementById("flashcard").addEventListener("click", () => {
+        stage++;
+        render();
+      });
+    }
+
+    const speakBtn = document.getElementById("speak-btn");
+    if (speakBtn) {
+      speakBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        speakPinyin(card.pinyin);
+      });
+    }
+
+    for (const btn of app.querySelectorAll(".difficulty-buttons button")) {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        rateCard(card, progress, btn.dataset.difficulty, deck.id);
+        currentIndex++;
+        renderStudyDeck();
+      });
+    }
+
+    const resetCardBtn = document.getElementById("reset-card-btn");
+    if (resetCardBtn) {
+      resetCardBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        stage = 0;
+        render();
+      });
+    }
+  }
+}
+
 function renderStudyDeck() {
   const deck = getActiveDeck();
   if (!deck) {
@@ -1220,6 +1363,12 @@ function renderStudyDeck() {
 
   progressEl.textContent = `${deck.title} · Card ${currentIndex + 1} of ${queue.length}`;
   stage = 0;
+
+  if (deck.mode === "sentence_to_english") {
+    renderSentenceCard(deck, card);
+    return;
+  }
+
   render();
 
   function render() {
