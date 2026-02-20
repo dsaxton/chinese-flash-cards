@@ -198,13 +198,12 @@ function testAudioFallbackIsSingleShot(source) {
     /function speak\(hanzi\) \{[\s\S]*AUDIO_MANIFEST\[hanzi\][\s\S]*new Audio\(`\.\/data\/audio\/\$\{filename\}`\)[\s\S]*audio\.play\(\)\.catch\(\(\) => \{\}\);[\s\S]*\}/;
   assert(pattern.test(source), "speak() should play the local audio file without pinyin fallback");
   assert(!/fallbackToPinyin/.test(source), "speak() should not include pinyin fallback logic");
+  assert(!/function speakPinyin/.test(source), "speakPinyin helper should not exist anymore");
 }
 
 function testRadicalsUsePinyinAudio(source) {
-  assert(
-    /if \(deck\.mode === "radicals_to_english"\) speakPinyin\(card\.pinyin\);\s*else speak\(card\.hanzi\);/.test(source),
-    "Radicals deck speaker should use direct pinyin syllable audio instead of character file audio"
-  );
+  assert(!/speakPinyin\(/.test(source), "Audio playback should not call speakPinyin");
+  assert(/speaker-btn[\s\S]*speak\(card\.hanzi\);/.test(source), "Speaker buttons should invoke speak(card.hanzi)");
 }
 
 function main() {

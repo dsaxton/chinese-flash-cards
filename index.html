@@ -629,17 +629,6 @@ const GENERIC_CANONICAL_TOKENS = new Set([
 // ---------------------------------------------------------------------------
 // Audio — local MP3s generated with edge-tts (zh-CN-XiaoxiaoNeural)
 // ---------------------------------------------------------------------------
-function speakPinyin(pinyin) {
-  if (!pinyin) return;
-  try {
-    const utterance = new SpeechSynthesisUtterance(pinyin);
-    utterance.lang = "zh-CN";
-    speechSynthesis.speak(utterance);
-  } catch {
-    // speechSynthesis unavailable — silently ignore
-  }
-}
-
 function speak(hanzi) {
   const filename = AUDIO_MANIFEST[hanzi];
   if (!filename) return;
@@ -1432,8 +1421,7 @@ function renderStudyDeck() {
     if (speakBtn) {
       speakBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        if (deck.mode === "radicals_to_english") speakPinyin(card.pinyin);
-        else speak(card.hanzi);
+        speak(card.hanzi);
       });
     }
 
