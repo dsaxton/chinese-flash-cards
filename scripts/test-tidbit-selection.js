@@ -32,6 +32,9 @@ const expectedQuotes = {
   "外": new Set(["夷狄之有君，不如诸夏之亡也。", "运筹帷幄之中，决胜千里之外。"]),
   "四": new Set(["四海之内，皆兄弟也。", "朝三而暮四。"]),
   "医院": new Set(["父母唯其疾之忧。"]),
+  "的": new Set(["大道之行也，天下为公。"]),
+  "些": new Set(["积土成山，风雨兴焉。"]),
+  "得": new Set(["得道多助，失道寡助。"]),
 };
 
 for (const [hanzi, allowed] of Object.entries(expectedQuotes)) {
@@ -39,13 +42,6 @@ for (const [hanzi, allowed] of Object.entries(expectedQuotes)) {
   const picked = pickTidbitForCard(model, card, opts);
   assert(picked, `Expected a tidbit for ${hanzi}`);
   assert(allowed.has(picked.quote), `Unexpected tidbit for ${hanzi}: ${picked.quote}`);
-}
-
-// Grammar particles without strong semantic mapping should not force a tidbit.
-for (const hanzi of ["的", "得", "些"]) {
-  const card = findCard(hanzi);
-  const picked = pickTidbitForCard(model, card, opts);
-  assert(!picked, `Expected no tidbit for ${hanzi}, got ${picked && picked.quote}`);
 }
 
 // Radicals should be eligible when meaning overlap is strong, without forcing weak overlaps.

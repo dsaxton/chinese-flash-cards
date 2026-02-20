@@ -7,7 +7,7 @@ const RAW_STOPWORDS = new Set([
   "from", "it", "its", "this", "that", "these", "those",
 ]);
 const NOISY_MEANING_TOKENS = new Set([
-  "side", "form", "particle", "measure", "general", "possessive",
+  "side", "form", "particle", "measure", "general",
 ]);
 
 const GENERIC_CANONICAL_TOKENS = new Set([

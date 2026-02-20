@@ -1057,6 +1057,43 @@
     ],
     "source": "《杜甫·茅屋为秋风所破歌》",
     "url": "https://ctext.org/du-fu/mao-wu-wei-qiu-feng-suo-po-ge/zh"
+  },
+  {
+    "quote": "大道之行也，天下为公。",
+    "translation": "When the Great Way prevails, all under Heaven belongs to the public.",
+    "relevance": [
+      "possessive",
+      "possess",
+      "belong",
+      "own",
+      "public"
+    ],
+    "source": "《礼记·礼运》",
+    "url": "https://ctext.org/liji/li-yun/zh"
+  },
+  {
+    "quote": "积土成山，风雨兴焉。",
+    "translation": "Heaping earth makes a mountain; wind and rain gather there.",
+    "relevance": [
+      "some",
+      "few",
+      "little",
+      "small"
+    ],
+    "source": "《荀子·劝学》",
+    "url": "https://ctext.org/xunzi/encouraging-learning/zh"
+  },
+  {
+    "quote": "得道多助，失道寡助。",
+    "translation": "Those who gain the Way gain much help; those who lose it have little.",
+    "relevance": [
+      "complement",
+      "gain",
+      "obtain",
+      "help"
+    ],
+    "source": "《孟子·公孙丑下》",
+    "url": "https://ctext.org/mengzi/gong-sun-chou-2/zh"
   }
 ],
   "tidbitMaxQuoteChars": 24,
