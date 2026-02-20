@@ -937,7 +937,7 @@ function getTidbitAttribution(tidbit) {
   if (source.includes("道德经")) return "Laozi, Tao Te Ching";
   if (source.includes("孙子兵法") || source.includes("孙子")) return "Sun Tzu, The Art of War";
   if (source.includes("论语")) return "Confucius, Analects";
-  return "Classical Chinese text";
+  return source || "Classical Chinese text";
 }
 
 function buildQueue(cards, progress) {
@@ -1383,8 +1383,10 @@ function renderStudyDeck() {
         const attribution = getTidbitAttribution(tidbit);
         html += '<div class="cultural-source">';
         html += `&mdash; ${escapeHtml(attribution)}`;
-        html += ` · ${escapeHtml(tidbit.source)} · `;
-        html += `<a href="${escapeHtml(tidbit.url)}" target="_blank" rel="noopener noreferrer">source</a>`;
+        if (tidbit.source && tidbit.source !== attribution) {
+          html += ` · ${escapeHtml(tidbit.source)}`;
+        }
+        html += ` · <a href="${escapeHtml(tidbit.url)}" target="_blank" rel="noopener noreferrer">source</a>`;
         html += "</div>";
         html += "</div>";
       }
