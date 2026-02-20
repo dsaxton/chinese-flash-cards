@@ -4,7 +4,7 @@ serve port="8787":
 test: test-deck test-hints test-mnemonics test-phonetic test-tidbit-data test-tidbit-selection test-audio
 
 test-deck:
-    node scripts/test-deck-refactor.js
+    node scripts/test-deck-regression.js
 
 test-hints:
     node scripts/test-hint-safety.js

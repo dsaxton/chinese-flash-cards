@@ -184,7 +184,7 @@ Run all regression checks:
 ```bash
 node scripts/test-tidbit-data.js
 node scripts/test-tidbit-selection.js
-node scripts/test-deck-refactor.js
+node scripts/test-deck-regression.js
 node scripts/test-audio-coverage.js
 node scripts/test-hint-safety.js
 node scripts/test-mnemonic-curation.js
