@@ -6,6 +6,7 @@ const {
   anchorIntegratedInStoryWithAliases,
   collectDeckCards,
   extractCanonicalAnchorWord,
+  extractCanonicalAnchorWords,
   getStoryText,
   hasBoilerplateStoryPhrase,
   hintContainsEnglishAnswer,
@@ -31,7 +32,7 @@ function assert(condition, message) {
 function assertCanonicalSoundAnchor(anchor, cardLabel) {
   const text = String(anchor || "").trim();
   if (!text) return;
-  assert(/^Think of [A-Z]+\.$/.test(text), `${cardLabel}: soundAnchor must be canonical single-word ALL-CAPS phrase`);
+  assert(/^Think of [A-Z]+(, [A-Z]+)*\.$/.test(text), `${cardLabel}: soundAnchor must be canonical ALL-CAPS phrase (e.g. "Think of JET." or "Think of JET, DAY.")`);
   assert(!/\b(?:sounds?|sound)\s+like\b/i.test(text), `${cardLabel}: soundAnchor cannot use "sounds like"`);
 }
 
@@ -124,12 +125,14 @@ function testSoundAnchorBatch(cards, allowedWords, anchorAliasMap, minAnchors) {
     anchorCount++;
     assertCanonicalSoundAnchor(anchor, label);
 
-    const anchorWord = extractCanonicalAnchorWord(anchor);
-    assert(anchorWord, `${label}: unable to parse canonical anchor word`);
-    assert(
-      allowedWords.has(anchorWord),
-      `${label}: anchor word "${anchorWord}" is outside allowed English anchor set`
-    );
+    const anchorWords = extractCanonicalAnchorWords(anchor);
+    assert(anchorWords.length > 0, `${label}: unable to parse canonical anchor word(s)`);
+    for (const w of anchorWords) {
+      assert(
+        allowedWords.has(w),
+        `${label}: anchor word "${w}" is outside allowed English anchor set`
+      );
+    }
 
     if (anchorIntegratedInStoryWithAliases(anchor, story, anchorAliasMap)) {
       integratedAnchorCount++;

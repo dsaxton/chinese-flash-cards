@@ -115,9 +115,15 @@ function loadPhoneticConfig(rootDir) {
 }
 
 function extractCanonicalAnchorWord(soundAnchor) {
+  const words = extractCanonicalAnchorWords(soundAnchor);
+  return words.length > 0 ? words[0] : "";
+}
+
+function extractCanonicalAnchorWords(soundAnchor) {
   const text = String(soundAnchor || "").trim();
-  const match = text.match(/^Think of ([A-Z]+)\.$/);
-  return match ? match[1] : "";
+  const body = text.replace(/^Think of\s+/i, "").replace(/[.?!]+$/, "").trim();
+  if (!body) return [];
+  return body.split(/\s*,\s*/).map((w) => w.trim().toUpperCase()).filter(Boolean);
 }
 
 function normalizeAnchorAliasMap(rawMap) {
@@ -137,21 +143,27 @@ function normalizeAnchorAliasMap(rawMap) {
 }
 
 function anchorFormsForStory(soundAnchor, aliasMap = {}) {
-  const anchorWord = extractCanonicalAnchorWord(soundAnchor);
-  if (!anchorWord) return [];
-  const key = anchorWord.toUpperCase();
+  const anchorWords = extractCanonicalAnchorWords(soundAnchor);
+  if (anchorWords.length === 0) return [];
+  const first = anchorWords[0];
+  const key = first.toUpperCase();
   const aliases = Array.isArray(aliasMap[key]) ? aliasMap[key] : [];
   return [key, ...aliases];
 }
 
 function anchorIntegratedInStoryWithAliases(soundAnchor, story, aliasMap = {}) {
-  const forms = anchorFormsForStory(soundAnchor, aliasMap);
+  const anchorWords = extractCanonicalAnchorWords(soundAnchor);
   const text = String(story || "");
-  if (forms.length === 0) return false;
-  return forms.some((form) => {
-    if (!form) return false;
-    const escaped = String(form).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    return new RegExp(`\\b${escaped}\\b`, "i").test(text);
+  if (anchorWords.length === 0) return false;
+  return anchorWords.every((anchorWord) => {
+    const key = anchorWord.toUpperCase();
+    const aliases = Array.isArray(aliasMap[key]) ? aliasMap[key] : [];
+    const forms = [key, ...aliases];
+    return forms.some((form) => {
+      if (!form) return false;
+      const escaped = String(form).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return new RegExp(`\\b${escaped}\\b`, "i").test(text);
+    });
   });
 }
 
@@ -354,9 +366,13 @@ function jaccardSimilarity(setA, setB) {
 }
 
 function storyTextExcludingAnchor(story, soundAnchor) {
-  const anchorWord = extractCanonicalAnchorWord(soundAnchor);
-  if (!anchorWord) return String(story || "");
-  return String(story || "").replace(new RegExp(`\\b${anchorWord}\\b`, "gi"), "");
+  const anchorWords = extractCanonicalAnchorWords(soundAnchor);
+  if (anchorWords.length === 0) return String(story || "");
+  let text = String(story || "");
+  for (const word of anchorWords) {
+    text = text.replace(new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "gi"), "");
+  }
+  return text;
 }
 
 module.exports = {
@@ -379,6 +395,7 @@ module.exports = {
   loadDeckData,
   loadPhoneticConfig,
   extractCanonicalAnchorWord,
+  extractCanonicalAnchorWords,
   normalizeAnchorAliasMap,
   anchorFormsForStory,
   anchorIntegratedInStoryWithAliases,

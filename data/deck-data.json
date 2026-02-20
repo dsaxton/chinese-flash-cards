@@ -763,8 +763,8 @@
       "english": "today",
       "mnemonic": "今 (now/present) + 天 (day). The present day — today!",
       "mnemonicData": {
-        "soundAnchor": "Think of JET.",
-        "story": "A JET roars overhead — today the airshow begins.",
+        "soundAnchor": "Think of JET, DAY.",
+        "story": "The JET touches down at dawn — the DAY begins.",
         "components": [
           {
             "hanzi": "今",
