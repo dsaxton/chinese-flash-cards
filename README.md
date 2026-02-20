@@ -82,7 +82,31 @@ Migration:
 
 ## Audio
 
-Pronunciation audio uses [hugolpz/audio-cmn](https://github.com/hugolpz/audio-cmn) (CC-BY-SA), fetched at runtime.
+Pronunciation audio is generated locally using [edge-tts](https://github.com/rany2/edge-tts), which interfaces with Microsoft Edge's online neural TTS service. The generated MP3 files are committed to `data/audio/` and served as static assets — no external audio fetches at runtime.
+
+### Generating audio
+
+Requires [uv](https://docs.astral.sh/uv/). No manual virtual environment setup needed — the script uses [PEP 723](https://peps.python.org/pep-0723/) inline metadata so `uv` handles dependencies automatically:
+
+```bash
+uv run scripts/generate-audio.py
+```
+
+The script reads `data/deck-data.json` and `data/sentence-data.json`, collects every unique hanzi string (vocab words, radicals, and full sentences), and generates one MP3 per entry using the `zh-CN-XiaoxiaoNeural` voice. It is incremental — existing files are skipped, so only new entries are generated on subsequent runs.
+
+### File naming
+
+Audio filenames are the **hex-encoded UTF-8 bytes** of the hanzi string, plus an `.mp3` extension. For example:
+
+| Hanzi | UTF-8 bytes (hex) | Filename |
+|-------|-------------------|----------|
+| 爱 | `e7 88 b1` | `e788b1.mp3` |
+| 谢谢 | `e8 b0 a2 e8 b0 a2` | `e8b0a2e8b0a2.mp3` |
+| 我喜欢吃米饭。 | `e6 88 91 e5 96 9c e6 ac a2 e5 90 83 e7 b1 b3 e9 a5 ad e3 80 82` | `e68891e596...8082.mp3` |
+
+This scheme is deterministic (same input always produces the same filename), reversible, and keeps filenames ASCII-safe with no need for URL-encoding or escaping.
+
+A manifest at `data/audio/manifest.json` maps every hanzi string to its filename for runtime lookup.
 
 ## Mnemonic Guardrails
 
@@ -178,9 +202,11 @@ node scripts/report-unmatched-tidbits.js
 - `data/deck-data.json`: raw deck data used by runtime loader
 - `data/tidbit-data.json`: raw tidbit data used by runtime loader
 - `data/phonetic-config.json`: phonetic anchor candidate + allow-list config
+- `data/audio/`: generated MP3 pronunciation files + `manifest.json`
 - `sw.js`, `manifest.webmanifest`, `icons/`: PWA shell assets
 - `scripts/`: validation and coverage tooling
+- `scripts/generate-audio.py`: audio generation script (run via `uv run`)
 
 ## License
 
-Vocabulary is public standard HSK content. Audio files are from [hugolpz/audio-cmn](https://github.com/hugolpz/audio-cmn) under CC-BY-SA.
+Vocabulary is public standard HSK content. Audio files are generated using Microsoft Edge's neural TTS service via [edge-tts](https://github.com/rany2/edge-tts).

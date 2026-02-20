@@ -389,6 +389,8 @@ const RADICAL_DECK_CARDS = DECK_DATA.radicals;
 const SENTENCE_DATA = loadJsonSync("./data/sentence-data.json");
 const SENTENCE_CARDS = SENTENCE_DATA.sentences;
 
+const AUDIO_MANIFEST = loadJsonSync("./data/audio/manifest.json");
+
 // ---------------------------------------------------------------------------
 // Cultural tidbits — curated classical quotes with source citations.
 // Source repository: Chinese Text Project (ctext.org)
@@ -625,26 +627,13 @@ const GENERIC_CANONICAL_TOKENS = new Set([
 ]);
 
 // ---------------------------------------------------------------------------
-// Audio — human-recorded MP3s from hugolpz/audio-cmn (CC-BY-SA)
+// Audio — local MP3s generated with edge-tts (zh-CN-XiaoxiaoNeural)
 // ---------------------------------------------------------------------------
-const AUDIO_BASE = "https://github.com/hugolpz/audio-cmn/raw/master/64k/hsk";
-const AUDIO_BASE_SYLLABLES = "https://github.com/hugolpz/audio-cmn/raw/master/64k/syllabs";
-
-function speak(text, pinyin) {
-  const url = `${AUDIO_BASE}/cmn-${encodeURIComponent(text)}.mp3`;
-  const audio = new Audio(url);
-  let didFallback = false;
-  const fallbackToPinyin = () => {
-    if (didFallback) return;
-    didFallback = true;
-    if (pinyin) speakPinyin(pinyin);
-  };
-  audio.play().catch(() => {
-    fallbackToPinyin();
-  });
-  audio.addEventListener("error", () => {
-    fallbackToPinyin();
-  }, { once: true });
+function speak(hanzi) {
+  const filename = AUDIO_MANIFEST[hanzi];
+  if (!filename) return;
+  const audio = new Audio(`./data/audio/${filename}`);
+  audio.play().catch(() => {});
 }
 
 const PINYIN_TONE_CHAR_MAP = {
@@ -761,35 +750,6 @@ function normalizeMnemonicData(card) {
   };
 }
 
-function playAudioSequence(urls) {
-  if (urls.length === 0) return;
-  let i = 0;
-
-  function playNext() {
-    if (i >= urls.length) return;
-    const audio = new Audio(urls[i++]);
-    audio.addEventListener("ended", playNext, { once: true });
-    audio.addEventListener("error", playNext, { once: true });
-    audio.play().catch(playNext);
-  }
-
-  playNext();
-}
-
-const SYLLABLE_CHAR_AUDIO_OVERRIDES = {
-  "yan1": "烟", "yan2": "言", "yan3": "眼", "yan4": "验",
-};
-
-function speakPinyin(pinyin) {
-  const keys = pinyinToAudioKeys(pinyin);
-  if (keys.length === 0) return;
-  const urls = keys.map((key) => {
-    const charOverride = SYLLABLE_CHAR_AUDIO_OVERRIDES[key];
-    if (charOverride) return `${AUDIO_BASE}/cmn-${encodeURIComponent(charOverride)}.mp3`;
-    return `${AUDIO_BASE_SYLLABLES}/cmn-${encodeURIComponent(key)}.mp3`;
-  });
-  playAudioSequence(urls);
-}
 
 // ---------------------------------------------------------------------------
 // Progressive Web App setup
@@ -1309,7 +1269,7 @@ function renderSentenceCard(deck, card) {
     if (speakBtn) {
       speakBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        speakPinyin(card.pinyin);
+        speak(card.hanzi);
       });
     }
 
@@ -1461,8 +1421,7 @@ function renderStudyDeck() {
     if (speakBtn) {
       speakBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        if (deck.mode === "radicals_to_english") speakPinyin(card.pinyin);
-        else speak(card.hanzi, card.pinyin);
+        speak(card.hanzi);
       });
     }
 
