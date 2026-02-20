@@ -25,6 +25,7 @@ import time
 import edge_tts
 
 VOICE = "zh-CN-XiaoxiaoNeural"
+RATE = "-15%"
 CONCURRENCY = 5
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AUDIO_DIR = os.path.join(PROJECT_ROOT, "data", "audio")
@@ -63,7 +64,7 @@ async def generate_one(
     """Generate a single MP3. Returns (hanzi, success, message)."""
     async with sem:
         try:
-            comm = edge_tts.Communicate(hanzi, VOICE)
+            comm = edge_tts.Communicate(hanzi, VOICE, rate=RATE)
             await comm.save(out_path)
             size_kb = os.path.getsize(out_path) / 1024
             return (hanzi, True, f"{size_kb:.1f} KB")
