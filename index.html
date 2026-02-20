@@ -640,25 +640,11 @@ function speakPinyin(pinyin) {
   }
 }
 
-function speak(text, pinyin) {
-  const filename = AUDIO_MANIFEST[text];
-  if (!filename) {
-    if (pinyin) speakPinyin(pinyin);
-    return;
-  }
+function speak(hanzi) {
+  const filename = AUDIO_MANIFEST[hanzi];
+  if (!filename) return;
   const audio = new Audio(`./data/audio/${filename}`);
-  let didFallback = false;
-  const fallbackToPinyin = () => {
-    if (didFallback) return;
-    didFallback = true;
-    if (pinyin) speakPinyin(pinyin);
-  };
-  audio.play().catch(() => {
-    fallbackToPinyin();
-  });
-  audio.addEventListener("error", () => {
-    fallbackToPinyin();
-  }, { once: true });
+  audio.play().catch(() => {});
 }
 
 const PINYIN_TONE_CHAR_MAP = {
@@ -1294,7 +1280,7 @@ function renderSentenceCard(deck, card) {
     if (speakBtn) {
       speakBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        speak(card.hanzi, card.pinyin);
+        speak(card.hanzi);
       });
     }
 
@@ -1447,7 +1433,7 @@ function renderStudyDeck() {
       speakBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         if (deck.mode === "radicals_to_english") speakPinyin(card.pinyin);
-        else speak(card.hanzi, card.pinyin);
+        else speak(card.hanzi);
       });
     }
 

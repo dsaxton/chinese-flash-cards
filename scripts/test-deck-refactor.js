@@ -194,15 +194,15 @@ function testStructuredMnemonicPipeline(source) {
 }
 
 function testAudioFallbackIsSingleShot(source) {
-  assert(
-    /function speak\(text, pinyin\) \{[\s\S]*let didFallback = false;[\s\S]*const fallbackToPinyin = \(\) => \{[\s\S]*if \(didFallback\) return;[\s\S]*didFallback = true;[\s\S]*if \(pinyin\) speakPinyin\(pinyin\);[\s\S]*\};[\s\S]*audio\.play\(\)\.catch\(\(\) => \{[\s\S]*fallbackToPinyin\(\);[\s\S]*\}\);[\s\S]*audio\.addEventListener\("error", \(\) => \{[\s\S]*fallbackToPinyin\(\);[\s\S]*\}, \{ once: true \}\);[\s\S]*\}/.test(source),
-    "speak() should use a single-shot pinyin fallback to avoid duplicate audio playback"
-  );
+  const pattern =
+    /function speak\(hanzi\) \{[\s\S]*AUDIO_MANIFEST\[hanzi\][\s\S]*new Audio\(`\.\/data\/audio\/\$\{filename\}`\)[\s\S]*audio\.play\(\)\.catch\(\(\) => \{\}\);[\s\S]*\}/;
+  assert(pattern.test(source), "speak() should play the local audio file without pinyin fallback");
+  assert(!/fallbackToPinyin/.test(source), "speak() should not include pinyin fallback logic");
 }
 
 function testRadicalsUsePinyinAudio(source) {
   assert(
-    /if \(deck\.mode === "radicals_to_english"\) speakPinyin\(card\.pinyin\);\s*else speak\(card\.hanzi, card\.pinyin\);/.test(source),
+    /if \(deck\.mode === "radicals_to_english"\) speakPinyin\(card\.pinyin\);\s*else speak\(card\.hanzi\);/.test(source),
     "Radicals deck speaker should use direct pinyin syllable audio instead of character file audio"
   );
 }
