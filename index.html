@@ -937,6 +937,19 @@ function getTidbitAttribution(tidbit) {
   if (source.includes("道德经")) return "Laozi, Tao Te Ching";
   if (source.includes("孙子兵法") || source.includes("孙子")) return "Sun Tzu, The Art of War";
   if (source.includes("论语")) return "Confucius, Analects";
+  if (source.includes("大学")) return "Great Learning";
+  if (source.includes("中庸")) return "Doctrine of the Mean";
+  if (source.includes("诗经")) return "Classic of Poetry";
+  if (source.includes("孟子")) return "Mencius";
+  if (source.includes("庄子")) return "Zhuangzi";
+  if (source.includes("墨子")) return "Mozi";
+  if (source.includes("荀子")) return "Xunzi";
+  if (source.includes("史记")) return "Sima Qian, Records of the Grand Historian";
+  if (source.includes("左传")) return "Zuo Commentary";
+  if (source.includes("国语")) return "Discourses of the States";
+  if (source.includes("战国策")) return "Strategies of the Warring States";
+  if (source.includes("杜甫")) return "Du Fu";
+  if (source.includes("礼记")) return "Book of Rites";
   return source || "Classical Chinese text";
 }
 
