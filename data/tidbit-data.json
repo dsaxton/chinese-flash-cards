@@ -969,19 +969,96 @@
       "source": "《诗经·周南·关雎》",
       "url": "https://ctext.org/book-of-poetry/guan-ju/zh"
     },
-    {
-      "quote": "一日不见，如三秋兮。",
-      "translation": "One day apart feels like three autumns.",
-      "relevance": [
-        "long",
-        "time",
-        "briefly",
-        "a bit"
-      ],
-      "source": "《诗经·王风·采葛》",
-      "url": "https://ctext.org/book-of-poetry/cai-ge/zh"
-    }
-  ],
+  {
+    "quote": "一日不见，如三秋兮。",
+    "translation": "One day apart feels like three autumns.",
+    "relevance": [
+      "long",
+      "time",
+      "briefly",
+      "a bit"
+    ],
+    "source": "《诗经·王风·采葛》",
+    "url": "https://ctext.org/book-of-poetry/cai-ge/zh"
+  },
+  {
+    "quote": "防民之口，甚于防川。",
+    "translation": "Blocking people's mouths is harder than stopping a river.",
+    "relevance": [
+      "mouth",
+      "river",
+      "silence"
+    ],
+    "source": "《国语·周语上》",
+    "url": "https://ctext.org/guo-yu/zhou-yu-shang/zh"
+  },
+  {
+    "quote": "巧笑倩兮，美目盼兮。",
+    "translation": "Charming smiles and bright, beautiful eyes.",
+    "relevance": [
+      "female",
+      "woman",
+      "beauty"
+    ],
+    "source": "《诗经·周南·关雎》",
+    "url": "https://ctext.org/book-of-poetry/guan-ju/zh"
+  },
+  {
+    "quote": "手如柔荑，肤如凝脂。",
+    "translation": "Hands like tender sprouts, skin like congealed cream.",
+    "relevance": [
+      "hand",
+      "touch",
+      "tender"
+    ],
+    "source": "《诗经·卫风·硕人》",
+    "url": "https://ctext.org/book-of-poetry/shuo-ren/zh"
+  },
+  {
+    "quote": "哀莫大于心死。",
+    "translation": "No grief is greater than a dead heart.",
+    "relevance": [
+      "heart",
+      "sorrow",
+      "grief"
+    ],
+    "source": "《庄子·田子方》",
+    "url": "https://ctext.org/zhuangzi/tian-zi-fang/zh"
+  },
+  {
+    "quote": "言必信，行必果。",
+    "translation": "Let your words be trustworthy and your actions resolute.",
+    "relevance": [
+      "word",
+      "trust",
+      "promise"
+    ],
+    "source": "《论语·子路》",
+    "url": "https://ctext.org/analects/zi-lu/zh"
+  },
+  {
+    "quote": "抱薪救火，薪不尽，火不灭。",
+    "translation": "To feed fire with fuel while saving it—if the fuel remains, the blaze won't die.",
+    "relevance": [
+      "fire",
+      "danger",
+      "fuel"
+    ],
+    "source": "《战国策·秦一》",
+    "url": "https://ctext.org/zhan-guo-ce/qin-1/zh"
+  },
+  {
+    "quote": "安得广厦千万间，大庇天下寒士俱欢颜。",
+    "translation": "Would that I had ten thousand grand halls to shelter all the cold scholars in joy.",
+    "relevance": [
+      "roof",
+      "shelter",
+      "house"
+    ],
+    "source": "《杜甫·茅屋为秋风所破歌》",
+    "url": "https://ctext.org/du-fu/mao-wu-wei-qiu-feng-suo-po-ge/zh"
+  }
+],
   "tidbitMaxQuoteChars": 24,
   "tokenSynonyms": {
     "i": "me",
