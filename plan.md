@@ -61,6 +61,39 @@ Strengthen guardrails for future data updates.
 3. Post-lesson "Expand/Continue" option so learners can keep going after the daily queue:
    offer to start the next lesson immediately (same deck), with an optional small cap
    on extra new cards; include a simple replay of finished cards without timers.
+4. **Quiz mode** — see below.
+
+### Quiz Mode
+
+A quiz mode that tests recall without revealing answers first, ideally offered
+**after a deck’s daily queue is completed**. This reinforces learning and
+provides objective performance data.
+
+**Implementation ideas:**
+
+| Idea | Description |
+|------|-------------|
+| **Trigger** | Show "Take a quiz?" (or similar) on the "All done for today!" screen when the lesson queue is finished. |
+| **Format** | Multiple-choice or type-to-answer: show hanzi (or English for reverse decks), user selects/enters the answer. |
+| **Card pool** | Sample from today’s lesson cards, or from recently seen cards (e.g. last 7 days). |
+| **Performance-based difficulty** | Use quiz results to infer difficulty instead of manual Hard/Medium/Easy ratings. Correct + fast → easy; correct + slow → medium; incorrect → hard. Feed these into the existing `rateCard` logic (or equivalent) to update intervals and ease. |
+| **Optional manual override** | Keep manual buttons available for users who prefer to self-rate, or as a fallback when quiz data is sparse. |
+
+**Performance → difficulty mapping (proposed):**
+
+- **Correct, fast** (e.g. &lt; 3 s): treat as "easy" — increase interval, bump ease.
+- **Correct, slow** (e.g. 3–8 s): treat as "medium" — standard interval progression.
+- **Incorrect**: treat as "hard" — reset interval, reduce ease.
+
+Thresholds can be tuned; the key is removing the need for explicit self-rating
+while still driving spaced repetition.
+
+**Benefits:**
+
+- Reduces friction (no manual rating on every card).
+- More objective signal for scheduling.
+- Quiz as a natural capstone after a lesson.
+- Optional: quiz-only mode for users who prefer testing over flashcard review.
 
 ### Visual Shape Hints for Hanzi
 
