@@ -188,10 +188,10 @@ header h1 {
 }
 
 .deck-back-link {
-  margin-top: auto;
-  padding-top: 14px;
+  margin-top: 16px;
   font-size: 0.78rem;
   color: #a3a3a3;
+  text-align: center;
 }
 
 .deck-back-link a {
@@ -1267,8 +1267,8 @@ function renderSentenceCard(deck, card) {
       html += `<div class="hint">${hints[stage]}</div>`;
     }
 
-    html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
     html += "</div>";
+    html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
     app.innerHTML = html;
 
     if (stage < finalStage) {
@@ -1419,8 +1419,8 @@ function renderStudyDeck() {
       html += `<div class="hint">${hints[stage]}</div>`;
     }
 
-    html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
     html += "</div>";
+    html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
     app.innerHTML = html;
 
     // Card click advances stage (only before answer is revealed)
