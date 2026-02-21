@@ -13,7 +13,7 @@ Chinese Flash Cards is an HSK-based Mandarin learning app with four decks (Hanzi
 | Dimension | Beginner | Intermediate | Advanced |
 |-----------|----------|--------------|----------|
 | **Content scope** | HSK1 only (143 cards) | HSK1 + radicals + early HSK2 | Full vocab + radicals + sentences |
-| **Deck availability** | Hanzi→English only | + English→Hanzi, Radicals | All 4 decks |
+| **Recommended start** | Radicals→English | Hanzi→English or English→Hanzi | All decks, including Sentences |
 | **Card complexity** | Single characters, simple words | Multi-char words, radicals | Full sentences, cultural tidbits |
 | **Hint scaffolding** | Pinyin + audio on first tap | Pinyin on second tap | No pinyin until reveal |
 | **New cards per session** | 5 | 10 | 15–20 |
@@ -24,8 +24,9 @@ Chinese Flash Cards is an HSK-based Mandarin learning app with four decks (Hanzi
 
 **Beginner**
 - First-time learners, no prior Mandarin exposure
-- Goals: Build recognition, learn pinyin, establish mnemonics
-- Content: HSK1 vocab only, Hanzi→English deck
+- Goals: Build recognition from components up, learn pinyin, establish mnemonics
+- Content: Radicals first (building blocks of characters), then HSK1 vocab
+- Recommended start: **Radicals→English** — learn the components before compound characters
 - Scaffolding: Full hints (pinyin, audio) early; mnemonics always visible
 - Pace: 5 new cards/day, smaller intervals for "Hard"
 
@@ -75,7 +76,7 @@ Chinese Flash Cards is an HSK-based Mandarin learning app with four decks (Hanzi
 **Option A: Minimal (3 screens)**
 1. Welcome: "Learn Mandarin with spaced repetition."
 2. How it works: "Tap to reveal pinyin → tap again for answer → rate Easy/Medium/Hard."
-3. Choose deck (or auto-start Hanzi→English for beginners).
+3. Choose deck (or auto-start Radicals→English for beginners).
 
 **Option B: Guided first card**
 1. Welcome + one-line explanation.
@@ -122,14 +123,15 @@ Chinese Flash Cards is an HSK-based Mandarin learning app with four decks (Hanzi
 1. **Onboarding asks**: "Have you studied Mandarin before?" → Yes/No/A little
 2. **Tier assignment**: No → Beginner; A little → Intermediate; Yes → Advanced (or placement quiz)
 3. **First session**: Beginner sees 5 new cards, full hints; Advanced sees 10, minimal hints
-4. **Deck order**: Beginner lands on Hanzi→English; others see full deck grid with recommendation badges
+4. **Deck order**: Beginner lands on Radicals→English (recommended); others see full deck grid with recommendation badges
 
-### Progress-Based Tier Unlocks (Optional)
+### Progress-Based Deck Suggestions (Optional)
 
+- Beginner: recommend Radicals→English first (components before compounds)
+- After ~35 radicals learned → suggest Hanzi→English
 - After 20 cards learned in Hanzi→English → suggest English→Hanzi
-- After 50 cards learned → suggest Radicals deck
 - After 80 cards + radicals started → suggest Sentences deck
-- Could surface as "New deck available" toast or badge on deck selection
+- Could surface as "Try next" or "Recommended" badges on deck selection
 
 ### Settings Panel Additions
 
@@ -146,7 +148,7 @@ Chinese Flash Cards is an HSK-based Mandarin learning app with four decks (Hanzi
 1. **Placement quiz**: Worth the extra friction? Or is self-report sufficient?
 2. **Tier auto-promotion**: Should the app suggest "You might be ready for Intermediate" after X days / Y cards?
 3. **Sentence deck tiering**: Should sentences be gated by vocab progress (e.g., only show sentences using words you've learned)?
-4. **Radicals first?**: Some curricula teach radicals before vocab. Should Beginner optionally start with Radicals?
+4. **Radicals first**: Radicals are the building blocks of characters; recommending Radicals→English for beginners aligns with learning components before compounds.
 5. **Localization**: Onboarding in Chinese for heritage speakers? Or English-only for now?
 
 ---
