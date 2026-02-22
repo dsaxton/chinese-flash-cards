@@ -8,7 +8,7 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png">
-<title>Chinese Flash Cards — Four Decks</title>
+<title>Chinese Flash Cards — Five Decks</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -715,6 +715,7 @@ const VOCAB = DECK_DATA.vocab;
 const HSK1_CARD_COUNT = DECK_DATA.hsk1CardCount;
 const HSK1_VOCAB = VOCAB.slice(0, HSK1_CARD_COUNT);
 const RADICAL_DECK_CARDS = DECK_DATA.radicals;
+const NUMBERS_DECK_CARDS = DECK_DATA.numbers || [];
 
 const SENTENCE_DATA = loadJsonSync("./data/sentence-data.json");
 const SENTENCE_CARDS = SENTENCE_DATA.sentences;
@@ -931,7 +932,7 @@ function overlapCount(a, b) {
   return count;
 }
 
-const ALL_TIDBIT_CARDS = [...HSK1_VOCAB, ...RADICAL_DECK_CARDS];
+const ALL_TIDBIT_CARDS = [...HSK1_VOCAB, ...RADICAL_DECK_CARDS, ...NUMBERS_DECK_CARDS];
 const CARD_MEANING_TOKENS = new Map(
   ALL_TIDBIT_CARDS.map((card) => [card.hanzi, extractMeaningTokens(card.english)])
 );
@@ -1101,6 +1102,7 @@ const DECK_STORAGE_KEYS = {
   hanzi_to_english: "hanzi_to_english_progress",
   english_to_hanzi: "english_to_hanzi_progress",
   radicals_to_english: "radicals_to_english_progress",
+  numbers_to_english: "numbers_to_english_progress",
   sentence_to_english: "sentence_to_english_progress",
 };
 const ACTIVE_DECK_STORAGE_KEY = "chinese-flash-cards-active-deck";
@@ -1129,6 +1131,13 @@ const DECKS = {
     subtitle: "See radicals, recall the English meaning.",
     cards: RADICAL_DECK_CARDS,
     mode: "radicals_to_english",
+  },
+  numbers_to_english: {
+    id: "numbers_to_english",
+    title: "Numbers to English",
+    subtitle: "See Chinese numbers, recall the English meaning.",
+    cards: NUMBERS_DECK_CARDS,
+    mode: "numbers_to_english",
   },
   sentence_to_english: {
     id: "sentence_to_english",
@@ -1713,7 +1722,7 @@ function renderOnboarding() {
   html += "<h2>How Chinese Flash Cards works</h2>";
 
   html += '<div class="onboarding-section">';
-  html += "<h3>Four decks</h3>";
+  html += "<h3>Five decks</h3>";
   html += "<p><strong>Hanzi → English</strong> — See a character, recall the meaning. ";
   html += "<strong>English → Hanzi</strong> — See the meaning, recall the character. ";
   html += "<strong>Radicals</strong> — Learn building blocks (e.g. 木 = wood). ";
