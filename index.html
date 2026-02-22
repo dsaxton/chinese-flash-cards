@@ -1512,40 +1512,7 @@ function renderQuizCard() {
   const isSentence = deck.mode === "sentence_to_english";
   const correctValue = isEnglishToHanzi ? card.hanzi : card.english;
 
-  progressEl.textContent = `Quiz · ${quizIndex + 1} of ${quizQueue.length}`;
-  let html = '<div class="card" id="quiz-card">';
-  if (isEnglishToHanzi) {
-    html += `<div class="english">${escapeHtml(card.english)}</div>`;
-    html += '<div class="hint">Choose the correct character:</div>';
-  } else if (isSentence) {
-    html += `<div class="sentence-hanzi">${escapeHtml(card.hanzi)}</div>`;
-    html += `<div class="sentence-pinyin">${escapeHtml(card.pinyin)}</div>`;
-    html += '<button class="speaker-btn" id="quiz-speak-btn" title="Play pronunciation">&#128264;</button>';
-    html += '<div class="hint">Choose the correct translation:</div>';
-  } else {
-    const sideFormFullForm = getRadicalSideFormFullForm(deck, card);
-    const sideFormShift = getRadicalSideFormShift(deck, card);
-    if (sideFormShift) {
-      html += `<div class="hanzi"><span class="radical-side-glyph" style="--side-shift:${escapeHtml(sideFormShift)}">${escapeHtml(card.hanzi)}</span></div>`;
-    } else {
-      html += `<div class="hanzi">${escapeHtml(card.hanzi)}</div>`;
-    }
-    if (sideFormFullForm) {
-      html += `<div class="radical-side-note">side form of ${escapeHtml(sideFormFullForm)}</div>`;
-    }
-    html += `<div class="pinyin">${escapeHtml(card.pinyin)}</div>`;
-    html += '<button class="speaker-btn" id="quiz-speak-btn" title="Play pronunciation">&#128264;</button>';
-    html += '<div class="hint">Choose the correct meaning:</div>';
-  }
-  html += '<div class="quiz-options">';
-  for (const opt of options) {
-    html += `<button class="quiz-option" data-value="${escapeHtml(String(opt))}">${escapeHtml(String(opt))}</button>`;
-  }
-  html += "</div>";
-  html += '<button class="quiz-idk-btn" id="quiz-idk-btn">I don\'t know</button>';
-  html += "</div>";
-  html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
-  app.innerHTML = html;
+  let revealed = false;
 
   function applyQuizFeedback(correct, clickedBtn) {
     for (const b of app.querySelectorAll(".quiz-option")) {
@@ -1568,28 +1535,77 @@ function renderQuizCard() {
     setTimeout(renderStudyDeck, 1200);
   }
 
-  const quizSpeakBtn = document.getElementById("quiz-speak-btn");
-  if (quizSpeakBtn) {
-    quizSpeakBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      speak(card.hanzi);
-    });
+  function render() {
+    progressEl.textContent = `Quiz · ${quizIndex + 1} of ${quizQueue.length}`;
+    let html = '<div class="card" id="quiz-card">';
+    if (isEnglishToHanzi) {
+      html += `<div class="english">${escapeHtml(card.english)}</div>`;
+      html += `<div class="hint">${revealed ? "Choose the correct character:" : "Tap to reveal options"}</div>`;
+    } else if (isSentence) {
+      html += `<div class="sentence-hanzi">${escapeHtml(card.hanzi)}</div>`;
+      html += `<div class="sentence-pinyin">${escapeHtml(card.pinyin)}</div>`;
+      html += '<button class="speaker-btn" id="quiz-speak-btn" title="Play pronunciation">&#128264;</button>';
+      html += `<div class="hint">${revealed ? "Choose the correct translation:" : "Tap to reveal options"}</div>`;
+    } else {
+      const sideFormFullForm = getRadicalSideFormFullForm(deck, card);
+      const sideFormShift = getRadicalSideFormShift(deck, card);
+      if (sideFormShift) {
+        html += `<div class="hanzi"><span class="radical-side-glyph" style="--side-shift:${escapeHtml(sideFormShift)}">${escapeHtml(card.hanzi)}</span></div>`;
+      } else {
+        html += `<div class="hanzi">${escapeHtml(card.hanzi)}</div>`;
+      }
+      if (sideFormFullForm) {
+        html += `<div class="radical-side-note">side form of ${escapeHtml(sideFormFullForm)}</div>`;
+      }
+      html += `<div class="pinyin">${escapeHtml(card.pinyin)}</div>`;
+      html += '<button class="speaker-btn" id="quiz-speak-btn" title="Play pronunciation">&#128264;</button>';
+      html += `<div class="hint">${revealed ? "Choose the correct meaning:" : "Tap to reveal options"}</div>`;
+    }
+    if (revealed) {
+      html += '<div class="quiz-options">';
+      for (const opt of options) {
+        html += `<button class="quiz-option" data-value="${escapeHtml(String(opt))}">${escapeHtml(String(opt))}</button>`;
+      }
+      html += "</div>";
+      html += '<button class="quiz-idk-btn" id="quiz-idk-btn">I don\'t know</button>';
+    }
+    html += "</div>";
+    html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
+    app.innerHTML = html;
+
+    const quizSpeakBtn = document.getElementById("quiz-speak-btn");
+    if (quizSpeakBtn) {
+      quizSpeakBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        speak(card.hanzi);
+      });
+    }
+
+    if (revealed) {
+      for (const btn of app.querySelectorAll(".quiz-option")) {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const correct = btn.dataset.value === correctValue;
+          applyQuizFeedback(correct, btn);
+        });
+      }
+      const idkBtn = document.getElementById("quiz-idk-btn");
+      if (idkBtn) {
+        idkBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          applyQuizFeedback(false, null);
+        });
+      }
+    } else {
+      document.getElementById("quiz-card").addEventListener("click", (e) => {
+        if (e.target.closest("button")) return;
+        revealed = true;
+        render();
+      });
+    }
   }
 
-  for (const btn of app.querySelectorAll(".quiz-option")) {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const correct = btn.dataset.value === correctValue;
-      applyQuizFeedback(correct, btn);
-    });
-  }
-  const idkBtn = document.getElementById("quiz-idk-btn");
-  if (idkBtn) {
-    idkBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      applyQuizFeedback(false, null);
-    });
-  }
+  render();
 }
 
 function renderDeckSelection() {
