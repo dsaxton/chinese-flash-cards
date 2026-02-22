@@ -492,6 +492,9 @@ footer {
   max-width: 420px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .reset-btn {
@@ -583,6 +586,82 @@ footer {
   height: 20px;
 }
 
+/* Onboarding */
+.onboarding {
+  background: var(--bg-card);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: clamp(24px, 5vw, 36px) clamp(20px, 5vw, 32px);
+  width: 100%;
+  max-width: 420px;
+  text-align: left;
+}
+
+.onboarding h2 {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.onboarding-section {
+  margin-bottom: 18px;
+}
+
+.onboarding-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.onboarding-section h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.onboarding-section p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.onboarding-cta {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid var(--pill-border);
+  border-radius: 999px;
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.onboarding-cta:hover {
+  border-color: var(--pill-hover-border);
+  background: var(--pill-hover-bg);
+  color: var(--pill-text);
+}
+
+.onboarding-skip {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+  text-align: center;
+  text-decoration: none;
+}
+
+.onboarding-skip:hover {
+  color: var(--text-muted);
+  text-decoration: underline;
+}
+
 @media (max-width: 480px) {
   body { justify-content: flex-start; }
   header { margin-bottom: 14px; }
@@ -614,6 +693,7 @@ footer {
 
 <footer>
   <button class="reset-btn" id="reset-btn">Reset Progress</button>
+  <a class="reset-btn" href="#/onboarding" style="text-decoration:none">How it works</a>
 </footer>
 
 <script>
@@ -1024,6 +1104,7 @@ const DECK_STORAGE_KEYS = {
   sentence_to_english: "sentence_to_english_progress",
 };
 const ACTIVE_DECK_STORAGE_KEY = "chinese-flash-cards-active-deck";
+const ONBOARDING_SEEN_KEY = "chinese-flash-cards-onboarding-seen";
 const TIDBIT_SALT_KEY = "chinese-flash-cards-tidbit-salt";
 const NEW_CARDS_PER_SESSION = 10;
 
@@ -1094,6 +1175,14 @@ function migrateLegacyProgress() {
 function getSavedActiveDeckId() {
   const saved = localStorage.getItem(ACTIVE_DECK_STORAGE_KEY);
   return DECKS[saved] ? saved : null;
+}
+
+function hasSeenOnboarding() {
+  return localStorage.getItem(ONBOARDING_SEEN_KEY) === "1";
+}
+
+function markOnboardingSeen() {
+  localStorage.setItem(ONBOARDING_SEEN_KEY, "1");
 }
 
 function saveActiveDeckId(deckId) {
@@ -1371,7 +1460,7 @@ function parseRoute() {
   const raw = location.hash.replace(/^#\/?/, "");
   if (!raw) return { route: "decks", params: new URLSearchParams() };
   const [path, query = ""] = raw.split("?");
-  const route = ["decks", "study"].includes(path) ? path : "decks";
+  const route = ["decks", "study", "onboarding"].includes(path) ? path : "decks";
   return { route, params: new URLSearchParams(query) };
 }
 
@@ -1616,6 +1705,44 @@ function renderQuizCard() {
   }
 
   render();
+}
+
+function renderOnboarding() {
+  progressEl.textContent = "Welcome";
+  let html = '<section class="onboarding">';
+  html += "<h2>How Chinese Flash Cards works</h2>";
+
+  html += '<div class="onboarding-section">';
+  html += "<h3>Four decks</h3>";
+  html += "<p><strong>Hanzi → English</strong> — See a character, recall the meaning. ";
+  html += "<strong>English → Hanzi</strong> — See the meaning, recall the character. ";
+  html += "<strong>Radicals</strong> — Learn building blocks (e.g. 木 = wood). ";
+  html += "<strong>Sentences</strong> — Practice full phrases with word-by-word glosses.</p>";
+  html += "</div>";
+
+  html += '<div class="onboarding-section">';
+  html += "<h3>Tap to reveal</h3>";
+  html += "<p>Each card has three stages: first the prompt, then tap for pinyin and audio, then tap again for the full answer (meaning, mnemonic, and optional cultural quote).</p>";
+  html += "</div>";
+
+  html += '<div class="onboarding-section">';
+  html += "<h3>Spaced repetition</h3>";
+  html += "<p>Cards you know well come back less often; harder ones return sooner. Up to 10 new cards per session. Progress is saved locally.</p>";
+  html += "</div>";
+
+  html += '<div class="onboarding-section">';
+  html += "<h3>Quiz mode</h3>";
+  html += "<p>After finishing a lesson, you can take a multiple-choice quiz. Correct answers count as easy, wrong ones as hard — no manual rating needed.</p>";
+  html += "</div>";
+
+  html += '<button class="onboarding-cta" id="onboarding-done-btn">Get started</button>';
+  html += "</section>";
+  app.innerHTML = html;
+
+  document.getElementById("onboarding-done-btn").addEventListener("click", () => {
+    markOnboardingSeen();
+    location.hash = "#/decks";
+  });
 }
 
 function renderDeckSelection() {
@@ -1868,8 +1995,19 @@ function renderStudyDeck() {
 function renderRoute() {
   const { route, params } = parseRoute();
   resetBtn.style.display = route === "study" ? "inline-block" : "none";
+  const howItWorksLink = document.querySelector('footer a[href="#/onboarding"]');
+  if (howItWorksLink) howItWorksLink.style.display = route === "onboarding" ? "none" : "inline-block";
+
+  if (route === "onboarding") {
+    renderOnboarding();
+    return;
+  }
 
   if (route === "decks") {
+    if (!hasSeenOnboarding()) {
+      location.hash = "#/onboarding";
+      return;
+    }
     renderDeckSelection();
     return;
   }
@@ -1900,7 +2038,9 @@ resetBtn.addEventListener("click", () => {
 
 window.addEventListener("hashchange", renderRoute);
 migrateLegacyProgress();
-if (!location.hash) location.hash = "#/decks";
+if (!location.hash) {
+  location.hash = hasSeenOnboarding() ? "#/decks" : "#/onboarding";
+}
 renderRoute();
 initPWA();
 
