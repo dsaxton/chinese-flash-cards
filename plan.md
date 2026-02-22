@@ -56,9 +56,10 @@ Strengthen guardrails for future data updates.
 
 ## Future
 
-1. Study guidance for combining decks effectively.
-2. Tone imagery pilot (measure recall benefit vs added cognitive load).
-3. Post-lesson "Expand/Continue" option so learners can keep going after the daily queue:
+1. **Tiered difficulty & onboarding** — See `docs/onboarding-difficulty-tiers-brainstorm.md` for brainstorming on Beginner/Intermediate/Advanced tiers and new user onboarding flow.
+2. Study guidance for combining decks effectively.
+3. Tone imagery pilot (measure recall benefit vs added cognitive load).
+4. Post-lesson "Expand/Continue" option so learners can keep going after the daily queue:
    offer to start the next lesson immediately (same deck), with an optional small cap
    on extra new cards; include a simple replay of finished cards without timers.
 4. **Quiz mode** — see below.
