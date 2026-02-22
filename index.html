@@ -1533,7 +1533,8 @@ function renderQuizCard() {
     rateCardFromQuizResult(card, progress, correct, deck.id);
     const quizCard = document.getElementById("quiz-card");
     if (quizCard) {
-      quizCard.style.minHeight = `${quizCard.offsetHeight}px`;
+      quizCard.style.width = `${quizCard.offsetWidth}px`;
+      quizCard.style.minWidth = `${quizCard.offsetWidth}px`;
       quizCard.addEventListener("click", (e) => {
         if (e.target.closest("button")) return;
         quizIndex++;
