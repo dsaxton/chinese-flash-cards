@@ -718,6 +718,7 @@ const NUMBER_HANZI = new Set(NUMBERS_DECK_CARDS.map((c) => c.hanzi));
 const HSK1_VOCAB = VOCAB.slice(0, HSK1_CARD_COUNT).filter(
   (c) => !NUMBER_HANZI.has(c.hanzi)
 );
+const HSK1_VOCAB_FOR_ENGLISH_TO_HANZI = VOCAB.slice(0, HSK1_CARD_COUNT);
 const RADICAL_DECK_CARDS = DECK_DATA.radicals;
 
 const SENTENCE_DATA = loadJsonSync("./data/sentence-data.json");
@@ -1146,7 +1147,7 @@ const DECKS = {
     id: "english_to_hanzi",
     title: "English to Hanzi",
     subtitle: "See English, recall the Chinese characters.",
-    cards: HSK1_VOCAB,
+    cards: HSK1_VOCAB_FOR_ENGLISH_TO_HANZI,
     mode: "english_to_hanzi",
   },
 };
