@@ -262,22 +262,6 @@ header h1 {
   background: #fff7ed;
 }
 
-.next-btn {
-  margin-top: 20px;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  background: #ea580c;
-  color: #fff;
-  cursor: pointer;
-}
-
-.next-btn:hover {
-  background: #c2410c;
-}
-
 .reset-card-btn {
   margin-top: 12px;
 }
@@ -1377,40 +1361,32 @@ function renderSentenceCard(deck, card) {
     }
 
     if (stage >= finalStage) {
-      html += '<button class="next-btn" id="next-card-btn">Next</button>';
       html += '<button class="reset-btn reset-card-btn" id="reset-card-btn">Reset card</button>';
     }
 
-    if (stage < finalStage) {
-      const hints = ["tap to reveal pinyin", "tap to reveal translation"];
-      html += `<div class="hint">${hints[stage]}</div>`;
-    }
+    const hints = ["tap to reveal pinyin", "tap to reveal translation", "tap for next"];
+    html += `<div class="hint">${hints[stage]}</div>`;
 
     html += "</div>";
     html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
     app.innerHTML = html;
 
-    if (stage < finalStage) {
-      document.getElementById("flashcard").addEventListener("click", () => {
+    document.getElementById("flashcard").addEventListener("click", (e) => {
+      if (e.target.closest("a, button")) return;
+      if (stage < finalStage) {
         stage++;
         render();
-      });
-    }
+      } else {
+        currentIndex++;
+        renderStudyDeck();
+      }
+    });
 
     const speakBtn = document.getElementById("speak-btn");
     if (speakBtn) {
       speakBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         speak(card.hanzi);
-      });
-    }
-
-    const nextBtn = document.getElementById("next-card-btn");
-    if (nextBtn) {
-      nextBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        currentIndex++;
-        renderStudyDeck();
       });
     }
 
@@ -1538,42 +1514,32 @@ function renderStudyDeck() {
     }
 
     if (stage >= finalStage) {
-      html += '<button class="next-btn" id="next-card-btn">Next</button>';
       html += '<button class="reset-btn reset-card-btn" id="reset-card-btn">Reset card</button>';
     }
 
-    if (stage < finalStage) {
-      const hints = ["tap to reveal pinyin", "tap to reveal full answer"];
-      html += `<div class="hint">${hints[stage]}</div>`;
-    }
+    const hints = ["tap to reveal pinyin", "tap to reveal full answer", "tap for next"];
+    html += `<div class="hint">${hints[stage]}</div>`;
 
     html += "</div>";
     html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
     app.innerHTML = html;
 
-    // Card click advances stage (only before answer is revealed)
-    if (stage < finalStage) {
-      document.getElementById("flashcard").addEventListener("click", () => {
+    document.getElementById("flashcard").addEventListener("click", (e) => {
+      if (e.target.closest("a, button")) return;
+      if (stage < finalStage) {
         stage++;
         render();
-      });
-    }
+      } else {
+        currentIndex++;
+        renderStudyDeck();
+      }
+    });
 
-    // Speaker button plays audio without advancing
     const speakBtn = document.getElementById("speak-btn");
     if (speakBtn) {
       speakBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         speak(card.hanzi);
-      });
-    }
-
-    const nextBtn = document.getElementById("next-card-btn");
-    if (nextBtn) {
-      nextBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        currentIndex++;
-        renderStudyDeck();
       });
     }
 
