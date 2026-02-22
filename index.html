@@ -226,34 +226,57 @@ header h1 {
   color: #555;
 }
 
-.difficulty-buttons {
+.quiz-options {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
+  max-width: 320px;
+  margin-top: 20px;
 }
 
-.difficulty-buttons button {
-  border: none;
-  border-radius: 8px;
-  padding: 12px 16px;
+.quiz-option {
+  padding: 14px 18px;
+  font-size: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.quiz-option:hover {
+  border-color: #ea580c;
+  background: #fff7ed;
+}
+
+.quiz-btn {
+  font-weight: 600;
+  border-color: #ea580c;
+  color: #ea580c;
+}
+
+.quiz-btn:hover {
+  background: #fff7ed;
+}
+
+.next-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
   font-size: 1rem;
   font-weight: 600;
-  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background: #ea580c;
   color: #fff;
-  transition: opacity 0.15s;
-  min-width: 96px;
-  flex: 1 1 96px;
-  touch-action: manipulation;
+  cursor: pointer;
 }
 
-.difficulty-buttons button:hover { opacity: 0.85; }
-
-.btn-hard { background: #e74c3c; }
-.btn-medium { background: #f39c12; }
-.btn-easy { background: #27ae60; }
+.next-btn:hover {
+  background: #c2410c;
+}
 
 .reset-card-btn {
   margin-top: 12px;
@@ -776,6 +799,8 @@ const DECK_STORAGE_KEYS = {
 const ACTIVE_DECK_STORAGE_KEY = "chinese-flash-cards-active-deck";
 const TIDBIT_SALT_KEY = "chinese-flash-cards-tidbit-salt";
 const NEW_CARDS_PER_SESSION = 10;
+const QUIZ_FAST_MS = 3000;
+const QUIZ_SLOW_MS = 8000;
 
 const DECKS = {
   hanzi_to_english: {
@@ -1004,6 +1029,33 @@ function rateCard(card, progress, difficulty, deckId) {
   saveDeckProgress(deckId, progress);
 }
 
+function rateCardFromQuizResult(card, progress, correct, responseTimeMs, deckId) {
+  const difficulty = correct
+    ? responseTimeMs < QUIZ_FAST_MS
+      ? "easy"
+      : responseTimeMs <= QUIZ_SLOW_MS
+        ? "medium"
+        : "hard"
+    : "hard";
+  rateCard(card, progress, difficulty, deckId);
+}
+
+function pickMultipleChoiceOptions(card, deck, allCards, count = 4) {
+  const isEnglishToHanzi = deck.mode === "english_to_hanzi";
+  const correct = isEnglishToHanzi ? card.hanzi : card.english;
+  const seen = new Set([correct]);
+  const pool = [];
+  for (const c of allCards) {
+    const v = isEnglishToHanzi ? c.hanzi : c.english;
+    if (v && !seen.has(v)) {
+      seen.add(v);
+      pool.push(v);
+    }
+  }
+  const distractors = shuffle(pool).slice(0, count - 1);
+  return shuffle([correct, ...distractors]);
+}
+
 // ---------------------------------------------------------------------------
 // UI
 // ---------------------------------------------------------------------------
@@ -1040,6 +1092,10 @@ let queue = [];
 let lessonQueue = [...queue];
 let currentIndex = 0;
 let stage = 0;
+let quizMode = false;
+let quizQueue = [];
+let quizIndex = 0;
+let quizCardStartTime = 0;
 
 function getActiveDeck() {
   return activeDeckId ? DECKS[activeDeckId] : null;
@@ -1067,12 +1123,29 @@ function startNewLessonFromProgress() {
   queue = deck ? buildQueue(deck.cards, progress) : [];
   lessonQueue = [...queue];
   currentIndex = 0;
+  quizMode = false;
 }
 
 function replayLesson() {
   if (lessonQueue.length === 0) return;
   queue = shuffle(lessonQueue);
   currentIndex = 0;
+  quizMode = false;
+  renderStudyDeck();
+}
+
+function startQuiz() {
+  if (lessonQueue.length < 2) return;
+  quizMode = true;
+  quizQueue = shuffle([...lessonQueue]);
+  quizIndex = 0;
+  renderStudyDeck();
+}
+
+function endQuiz() {
+  quizMode = false;
+  quizQueue = [];
+  quizIndex = 0;
   renderStudyDeck();
 }
 
@@ -1204,6 +1277,67 @@ function getDeckDueCount(deck) {
   return count;
 }
 
+function renderQuizCard() {
+  const deck = getActiveDeck();
+  if (!deck || quizIndex >= quizQueue.length) {
+    endQuiz();
+    return;
+  }
+  const card = quizQueue[quizIndex];
+  const options = pickMultipleChoiceOptions(card, deck, deck.cards);
+  if (options.length < 2) {
+    quizIndex++;
+    renderStudyDeck();
+    return;
+  }
+  quizCardStartTime = Date.now();
+  const isEnglishToHanzi = deck.mode === "english_to_hanzi";
+  const isSentence = deck.mode === "sentence_to_english";
+  const correctValue = isEnglishToHanzi ? card.hanzi : card.english;
+
+  progressEl.textContent = `Quiz · ${quizIndex + 1} of ${quizQueue.length}`;
+  let html = '<div class="card" id="quiz-card">';
+  if (isEnglishToHanzi) {
+    html += `<div class="english">${escapeHtml(card.english)}</div>`;
+    html += '<div class="hint">Choose the correct character:</div>';
+  } else if (isSentence) {
+    html += `<div class="sentence-hanzi">${escapeHtml(card.hanzi)}</div>`;
+    html += `<div class="sentence-pinyin">${escapeHtml(card.pinyin)}</div>`;
+    html += '<div class="hint">Choose the correct translation:</div>';
+  } else {
+    const sideFormFullForm = getRadicalSideFormFullForm(deck, card);
+    const sideFormShift = getRadicalSideFormShift(deck, card);
+    if (sideFormShift) {
+      html += `<div class="hanzi"><span class="radical-side-glyph" style="--side-shift:${escapeHtml(sideFormShift)}">${escapeHtml(card.hanzi)}</span></div>`;
+    } else {
+      html += `<div class="hanzi">${escapeHtml(card.hanzi)}</div>`;
+    }
+    if (sideFormFullForm) {
+      html += `<div class="radical-side-note">side form of ${escapeHtml(sideFormFullForm)}</div>`;
+    }
+    html += '<div class="hint">Choose the correct meaning:</div>';
+  }
+  html += '<div class="quiz-options">';
+  for (const opt of options) {
+    html += `<button class="quiz-option" data-value="${escapeHtml(String(opt))}">${escapeHtml(String(opt))}</button>`;
+  }
+  html += "</div></div>";
+  html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
+  app.innerHTML = html;
+
+  for (const btn of app.querySelectorAll(".quiz-option")) {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const chosen = btn.dataset.value;
+      const correct = chosen === correctValue;
+      const elapsed = Date.now() - quizCardStartTime;
+      rateCardFromQuizResult(card, progress, correct, elapsed, deck.id);
+      quizIndex++;
+      renderStudyDeck();
+    });
+  }
+}
+
 function renderDeckSelection() {
   progressEl.textContent = "Choose a deck";
   let html = '<section class="study-page">';
@@ -1254,11 +1388,7 @@ function renderSentenceCard(deck, card) {
     }
 
     if (stage >= finalStage) {
-      html += '<div class="difficulty-buttons">';
-      html += '<button class="btn-easy" data-difficulty="easy">Easy</button>';
-      html += '<button class="btn-medium" data-difficulty="medium">Medium</button>';
-      html += '<button class="btn-hard" data-difficulty="hard">Hard</button>';
-      html += "</div>";
+      html += '<button class="next-btn" id="next-card-btn">Next</button>';
       html += '<button class="reset-btn reset-card-btn" id="reset-card-btn">Reset card</button>';
     }
 
@@ -1286,10 +1416,10 @@ function renderSentenceCard(deck, card) {
       });
     }
 
-    for (const btn of app.querySelectorAll(".difficulty-buttons button")) {
-      btn.addEventListener("click", (e) => {
+    const nextBtn = document.getElementById("next-card-btn");
+    if (nextBtn) {
+      nextBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        rateCard(card, progress, btn.dataset.difficulty, deck.id);
         currentIndex++;
         renderStudyDeck();
       });
@@ -1313,6 +1443,16 @@ function renderStudyDeck() {
     return;
   }
 
+  if (quizMode && quizQueue.length > 0) {
+    renderQuizCard();
+    return;
+  }
+
+  if (quizMode && quizQueue.length === 0) {
+    endQuiz();
+    return;
+  }
+
   if (currentIndex >= queue.length) {
     progressEl.textContent = "";
     let html =
@@ -1322,13 +1462,16 @@ function renderStudyDeck() {
     html += '<div style="margin-top:14px;"><a class="reset-btn" href="#/decks">Deck selection</a></div>';
     if (lessonQueue.length > 0) {
       html += '<div style="margin-top:14px;"><button class="reset-btn" id="replay-lesson-btn">Replay lesson</button></div>';
+      if (lessonQueue.length >= 2) {
+        html += '<div style="margin-top:14px;"><button class="reset-btn quiz-btn" id="take-quiz-btn">Take a quiz</button></div>';
+      }
     }
     html += "</div>";
     app.innerHTML = html;
     const replayBtn = document.getElementById("replay-lesson-btn");
-    if (replayBtn) {
-      replayBtn.addEventListener("click", replayLesson);
-    }
+    if (replayBtn) replayBtn.addEventListener("click", replayLesson);
+    const quizBtn = document.getElementById("take-quiz-btn");
+    if (quizBtn) quizBtn.addEventListener("click", startQuiz);
     return;
   }
 
@@ -1406,11 +1549,7 @@ function renderStudyDeck() {
     }
 
     if (stage >= finalStage) {
-      html += '<div class="difficulty-buttons">';
-      html += '<button class="btn-easy" data-difficulty="easy">Easy</button>';
-      html += '<button class="btn-medium" data-difficulty="medium">Medium</button>';
-      html += '<button class="btn-hard" data-difficulty="hard">Hard</button>';
-      html += "</div>";
+      html += '<button class="next-btn" id="next-card-btn">Next</button>';
       html += '<button class="reset-btn reset-card-btn" id="reset-card-btn">Reset card</button>';
     }
 
@@ -1440,11 +1579,10 @@ function renderStudyDeck() {
       });
     }
 
-    // Difficulty buttons rate and advance to next card
-    for (const btn of app.querySelectorAll(".difficulty-buttons button")) {
-      btn.addEventListener("click", (e) => {
+    const nextBtn = document.getElementById("next-card-btn");
+    if (nextBtn) {
+      nextBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        rateCard(card, progress, btn.dataset.difficulty, deck.id);
         currentIndex++;
         renderStudyDeck();
       });
