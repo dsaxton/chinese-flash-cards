@@ -20,6 +20,7 @@ function collectHanzi(deckData, sentenceData) {
 
   for (const card of deckData.vocab || []) entries.add(card.hanzi);
   for (const card of deckData.radicals || []) entries.add(card.hanzi);
+  for (const card of deckData.numbers || []) entries.add(card.hanzi);
   for (const card of sentenceData.sentences || []) entries.add(card.hanzi);
 
   return Array.from(entries);

@@ -52,6 +52,8 @@ def collect_hanzi_entries() -> list[str]:
         entries.add(card["hanzi"])
     for card in deck.get("radicals", []):
         entries.add(card["hanzi"])
+    for card in deck.get("numbers", []):
+        entries.add(card["hanzi"])
     for card in sdata.get("sentences", []):
         entries.add(card["hanzi"])
 

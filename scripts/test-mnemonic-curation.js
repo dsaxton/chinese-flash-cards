@@ -182,6 +182,44 @@ function testNonHsk1Coverage(vocab, hsk1Count, minStoryRatio, minAnchorRatio) {
   );
 }
 
+function testNumbersFullyCurated(numbers, anchorAliasMap) {
+  for (const card of numbers) {
+    const label = `${card.hanzi} (${card.english})`;
+    assert(
+      card.mnemonicData && typeof card.mnemonicData === "object",
+      `${label}: numbers deck entries must use mnemonicData`
+    );
+    const anchor = String(card.mnemonicData.soundAnchor || "").trim();
+    assert(anchor.length > 0, `${label}: number cards must include soundAnchor`);
+    assertCanonicalSoundAnchor(anchor, label);
+    const story = getStoryText(card);
+    assert(story.length > 0, `${label}: story must be non-empty`);
+    assert(!hintContainsEnglishAnswer(story, card.english), `${label}: story leaks English answer token`);
+    const storyForPinyin = storyTextExcludingAnchor(story, anchor);
+    assert(!hintContainsPinyin(storyForPinyin, card.pinyin), `${label}: story leaks pinyin token`);
+    assert(!hintContainsPhoneticCue(story), `${label}: story uses forbidden phonetic cue phrasing`);
+    assert(!isLiteralShapeHint(story), `${label}: story uses forbidden literal shape phrasing`);
+    assert(!hasBoilerplateStoryPhrase(story), `${label}: story uses forbidden boilerplate phrasing`);
+    assert(!isLikelyIncoherentStory(story), `${label}: story appears incoherent`);
+    assert(!isLikelyAbstractStory(story), `${label}: story appears abstract/non-scene`);
+    assert(
+      !isLikelyComponentOnlyStory(story, { hasSoundAnchor: true, english: card.english }),
+      `${label}: story appears to rely only on component/radical explanation`
+    );
+    assert(!isMetaTemplateStory(story), `${label}: story uses forbidden meta-template language (narrates the mnemonic system instead of painting a scene)`);
+    assert(
+      !isAnchorGrammaticallyIsolated(anchor, story),
+      `${label}: anchor is grammatically isolated (jammed before a noun with no connector)`
+    );
+    const anchorForms = anchorFormsForStory(anchor, anchorAliasMap);
+    assert(anchorForms.length > 0, `${label}: unable to derive anchor forms`);
+    assert(
+      anchorIntegratedInStoryWithAliases(anchor, story, anchorAliasMap),
+      `${label}: anchor must be integrated in story text`
+    );
+  }
+}
+
 function testRadicalsFullyCurated(radicals, anchorAliasMap) {
   for (const card of radicals) {
     const label = `${card.hanzi} (${card.english})`;
@@ -412,7 +450,7 @@ function testAnchorPlacementDiversity(cards, anchorAliasMap, maxStartRatio) {
 
 function main() {
   const root = path.resolve(__dirname, "..");
-  const { vocab, hsk1Cards, radicals } = collectDeckCards(root);
+  const { vocab, hsk1Cards, radicals, numbers } = collectDeckCards(root);
   const phoneticConfig = loadPhoneticConfig(root);
   const anchorAliasMap = normalizeAnchorAliasMap(phoneticConfig.phoneticAnchorAliases);
   const allowedAnchorWords = readAllowedAnchorWords();
@@ -424,16 +462,23 @@ function main() {
   testNonHsk1Coverage(vocab, hsk1Cards.length, 0.95, 0.8);
   testMnemonicDataCoverage(radicals, radicals.length);
   testRadicalsFullyCurated(radicals, anchorAliasMap);
+  if (numbers.length > 0) {
+    testMnemonicDataCoverage(numbers, numbers.length);
+    testNumbersFullyCurated(numbers, anchorAliasMap);
+  }
   testAnchorNarrativeRegressions(hsk1Cards);
-  testAliasIntegrationRegressions([...hsk1Cards, ...radicals], anchorAliasMap);
+  testAliasIntegrationRegressions([...hsk1Cards, ...radicals, ...numbers], anchorAliasMap);
   testNoPlaceholderTemplateLanguage(vocab);
   testNoPlaceholderTemplateLanguage(radicals);
-  testStoryTemplateDiversity([...vocab, ...radicals], anchorAliasMap, 8);
-  testAnchorPlacementDiversity([...vocab, ...radicals], anchorAliasMap, 0.6);
+  testNoPlaceholderTemplateLanguage(numbers);
+  testStoryTemplateDiversity([...vocab, ...radicals, ...numbers], anchorAliasMap, 8);
+  testAnchorPlacementDiversity([...vocab, ...radicals, ...numbers], anchorAliasMap, 0.6);
   testAnchorPlacementDiversity(radicals, anchorAliasMap, 0.5);
-  testSharedAnchorDistinctness([...vocab, ...radicals], 0.3);
+  testAnchorPlacementDiversity(numbers, anchorAliasMap, 0.5);
+  testSharedAnchorDistinctness([...vocab, ...radicals, ...numbers], 0.3);
   testStoryWordCount(vocab, 12);
   testStoryWordCount(radicals, 12);
+  testStoryWordCount(numbers, 12);
 
   console.log("mnemonic curation test passed");
 }

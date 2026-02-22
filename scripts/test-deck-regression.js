@@ -42,6 +42,18 @@ function testDeckData(source, deckData) {
     assert(typeof card.mnemonic === "string", `${id} missing mnemonic`);
     assert(card.mnemonicData && typeof card.mnemonicData === "object", `${id} missing mnemonicData`);
   }
+
+  const numbers = Array.isArray(deckData.numbers) ? deckData.numbers : [];
+  assert(numbers.length >= 10, `Expected >= 10 number deck cards, got ${numbers.length}`);
+  for (const [i, card] of numbers.entries()) {
+    const id = `NUMBERS_DECK_CARDS[${i}]`;
+    assert(typeof card.id === "string" && card.id, `${id} missing id`);
+    assert(typeof card.hanzi === "string" && card.hanzi, `${id} missing hanzi`);
+    assert(typeof card.pinyin === "string" && card.pinyin, `${id} missing pinyin`);
+    assert(typeof card.english === "string" && card.english, `${id} missing english`);
+    assert(typeof card.mnemonic === "string", `${id} missing mnemonic`);
+    assert(card.mnemonicData && typeof card.mnemonicData === "object", `${id} missing mnemonicData`);
+  }
 }
 
 function testStorageKeysAndMigration(source) {
@@ -58,6 +70,10 @@ function testStorageKeysAndMigration(source) {
     keys.radicals_to_english === "radicals_to_english_progress",
     `Unexpected radicals_to_english storage key: ${keys.radicals_to_english}`
   );
+  assert(
+    keys.numbers_to_english === "numbers_to_english_progress",
+    `Unexpected numbers_to_english storage key: ${keys.numbers_to_english}`
+  );
 
   assert(
     /function migrateLegacyProgress\(\) \{[\s\S]*saveDeckProgress\("hanzi_to_english", legacy\);[\s\S]*\}/.test(
@@ -69,8 +85,8 @@ function testStorageKeysAndMigration(source) {
 
 function testRoutes(source) {
   assert(
-    /const route = \["decks", "study"\]\.includes\(path\) \? path : "decks";/.test(source),
-    "parseRoute should only allow decks/study routes"
+    /const route = \["decks", "study", "onboarding"\]\.includes\(path\) \? path : "decks";/.test(source),
+    "parseRoute should allow decks/study/onboarding routes"
   );
 }
 
@@ -104,8 +120,8 @@ function testUniversalStageFlow(source) {
 
 function testTidbitTokenCoverageIncludesRadicals(source) {
   assert(
-    /const ALL_TIDBIT_CARDS = \[\.\.\.HSK1_VOCAB, \.\.\.RADICAL_DECK_CARDS\];/.test(source),
-    "Tidbit token maps should include radicals and HSK1 cards"
+    /const ALL_TIDBIT_CARDS = \[\.\.\.HSK1_VOCAB, \.\.\.RADICAL_DECK_CARDS, \.\.\.NUMBERS_DECK_CARDS\];/.test(source),
+    "Tidbit token maps should include radicals, numbers, and HSK1 cards"
   );
   assert(
     /ALL_TIDBIT_CARDS\.map\(\(card\) => \[card\.hanzi, extractMeaningTokens\(card\.english\)\]\)/.test(source) &&

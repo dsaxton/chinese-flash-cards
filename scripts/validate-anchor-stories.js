@@ -9,7 +9,7 @@
 //
 // Usage:
 //   node scripts/validate-anchor-stories.js
-//   node scripts/validate-anchor-stories.js --mode all|hsk1|radicals
+//   node scripts/validate-anchor-stories.js --mode all|hsk1|radicals|numbers
 //   node scripts/validate-anchor-stories.js --fail-on-missing
 
 const path = require("path");
@@ -28,13 +28,14 @@ function main() {
   const modeArgIndex = process.argv.indexOf("--mode");
   const mode = modeArgIndex !== -1 ? String(process.argv[modeArgIndex + 1] || "all") : "all";
   const root = path.resolve(__dirname, "..");
-  const { hsk1Cards, radicals } = collectDeckCards(root);
+  const { hsk1Cards, radicals, numbers } = collectDeckCards(root);
   const phoneticConfig = loadPhoneticConfig(root);
   const anchorAliasMap = normalizeAnchorAliasMap(phoneticConfig.phoneticAnchorAliases);
   const cards =
     mode === "hsk1" ? hsk1Cards :
       mode === "radicals" ? radicals :
-        [...hsk1Cards, ...radicals];
+        mode === "numbers" ? numbers :
+          [...hsk1Cards, ...radicals, ...numbers];
 
   let total = 0;
   let integrated = 0;

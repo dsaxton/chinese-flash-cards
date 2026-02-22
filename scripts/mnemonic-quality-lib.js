@@ -333,11 +333,13 @@ function collectDeckCards(rootDir = process.cwd()) {
   const deck = loadDeckData(rootDir);
   const vocab = Array.isArray(deck.vocab) ? deck.vocab : [];
   const radicals = Array.isArray(deck.radicals) ? deck.radicals : [];
+  const numbers = Array.isArray(deck.numbers) ? deck.numbers : [];
   const hsk1Count = Number(deck.hsk1CardCount) || 0;
   return {
     vocab,
     hsk1Cards: vocab.slice(0, hsk1Count),
     radicals,
+    numbers,
   };
 }
 

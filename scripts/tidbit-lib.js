@@ -25,6 +25,7 @@ function loadModel(rootDir) {
   const tidbitData = JSON.parse(fs.readFileSync(path.join(rootDir, "data", "tidbit-data.json"), "utf8"));
   const vocab = Array.isArray(deckData.vocab) ? deckData.vocab : [];
   const radicals = Array.isArray(deckData.radicals) ? deckData.radicals : [];
+  const numbers = Array.isArray(deckData.numbers) ? deckData.numbers : [];
   const tidbits = Array.isArray(tidbitData.classicalTidbitsRaw) ? tidbitData.classicalTidbitsRaw : [];
   const synonyms = { ...(tidbitData.tokenSynonyms || {}) };
   const assignMatch = source.match(/Object\.assign\(TOKEN_SYNONYMS, \{([\s\S]*?)\n\}\);/);
@@ -82,7 +83,7 @@ function loadModel(rootDir) {
     return count;
   }
 
-  const cards = [...vocab, ...radicals];
+  const cards = [...vocab, ...radicals, ...numbers];
   const cardMeaningTokens = new Map(
     cards.map((card) => [card.hanzi, extractMeaningTokens(card.english)])
   );
