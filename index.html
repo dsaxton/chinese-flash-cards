@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ea580c" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ea580c" id="theme-color-meta">
 <meta name="description" content="HSK flash cards with spaced repetition for learning Chinese.">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
@@ -53,8 +52,89 @@
   --shadow-hover: 0 6px 32px rgba(0, 0, 0, 0.12);
 }
 
+/* Manual theme override (when user toggles) */
+html[data-theme="light"] {
+  --bg-page: #f0f2f5;
+  --bg-card: #fff;
+  --bg-card-hover: rgba(0, 0, 0, 0.08);
+  --text-primary: #333;
+  --text-secondary: #555;
+  --text-muted: #888;
+  --text-subtle: #999;
+  --text-hint: #bbb;
+  --pill-bg: #fff7ed;
+  --pill-border: #fed7aa;
+  --pill-text: #9a3412;
+  --pill-hover-bg: #ffedd5;
+  --pill-hover-border: #ea580c;
+  --accent: #ea580c;
+  --accent-muted: #9a3412;
+  --tidbit-bg: #fef9ef;
+  --tidbit-border: #ea580c;
+  --cultural-text: #3f3f46;
+  --cultural-source: #78716c;
+  --cultural-translation: #57534e;
+  --correct-bg: #dcfce7;
+  --correct-border: #16a34a;
+  --correct-text: #166534;
+  --wrong-bg: #fee2e2;
+  --wrong-border: #dc2626;
+  --wrong-text: #991b1b;
+  --neutral-border: #ddd;
+  --neutral-bg: #f5f5f5;
+  --neutral-bg-hover: #e5e5e5;
+  --neutral-text: #737373;
+  --neutral-text-hover: #525252;
+  --reset-border: #ccc;
+  --reset-text: #999;
+  --reset-hover-border: #999;
+  --reset-hover-text: #666;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 6px 32px rgba(0, 0, 0, 0.12);
+}
+
+html[data-theme="dark"] {
+  --bg-page: #1a1a1a;
+  --bg-card: #2d2d2d;
+  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --text-primary: #e4e4e7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --text-subtle: #52525b;
+  --text-hint: #3f3f46;
+  --pill-bg: #422006;
+  --pill-border: #78350f;
+  --pill-text: #fdba74;
+  --pill-hover-bg: #451a03;
+  --pill-hover-border: #ea580c;
+  --accent: #f97316;
+  --accent-muted: #fdba74;
+  --tidbit-bg: #292524;
+  --tidbit-border: #ea580c;
+  --cultural-text: #d6d3d1;
+  --cultural-source: #a8a29e;
+  --cultural-translation: #78716c;
+  --correct-bg: #14532d;
+  --correct-border: #22c55e;
+  --correct-text: #86efac;
+  --wrong-bg: #450a0a;
+  --wrong-border: #ef4444;
+  --wrong-text: #fca5a5;
+  --neutral-border: #3f3f46;
+  --neutral-bg: #27272a;
+  --neutral-bg-hover: #3f3f46;
+  --neutral-text: #a1a1aa;
+  --neutral-text-hover: #d4d4d8;
+  --reset-border: #52525b;
+  --reset-text: #71717a;
+  --reset-hover-border: #a1a1aa;
+  --reset-hover-text: #d4d4d8;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 6px 32px rgba(0, 0, 0, 0.5);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --bg-page: #1a1a1a;
     --bg-card: #2d2d2d;
     --bg-card-hover: rgba(255, 255, 255, 0.06);
@@ -473,6 +553,36 @@ footer {
   font-size: 0.95rem;
 }
 
+.theme-toggle {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  right: max(12px, env(safe-area-inset-right));
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.15s, color 0.15s;
+  z-index: 100;
+}
+
+.theme-toggle:hover {
+  opacity: 1;
+  color: var(--text-secondary);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
 @media (max-width: 480px) {
   body { justify-content: flex-start; }
   header { margin-bottom: 14px; }
@@ -489,6 +599,11 @@ footer {
 </style>
 </head>
 <body>
+
+<button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+  <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+  <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
 
 <header>
   <h1>Chinese Flash Cards</h1>
@@ -1762,6 +1877,50 @@ migrateLegacyProgress();
 if (!location.hash) location.hash = "#/decks";
 renderRoute();
 initPWA();
+
+// ---------------------------------------------------------------------------
+// Theme toggle (light / dark)
+// ---------------------------------------------------------------------------
+const THEME_STORAGE_KEY = "chinese-flash-cards-theme";
+const themeToggle = document.getElementById("theme-toggle");
+const themeIconSun = themeToggle.querySelector(".theme-icon-sun");
+const themeIconMoon = themeToggle.querySelector(".theme-icon-moon");
+const themeColorMeta = document.getElementById("theme-color-meta");
+
+function getSystemTheme() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function getEffectiveTheme() {
+  const saved = localStorage.getItem(THEME_STORAGE_KEY);
+  return saved === "light" || saved === "dark" ? saved : getSystemTheme();
+}
+
+function applyTheme() {
+  const theme = getEffectiveTheme();
+  const hasOverride = localStorage.getItem(THEME_STORAGE_KEY);
+  if (hasOverride) document.documentElement.setAttribute("data-theme", theme);
+  else document.documentElement.removeAttribute("data-theme");
+  themeColorMeta.content = theme === "dark" ? "#1a1a1a" : "#ea580c";
+  themeIconSun.style.display = theme === "dark" ? "none" : "block";
+  themeIconMoon.style.display = theme === "dark" ? "block" : "none";
+  themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+  themeToggle.setAttribute("title", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+}
+
+function cycleTheme() {
+  const current = getEffectiveTheme();
+  const next = current === "dark" ? "light" : "dark";
+  localStorage.setItem(THEME_STORAGE_KEY, next);
+  applyTheme();
+}
+
+applyTheme();
+themeToggle.addEventListener("click", cycleTheme);
+
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+  if (!localStorage.getItem(THEME_STORAGE_KEY)) applyTheme();
+});
 </script>
 </body>
 </html>
