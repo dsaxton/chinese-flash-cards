@@ -715,7 +715,7 @@ const VOCAB = DECK_DATA.vocab;
 const HSK1_CARD_COUNT = DECK_DATA.hsk1CardCount;
 const HSK1_VOCAB = VOCAB.slice(0, HSK1_CARD_COUNT);
 const RADICAL_DECK_CARDS = DECK_DATA.radicals;
-const NUMBERS_DECK_CARDS = Array.isArray(DECK_DATA.numbers) ? DECK_DATA.numbers : [];
+let NUMBERS_DECK_CARDS = Array.isArray(DECK_DATA.numbers) ? DECK_DATA.numbers : [];
 
 const SENTENCE_DATA = loadJsonSync("./data/sentence-data.json");
 const SENTENCE_CARDS = SENTENCE_DATA.sentences;
@@ -2060,6 +2060,27 @@ if (!location.hash) {
 }
 renderRoute();
 initPWA();
+
+// If numbers data was missing (e.g. cached deck-data.json), reload with cache bust
+if (NUMBERS_DECK_CARDS.length === 0) {
+  fetch(`./data/deck-data.json?t=${Date.now()}`)
+    .then((r) => (r.ok ? r.json() : null))
+    .then((fresh) => {
+      if (fresh && Array.isArray(fresh.numbers) && fresh.numbers.length > 0) {
+        NUMBERS_DECK_CARDS = fresh.numbers;
+        DECK_DATA.numbers = fresh.numbers;
+        DECKS.numbers_to_english = {
+          id: "numbers_to_english",
+          title: "Numbers to English",
+          subtitle: "See Chinese numbers, recall the English meaning.",
+          cards: fresh.numbers,
+          mode: "numbers_to_english",
+        };
+        renderRoute();
+      }
+    })
+    .catch(() => {});
+}
 
 // ---------------------------------------------------------------------------
 // Theme toggle (light / dark)
