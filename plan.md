@@ -72,8 +72,8 @@ Strengthen guardrails for future data updates.
   Study exposes cards (tap to reveal) but does not update SRS.
 - **Quiz flow**: After deck completion, a "Take a quiz" button starts a
   multiple-choice quiz over the lesson cards. All answers are multiple choice.
-- **Performance-based difficulty**: Quiz results drive SRS. Correct + fast
-  (&lt; 3 s) → easy; correct + slow (3–8 s) → medium; incorrect → hard.
+- **Performance-based difficulty**: Quiz results drive SRS. Correct → easy;
+  incorrect → hard. No timing; answer is either right or wrong.
 - **Self-rating removed**: No manual difficulty buttons; quiz performance is
   the sole signal for scheduling.
 

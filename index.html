@@ -799,8 +799,6 @@ const DECK_STORAGE_KEYS = {
 const ACTIVE_DECK_STORAGE_KEY = "chinese-flash-cards-active-deck";
 const TIDBIT_SALT_KEY = "chinese-flash-cards-tidbit-salt";
 const NEW_CARDS_PER_SESSION = 10;
-const QUIZ_FAST_MS = 3000;
-const QUIZ_SLOW_MS = 8000;
 
 const DECKS = {
   hanzi_to_english: {
@@ -1029,14 +1027,8 @@ function rateCard(card, progress, difficulty, deckId) {
   saveDeckProgress(deckId, progress);
 }
 
-function rateCardFromQuizResult(card, progress, correct, responseTimeMs, deckId) {
-  const difficulty = correct
-    ? responseTimeMs < QUIZ_FAST_MS
-      ? "easy"
-      : responseTimeMs <= QUIZ_SLOW_MS
-        ? "medium"
-        : "hard"
-    : "hard";
+function rateCardFromQuizResult(card, progress, correct, deckId) {
+  const difficulty = correct ? "easy" : "hard";
   rateCard(card, progress, difficulty, deckId);
 }
 
@@ -1095,7 +1087,6 @@ let stage = 0;
 let quizMode = false;
 let quizQueue = [];
 let quizIndex = 0;
-let quizCardStartTime = 0;
 
 function getActiveDeck() {
   return activeDeckId ? DECKS[activeDeckId] : null;
@@ -1290,7 +1281,6 @@ function renderQuizCard() {
     renderStudyDeck();
     return;
   }
-  quizCardStartTime = Date.now();
   const isEnglishToHanzi = deck.mode === "english_to_hanzi";
   const isSentence = deck.mode === "sentence_to_english";
   const correctValue = isEnglishToHanzi ? card.hanzi : card.english;
@@ -1330,8 +1320,7 @@ function renderQuizCard() {
       e.stopPropagation();
       const chosen = btn.dataset.value;
       const correct = chosen === correctValue;
-      const elapsed = Date.now() - quizCardStartTime;
-      rateCardFromQuizResult(card, progress, correct, elapsed, deck.id);
+      rateCardFromQuizResult(card, progress, correct, deck.id);
       quizIndex++;
       renderStudyDeck();
     });
