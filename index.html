@@ -713,9 +713,12 @@ function loadJsonSync(path) {
 const DECK_DATA = loadJsonSync("./data/deck-data.json");
 const VOCAB = DECK_DATA.vocab;
 const HSK1_CARD_COUNT = DECK_DATA.hsk1CardCount;
-const HSK1_VOCAB = VOCAB.slice(0, HSK1_CARD_COUNT);
-const RADICAL_DECK_CARDS = DECK_DATA.radicals;
 const NUMBERS_DECK_CARDS = DECK_DATA.numbers || [];
+const NUMBER_HANZI = new Set(NUMBERS_DECK_CARDS.map((c) => c.hanzi));
+const HSK1_VOCAB = VOCAB.slice(0, HSK1_CARD_COUNT).filter(
+  (c) => !NUMBER_HANZI.has(c.hanzi)
+);
+const RADICAL_DECK_CARDS = DECK_DATA.radicals;
 
 const SENTENCE_DATA = loadJsonSync("./data/sentence-data.json");
 const SENTENCE_CARDS = SENTENCE_DATA.sentences;

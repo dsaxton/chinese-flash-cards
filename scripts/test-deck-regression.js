@@ -27,8 +27,8 @@ function testDeckData(source, deckData) {
   const hsk1CardCount = Number(deckData.hsk1CardCount || 0);
   assert(hsk1CardCount === 143, `HSK1_CARD_COUNT should be 143, got ${hsk1CardCount}`);
   assert(
-    /const HSK1_VOCAB = VOCAB\.slice\(0, HSK1_CARD_COUNT\);/.test(source),
-    "HSK1_VOCAB should be defined as VOCAB.slice(0, HSK1_CARD_COUNT)"
+    /const HSK1_VOCAB = VOCAB\.slice\(0, HSK1_CARD_COUNT\)\.filter\([\s\S]*!NUMBER_HANZI\.has\(c\.hanzi\)[\s\S]*\)/.test(source),
+    "HSK1_VOCAB should filter out number cards to avoid duplication with Numbers deck"
   );
 
   const radicals = Array.isArray(deckData.radicals) ? deckData.radicals : [];
