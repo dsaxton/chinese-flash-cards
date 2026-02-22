@@ -1343,7 +1343,7 @@ function renderQuizCard() {
       quizIndex++;
 
       // Brief delay so user sees feedback before next card
-      setTimeout(renderStudyDeck, 600);
+      setTimeout(renderStudyDeck, 1200);
     });
   }
 }
@@ -1354,11 +1354,15 @@ function renderDeckSelection() {
 
   for (const deck of Object.values(DECKS)) {
     const dueCount = getDeckDueCount(deck);
-    html += '<div style="margin:10px 0;">';
-    html += `<a class="chip-link" style="display:block;padding:12px 14px;" href="#/study?deck=${deck.id}">`;
+    const canQuiz = deck.cards.length >= 2;
+    html += '<div class="deck-row" style="margin:10px 0;display:flex;align-items:stretch;gap:8px;">';
+    html += `<a class="chip-link" style="flex:1;display:block;padding:12px 14px;" href="#/study?deck=${deck.id}">`;
     html += `<strong>${escapeHtml(deck.title)}</strong><br>`;
     html += `<small>${escapeHtml(deck.subtitle)} · ${dueCount} due/new</small>`;
     html += "</a>";
+    if (canQuiz) {
+      html += `<a class="chip-link quiz-btn" style="flex-shrink:0;display:flex;align-items:center;align-self:center;padding:8px 14px;" href="#/study?deck=${deck.id}&quiz=1">Quiz</a>`;
+    }
     html += "</div>";
   }
 
@@ -1606,6 +1610,10 @@ function renderRoute() {
     return;
   }
   if (activeDeckId !== requestedDeckId) setActiveDeck(requestedDeckId);
+  if (params.get("quiz") === "1") {
+    startQuiz();
+    history.replaceState(null, "", "#/study");
+  }
   renderStudyDeck();
 }
 
