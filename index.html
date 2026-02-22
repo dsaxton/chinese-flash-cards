@@ -252,6 +252,24 @@ header h1 {
   background: #fff7ed;
 }
 
+.quiz-option.correct {
+  border-color: #16a34a;
+  background: #dcfce7;
+  color: #166534;
+}
+
+.quiz-option.wrong {
+  border-color: #dc2626;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.quiz-option.reveal-correct {
+  border-color: #16a34a;
+  background: #dcfce7;
+  color: #166534;
+}
+
 .quiz-btn {
   font-weight: 600;
   border-color: #ea580c;
@@ -1304,9 +1322,28 @@ function renderQuizCard() {
       e.stopPropagation();
       const chosen = btn.dataset.value;
       const correct = chosen === correctValue;
+
+      // Disable all options to prevent double-clicks
+      for (const b of app.querySelectorAll(".quiz-option")) {
+        b.disabled = true;
+        b.style.pointerEvents = "none";
+      }
+
+      // Show feedback: green for correct, red for wrong
+      btn.classList.add(correct ? "correct" : "wrong");
+
+      // If wrong, highlight the correct answer
+      if (!correct) {
+        for (const b of app.querySelectorAll(".quiz-option")) {
+          if (b.dataset.value === correctValue) b.classList.add("reveal-correct");
+        }
+      }
+
       rateCardFromQuizResult(card, progress, correct, deck.id);
       quizIndex++;
-      renderStudyDeck();
+
+      // Brief delay so user sees feedback before next card
+      setTimeout(renderStudyDeck, 600);
     });
   }
 }
