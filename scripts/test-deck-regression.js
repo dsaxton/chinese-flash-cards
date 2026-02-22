@@ -77,8 +77,8 @@ function testRoutes(source) {
 function testUniversalStageFlow(source) {
   assert(/const finalStage = 2;/.test(source), "finalStage should be fixed at 2 for universal 3-step flow");
   assert(
-    /const hints = \["tap to reveal pinyin", "tap to reveal full answer"\];/.test(source),
-    "All decks should use one shared hint sequence"
+    /const hints = \[.*"tap to reveal pinyin".*"tap for next"\];/.test(source),
+    "All decks should use shared hint sequence including tap for next"
   );
   assert(
     /if \(stage >= 1\) \{[\s\S]*class="pinyin"/.test(source),

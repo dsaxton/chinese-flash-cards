@@ -122,8 +122,8 @@ cleared (empty is better than broken).
 8. **No "flashes into the scene" boilerplate.**
 9. **No literal shape-description filler** — "this component appears in
    characters related to X" is not a mnemonic.
-10. **No multi-word `soundAnchor`** — anchors must be canonical single-word
-    format: `Think of WORD.`
+10. **No multi-word `soundAnchor`** — anchors must be canonical format:
+    `Think of WORD.` or `Think of WORD1, WORD2.` for multi-syllable words.
 11. **No meta-template language** — the story must paint a scene, not narrate
     the mnemonic system. Phrases like "I recall X when Y appears", "the cue
     leads me to", "becomes obvious once", "stays linked to", "I map X to Y",
@@ -149,7 +149,7 @@ cleared (empty is better than broken).
 
 ```js
 mnemonicData: {
-  soundAnchor: "Think of CHEW.",   // "Think of WORD." — single uppercase English word
+  soundAnchor: "Think of CHEW.",   // or "Think of JET, DAY." for multi-syllable
   story: "To eat well, you must CHEW every bite slowly.",
   components: [{ hanzi: "口", meaning: "mouth" }],  // supporting context only
 }

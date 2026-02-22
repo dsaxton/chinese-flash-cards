@@ -99,7 +99,7 @@
     "ran": "rahn",
     "rang": "rung",
     "ren": "run",
-    "ri": "rrr",
+    "ri": "reach",
     "rong": "wrong",
     "rou": "row",
     "ru": "roo",
@@ -415,6 +415,7 @@
     "PROBLEM",
     "PROCESS",
     "RAIN",
+    "REACH",
     "REALLY",
     "RED",
     "REST",
@@ -552,6 +553,17 @@
       "obey",
       "bayfront",
       "harbor"
+    ],
+    "REACH": [
+      "reaches",
+      "reached",
+      "reaching"
+    ],
+    "SING": [
+      "sings",
+      "singing",
+      "sang",
+      "sung"
     ]
   }
 }

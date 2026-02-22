@@ -83,7 +83,7 @@ function collectViolations(card, profile, options = {}) {
   }
   if (profile.forbidMultiWordAnchor) {
     const anchor = String(card.mnemonicData?.soundAnchor || "").trim();
-    if (anchor && !/^Think of [A-Z]+\.$/.test(anchor)) {
+    if (anchor && !/^Think of [A-Z]+(, [A-Z]+)*\.$/.test(anchor)) {
       violations.push("multi_or_noncanonical_sound_anchor");
     }
   }

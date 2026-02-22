@@ -1,5 +1,51 @@
 # Plan
 
+## Radical Audio / Pinyin Mismatch (Open Issue)
+
+### Problem
+
+Users report that audio for some radical cards does not match the displayed pinyin. For example:
+- **阝** (side form of 阜): pinyin "fù" — audio reportedly played "shǎn" (陝).
+- **宀** (roof radical): pinyin "mián" — audio reportedly did not match.
+
+### Root Causes (Suspected)
+
+1. **Character confusion (阝/陝)**: The deck data contained 陝 (U+961D, shǎn) instead of 阝 (U+962D, fù). This was a data-entry error: the wrong character was stored. The manifest correctly mapped the stored character to its UTF-8 filename, so the audio matched the *stored* character — but the card was labeled as 阝 (阜) with pinyin fù. **Fix applied**: Corrected deck data to use 阝 (U+962D).
+
+2. **TTS mispronunciation of radicals**: Edge-TTS (and TTS in general) may mispronounce radicals when they are spoken in isolation. Radicals like 宀, 讠, 氵 are rarely used alone in natural speech; the model may not have reliable pronunciation for them.
+
+### Approach Attempted (Not Verified)
+
+A `RADICAL_PRONUNCIATION_FALLBACK` map was added to `generate-audio.py`: when generating audio for certain radicals, pass a different character to TTS (e.g. 棉 for 宀, 言 for 讠) that shares the same pinyin. The generated audio is saved under the radical's filename.
+
+### Problems With This Approach
+
+1. **Display/audio mismatch**: The user sees 宀 but hears 棉. We are playing audio for a different character than the one displayed. Pedagogically questionable.
+2. **No verification**: We have not listened to original vs. new audio. We assumed TTS mispronounces and that fallbacks fix it — unverified.
+3. **Hidden behavior**: The fallback map is opaque; the code does not make the substitution visible to readers.
+4. **Scope creep**: Extended to 11 radicals without evidence that all needed it.
+
+### What We Do Not Know
+
+- Whether edge-tts actually mispronounces these radicals.
+- Whether the fallback audio is correct.
+- Whether the original audio (before fallbacks) was wrong.
+- How to verify audio correctness programmatically (no automated check exists).
+
+### Constraints
+
+- **Edge-TTS**: Does not support pinyin input for proper Chinese pronunciation. Passing "mián" as text yields Latin-style pronunciation, not Mandarin.
+- **Pinyin source**: Deck pinyin is curated in `deck-data.json`; there is no runtime hanzi→pinyin conversion for audio.
+
+### Next Steps (To Be Decided)
+
+1. Listen to original and fallback audio; document which (if any) are actually wrong.
+2. Decide whether to revert `RADICAL_PRONUNCIATION_FALLBACK` and accept TTS limitations.
+3. Consider alternatives: human recordings for radicals, different TTS/voice, or no audio for unreliable radicals.
+4. If keeping fallbacks: add tests or documentation that make the substitution explicit.
+
+---
+
 ## Mnemonic Curation
 
 > Design principles, quality rules, and tooling: **`docs/mnemonic-curation.md`**
@@ -61,6 +107,21 @@ Strengthen guardrails for future data updates.
 3. Post-lesson "Expand/Continue" option so learners can keep going after the daily queue:
    offer to start the next lesson immediately (same deck), with an optional small cap
    on extra new cards; include a simple replay of finished cards without timers.
+4. **Quiz mode** — see below.
+
+### Quiz Mode
+
+**Implemented.** Quiz mode tests recall with multiple-choice questions, offered
+**after a deck's daily queue is completed** via a "Take a quiz" button (no prompt).
+
+- **Study flow**: Manual Hard/Medium/Easy ratings replaced with a "Next" button.
+  Study exposes cards (tap to reveal) but does not update SRS.
+- **Quiz flow**: After deck completion, a "Take a quiz" button starts a
+  multiple-choice quiz over the lesson cards. All answers are multiple choice.
+- **Performance-based difficulty**: Quiz results drive SRS. Correct → easy;
+  incorrect → hard. No timing; answer is either right or wrong.
+- **Self-rating removed**: No manual difficulty buttons; quiz performance is
+  the sole signal for scheduling.
 
 ### Visual Shape Hints for Hanzi
 

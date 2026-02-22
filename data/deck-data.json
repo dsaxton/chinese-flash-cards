@@ -763,8 +763,8 @@
       "english": "today",
       "mnemonic": "今 (now/present) + 天 (day). The present day — today!",
       "mnemonicData": {
-        "soundAnchor": "Think of JET.",
-        "story": "A JET roars overhead — today the airshow begins.",
+        "soundAnchor": "Think of JET, DAY.",
+        "story": "The JET touches down at dawn — the DAY begins.",
         "components": [
           {
             "hanzi": "今",
@@ -1413,7 +1413,7 @@
       "mnemonic": "执 (to hold) + 灬 (fire). Holding fire in your hands — hot!",
       "mnemonicData": {
         "soundAnchor": "Think of HER.",
-        "story": "HER forehead burns — the pavement is scorching hot today.",
+        "story": "HER forehead burns on the hot pavement.",
         "components": [
           {
             "hanzi": "执",
@@ -1467,8 +1467,8 @@
       "english": "day; sun",
       "mnemonic": "A rectangle with a line through it — the sun with a sunspot. One cycle of the sun = one day.",
       "mnemonicData": {
-        "soundAnchor": "Think of RIB.",
-        "story": "A cracked RIB aches from dawn until the light finally fades.",
+        "soundAnchor": "Think of REACH.",
+        "story": "At dawn, the light REACHes across the water.",
         "components": []
       }
     },
@@ -2168,8 +2168,8 @@
       "english": "student",
       "mnemonic": "学 (to study) + 生 (born/life). A life devoted to study — a student!",
       "mnemonicData": {
-        "soundAnchor": "Think of SHEER.",
-        "story": "SHEER nerves — the student opens the final exam booklet.",
+        "soundAnchor": "Think of SHEER, SING.",
+        "story": "SHEER nerves — the student SINGs the scale at the audition.",
         "components": [
           {
             "hanzi": "学",
@@ -5325,8 +5325,8 @@
       "english": "sun; day",
       "mnemonic": "A boxed sun with a mark inside.",
       "mnemonicData": {
-        "soundAnchor": "Think of RIB.",
-        "story": "A cracked RIB aches from dawn until the light finally fades.",
+        "soundAnchor": "Think of REACH.",
+        "story": "At dawn, the light REACHes across the water.",
         "components": []
       }
     },
@@ -5602,7 +5602,7 @@
       "mnemonic": "Cowrie shell once used as currency.",
       "mnemonicData": {
         "soundAnchor": "Think of BAY.",
-        "story": "Across the BAY, fishermen trade cowrie for fresh catch.",
+        "story": "By the BAY, the morning's catch sells for what washes up.",
         "components": []
       }
     },
