@@ -1322,6 +1322,7 @@ function renderQuizCard() {
   } else if (isSentence) {
     html += `<div class="sentence-hanzi">${escapeHtml(card.hanzi)}</div>`;
     html += `<div class="sentence-pinyin">${escapeHtml(card.pinyin)}</div>`;
+    html += '<button class="speaker-btn" id="quiz-speak-btn" title="Play pronunciation">&#128264;</button>';
     html += '<div class="hint">Choose the correct translation:</div>';
   } else {
     const sideFormFullForm = getRadicalSideFormFullForm(deck, card);
@@ -1334,6 +1335,8 @@ function renderQuizCard() {
     if (sideFormFullForm) {
       html += `<div class="radical-side-note">side form of ${escapeHtml(sideFormFullForm)}</div>`;
     }
+    html += `<div class="pinyin">${escapeHtml(card.pinyin)}</div>`;
+    html += '<button class="speaker-btn" id="quiz-speak-btn" title="Play pronunciation">&#128264;</button>';
     html += '<div class="hint">Choose the correct meaning:</div>';
   }
   html += '<div class="quiz-options">';
@@ -1365,6 +1368,14 @@ function renderQuizCard() {
     rateCardFromQuizResult(card, progress, correct, deck.id);
     quizIndex++;
     setTimeout(renderStudyDeck, 1200);
+  }
+
+  const quizSpeakBtn = document.getElementById("quiz-speak-btn");
+  if (quizSpeakBtn) {
+    quizSpeakBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      speak(card.hanzi);
+    });
   }
 
   for (const btn of app.querySelectorAll(".quiz-option")) {
