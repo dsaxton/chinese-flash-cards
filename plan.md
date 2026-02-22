@@ -227,3 +227,59 @@ single-word recall and reading comprehension.
   enough to start?
 - Minimum audio-coverage threshold: skip sentences without audio, or accept
   the syllable fallback?
+
+---
+
+## Learning Experience Enhancements
+
+Brainstormed ideas to improve how users learn and stay engaged. Ranked by impact vs effort.
+
+### High impact, lower effort
+
+| Idea | Description | Notes |
+|------|-------------|-------|
+| **Post-lesson Expand/Continue** | After "All done for today!", add a "Continue" button to fetch more cards when `buildQueue` returns non-empty. Replay is already tap-through (no ratings). | Explored in `docs/lesson-expansion-exploration.md`. |
+| **Keyboard shortcuts** | 1 = Hard, 2 = Medium, 3 = Easy; Space = advance stage. | Speeds up review for power users. |
+| **Customizable new cards per session** | Currently fixed at 10. Add a simple setting (e.g. 5 / 10 / 15 / 20) or "Quick" vs "Full" session presets. | Lets users match session length to available time. |
+| **First-time user tour** | Brief overlay explaining: deck selection → card stages (tap to reveal pinyin, then answer) → difficulty buttons. | Reduces confusion for new users. |
+| **Streak tracking** | Show "X days in a row" and surface it on deck selection and completion. | Light gamification; encourages consistency. |
+| **Daily stats summary** | After completion: "You reviewed 23 cards, 8 new. 15 due tomorrow." | Gives a sense of progress. |
+
+### Medium impact, medium effort
+
+| Idea | Description | Notes |
+|------|-------------|-------|
+| **Study guidance for combining decks** | In-app guidance on recommended order (e.g. Radicals first, then Hanzi→English, then English→Hanzi, then Sentences). | Already in Future; helps structure learning. |
+| **"Why this mnemonic?" tooltip** | On hover/tap of sound anchor, show brief explanation: "EYE sounds like ài (爱)." | Reinforces the phonetic link for learners who don't yet internalize it. |
+| **Batch reveal option** | Toggle: "Quick review" skips intermediate stages (go straight to full answer) for users who want faster review. | Reduces friction for experienced users. |
+| **Learning reminders** | Optional browser notification: "You have 12 cards due today." | Requires permission; improves retention via consistency. |
+| **Retention / mastery metrics** | Per-deck: "X% of cards mastered" or "Y cards with interval > 7 days." | Motivational; shows long-term progress. |
+| **Session length presets** | "5 min" (fewer new cards, due-first only) vs "15 min" (default) vs "Full" (all due + full new cap). | Aligns with time-constrained learners. |
+
+### Higher impact, higher effort
+
+| Idea | Description | Notes |
+|------|-------------|-------|
+| **Audio-first / listening mode** | Hear pronunciation before seeing hanzi; recall meaning or character. New deck or mode. | Builds listening comprehension; needs audio UX. |
+| **Tone imagery pilot** | Visual or verbal cues for tones (e.g. tone contours, color coding). Measure recall benefit vs cognitive load. | Already in Future; research-heavy. |
+| **Visual shape hints** | Optional `shapeHint` for simple characters (口, 人, 日). Display below story. | See existing plan section; start with radicals. |
+| **Interleaved review** | Option to mix cards from multiple decks in one session (e.g. 50% Hanzi→English, 50% Radicals). | More complex queue logic; may improve transfer. |
+| **Export/import progress** | Backup to JSON; restore on new device. | Enables device migration; no sync server needed. |
+| **Mnemonic feedback** | "Was this story helpful?" thumbs up/down (stored locally). | Informs future curation; no backend. |
+
+### Accessibility & comfort
+
+| Idea | Description | Notes |
+|------|-------------|-------|
+| **Font size preference** | User setting for hanzi/pinyin/english (e.g. small / medium / large). | Helps vision-impaired and mobile users. |
+| **Dark mode** | System-aware or manual toggle. | Reduces eye strain; common request. |
+| **Screen reader support** | Semantic structure, aria-labels for buttons and stages. | Critical for accessibility. |
+
+### Future exploration
+
+| Idea | Description | Notes |
+|------|-------------|-------|
+| **Pinyin input for English→Hanzi** | Optional: type pinyin to verify pronunciation before revealing. | Adds active recall; needs input handling. |
+| **Card difficulty history** | "You've rated this Hard 3 times" — surface when considering reset. | Helps users decide when to reset. |
+| **Contextual example sentences** | On vocab reveal, show one sentence using the word (from sentence deck). | Bridges single-word and sentence learning. |
+| **Custom decks** | User-created decks from subset of vocab. | Large feature; enables personalized learning. |

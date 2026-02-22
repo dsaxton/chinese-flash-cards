@@ -1441,6 +1441,19 @@ function replayLesson() {
   renderStudyDeck();
 }
 
+function expandLesson() {
+  const deck = getActiveDeck();
+  if (!deck) return;
+  const lessonIds = new Set(lessonQueue.map((c) => getCardId(c)));
+  const extraQueue = buildQueue(deck.cards, progress).filter((c) => !lessonIds.has(getCardId(c)));
+  if (extraQueue.length === 0) return;
+  queue = extraQueue;
+  lessonQueue = [...lessonQueue, ...extraQueue];
+  currentIndex = 0;
+  quizMode = false;
+  renderStudyDeck();
+}
+
 function startQuiz() {
   if (lessonQueue.length < 2) return;
   quizMode = true;
@@ -1858,11 +1871,16 @@ function renderStudyDeck() {
 
   if (currentIndex >= queue.length) {
     progressEl.textContent = "";
+    const lessonIds = new Set(lessonQueue.map((c) => getCardId(c)));
+    const extraQueue = buildQueue(deck.cards, progress).filter((c) => !lessonIds.has(getCardId(c)));
     let html =
       '<div class="done"><div class="emoji">&#127881;</div>' +
       "All done for today!<br>" +
       '<small style="color:var(--text-subtle)">Come back tomorrow for more review.</small>';
     html += '<div style="margin-top:14px;"><a class="reset-btn" href="#/decks">Deck selection</a></div>';
+    if (extraQueue.length > 0) {
+      html += '<div style="margin-top:14px;"><button class="reset-btn" id="continue-lesson-btn">Continue</button></div>';
+    }
     if (lessonQueue.length > 0) {
       html += '<div style="margin-top:14px;"><button class="reset-btn" id="replay-lesson-btn">Replay lesson</button></div>';
       if (lessonQueue.length >= 2) {
@@ -1871,6 +1889,8 @@ function renderStudyDeck() {
     }
     html += "</div>";
     app.innerHTML = html;
+    const continueBtn = document.getElementById("continue-lesson-btn");
+    if (continueBtn) continueBtn.addEventListener("click", expandLesson);
     const replayBtn = document.getElementById("replay-lesson-btn");
     if (replayBtn) replayBtn.addEventListener("click", replayLesson);
     const quizBtn = document.getElementById("take-quiz-btn");
