@@ -19,6 +19,7 @@ node scripts/test-hint-safety.js
 3. Pilot stricter anchor-placement cap (reduce max anchor-at-start from 60% to 40% if quality holds).
 4. Diversify remaining "family anchors" — SHE/ZOO/YOU/SHEER still cover 15–20 syllables each; further per-syllable splits need new anchor words or alias support.
 5. Improve anchor grammar gate heuristic to reduce false positives on natural pronoun/adverb subjects before enabling for vocab (125 false positives at current sensitivity).
+6. **Multi-syllable phonetic hints** — Add more than one phonetic anchor to stories when pinyin has multiple syllables (e.g. 电脑 → "Think of DEAN, NOW."). See `docs/pinyin-multi-syllable-hints-investigation.md`.
 
 ---
 
@@ -60,6 +61,21 @@ Strengthen guardrails for future data updates.
 3. Post-lesson "Expand/Continue" option so learners can keep going after the daily queue:
    offer to start the next lesson immediately (same deck), with an optional small cap
    on extra new cards; include a simple replay of finished cards without timers.
+4. **Quiz mode** — see below.
+
+### Quiz Mode
+
+**Implemented.** Quiz mode tests recall with multiple-choice questions, offered
+**after a deck's daily queue is completed** via a "Take a quiz" button (no prompt).
+
+- **Study flow**: Manual Hard/Medium/Easy ratings replaced with a "Next" button.
+  Study exposes cards (tap to reveal) but does not update SRS.
+- **Quiz flow**: After deck completion, a "Take a quiz" button starts a
+  multiple-choice quiz over the lesson cards. All answers are multiple choice.
+- **Performance-based difficulty**: Quiz results drive SRS. Correct → easy;
+  incorrect → hard. No timing; answer is either right or wrong.
+- **Self-rating removed**: No manual difficulty buttons; quiz performance is
+  the sole signal for scheduling.
 
 ### Visual Shape Hints for Hanzi
 

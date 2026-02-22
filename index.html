@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ea580c">
+<meta name="theme-color" content="#ea580c" id="theme-color-meta">
 <meta name="description" content="HSK flash cards with spaced repetition for learning Chinese.">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
@@ -12,9 +12,172 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+:root {
+  --bg-page: #f0f2f5;
+  --bg-card: #fff;
+  --bg-card-hover: rgba(0, 0, 0, 0.08);
+  --text-primary: #333;
+  --text-secondary: #555;
+  --text-muted: #888;
+  --text-subtle: #999;
+  --text-hint: #bbb;
+  --pill-bg: #fff7ed;
+  --pill-border: #fed7aa;
+  --pill-text: #9a3412;
+  --pill-hover-bg: #ffedd5;
+  --pill-hover-border: #ea580c;
+  --accent: #ea580c;
+  --accent-muted: #9a3412;
+  --tidbit-bg: #fef9ef;
+  --tidbit-border: #ea580c;
+  --cultural-text: #3f3f46;
+  --cultural-source: #78716c;
+  --cultural-translation: #57534e;
+  --correct-bg: #dcfce7;
+  --correct-border: #16a34a;
+  --correct-text: #166534;
+  --wrong-bg: #fee2e2;
+  --wrong-border: #dc2626;
+  --wrong-text: #991b1b;
+  --neutral-border: #ddd;
+  --neutral-bg: #f5f5f5;
+  --neutral-bg-hover: #e5e5e5;
+  --neutral-text: #737373;
+  --neutral-text-hover: #525252;
+  --reset-border: #ccc;
+  --reset-text: #999;
+  --reset-hover-border: #999;
+  --reset-hover-text: #666;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 6px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Manual theme override (when user toggles) */
+html[data-theme="light"] {
+  --bg-page: #f0f2f5;
+  --bg-card: #fff;
+  --bg-card-hover: rgba(0, 0, 0, 0.08);
+  --text-primary: #333;
+  --text-secondary: #555;
+  --text-muted: #888;
+  --text-subtle: #999;
+  --text-hint: #bbb;
+  --pill-bg: #fff7ed;
+  --pill-border: #fed7aa;
+  --pill-text: #9a3412;
+  --pill-hover-bg: #ffedd5;
+  --pill-hover-border: #ea580c;
+  --accent: #ea580c;
+  --accent-muted: #9a3412;
+  --tidbit-bg: #fef9ef;
+  --tidbit-border: #ea580c;
+  --cultural-text: #3f3f46;
+  --cultural-source: #78716c;
+  --cultural-translation: #57534e;
+  --correct-bg: #dcfce7;
+  --correct-border: #16a34a;
+  --correct-text: #166534;
+  --wrong-bg: #fee2e2;
+  --wrong-border: #dc2626;
+  --wrong-text: #991b1b;
+  --neutral-border: #ddd;
+  --neutral-bg: #f5f5f5;
+  --neutral-bg-hover: #e5e5e5;
+  --neutral-text: #737373;
+  --neutral-text-hover: #525252;
+  --reset-border: #ccc;
+  --reset-text: #999;
+  --reset-hover-border: #999;
+  --reset-hover-text: #666;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 6px 32px rgba(0, 0, 0, 0.12);
+}
+
+html[data-theme="dark"] {
+  --bg-page: #1a1a1a;
+  --bg-card: #2d2d2d;
+  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --text-primary: #ffffff;
+  --text-secondary: #e4e4e7;
+  --text-muted: #d4d4d8;
+  --text-subtle: #a1a1aa;
+  --text-hint: #a1a1aa;
+  --pill-bg: #27272a;
+  --pill-border: #3f3f46;
+  --pill-text: #e4e4e7;
+  --pill-hover-bg: #3f3f46;
+  --pill-hover-border: #52525b;
+  --accent: #a1a1aa;
+  --accent-muted: #e4e4e7;
+  --tidbit-bg: #27272a;
+  --tidbit-border: #3f3f46;
+  --cultural-text: #ffffff;
+  --cultural-source: #e4e4e7;
+  --cultural-translation: #d4d4d8;
+  --correct-bg: #14532d;
+  --correct-border: #22c55e;
+  --correct-text: #86efac;
+  --wrong-bg: #450a0a;
+  --wrong-border: #ef4444;
+  --wrong-text: #fca5a5;
+  --neutral-border: #3f3f46;
+  --neutral-bg: #27272a;
+  --neutral-bg-hover: #3f3f46;
+  --neutral-text: #e4e4e7;
+  --neutral-text-hover: #ffffff;
+  --reset-border: #52525b;
+  --reset-text: #e4e4e7;
+  --reset-hover-border: #a1a1aa;
+  --reset-hover-text: #ffffff;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 6px 32px rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg-page: #1a1a1a;
+    --bg-card: #2d2d2d;
+    --bg-card-hover: rgba(255, 255, 255, 0.06);
+    --text-primary: #ffffff;
+    --text-secondary: #e4e4e7;
+    --text-muted: #d4d4d8;
+    --text-subtle: #a1a1aa;
+    --text-hint: #a1a1aa;
+    --pill-bg: #27272a;
+    --pill-border: #3f3f46;
+    --pill-text: #e4e4e7;
+    --pill-hover-bg: #3f3f46;
+    --pill-hover-border: #52525b;
+    --accent: #a1a1aa;
+    --accent-muted: #e4e4e7;
+    --tidbit-bg: #27272a;
+    --tidbit-border: #3f3f46;
+    --cultural-text: #ffffff;
+    --cultural-source: #e4e4e7;
+    --cultural-translation: #d4d4d8;
+    --correct-bg: #14532d;
+    --correct-border: #22c55e;
+    --correct-text: #86efac;
+    --wrong-bg: #450a0a;
+    --wrong-border: #ef4444;
+    --wrong-text: #fca5a5;
+    --neutral-border: #3f3f46;
+    --neutral-bg: #27272a;
+    --neutral-bg-hover: #3f3f46;
+    --neutral-text: #e4e4e7;
+    --neutral-text-hover: #ffffff;
+    --reset-border: #52525b;
+    --reset-text: #e4e4e7;
+    --reset-hover-border: #a1a1aa;
+    --reset-hover-text: #ffffff;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    --shadow-hover: 0 6px 32px rgba(0, 0, 0, 0.5);
+  }
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: #f0f2f5;
+  background: var(--bg-page);
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
@@ -22,7 +185,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
-  color: #333;
+  color: var(--text-primary);
   overscroll-behavior-y: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -37,19 +200,19 @@ header {
 header h1 {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #555;
+  color: var(--text-secondary);
 }
 
 .progress {
   font-size: 0.9rem;
-  color: #888;
+  color: var(--text-muted);
   margin-top: 6px;
 }
 
 .card {
-  background: #fff;
+  background: var(--bg-card);
   border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow);
   padding: clamp(28px, 6vw, 48px) clamp(20px, 6vw, 40px);
   width: 100%;
   max-width: 420px;
@@ -66,7 +229,7 @@ header h1 {
 }
 
 .card:hover {
-  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-hover);
 }
 
 .hanzi {
@@ -83,25 +246,25 @@ header h1 {
 
 .pinyin {
   font-size: 1.4rem;
-  color: #666;
+  color: var(--text-muted);
   margin-bottom: 8px;
 }
 
 .radical-side-note {
   font-size: 0.82rem;
-  color: #8a8a8a;
+  color: var(--text-muted);
   margin-bottom: 8px;
 }
 
 .english {
   font-size: 1.2rem;
-  color: #999;
+  color: var(--text-subtle);
   margin-bottom: 8px;
 }
 
 .mnemonic {
   font-size: 0.85rem;
-  color: #777;
+  color: var(--text-muted);
   font-style: italic;
   margin-top: 10px;
   margin-bottom: 16px;
@@ -111,7 +274,7 @@ header h1 {
 
 .hint {
   font-size: 0.8rem;
-  color: #bbb;
+  color: var(--text-hint);
   margin-top: 12px;
 }
 
@@ -125,9 +288,9 @@ header h1 {
 
 .chip-link {
   text-decoration: none;
-  border: 1px solid #fed7aa;
-  color: #9a3412;
-  background: #fff7ed;
+  border: 1px solid var(--pill-border);
+  color: var(--pill-text);
+  background: var(--pill-bg);
   border-radius: 999px;
   padding: 4px 10px;
   font-size: 0.8rem;
@@ -136,8 +299,8 @@ header h1 {
 .cultural-tidbit {
   width: 100%;
   margin-top: 14px;
-  border-left: 4px solid #ea580c;
-  background: #fef9ef;
+  border-left: 4px solid var(--tidbit-border);
+  background: var(--tidbit-bg);
   border-radius: 10px;
   padding: 10px 12px;
   text-align: left;
@@ -146,30 +309,30 @@ header h1 {
 .cultural-quote {
   font-size: 1.1rem;
   line-height: 1.45;
-  color: #3f3f46;
+  color: var(--cultural-text);
 }
 
 .cultural-source {
   margin-top: 8px;
   font-size: 0.78rem;
-  color: #78716c;
+  color: var(--cultural-source);
 }
 
 .cultural-translation {
   margin-top: 8px;
   font-size: 0.88rem;
   line-height: 1.45;
-  color: #57534e;
+  color: var(--cultural-translation);
 }
 
 .cultural-source a {
-  color: #9a3412;
+  color: var(--accent-muted);
 }
 
 .study-page {
-  background: #fff;
+  background: var(--bg-card);
   border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow);
   padding: 20px;
   width: 100%;
   max-width: 420px;
@@ -177,43 +340,43 @@ header h1 {
 
 .study-page h2 {
   font-size: 1.3rem;
-  color: #444;
+  color: var(--text-secondary);
   margin-bottom: 10px;
 }
 
 .study-page p {
-  color: #666;
+  color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.5;
 }
 
 .deck-back-link {
-  margin-top: auto;
-  padding-top: 14px;
+  margin-top: 16px;
   font-size: 0.78rem;
-  color: #a3a3a3;
+  color: var(--text-subtle);
+  text-align: center;
 }
 
 .deck-back-link a {
-  color: #a3a3a3;
+  color: var(--text-subtle);
   text-decoration: none;
 }
 
 .deck-back-link a:hover {
-  color: #888;
+  color: var(--text-muted);
   text-decoration: underline;
 }
 
 
 .speaker-btn {
   background: none;
-  border: 1px solid #ddd;
+  border: 1px solid var(--neutral-border);
   border-radius: 50%;
   width: 44px;
   height: 44px;
   font-size: 1.2rem;
   cursor: pointer;
-  color: #888;
+  color: var(--text-muted);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,38 +385,90 @@ header h1 {
 }
 
 .speaker-btn:hover {
-  background: #f0f0f0;
-  color: #555;
+  background: var(--neutral-bg);
+  color: var(--text-secondary);
 }
 
-.difficulty-buttons {
+.quiz-options {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
+  max-width: 320px;
+  margin-top: 20px;
 }
 
-.difficulty-buttons button {
-  border: none;
-  border-radius: 8px;
-  padding: 12px 16px;
+.quiz-option {
+  padding: 14px 18px;
   font-size: 1rem;
-  font-weight: 600;
+  border: 1px solid var(--pill-border);
+  border-radius: 999px;
+  background: var(--pill-bg);
+  color: var(--pill-text);
   cursor: pointer;
-  color: #fff;
-  transition: opacity 0.15s;
-  min-width: 96px;
-  flex: 1 1 96px;
-  touch-action: manipulation;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
 }
 
-.difficulty-buttons button:hover { opacity: 0.85; }
+.quiz-option:hover {
+  border-color: var(--pill-hover-border);
+  background: var(--pill-hover-bg);
+}
 
-.btn-hard { background: #e74c3c; }
-.btn-medium { background: #f39c12; }
-.btn-easy { background: #27ae60; }
+.quiz-option.correct {
+  border-color: var(--correct-border);
+  background: var(--correct-bg);
+  color: var(--correct-text);
+}
+
+.quiz-option.wrong {
+  border-color: var(--wrong-border);
+  background: var(--wrong-bg);
+  color: var(--wrong-text);
+}
+
+.quiz-option.reveal-correct {
+  border-color: var(--correct-border);
+  background: var(--correct-bg);
+  color: var(--correct-text);
+}
+
+.quiz-btn {
+  font-weight: 600;
+  border: 1px solid var(--pill-border);
+  border-radius: 999px;
+  background: var(--pill-bg);
+  color: var(--pill-text);
+}
+
+.quiz-btn:hover {
+  border-color: var(--pill-hover-border);
+  background: var(--pill-hover-bg);
+  color: var(--pill-text);
+}
+
+.quiz-idk-btn {
+  margin-top: 12px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  border: 1px solid var(--neutral-border);
+  border-radius: 999px;
+  background: var(--neutral-bg);
+  color: var(--neutral-text);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.quiz-idk-btn:hover {
+  border-color: var(--reset-hover-border);
+  background: var(--neutral-bg-hover);
+  color: var(--neutral-text-hover);
+}
+
+.quiz-idk-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
 
 .reset-card-btn {
   margin-top: 12px;
@@ -261,7 +476,7 @@ header h1 {
 
 .done {
   font-size: 1.3rem;
-  color: #888;
+  color: var(--text-muted);
   text-align: center;
   padding: 40px;
 }
@@ -281,15 +496,15 @@ footer {
 
 .reset-btn {
   background: none;
-  border: 1px solid #ccc;
+  border: 1px solid var(--reset-border);
   border-radius: 6px;
   padding: 6px 14px;
   font-size: 0.8rem;
-  color: #999;
+  color: var(--reset-text);
   cursor: pointer;
 }
 
-.reset-btn:hover { border-color: #999; color: #666; }
+.reset-btn:hover { border-color: var(--reset-hover-border); color: var(--reset-hover-text); }
 
 .sentence-hanzi {
   font-size: 32px;
@@ -301,14 +516,14 @@ footer {
 
 .sentence-pinyin {
   font-size: 1.1rem;
-  color: #666;
+  color: var(--text-muted);
   margin-bottom: 8px;
   line-height: 1.5;
 }
 
 .sentence-english {
   font-size: 1.1rem;
-  color: #999;
+  color: var(--text-subtle);
   margin-bottom: 8px;
   line-height: 1.5;
 }
@@ -323,9 +538,9 @@ footer {
 
 .word-gloss-chip {
   text-decoration: none;
-  border: 1px solid #fed7aa;
-  color: #9a3412;
-  background: #fff7ed;
+  border: 1px solid var(--pill-border);
+  color: var(--pill-text);
+  background: var(--pill-bg);
   border-radius: 999px;
   padding: 4px 10px;
   font-size: 0.8rem;
@@ -336,6 +551,36 @@ footer {
 
 .word-gloss-chip .chip-hanzi {
   font-size: 0.95rem;
+}
+
+.theme-toggle {
+  position: fixed;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  left: max(12px, env(safe-area-inset-left));
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.15s, color 0.15s;
+  z-index: 100;
+}
+
+.theme-toggle:hover {
+  opacity: 1;
+  color: var(--text-secondary);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
 }
 
 @media (max-width: 480px) {
@@ -354,6 +599,11 @@ footer {
 </style>
 </head>
 <body>
+
+<button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+  <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+  <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
 
 <header>
   <h1>Chinese Flash Cards</h1>
@@ -1004,6 +1254,27 @@ function rateCard(card, progress, difficulty, deckId) {
   saveDeckProgress(deckId, progress);
 }
 
+function rateCardFromQuizResult(card, progress, correct, deckId) {
+  const difficulty = correct ? "easy" : "hard";
+  rateCard(card, progress, difficulty, deckId);
+}
+
+function pickMultipleChoiceOptions(card, deck, allCards, count = 4) {
+  const isEnglishToHanzi = deck.mode === "english_to_hanzi";
+  const correct = isEnglishToHanzi ? card.hanzi : card.english;
+  const seen = new Set([correct]);
+  const pool = [];
+  for (const c of allCards) {
+    const v = isEnglishToHanzi ? c.hanzi : c.english;
+    if (v && !seen.has(v)) {
+      seen.add(v);
+      pool.push(v);
+    }
+  }
+  const distractors = shuffle(pool).slice(0, count - 1);
+  return shuffle([correct, ...distractors]);
+}
+
 // ---------------------------------------------------------------------------
 // UI
 // ---------------------------------------------------------------------------
@@ -1040,6 +1311,9 @@ let queue = [];
 let lessonQueue = [...queue];
 let currentIndex = 0;
 let stage = 0;
+let quizMode = false;
+let quizQueue = [];
+let quizIndex = 0;
 
 function getActiveDeck() {
   return activeDeckId ? DECKS[activeDeckId] : null;
@@ -1067,12 +1341,29 @@ function startNewLessonFromProgress() {
   queue = deck ? buildQueue(deck.cards, progress) : [];
   lessonQueue = [...queue];
   currentIndex = 0;
+  quizMode = false;
 }
 
 function replayLesson() {
   if (lessonQueue.length === 0) return;
   queue = shuffle(lessonQueue);
   currentIndex = 0;
+  quizMode = false;
+  renderStudyDeck();
+}
+
+function startQuiz() {
+  if (lessonQueue.length < 2) return;
+  quizMode = true;
+  quizQueue = shuffle([...lessonQueue]);
+  quizIndex = 0;
+  renderStudyDeck();
+}
+
+function endQuiz() {
+  quizMode = false;
+  quizQueue = [];
+  quizIndex = 0;
   renderStudyDeck();
 }
 
@@ -1204,17 +1495,144 @@ function getDeckDueCount(deck) {
   return count;
 }
 
+function renderQuizCard() {
+  const deck = getActiveDeck();
+  if (!deck || quizIndex >= quizQueue.length) {
+    endQuiz();
+    return;
+  }
+  const card = quizQueue[quizIndex];
+  const options = pickMultipleChoiceOptions(card, deck, deck.cards);
+  if (options.length < 2) {
+    quizIndex++;
+    renderStudyDeck();
+    return;
+  }
+  const isEnglishToHanzi = deck.mode === "english_to_hanzi";
+  const isSentence = deck.mode === "sentence_to_english";
+  const correctValue = isEnglishToHanzi ? card.hanzi : card.english;
+
+  let revealed = false;
+
+  function applyQuizFeedback(correct, clickedBtn) {
+    for (const b of app.querySelectorAll(".quiz-option")) {
+      b.disabled = true;
+      b.style.pointerEvents = "none";
+    }
+    const idkBtn = document.getElementById("quiz-idk-btn");
+    if (idkBtn) {
+      idkBtn.disabled = true;
+      idkBtn.style.pointerEvents = "none";
+    }
+    if (clickedBtn) clickedBtn.classList.add(correct ? "correct" : "wrong");
+    if (!correct) {
+      for (const b of app.querySelectorAll(".quiz-option")) {
+        if (b.dataset.value === correctValue) b.classList.add("reveal-correct");
+      }
+    }
+    rateCardFromQuizResult(card, progress, correct, deck.id);
+    const quizCard = document.getElementById("quiz-card");
+    if (quizCard) {
+      quizCard.style.width = `${quizCard.offsetWidth}px`;
+      quizCard.style.minWidth = `${quizCard.offsetWidth}px`;
+      quizCard.addEventListener("click", (e) => {
+        if (e.target.closest("button")) return;
+        quizIndex++;
+        renderStudyDeck();
+      });
+    }
+    const hintEl = app.querySelector(".hint");
+    if (hintEl) hintEl.textContent = "Tap for next";
+  }
+
+  function render() {
+    progressEl.textContent = `Quiz · ${quizIndex + 1} of ${quizQueue.length}`;
+    let html = '<div class="card" id="quiz-card">';
+    if (isEnglishToHanzi) {
+      html += `<div class="english">${escapeHtml(card.english)}</div>`;
+      html += `<div class="hint">${revealed ? "Choose the correct character:" : "Tap to reveal options"}</div>`;
+    } else if (isSentence) {
+      html += `<div class="sentence-hanzi">${escapeHtml(card.hanzi)}</div>`;
+      html += `<div class="sentence-pinyin">${escapeHtml(card.pinyin)}</div>`;
+      html += '<button class="speaker-btn" id="quiz-speak-btn" title="Play pronunciation">&#128264;</button>';
+      html += `<div class="hint">${revealed ? "Choose the correct translation:" : "Tap to reveal options"}</div>`;
+    } else {
+      const sideFormFullForm = getRadicalSideFormFullForm(deck, card);
+      const sideFormShift = getRadicalSideFormShift(deck, card);
+      if (sideFormShift) {
+        html += `<div class="hanzi"><span class="radical-side-glyph" style="--side-shift:${escapeHtml(sideFormShift)}">${escapeHtml(card.hanzi)}</span></div>`;
+      } else {
+        html += `<div class="hanzi">${escapeHtml(card.hanzi)}</div>`;
+      }
+      if (sideFormFullForm) {
+        html += `<div class="radical-side-note">side form of ${escapeHtml(sideFormFullForm)}</div>`;
+      }
+      html += `<div class="pinyin">${escapeHtml(card.pinyin)}</div>`;
+      html += '<button class="speaker-btn" id="quiz-speak-btn" title="Play pronunciation">&#128264;</button>';
+      html += `<div class="hint">${revealed ? "Choose the correct meaning:" : "Tap to reveal options"}</div>`;
+    }
+    if (revealed) {
+      html += '<div class="quiz-options">';
+      for (const opt of options) {
+        html += `<button class="quiz-option" data-value="${escapeHtml(String(opt))}">${escapeHtml(String(opt))}</button>`;
+      }
+      html += "</div>";
+      html += '<button class="quiz-idk-btn" id="quiz-idk-btn">I don\'t know</button>';
+    }
+    html += "</div>";
+    html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
+    app.innerHTML = html;
+
+    const quizSpeakBtn = document.getElementById("quiz-speak-btn");
+    if (quizSpeakBtn) {
+      quizSpeakBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        speak(card.hanzi);
+      });
+    }
+
+    if (revealed) {
+      for (const btn of app.querySelectorAll(".quiz-option")) {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const correct = btn.dataset.value === correctValue;
+          applyQuizFeedback(correct, btn);
+        });
+      }
+      const idkBtn = document.getElementById("quiz-idk-btn");
+      if (idkBtn) {
+        idkBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          applyQuizFeedback(false, null);
+        });
+      }
+    } else {
+      document.getElementById("quiz-card").addEventListener("click", (e) => {
+        if (e.target.closest("button")) return;
+        revealed = true;
+        render();
+      });
+    }
+  }
+
+  render();
+}
+
 function renderDeckSelection() {
   progressEl.textContent = "Choose a deck";
   let html = '<section class="study-page">';
 
   for (const deck of Object.values(DECKS)) {
     const dueCount = getDeckDueCount(deck);
-    html += '<div style="margin:10px 0;">';
-    html += `<a class="chip-link" style="display:block;padding:12px 14px;" href="#/study?deck=${deck.id}">`;
+    const canQuiz = deck.cards.length >= 2;
+    html += '<div class="deck-row" style="margin:10px 0;display:flex;align-items:stretch;gap:8px;">';
+    html += `<a class="chip-link" style="flex:1;display:block;padding:12px 14px;" href="#/study?deck=${deck.id}">`;
     html += `<strong>${escapeHtml(deck.title)}</strong><br>`;
     html += `<small>${escapeHtml(deck.subtitle)} · ${dueCount} due/new</small>`;
     html += "</a>";
+    if (canQuiz) {
+      html += `<a class="chip-link quiz-btn" style="flex-shrink:0;display:flex;align-items:center;align-self:center;padding:8px 14px;" href="#/study?deck=${deck.id}&quiz=1">Quiz</a>`;
+    }
     html += "</div>";
   }
 
@@ -1254,44 +1672,32 @@ function renderSentenceCard(deck, card) {
     }
 
     if (stage >= finalStage) {
-      html += '<div class="difficulty-buttons">';
-      html += '<button class="btn-easy" data-difficulty="easy">Easy</button>';
-      html += '<button class="btn-medium" data-difficulty="medium">Medium</button>';
-      html += '<button class="btn-hard" data-difficulty="hard">Hard</button>';
-      html += "</div>";
       html += '<button class="reset-btn reset-card-btn" id="reset-card-btn">Reset card</button>';
     }
 
-    if (stage < finalStage) {
-      const hints = ["tap to reveal pinyin", "tap to reveal translation"];
-      html += `<div class="hint">${hints[stage]}</div>`;
-    }
+    const hints = ["tap to reveal pinyin", "tap to reveal translation", "tap for next"];
+    html += `<div class="hint">${hints[stage]}</div>`;
 
-    html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
     html += "</div>";
+    html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
     app.innerHTML = html;
 
-    if (stage < finalStage) {
-      document.getElementById("flashcard").addEventListener("click", () => {
+    document.getElementById("flashcard").addEventListener("click", (e) => {
+      if (e.target.closest("a, button")) return;
+      if (stage < finalStage) {
         stage++;
         render();
-      });
-    }
+      } else {
+        currentIndex++;
+        renderStudyDeck();
+      }
+    });
 
     const speakBtn = document.getElementById("speak-btn");
     if (speakBtn) {
       speakBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         speak(card.hanzi);
-      });
-    }
-
-    for (const btn of app.querySelectorAll(".difficulty-buttons button")) {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        rateCard(card, progress, btn.dataset.difficulty, deck.id);
-        currentIndex++;
-        renderStudyDeck();
       });
     }
 
@@ -1313,22 +1719,35 @@ function renderStudyDeck() {
     return;
   }
 
+  if (quizMode && quizQueue.length > 0) {
+    renderQuizCard();
+    return;
+  }
+
+  if (quizMode && quizQueue.length === 0) {
+    endQuiz();
+    return;
+  }
+
   if (currentIndex >= queue.length) {
     progressEl.textContent = "";
     let html =
       '<div class="done"><div class="emoji">&#127881;</div>' +
       "All done for today!<br>" +
-      '<small style="color:#aaa">Come back tomorrow for more review.</small>';
+      '<small style="color:var(--text-subtle)">Come back tomorrow for more review.</small>';
     html += '<div style="margin-top:14px;"><a class="reset-btn" href="#/decks">Deck selection</a></div>';
     if (lessonQueue.length > 0) {
       html += '<div style="margin-top:14px;"><button class="reset-btn" id="replay-lesson-btn">Replay lesson</button></div>';
+      if (lessonQueue.length >= 2) {
+        html += '<div style="margin-top:14px;"><button class="reset-btn quiz-btn" id="take-quiz-btn">Tap to take quiz</button></div>';
+      }
     }
     html += "</div>";
     app.innerHTML = html;
     const replayBtn = document.getElementById("replay-lesson-btn");
-    if (replayBtn) {
-      replayBtn.addEventListener("click", replayLesson);
-    }
+    if (replayBtn) replayBtn.addEventListener("click", replayLesson);
+    const quizBtn = document.getElementById("take-quiz-btn");
+    if (quizBtn) quizBtn.addEventListener("click", startQuiz);
     return;
   }
 
@@ -1406,47 +1825,32 @@ function renderStudyDeck() {
     }
 
     if (stage >= finalStage) {
-      html += '<div class="difficulty-buttons">';
-      html += '<button class="btn-easy" data-difficulty="easy">Easy</button>';
-      html += '<button class="btn-medium" data-difficulty="medium">Medium</button>';
-      html += '<button class="btn-hard" data-difficulty="hard">Hard</button>';
-      html += "</div>";
       html += '<button class="reset-btn reset-card-btn" id="reset-card-btn">Reset card</button>';
     }
 
-    if (stage < finalStage) {
-      const hints = ["tap to reveal pinyin", "tap to reveal full answer"];
-      html += `<div class="hint">${hints[stage]}</div>`;
-    }
+    const hints = ["tap to reveal pinyin", "tap to reveal full answer", "tap for next"];
+    html += `<div class="hint">${hints[stage]}</div>`;
 
-    html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
     html += "</div>";
+    html += '<div class="deck-back-link"><a href="#/decks">Back to deck selection</a></div>';
     app.innerHTML = html;
 
-    // Card click advances stage (only before answer is revealed)
-    if (stage < finalStage) {
-      document.getElementById("flashcard").addEventListener("click", () => {
+    document.getElementById("flashcard").addEventListener("click", (e) => {
+      if (e.target.closest("a, button")) return;
+      if (stage < finalStage) {
         stage++;
         render();
-      });
-    }
+      } else {
+        currentIndex++;
+        renderStudyDeck();
+      }
+    });
 
-    // Speaker button plays audio without advancing
     const speakBtn = document.getElementById("speak-btn");
     if (speakBtn) {
       speakBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         speak(card.hanzi);
-      });
-    }
-
-    // Difficulty buttons rate and advance to next card
-    for (const btn of app.querySelectorAll(".difficulty-buttons button")) {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        rateCard(card, progress, btn.dataset.difficulty, deck.id);
-        currentIndex++;
-        renderStudyDeck();
       });
     }
 
@@ -1476,6 +1880,10 @@ function renderRoute() {
     return;
   }
   if (activeDeckId !== requestedDeckId) setActiveDeck(requestedDeckId);
+  if (params.get("quiz") === "1") {
+    startQuiz();
+    history.replaceState(null, "", "#/study");
+  }
   renderStudyDeck();
 }
 
@@ -1495,6 +1903,50 @@ migrateLegacyProgress();
 if (!location.hash) location.hash = "#/decks";
 renderRoute();
 initPWA();
+
+// ---------------------------------------------------------------------------
+// Theme toggle (light / dark)
+// ---------------------------------------------------------------------------
+const THEME_STORAGE_KEY = "chinese-flash-cards-theme";
+const themeToggle = document.getElementById("theme-toggle");
+const themeIconSun = themeToggle.querySelector(".theme-icon-sun");
+const themeIconMoon = themeToggle.querySelector(".theme-icon-moon");
+const themeColorMeta = document.getElementById("theme-color-meta");
+
+function getSystemTheme() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function getEffectiveTheme() {
+  const saved = localStorage.getItem(THEME_STORAGE_KEY);
+  return saved === "light" || saved === "dark" ? saved : getSystemTheme();
+}
+
+function applyTheme() {
+  const theme = getEffectiveTheme();
+  const hasOverride = localStorage.getItem(THEME_STORAGE_KEY);
+  if (hasOverride) document.documentElement.setAttribute("data-theme", theme);
+  else document.documentElement.removeAttribute("data-theme");
+  themeColorMeta.content = theme === "dark" ? "#1a1a1a" : "#ea580c";
+  themeIconSun.style.display = theme === "dark" ? "none" : "block";
+  themeIconMoon.style.display = theme === "dark" ? "block" : "none";
+  themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+  themeToggle.setAttribute("title", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+}
+
+function cycleTheme() {
+  const current = getEffectiveTheme();
+  const next = current === "dark" ? "light" : "dark";
+  localStorage.setItem(THEME_STORAGE_KEY, next);
+  applyTheme();
+}
+
+applyTheme();
+themeToggle.addEventListener("click", cycleTheme);
+
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+  if (!localStorage.getItem(THEME_STORAGE_KEY)) applyTheme();
+});
 </script>
 </body>
 </html>
