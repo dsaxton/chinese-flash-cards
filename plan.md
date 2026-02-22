@@ -238,7 +238,7 @@ Brainstormed ideas to improve how users learn and stay engaged. Ranked by impact
 
 | Idea | Description | Notes |
 |------|-------------|-------|
-| **Post-lesson Expand/Continue** | After "All done for today!", offer to start the next lesson immediately (same deck) with optional cap on extra new cards; include replay of finished cards without timers. | Explored in `docs/lesson-expansion-exploration.md`. |
+| **Post-lesson Expand/Continue** | After "All done for today!", add a "Continue" button to fetch more cards when `buildQueue` returns non-empty. Replay is already tap-through (no ratings). | Explored in `docs/lesson-expansion-exploration.md`. |
 | **Keyboard shortcuts** | 1 = Hard, 2 = Medium, 3 = Easy; Space = advance stage. | Speeds up review for power users. |
 | **Customizable new cards per session** | Currently fixed at 10. Add a simple setting (e.g. 5 / 10 / 15 / 20) or "Quick" vs "Full" session presets. | Lets users match session length to available time. |
 | **First-time user tour** | Brief overlay explaining: deck selection → card stages (tap to reveal pinyin, then answer) → difficulty buttons. | Reduces confusion for new users. |

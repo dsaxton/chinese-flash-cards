@@ -2,24 +2,36 @@
 
 ## Summary
 
-After "All done for today!", offer learners the option to **continue studying** (more cards) or **replay** the finished cards in a lightweight way. This document explores the current behavior, design options, and implementation approach.
+After "All done for today!", offer learners the option to **continue studying** (more cards). This document reflects the **current app state** (post-quiz-mode merge) and updates the recommendation.
 
 ---
 
-## Current Behavior
+## Current Behavior (as of merge with master)
 
-### When the queue is exhausted
+### Study flow
 
-1. `currentIndex >= queue.length` → show "All done for today!"
-2. **Deck selection** link — returns to deck picker
-3. **Replay lesson** button — if `lessonQueue.length > 0`, shuffles `lessonQueue` and restarts the same cards
+- **Tap-through only**: Stage 0 (prompt) → tap → Stage 1 (pinyin + audio) → tap → Stage 2 (full answer) → tap for next.
+- **No difficulty buttons**: Hard/Medium/Easy have been removed from study.
+- **No SRS update during study**: Progress is not modified while tapping through cards.
 
-### Replay lesson today
+### Quiz flow
 
-- `replayLesson()` sets `queue = shuffle(lessonQueue)` and `currentIndex = 0`
-- Same card flow: stage 0 → 1 → 2, difficulty buttons, `rateCard()` updates progress
-- **Effect**: Cards are rated again; SM-2 intervals are overwritten (e.g. Easy→4 days becomes whatever the user rates on replay)
-- No "without timers" — replay is full SRS with difficulty ratings
+- **Trigger**: "Tap to take quiz" button on done screen (when `lessonQueue.length >= 2`).
+- **Mechanism**: Multiple-choice questions over lesson cards. Correct → easy, incorrect → hard.
+- **SRS**: `rateCardFromQuizResult()` updates progress. Quiz is the **only** way progress gets updated.
+
+### Done screen
+
+1. "All done for today!"
+2. **Deck selection** — returns to deck picker
+3. **Replay lesson** — shuffles `lessonQueue`, shows same cards again (same tap-through flow; no ratings)
+4. **Tap to take quiz** — starts quiz over lesson cards (when ≥ 2 cards)
+
+### Replay lesson
+
+- `replayLesson()` sets `queue = shuffle(lessonQueue)`, `currentIndex = 0`
+- Same tap-through flow as study: no difficulty buttons, no `rateCard()`
+- **Effect**: Replay is already "without timers" — pure re-exposure, no progress change
 
 ### buildQueue logic
 
@@ -29,137 +41,76 @@ After "All done for today!", offer learners the option to **continue studying** 
 baseQueue = [...shuffle(due), ...shuffle(unseen).slice(0, NEW_CARDS_PER_SESSION)]
 ```
 
-After a lesson, progress is updated. Cards just seen have future due dates. So a second call to `buildQueue(cards, progress)` yields:
-- **due**: empty (we just rated everything; nothing is due today)
-- **unseen**: remaining new cards (up to 10)
-- **Result**: Up to 10 more new cards, or `[]` if deck is exhausted
+**When does buildQueue return more cards?**
+
+- **After quiz**: Progress updated. Unseen shrinks. `buildQueue` returns up to 10 new unseen cards (or due if any). → **Continue would show different cards.**
+- **After study only (no quiz)**: Progress unchanged. Unseen unchanged. `buildQueue` returns the same pool (due + up to 10 unseen). Often the same cards. → **Continue could repeat or overlap.**
 
 ---
 
-## Proposed: Lesson Expansion
+## Updated Recommendation
 
-### Two distinct actions
+### What’s already covered
 
-| Action | Description | Progress impact |
-|--------|-------------|-----------------|
-| **Continue** | Start a new lesson with more cards (due + new, same cap). | Yes — normal SM-2 |
-| **Replay** (quick) | Flip through finished cards again, no difficulty buttons. | No — no progress change |
+| Need | Status |
+|------|--------|
+| Replay without timers | ✅ Replay is tap-through; no ratings |
+| Quiz for SRS | ✅ Quiz mode updates progress |
 
-### Continue
+### Remaining gap: Continue
 
-- Call `buildQueue(deck.cards, progress)` again
-- If non-empty: `queue = result`, `lessonQueue = [...lessonQueue, ...queue]` (optional: extend lessonQueue so replay includes new cards)
-- If empty: show "No more cards today" or hide the Continue button
-- **New cards cap**: Plan says "optional cap on extra new cards." Options:
-  - Same cap (10) — simplest
-  - Reduced cap (e.g. 5) for "extra" sessions — avoids overload
-  - User preference (future)
+**Continue** = Start another lesson with more cards when `buildQueue` returns a non-empty queue.
 
-### Replay (quick, no timers)
+- **Value**: After quiz, user has updated progress. Continue fetches up to 10 more new cards (or due cards). Lets motivated learners keep going.
+- **When useful**: Right after quiz; or when returning later with due cards.
 
-- Show same cards (`lessonQueue`) in a **review-only** mode:
-  - Tap to advance stages (prompt → pinyin → full answer)
-  - No Hard/Medium/Easy — just "Next" or tap to next card
-  - No `rateCard()` — progress unchanged
-- Purpose: Re-exposure without affecting SRS; good for "let me see these again before I stop"
+### Implementation
 
-### UI on "All done"
+1. **expandLesson()**:
+   ```js
+   function expandLesson() {
+     const deck = getActiveDeck();
+     if (!deck) return;
+     const extraQueue = buildQueue(deck.cards, progress);
+     if (extraQueue.length === 0) return;
+     queue = extraQueue;
+     lessonQueue = [...lessonQueue, ...extraQueue]; // so Replay + Quiz include new cards
+     currentIndex = 0;
+     quizMode = false;
+     renderStudyDeck();
+   }
+   ```
 
-```
-All done for today!
+2. **Done screen**: Add "Continue" button when `buildQueue(deck.cards, progress).length > 0`.
 
-[Deck selection]
+3. **Optional**: Use a smaller cap for Continue (e.g. 5) to avoid overload. Requires `buildQueue(cards, progress, { newCardsCap: 5 })`.
 
-[Continue]  — if buildQueue returns non-empty
-[Replay]    — quick review of finished cards (no ratings)
-```
-
-Or:
-
-```
-[Deck selection]  [Continue]  [Replay]
-```
-
----
-
-## Implementation Sketch
-
-### 1. buildQueue with configurable new-card cap
-
-```js
-function buildQueue(cards, progress, options = {}) {
-  const newCap = options.newCardsCap ?? NEW_CARDS_PER_SESSION;
-  // ...
-  const baseQueue = [...shuffle(due), ...shuffle(unseen).slice(0, newCap)];
-  // ...
-}
-```
-
-- `startNewLessonFromProgress()` uses default cap
-- "Continue" can use `newCardsCap: 5` or same as default
-
-### 2. expandLesson (Continue)
-
-```js
-function expandLesson() {
-  const deck = getActiveDeck();
-  if (!deck) return;
-  const extraQueue = buildQueue(deck.cards, progress, { newCardsCap: 5 });
-  if (extraQueue.length === 0) return; // or show "No more cards"
-  queue = extraQueue;
-  lessonQueue = [...lessonQueue, ...extraQueue]; // optional
-  currentIndex = 0;
-  renderStudyDeck();
-}
-```
-
-### 3. replayLessonQuick (Replay, no timers)
-
-- New mode flag: `replayQuickMode = true`
-- In `renderStudyDeck` / card render:
-  - If `replayQuickMode`: hide difficulty buttons, show "Next" or advance on final tap
-  - On card completion: `currentIndex++`, no `rateCard()`
-  - When `currentIndex >= queue.length`: exit quick mode, show done screen again
-- `replayLesson()` sets `replayQuickMode = true`, `queue = shuffle(lessonQueue)`, `currentIndex = 0`
-
-### 4. Done screen updates
-
-- Add "Continue" button when `buildQueue(deck.cards, progress).length > 0`
-- Change "Replay lesson" to "Replay (quick review)" and wire to `replayLessonQuick`
-- Or keep current Replay as "Replay with ratings" and add "Quick review" as separate button
-
----
-
-## Edge Cases
+### Edge cases
 
 | Case | Behavior |
 |------|----------|
-| All cards seen, none due | `buildQueue` returns `[]` — hide Continue |
-| All cards seen, some due tomorrow | Same — hide Continue (nothing due today) |
-| Deck exhausted (e.g. 50 cards, all seen, all future-due) | Continue hidden |
-| Replay quick, then Continue | Clear `replayQuickMode`, run expandLesson |
-| Sentence deck | Same flow; sentence cards use same queue/rating logic |
+| All cards seen, none due today | `buildQueue` returns `[]` — hide Continue |
+| Study only, no quiz | Continue may return same/overlapping cards — acceptable (user can study again) |
+| After quiz | Continue returns new cards — primary use case |
+| Sentence deck | Same logic; `buildQueue` works for any deck |
 
 ---
 
-## Open Questions
+## Simplified Phases
 
-1. **lessonQueue scope**: Should Continue append new cards to `lessonQueue` so Replay includes them? Or keep Replay limited to the original lesson?
-2. **Continue cap**: Use 5, 10, or make it configurable?
-3. **Replay naming**: "Replay" vs "Quick review" vs "Review again" — which is clearest?
-4. **Sentence deck**: Any special handling? Same logic should work.
+**Phase 1**  
+- Add Continue button when `buildQueue(deck.cards, progress).length > 0`
+- Use same `NEW_CARDS_PER_SESSION` for Continue
+- Append new cards to `lessonQueue` so Replay and Quiz cover the expanded set
+
+**Phase 2 (optional)**  
+- Reduce Continue cap to 5 for "extra" sessions
+- User preference for new cards per session
 
 ---
 
-## Recommended Phases
+## Removed / Obsolete
 
-**Phase 1 (minimal)**  
-- Add Continue button when more cards available  
-- Use same `NEW_CARDS_PER_SESSION` for Continue (no reduced cap yet)
-
-**Phase 2**  
-- Add quick Replay (no ratings, no progress)  
-- Reduce Continue cap to 5 for "extra" sessions (optional)
-
-**Phase 3**  
-- User preference for new cards per session (affects both initial and Continue)
+- **"Replay (quick, no timers)"** — Replay already does this. No separate quick-replay mode needed.
+- **Difficulty buttons on Replay** — Study flow has no difficulty buttons; Replay reuses it.
+- **replayQuickMode flag** — Unnecessary; current Replay is already review-only.
