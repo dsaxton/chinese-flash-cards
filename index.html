@@ -1531,8 +1531,16 @@ function renderQuizCard() {
       }
     }
     rateCardFromQuizResult(card, progress, correct, deck.id);
-    quizIndex++;
-    setTimeout(renderStudyDeck, 1200);
+    const hintEl = app.querySelector(".hint");
+    if (hintEl) hintEl.textContent = "Tap for next";
+    const quizCard = document.getElementById("quiz-card");
+    if (quizCard) {
+      quizCard.addEventListener("click", (e) => {
+        if (e.target.closest("button")) return;
+        quizIndex++;
+        renderStudyDeck();
+      });
+    }
   }
 
   function render() {
