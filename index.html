@@ -1365,7 +1365,7 @@ function renderDeckSelection() {
     html += `<small>${escapeHtml(deck.subtitle)} · ${dueCount} due/new</small>`;
     html += "</a>";
     if (canQuiz) {
-      html += `<a class="chip-link quiz-btn" style="flex-shrink:0;display:flex;align-items:center;align-self:center;padding:8px 14px;" href="#/study?deck=${deck.id}&quiz=1">Quiz</a>`;
+      html += `<a class="chip-link quiz-btn" style="flex-shrink:0;display:flex;align-items:center;align-self:center;padding:8px 14px;" href="#/study?deck=${deck.id}&quiz=1">Tap to take quiz</a>`;
     }
     html += "</div>";
   }
@@ -1473,7 +1473,7 @@ function renderStudyDeck() {
     if (lessonQueue.length > 0) {
       html += '<div style="margin-top:14px;"><button class="reset-btn" id="replay-lesson-btn">Replay lesson</button></div>';
       if (lessonQueue.length >= 2) {
-        html += '<div style="margin-top:14px;"><button class="reset-btn quiz-btn" id="take-quiz-btn">Take a quiz</button></div>';
+        html += '<div style="margin-top:14px;"><button class="reset-btn quiz-btn" id="take-quiz-btn">Tap to take quiz</button></div>';
       }
     }
     html += "</div>";
