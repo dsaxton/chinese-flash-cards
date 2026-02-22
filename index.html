@@ -715,16 +715,7 @@ const VOCAB = DECK_DATA.vocab;
 const HSK1_CARD_COUNT = DECK_DATA.hsk1CardCount;
 const HSK1_VOCAB = VOCAB.slice(0, HSK1_CARD_COUNT);
 const RADICAL_DECK_CARDS = DECK_DATA.radicals;
-const NUMBERS_DECK_CARDS = (() => {
-  const numbers = DECK_DATA.numbers;
-  if (!Array.isArray(numbers) || numbers.length === 0) {
-    throw new Error(
-      "deck-data.json must include a non-empty 'numbers' array. " +
-      "Ensure data/deck-data.json is up to date and deployed."
-    );
-  }
-  return numbers;
-})();
+const NUMBERS_DECK_CARDS = Array.isArray(DECK_DATA.numbers) ? DECK_DATA.numbers : [];
 
 const SENTENCE_DATA = loadJsonSync("./data/sentence-data.json");
 const SENTENCE_CARDS = SENTENCE_DATA.sentences;
@@ -1127,13 +1118,17 @@ const DECKS = {
     cards: HSK1_VOCAB,
     mode: "hanzi_to_english",
   },
-  numbers_to_english: {
-    id: "numbers_to_english",
-    title: "Numbers to English",
-    subtitle: "See Chinese numbers, recall the English meaning.",
-    cards: NUMBERS_DECK_CARDS,
-    mode: "numbers_to_english",
-  },
+  ...(NUMBERS_DECK_CARDS.length > 0
+    ? {
+        numbers_to_english: {
+          id: "numbers_to_english",
+          title: "Numbers to English",
+          subtitle: "See Chinese numbers, recall the English meaning.",
+          cards: NUMBERS_DECK_CARDS,
+          mode: "numbers_to_english",
+        },
+      }
+    : {}),
   english_to_hanzi: {
     id: "english_to_hanzi",
     title: "English to Hanzi",
@@ -1730,11 +1725,15 @@ function renderOnboarding() {
   let html = '<section class="onboarding">';
   html += "<h2>How Chinese Flash Cards works</h2>";
 
+  const deckCount = Object.keys(DECKS).length;
   html += '<div class="onboarding-section">';
-  html += "<h3>Five decks</h3>";
+  html += `<h3>${deckCount} deck${deckCount !== 1 ? "s" : ""}</h3>`;
   html += "<p><strong>Hanzi → English</strong> — See a character, recall the meaning. ";
   html += "<strong>English → Hanzi</strong> — See the meaning, recall the character. ";
   html += "<strong>Radicals</strong> — Learn building blocks (e.g. 木 = wood). ";
+  if (DECKS.numbers_to_english) {
+    html += "<strong>Numbers</strong> — See Chinese numbers, recall the meaning. ";
+  }
   html += "<strong>Sentences</strong> — Practice full phrases with word-by-word glosses.</p>";
   html += "</div>";
 
