@@ -1451,9 +1451,11 @@ function replayLesson() {
 }
 
 function startQuiz() {
-  if (lessonQueue.length < 2) return;
+  const deck = getActiveDeck();
+  const quizSource = lessonQueue.length >= 2 ? lessonQueue : (deck && deck.cards.length >= 2 ? deck.cards : []);
+  if (quizSource.length < 2) return;
   quizMode = true;
-  quizQueue = shuffle([...lessonQueue]);
+  quizQueue = shuffle([...quizSource]);
   quizIndex = 0;
   renderStudyDeck();
 }
@@ -1867,16 +1869,18 @@ function renderStudyDeck() {
 
   if (currentIndex >= queue.length) {
     progressEl.textContent = "";
+    const canReplay = lessonQueue.length > 0;
+    const canQuiz = deck && deck.cards.length >= 2;
     let html =
       '<div class="done"><div class="emoji">&#127881;</div>' +
       "All done for today!<br>" +
       '<small style="color:var(--text-subtle)">Come back tomorrow for more review.</small>';
     html += '<div style="margin-top:14px;"><a class="reset-btn" href="#/decks">Deck selection</a></div>';
-    if (lessonQueue.length > 0) {
+    if (canReplay) {
       html += '<div style="margin-top:14px;"><button class="reset-btn" id="replay-lesson-btn">Replay lesson</button></div>';
-      if (lessonQueue.length >= 2) {
-        html += '<div style="margin-top:14px;"><button class="reset-btn quiz-btn" id="take-quiz-btn">Tap to take quiz</button></div>';
-      }
+    }
+    if (canQuiz) {
+      html += '<div style="margin-top:14px;"><button class="reset-btn quiz-btn" id="take-quiz-btn">Tap to take quiz</button></div>';
     }
     html += "</div>";
     app.innerHTML = html;
