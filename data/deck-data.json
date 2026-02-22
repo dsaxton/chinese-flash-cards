@@ -5630,5 +5630,21 @@
         "components": []
       }
     }
+  ],
+  "numbers": [
+    { "id": "零", "hanzi": "零", "pinyin": "líng", "english": "zero", "mnemonic": "Rain (雨) falls on a command (令) — nothing remains when the storm passes.", "mnemonicData": { "soundAnchor": "Think of LINGER.", "story": "At the empty scale, LINGER and wait — nothing left to weigh.", "components": [] } },
+    { "id": "一", "hanzi": "一", "pinyin": "yī", "english": "one", "mnemonic": "A single horizontal stroke — the simplest number, one.", "mnemonicData": { "soundAnchor": "Think of EEL.", "story": "A slippery EEL escapes the fisherman's net at dawn.", "components": [] } },
+    { "id": "二", "hanzi": "二", "pinyin": "èr", "english": "two", "mnemonic": "Two horizontal lines — simply two.", "mnemonicData": { "soundAnchor": "Think of EAR.", "story": "Each EAR catches the same whisper from across the room.", "components": [] } },
+    { "id": "三", "hanzi": "三", "pinyin": "sān", "english": "three", "mnemonic": "Three horizontal lines — simply three.", "mnemonicData": { "soundAnchor": "Think of SUN.", "story": "The SUN lights the mountain peaks at dawn.", "components": [] } },
+    { "id": "四", "hanzi": "四", "pinyin": "sì", "english": "four", "mnemonic": "A window frame with two legs — four corners.", "mnemonicData": { "soundAnchor": "Think of SEE.", "story": "She stops to SEE birds in every corner of the sky.", "components": [] } },
+    { "id": "五", "hanzi": "五", "pinyin": "wǔ", "english": "five", "mnemonic": "Five strokes crossing — the number five.", "mnemonicData": { "soundAnchor": "Think of WOO.", "story": "At the club, they WOO and coax friends to the dance floor.", "components": [] } },
+    { "id": "六", "hanzi": "六", "pinyin": "liù", "english": "six", "mnemonic": "A roof with legs — six supports.", "mnemonicData": { "soundAnchor": "Think of LEO.", "story": "In the night sky, LEO the lion counts stars.", "components": [] } },
+    { "id": "七", "hanzi": "七", "pinyin": "qī", "english": "seven", "mnemonic": "A cross with a hook — seven.", "mnemonicData": { "soundAnchor": "Think of CHEE.", "story": "CHEE and the group head up the trail.", "components": [] } },
+    { "id": "八", "hanzi": "八", "pinyin": "bā", "english": "eight", "mnemonic": "Two strokes splitting apart — eight can be split into two equal parts.", "mnemonicData": { "soundAnchor": "Think of BAR.", "story": "Patrons crowd the BAR at closing time.", "components": [] } },
+    { "id": "九", "hanzi": "九", "pinyin": "jiǔ", "english": "nine", "mnemonic": "A hook with a curl — nine.", "mnemonicData": { "soundAnchor": "Think of JOE.", "story": "JOE and the team celebrate the winning shot.", "components": [] } },
+    { "id": "十", "hanzi": "十", "pinyin": "shí", "english": "ten", "mnemonic": "A vertical line crossing a horizontal one — ten, the base of the decimal system.", "mnemonicData": { "soundAnchor": "Think of SHE.", "story": "SHE and her sister count before opening their eyes.", "components": [] } },
+    { "id": "百", "hanzi": "百", "pinyin": "bǎi", "english": "hundred", "mnemonic": "一 (one) + 白 (white). One white — a hundred things.", "mnemonicData": { "soundAnchor": "Think of BUY.", "story": "For the party, BUY a bouquet for the celebration.", "components": [] } },
+    { "id": "千", "hanzi": "千", "pinyin": "qiān", "english": "thousand", "mnemonic": "十 (ten) with an extra stroke — ten times a hundred makes a thousand.", "mnemonicData": { "soundAnchor": "Think of CUE.", "story": "A CUE crack echoes through the packed arena.", "components": [] } },
+    { "id": "万", "hanzi": "万", "pinyin": "wàn", "english": "ten thousand", "mnemonic": "A simplified form — ten thousand, a large number.", "mnemonicData": { "soundAnchor": "Think of WAN.", "story": "WAN and the waves of grain stretch to the horizon.", "components": [] } }
   ]
 }
