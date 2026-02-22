@@ -1531,16 +1531,17 @@ function renderQuizCard() {
       }
     }
     rateCardFromQuizResult(card, progress, correct, deck.id);
-    const hintEl = app.querySelector(".hint");
-    if (hintEl) hintEl.textContent = "Tap for next";
     const quizCard = document.getElementById("quiz-card");
     if (quizCard) {
+      quizCard.style.minHeight = `${quizCard.offsetHeight}px`;
       quizCard.addEventListener("click", (e) => {
         if (e.target.closest("button")) return;
         quizIndex++;
         renderStudyDeck();
       });
     }
+    const hintEl = app.querySelector(".hint");
+    if (hintEl) hintEl.textContent = "Tap for next";
   }
 
   function render() {
