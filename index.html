@@ -715,7 +715,16 @@ const VOCAB = DECK_DATA.vocab;
 const HSK1_CARD_COUNT = DECK_DATA.hsk1CardCount;
 const HSK1_VOCAB = VOCAB.slice(0, HSK1_CARD_COUNT);
 const RADICAL_DECK_CARDS = DECK_DATA.radicals;
-const NUMBERS_DECK_CARDS = DECK_DATA.numbers || [];
+const NUMBERS_DECK_CARDS = (() => {
+  const numbers = DECK_DATA.numbers;
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    throw new Error(
+      "deck-data.json must include a non-empty 'numbers' array. " +
+      "Ensure data/deck-data.json is up to date and deployed."
+    );
+  }
+  return numbers;
+})();
 
 const SENTENCE_DATA = loadJsonSync("./data/sentence-data.json");
 const SENTENCE_CARDS = SENTENCE_DATA.sentences;
@@ -1451,11 +1460,9 @@ function replayLesson() {
 }
 
 function startQuiz() {
-  const deck = getActiveDeck();
-  const quizSource = lessonQueue.length >= 2 ? lessonQueue : (deck && deck.cards.length >= 2 ? deck.cards : []);
-  if (quizSource.length < 2) return;
+  if (lessonQueue.length < 2) return;
   quizMode = true;
-  quizQueue = shuffle([...quizSource]);
+  quizQueue = shuffle([...lessonQueue]);
   quizIndex = 0;
   renderStudyDeck();
 }
@@ -1869,18 +1876,16 @@ function renderStudyDeck() {
 
   if (currentIndex >= queue.length) {
     progressEl.textContent = "";
-    const canReplay = lessonQueue.length > 0;
-    const canQuiz = deck && deck.cards.length >= 2;
     let html =
       '<div class="done"><div class="emoji">&#127881;</div>' +
       "All done for today!<br>" +
       '<small style="color:var(--text-subtle)">Come back tomorrow for more review.</small>';
     html += '<div style="margin-top:14px;"><a class="reset-btn" href="#/decks">Deck selection</a></div>';
-    if (canReplay) {
+    if (lessonQueue.length > 0) {
       html += '<div style="margin-top:14px;"><button class="reset-btn" id="replay-lesson-btn">Replay lesson</button></div>';
-    }
-    if (canQuiz) {
-      html += '<div style="margin-top:14px;"><button class="reset-btn quiz-btn" id="take-quiz-btn">Tap to take quiz</button></div>';
+      if (lessonQueue.length >= 2) {
+        html += '<div style="margin-top:14px;"><button class="reset-btn quiz-btn" id="take-quiz-btn">Tap to take quiz</button></div>';
+      }
     }
     html += "</div>";
     app.innerHTML = html;
