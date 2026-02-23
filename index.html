@@ -3,11 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f5f5f5" id="theme-color-meta">
+<meta name="theme-color" content="#f5f5f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
 <meta name="description" content="HSK flash cards with spaced repetition for learning Chinese.">
 <link rel="manifest" href="./manifest.webmanifest">
-<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png">
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+<link rel="icon" href="./icons/icon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png" media="(prefers-color-scheme: light)">
+<link rel="apple-touch-icon" href="./icons/icon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
 <title>Chinese Flash Cards — Five Decks</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -2076,7 +2079,6 @@ const THEME_STORAGE_KEY = "chinese-flash-cards-theme";
 const themeToggle = document.getElementById("theme-toggle");
 const themeIconSun = themeToggle.querySelector(".theme-icon-sun");
 const themeIconMoon = themeToggle.querySelector(".theme-icon-moon");
-const themeColorMeta = document.getElementById("theme-color-meta");
 
 function getSystemTheme() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -2092,7 +2094,22 @@ function applyTheme() {
   const hasOverride = localStorage.getItem(THEME_STORAGE_KEY);
   if (hasOverride) document.documentElement.setAttribute("data-theme", theme);
   else document.documentElement.removeAttribute("data-theme");
-  themeColorMeta.content = theme === "dark" ? "#1a1a1a" : "#f5f5f5";
+  // When user has explicit override, add a theme-color meta that takes precedence over media-based ones
+  let overrideMeta = document.getElementById("theme-color-override");
+  const color = theme === "dark" ? "#1a1a1a" : "#f5f5f5";
+  if (hasOverride) {
+    if (!overrideMeta) {
+      overrideMeta = document.createElement("meta");
+      overrideMeta.name = "theme-color";
+      overrideMeta.id = "theme-color-override";
+      document.head.appendChild(overrideMeta);
+    }
+    overrideMeta.content = color;
+  } else if (overrideMeta) {
+    overrideMeta.remove();
+  }
+  // Sync theme to cookie so service worker can serve dark-mode manifest for splash screen
+  document.cookie = `chinese-flash-cards-theme=${theme};path=/;max-age=31536000`;
   themeIconSun.style.display = theme === "dark" ? "none" : "block";
   themeIconMoon.style.display = theme === "dark" ? "block" : "none";
   themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
