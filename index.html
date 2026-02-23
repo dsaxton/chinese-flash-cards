@@ -1473,12 +1473,19 @@ function renderQuizFinishScreen() {
   const deck = getActiveDeck();
   progressEl.textContent = "";
   let html =
-    '<div class="done"><div class="emoji">&#127881;</div>' +
+    '<div class="done" id="quiz-finish-screen"><div class="emoji">&#127881;</div>' +
     "Quiz finished!<br>" +
-    '<small style="color:var(--text-subtle)">Great job completing the quiz.</small>';
+    '<small style="color:var(--text-subtle)">Tap anywhere to return to deck selection.</small>';
   html += '<div style="margin-top:14px;"><a class="reset-btn" href="#/decks">Back to deck selection</a></div>';
   html += "</div>";
   app.innerHTML = html;
+  const quizFinishScreen = document.getElementById("quiz-finish-screen");
+  if (quizFinishScreen) {
+    quizFinishScreen.style.cursor = "pointer";
+    quizFinishScreen.addEventListener("click", () => {
+      location.hash = "#/decks";
+    });
+  }
 }
 
 function parseRoute() {
