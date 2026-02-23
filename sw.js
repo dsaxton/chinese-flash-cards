@@ -1,4 +1,4 @@
-const CACHE_NAME = "chinese-flash-cards-v2";
+const CACHE_NAME = "chinese-flash-cards-v1";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -41,21 +41,6 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   const isDocument = request.mode === "navigate" || request.destination === "document";
-
-  if (url.pathname.endsWith("manifest.webmanifest")) {
-    const cookie = request.headers.get("Cookie") || "";
-    const prefersDark = /chinese-flash-cards-theme=dark/.test(cookie);
-    event.respondWith(
-      caches.match(request).then((hit) => hit || fetch(request)).then((r) => {
-        if (!r?.ok) return r;
-        return r.clone().json().then((m) => {
-          if (prefersDark) m.background_color = m.theme_color = "#1a1a1a";
-          return new Response(JSON.stringify(m), { headers: { "Content-Type": "application/manifest+json" } });
-        });
-      })
-    );
-    return;
-  }
 
   if (isDocument) {
     event.respondWith(
