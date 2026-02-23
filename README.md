@@ -179,7 +179,7 @@ Short quotes from classical Chinese sources are selected via English-meaning tok
 
 ## Pre-commit Hooks
 
-Pre-commit hooks run the test suite automatically before every commit (for both humans and agents). Failed tests abort the commit.
+Pre-commit hooks run the test suite automatically before every commit. Failed tests abort the commit.
 
 Install once:
 
@@ -187,8 +187,6 @@ Install once:
 ./scripts/install-hooks.sh
 # or: just install-hooks
 ```
-
-With [pre-commit](https://pre-commit.com/) installed (`pip install pre-commit`), the script uses `.pre-commit-config.yaml`. Otherwise it installs a fallback hook that runs `just test`.
 
 ## Tests
 
