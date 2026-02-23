@@ -1,4 +1,4 @@
-const CACHE_NAME = "chinese-flash-cards-v2";
+const CACHE_NAME = "chinese-flash-cards-v1";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -7,9 +7,7 @@ const APP_SHELL = [
   "./icons/icon-512.png",
   "./icons/apple-touch-icon-180.png",
   "./icons/icon.svg",
-  "./icons/icon-dark.svg",
-  "./icons/icon-maskable.svg",
-  "./icons/icon-maskable-dark.svg"
+  "./icons/icon-maskable.svg"
 ];
 
 self.addEventListener("install", (event) => {
@@ -43,28 +41,6 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   const isDocument = request.mode === "navigate" || request.destination === "document";
-
-  // Serve manifest with dark-mode colors when user prefers dark (for PWA splash screen)
-  if (url.pathname.endsWith("/manifest.webmanifest") || url.pathname.endsWith("manifest.webmanifest")) {
-    const cookie = request.headers.get("Cookie") || "";
-    const themeMatch = cookie.match(/chinese-flash-cards-theme=(\w+)/);
-    const prefersDark = themeMatch ? themeMatch[1] === "dark" : false;
-    event.respondWith(
-      (caches.match(request).then((hit) => hit || fetch(request))).then((response) => {
-        if (!response || !response.ok) return response;
-        return response.clone().json().then((manifest) => {
-          if (prefersDark) {
-            manifest.background_color = "#1a1a1a";
-            manifest.theme_color = "#1a1a1a";
-          }
-          return new Response(JSON.stringify(manifest), {
-            headers: { "Content-Type": "application/manifest+json" },
-          });
-        });
-      })
-    );
-    return;
-  }
 
   if (isDocument) {
     event.respondWith(
