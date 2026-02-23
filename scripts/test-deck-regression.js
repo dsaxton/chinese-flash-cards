@@ -231,12 +231,12 @@ function testQuizLessonNavigation(source) {
 
 function testTakeQuizButtonOnDoneScreen(source) {
   assert(
-    /take-quiz-btn[\s\S]*href="#\/study\?deck=\$\{deck\.id\}&quiz=1"/.test(source),
-    'Tap to take quiz on All done screen must be a link to #/study?deck=...&quiz=1 so navigation triggers quiz'
+    /done-screen[\s\S]*addEventListener\("click"[\s\S]*e\.target\.closest\("a, button"\)[\s\S]*startQuiz\(\)/.test(source),
+    "All done screen must be tappable like flashcard: tap (excluding a/button) calls startQuiz"
   );
   assert(
-    !/quizBtn\.addEventListener\("click", startQuiz\)/.test(source),
-    "Take-quiz should use link navigation, not click handler (link ensures proper route handling)"
+    /canQuiz[\s\S]*Tap to take quiz/.test(source),
+    "When quiz available, show hint 'Tap to take quiz' like tap-for-next pattern"
   );
 }
 

@@ -1883,19 +1883,25 @@ function renderStudyDeck() {
 
   if (currentIndex >= queue.length) {
     progressEl.textContent = "";
+    const canQuiz = lessonQueue.length >= 2;
     let html =
-      '<div class="done"><div class="emoji">&#127881;</div>' +
+      '<div class="done" id="done-screen"><div class="emoji">&#127881;</div>' +
       "All done for today!<br>" +
       '<small style="color:var(--text-subtle)">Come back tomorrow for more review.</small>';
+    if (canQuiz) html += '<div class="hint">Tap to take quiz</div>';
     html += '<div style="margin-top:14px;"><a class="reset-btn" href="#/decks">Deck selection</a></div>';
     if (lessonQueue.length > 0) {
       html += '<div style="margin-top:14px;"><button class="reset-btn" id="replay-lesson-btn">Replay lesson</button></div>';
-      if (lessonQueue.length >= 2) {
-        html += `<div style="margin-top:14px;"><a class="reset-btn quiz-btn" id="take-quiz-btn" href="#/study?deck=${deck.id}&quiz=1">Tap to take quiz</a></div>`;
-      }
     }
     html += "</div>";
     app.innerHTML = html;
+    const doneScreen = document.getElementById("done-screen");
+    if (doneScreen && canQuiz) {
+      doneScreen.addEventListener("click", (e) => {
+        if (e.target.closest("a, button")) return;
+        startQuiz();
+      });
+    }
     const replayBtn = document.getElementById("replay-lesson-btn");
     if (replayBtn) replayBtn.addEventListener("click", replayLesson);
     return;
