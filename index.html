@@ -2108,6 +2108,7 @@ function applyTheme() {
   } else if (overrideMeta) {
     overrideMeta.remove();
   }
+  document.cookie = `chinese-flash-cards-theme=${theme};path=/;max-age=31536000`;
   themeIconSun.style.display = theme === "dark" ? "none" : "block";
   themeIconMoon.style.display = theme === "dark" ? "block" : "none";
   themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
