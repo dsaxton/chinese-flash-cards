@@ -1,7 +1,4 @@
----
-description: Pre-commit hook setup for agents
-alwaysApply: true
----
+# Agent Instructions
 
 ## Pre-commit hooks
 
