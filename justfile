@@ -1,6 +1,9 @@
 serve port="8787":
     bash scripts/dev-server.sh {{port}}
 
+install-hooks:
+    ./scripts/install-hooks.sh
+
 test: test-deck test-hints test-mnemonics test-phonetic test-tidbit-data test-tidbit-selection test-audio
 
 test-deck:

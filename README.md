@@ -177,6 +177,19 @@ See `docs/mnemonic-curation.md` for quality rules and data format details.
 
 Short quotes from classical Chinese sources are selected via English-meaning token overlap and displayed on full-reveal cards across all decks when a strong match exists.
 
+## Pre-commit Hooks
+
+Pre-commit hooks run the test suite automatically before every commit (for both humans and agents). Failed tests abort the commit.
+
+Install once:
+
+```bash
+./scripts/install-hooks.sh
+# or: just install-hooks
+```
+
+With [pre-commit](https://pre-commit.com/) installed (`pip install pre-commit`), the script uses `.pre-commit-config.yaml`. Otherwise it installs a fallback hook that runs `just test`.
+
 ## Tests
 
 Run all regression checks:
