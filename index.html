@@ -1891,15 +1891,13 @@ function renderStudyDeck() {
     if (lessonQueue.length > 0) {
       html += '<div style="margin-top:14px;"><button class="reset-btn" id="replay-lesson-btn">Replay lesson</button></div>';
       if (lessonQueue.length >= 2) {
-        html += '<div style="margin-top:14px;"><button class="reset-btn quiz-btn" id="take-quiz-btn">Tap to take quiz</button></div>';
+        html += `<div style="margin-top:14px;"><a class="reset-btn quiz-btn" id="take-quiz-btn" href="#/study?deck=${deck.id}&quiz=1">Tap to take quiz</a></div>`;
       }
     }
     html += "</div>";
     app.innerHTML = html;
     const replayBtn = document.getElementById("replay-lesson-btn");
     if (replayBtn) replayBtn.addEventListener("click", replayLesson);
-    const quizBtn = document.getElementById("take-quiz-btn");
-    if (quizBtn) quizBtn.addEventListener("click", startQuiz);
     return;
   }
 

@@ -229,6 +229,17 @@ function testQuizLessonNavigation(source) {
   );
 }
 
+function testTakeQuizButtonOnDoneScreen(source) {
+  assert(
+    /take-quiz-btn[\s\S]*href="#\/study\?deck=\$\{deck\.id\}&quiz=1"/.test(source),
+    'Tap to take quiz on All done screen must be a link to #/study?deck=...&quiz=1 so navigation triggers quiz'
+  );
+  assert(
+    !/quizBtn\.addEventListener\("click", startQuiz\)/.test(source),
+    "Take-quiz should use link navigation, not click handler (link ensures proper route handling)"
+  );
+}
+
 function main() {
   const root = path.resolve(__dirname, "..");
   const source = readIndexHtml(root);
@@ -246,6 +257,7 @@ function main() {
   testAudioFallbackIsSingleShot(source);
   testRadicalsUsePinyinAudio(source);
   testQuizLessonNavigation(source);
+  testTakeQuizButtonOnDoneScreen(source);
 
   console.log("deck refactor regression test passed");
 }
