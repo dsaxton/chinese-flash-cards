@@ -240,6 +240,13 @@ function testTakeQuizButtonOnDoneScreen(source) {
   );
 }
 
+function testQuizFinishScreenNavigation(source) {
+  assert(
+    /quiz-finish-screen[\s\S]*addEventListener\("click"[\s\S]*location\.hash = "#\/decks"/.test(source),
+    "Quiz finish screen must be tappable: tap anywhere navigates to deck selection"
+  );
+}
+
 function main() {
   const root = path.resolve(__dirname, "..");
   const source = readIndexHtml(root);
@@ -258,6 +265,7 @@ function main() {
   testRadicalsUsePinyinAudio(source);
   testQuizLessonNavigation(source);
   testTakeQuizButtonOnDoneScreen(source);
+  testQuizFinishScreenNavigation(source);
 
   console.log("deck refactor regression test passed");
 }
