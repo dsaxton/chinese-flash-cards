@@ -222,6 +222,13 @@ function testRadicalsUsePinyinAudio(source) {
   assert(/speaker-btn[\s\S]*speak\(card\.hanzi\);/.test(source), "Speaker buttons should invoke speak(card.hanzi)");
 }
 
+function testQuizLessonNavigation(source) {
+  assert(
+    /params\.get\("quiz"\) === "1"[\s\S]*startQuiz\(\)[\s\S]*\} else \{[\s\S]*startNewLessonFromProgress\(\)/.test(source),
+    "Tapping lesson (without quiz=1) must call startNewLessonFromProgress so user sees lesson, not unfinished quiz"
+  );
+}
+
 function main() {
   const root = path.resolve(__dirname, "..");
   const source = readIndexHtml(root);
@@ -238,6 +245,7 @@ function main() {
   testStructuredMnemonicPipeline(source);
   testAudioFallbackIsSingleShot(source);
   testRadicalsUsePinyinAudio(source);
+  testQuizLessonNavigation(source);
 
   console.log("deck refactor regression test passed");
 }
