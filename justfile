@@ -4,7 +4,10 @@ serve port="8787":
 install-hooks:
     ./scripts/install-hooks.sh
 
-test: test-deck test-hints test-mnemonics test-phonetic test-tidbit-data test-tidbit-selection test-audio
+test: validate-json test-deck test-hints test-mnemonics test-phonetic test-tidbit-data test-tidbit-selection test-audio
+
+validate-json:
+    node scripts/validate-json.js
 
 test-deck:
     node scripts/test-deck-regression.js
