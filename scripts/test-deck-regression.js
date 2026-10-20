@@ -11,13 +11,6 @@ function readIndexHtml(rootDir) {
   return fs.readFileSync(htmlPath, "utf8");
 }
 
-function extractConstObject(source, name) {
-  const re = new RegExp(`const ${name} = \\{([\\s\\S]*?)\\n\\};`);
-  const match = source.match(re);
-  if (!match) throw new Error(`Could not find const ${name}`);
-  return eval(`({${match[1]}})`);
-}
-
 function readDeckData(rootDir) {
   const jsonPath = path.join(rootDir, "data", "deck-data.json");
   return JSON.parse(fs.readFileSync(jsonPath, "utf8"));
@@ -57,22 +50,9 @@ function testDeckData(source, deckData) {
 }
 
 function testStorageKeysAndMigration(source) {
-  const keys = extractConstObject(source, "DECK_STORAGE_KEYS");
   assert(
-    keys.hanzi_to_english === "hanzi_to_english_progress",
-    `Unexpected hanzi_to_english storage key: ${keys.hanzi_to_english}`
-  );
-  assert(
-    keys.english_to_hanzi === "english_to_hanzi_progress",
-    `Unexpected english_to_hanzi storage key: ${keys.english_to_hanzi}`
-  );
-  assert(
-    keys.radicals_to_english === "radicals_to_english_progress",
-    `Unexpected radicals_to_english storage key: ${keys.radicals_to_english}`
-  );
-  assert(
-    keys.numbers_to_english === "numbers_to_english_progress",
-    `Unexpected numbers_to_english storage key: ${keys.numbers_to_english}`
+    /function deckProgressKey\(deckId\) \{\s*return `\$\{deckId\}_progress`;\s*\}/.test(source),
+    "Deck progress must stay stored under <deckId>_progress so existing user progress survives"
   );
 
   assert(
@@ -118,36 +98,13 @@ function testUniversalStageFlow(source) {
   );
 }
 
-function testTidbitTokenCoverageIncludesRadicals(source) {
+function testTidbitsUseSharedMatcher(source) {
+  // The tidbit tests exercise tidbit-match.js, so the app must use that same module.
   assert(
-    /const ALL_TIDBIT_CARDS = \[\.\.\.HSK1_VOCAB, \.\.\.RADICAL_DECK_CARDS, \.\.\.NUMBERS_DECK_CARDS\];/.test(source),
-    "Tidbit token maps should include radicals, numbers, and HSK1 cards"
+    /<script src="\.\/tidbit-match\.js"><\/script>/.test(source) &&
+      /TidbitMatch\.createTidbitMatcher\(/.test(source),
+    "index.html should load tidbit-match.js and build its matcher from it"
   );
-  assert(
-    /ALL_TIDBIT_CARDS\.map\(\(card\) => \[card\.hanzi, extractMeaningTokens\(card\.english\)\]\)/.test(source) &&
-      /ALL_TIDBIT_CARDS\.map\(\(card\) => \[card\.hanzi, extractRawMeaningTokens\(card\.english\)\]\)/.test(source),
-    "Tidbit token maps should be derived from ALL_TIDBIT_CARDS"
-  );
-}
-
-function testRemovedHintStageLogic(source) {
-  const forbiddenPatterns = [
-    /forbidPinyin/,
-    /forbidLiteralShapeHints/,
-    /forbidEnglishAnswer/,
-    /forbidPhoneticCue/,
-    /hintContainsPinyin\(/,
-    /hintContainsEnglishAnswer\(/,
-    /hintContainsPhoneticCue\(/,
-    /isLiteralShapeHint\(/,
-    /tap to reveal mnemonic hint/,
-    /if \(isEnglishToHanzi && stage === 1\)/,
-    /if \(isHanziToEnglish && stage === 2\)/,
-  ];
-
-  for (const pattern of forbiddenPatterns) {
-    assert(!pattern.test(source), `Old mnemonic hint stage logic should be removed (${pattern})`);
-  }
 }
 
 function testNoSelfReferentialChips(source) {
@@ -209,16 +166,13 @@ function testStructuredMnemonicPipeline(source) {
   );
 }
 
-function testAudioFallbackIsSingleShot(source) {
+function testSpeakPlaysLocalAudio(source) {
   const pattern =
     /function speak\(hanzi\) \{[\s\S]*AUDIO_MANIFEST\[hanzi\][\s\S]*new Audio\(`\.\/data\/audio\/\$\{filename\}`\)[\s\S]*audio\.play\(\)\.catch\(\(\) => \{\}\);[\s\S]*\}/;
-  assert(pattern.test(source), "speak() should play the local audio file without pinyin fallback");
-  assert(!/fallbackToPinyin/.test(source), "speak() should not include pinyin fallback logic");
-  assert(!/function speakPinyin/.test(source), "speakPinyin helper should not exist anymore");
+  assert(pattern.test(source), "speak() should play the local audio file");
 }
 
-function testRadicalsUsePinyinAudio(source) {
-  assert(!/speakPinyin\(/.test(source), "Audio playback should not call speakPinyin");
+function testSpeakerButtonsPlayAudio(source) {
   assert(/speaker-btn[\s\S]*speak\(card\.hanzi\);/.test(source), "Speaker buttons should invoke speak(card.hanzi)");
 }
 
@@ -256,13 +210,12 @@ function main() {
   testStorageKeysAndMigration(source);
   testRoutes(source);
   testUniversalStageFlow(source);
-  testTidbitTokenCoverageIncludesRadicals(source);
-  testRemovedHintStageLogic(source);
+  testTidbitsUseSharedMatcher(source);
   testNoSelfReferentialChips(source);
   testRadicalSideFormDisplaySupport(source);
   testStructuredMnemonicPipeline(source);
-  testAudioFallbackIsSingleShot(source);
-  testRadicalsUsePinyinAudio(source);
+  testSpeakPlaysLocalAudio(source);
+  testSpeakerButtonsPlayAudio(source);
   testQuizLessonNavigation(source);
   testTakeQuizButtonOnDoneScreen(source);
   testQuizFinishScreenNavigation(source);

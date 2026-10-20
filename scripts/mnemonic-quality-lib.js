@@ -340,6 +340,8 @@ function collectDeckCards(rootDir = process.cwd()) {
     hsk1Cards: vocab.slice(0, hsk1Count),
     radicals,
     numbers,
+    // Every card section in deck-data.json, so a new deck needs no script changes.
+    allCards: Object.values(deck).filter(Array.isArray).flat(),
   };
 }
 

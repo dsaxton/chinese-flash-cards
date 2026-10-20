@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require("fs");
 const path = require("path");
+const { collectDeckCards } = require("./mnemonic-quality-lib");
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -15,26 +16,19 @@ function hexFilename(hanzi) {
   return Buffer.from(hanzi, "utf8").toString("hex") + ".mp3";
 }
 
-function collectHanzi(deckData, sentenceData) {
-  const entries = new Set();
-
-  for (const card of deckData.vocab || []) entries.add(card.hanzi);
-  for (const card of deckData.radicals || []) entries.add(card.hanzi);
-  for (const card of deckData.numbers || []) entries.add(card.hanzi);
-  for (const card of sentenceData.sentences || []) entries.add(card.hanzi);
-
-  return Array.from(entries);
+function collectHanzi(root, sentenceData) {
+  const cards = [...collectDeckCards(root).allCards, ...(sentenceData.sentences || [])];
+  return Array.from(new Set(cards.map((card) => card.hanzi)));
 }
 
 function main() {
   const root = path.resolve(__dirname, "..");
   const audioDir = path.join(root, "data", "audio");
 
-  const deckData = readJson(root, "data/deck-data.json");
   const sentenceData = readJson(root, "data/sentence-data.json");
   const manifest = readJson(root, "data/audio/manifest.json");
 
-  const expectedHanzi = collectHanzi(deckData, sentenceData);
+  const expectedHanzi = collectHanzi(root, sentenceData);
   const manifestHanzi = Object.keys(manifest);
 
   const missingFromManifest = expectedHanzi.filter((h) => !manifest[h]);

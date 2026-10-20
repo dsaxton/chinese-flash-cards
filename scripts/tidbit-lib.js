@@ -1,166 +1,37 @@
 #!/usr/bin/env node
 const fs = require("fs");
 const path = require("path");
-
-const RAW_STOPWORDS = new Set([
-  "a", "an", "the", "to", "of", "and", "or", "is", "are", "be", "in", "on", "at", "for", "with",
-  "from", "it", "its", "this", "that", "these", "those",
-]);
-const NOISY_MEANING_TOKENS = new Set([
-  "side", "form", "particle", "measure", "general",
-]);
-
-const GENERIC_CANONICAL_TOKENS = new Set([
-  "exist", "continuation", "quantity",
-]);
-
-function readIndexHtml(rootDir) {
-  const htmlPath = path.join(rootDir, "index.html");
-  return fs.readFileSync(htmlPath, "utf8");
-}
+const { createTidbitMatcher } = require("../tidbit-match");
+const { collectDeckCards } = require("./mnemonic-quality-lib");
 
 function loadModel(rootDir) {
-  const source = readIndexHtml(rootDir);
-  const deckData = JSON.parse(fs.readFileSync(path.join(rootDir, "data", "deck-data.json"), "utf8"));
+  const { vocab, allCards } = collectDeckCards(rootDir);
   const tidbitData = JSON.parse(fs.readFileSync(path.join(rootDir, "data", "tidbit-data.json"), "utf8"));
-  const vocab = Array.isArray(deckData.vocab) ? deckData.vocab : [];
-  const radicals = Array.isArray(deckData.radicals) ? deckData.radicals : [];
-  const numbers = Array.isArray(deckData.numbers) ? deckData.numbers : [];
   const tidbits = Array.isArray(tidbitData.classicalTidbitsRaw) ? tidbitData.classicalTidbitsRaw : [];
-  const synonyms = { ...(tidbitData.tokenSynonyms || {}) };
-  const assignMatch = source.match(/Object\.assign\(TOKEN_SYNONYMS, \{([\s\S]*?)\n\}\);/);
-  if (assignMatch) Object.assign(synonyms, eval(`({${assignMatch[1]}})`));
   const maxQuoteChars = Number(tidbitData.tidbitMaxQuoteChars || 24);
-
-  function normalizeEnglishText(text) {
-    return String(text || "")
-      .toLowerCase()
-      .replace(/[^a-z0-9\s]/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
-
-  function canonicalToken(token) {
-    let t = token;
-    if (synonyms[t]) t = synonyms[t];
-    if (t.endsWith("ing") && t.length > 5) t = t.slice(0, -3);
-    else if (t.endsWith("ed") && t.length > 4) t = t.slice(0, -2);
-    else if (t.endsWith("s") && t.length > 4) t = t.slice(0, -1);
-    if (synonyms[t]) t = synonyms[t];
-    return t;
-  }
-
-  function extractRawMeaningTokens(text) {
-    const normalized = normalizeEnglishText(text);
-    const tokens = new Set();
-    for (const raw of normalized.split(" ")) {
-      const tok = raw.trim();
-      if (!tok || tok.length < 2) continue;
-      if (RAW_STOPWORDS.has(tok)) continue;
-      if (NOISY_MEANING_TOKENS.has(tok)) continue;
-      tokens.add(tok);
-    }
-    return tokens;
-  }
-
-  function extractMeaningTokens(text) {
-    const normalized = normalizeEnglishText(text);
-    const tokens = new Set();
-    for (const raw of normalized.split(" ")) {
-      if (NOISY_MEANING_TOKENS.has(raw.trim())) continue;
-      const tok = canonicalToken(raw.trim());
-      if (!tok || tok.length < 2) continue;
-      tokens.add(tok);
-    }
-    return tokens;
-  }
-
-  function overlapCount(a, b) {
-    let count = 0;
-    for (const token of a) {
-      if (b.has(token)) count++;
-    }
-    return count;
-  }
-
-  const cards = [...vocab, ...radicals, ...numbers];
-  const cardMeaningTokens = new Map(
-    cards.map((card) => [card.hanzi, extractMeaningTokens(card.english)])
-  );
-  const cardRawMeaningTokens = new Map(
-    cards.map((card) => [card.hanzi, extractRawMeaningTokens(card.english)])
-  );
-  const tidbitMeta = tidbits.map((tidbit, index) => ({
-    tidbit,
-    index,
-    tokens: extractMeaningTokens((tidbit.relevance || []).join(" ")),
-    rawTokens: extractRawMeaningTokens((tidbit.relevance || []).join(" ")),
-    quoteLen: String(tidbit.quote || "").replace(/\s+/g, "").length,
-  }));
+  const matcher = createTidbitMatcher({
+    tidbits,
+    synonyms: tidbitData.tokenSynonyms || {},
+    maxQuoteChars,
+  });
 
   return {
-    source,
     vocab,
-    radicals,
-    cards,
+    cards: allCards,
     tidbits,
     maxQuoteChars,
-    cardMeaningTokens,
-    cardRawMeaningTokens,
-    tidbitMeta,
-    overlapCount,
+    matcher,
   };
 }
 
 function getCandidatesForCard(model, card) {
-  const cardTokens = model.cardMeaningTokens.get(card.hanzi) || new Set();
-  const cardRawTokens = model.cardRawMeaningTokens.get(card.hanzi) || new Set();
-  if (cardTokens.size === 0 && cardRawTokens.size === 0) {
-    return { rawMatches: 0, candidates: [], scored: [] };
-  }
-
-  const scored = [];
-  for (const meta of model.tidbitMeta) {
-    if (meta.quoteLen > model.maxQuoteChars) continue;
-    const canonicalScore = model.overlapCount(cardTokens, meta.tokens);
-    const rawScore = model.overlapCount(cardRawTokens, meta.rawTokens);
-    const canonicalSpecificScore = [...cardTokens].reduce(
-      (n, token) => n + (!GENERIC_CANONICAL_TOKENS.has(token) && meta.tokens.has(token) ? 1 : 0),
-      0
-    );
-    if (rawScore === 0 && canonicalSpecificScore === 0) continue;
-    const score = rawScore * 3 + canonicalSpecificScore * 2 + canonicalScore;
-    scored.push({ score, rawScore, canonicalScore, canonicalSpecificScore, meta });
-  }
-
-  if (scored.length === 0) return { rawMatches: 0, candidates: [], scored: [] };
-
-  scored.sort(
-    (a, b) =>
-      b.score - a.score ||
-      a.meta.quoteLen - b.meta.quoteLen ||
-      a.meta.index - b.meta.index
-  );
-  const topScore = scored[0].score;
-  const candidates = scored.filter((item) => item.score >= topScore - 1).slice(0, 6);
-  return { rawMatches: scored.length, candidates, scored };
-}
-
-function hashString(str) {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
-  }
-  return hash;
+  return model.matcher.getCandidates(card);
 }
 
 function pickTidbitForCard(model, card, opts = {}) {
   const date = opts.date || new Date().toISOString().slice(0, 10);
   const salt = Number.isFinite(opts.salt) ? opts.salt : 0;
-  const seed = hashString(`${card.hanzi}|${date}|${salt}`);
-  const { candidates } = getCandidatesForCard(model, card);
-  if (candidates.length === 0) return null;
-  return candidates[seed % candidates.length].meta.tidbit;
+  return model.matcher.pickTidbit(card, date, salt);
 }
 
 function computeCoverageStats(model) {

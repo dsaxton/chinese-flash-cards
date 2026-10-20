@@ -8,7 +8,7 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180.png">
-<title>Chinese Flash Cards — Five Decks</title>
+<title>Chinese Flash Cards</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -696,6 +696,7 @@ footer {
   <a class="reset-btn" href="#/onboarding" style="text-decoration:none">How it works</a>
 </footer>
 
+<script src="./tidbit-match.js"></script>
 <script>
 function loadJsonSync(path) {
   const req = new XMLHttpRequest();
@@ -731,235 +732,11 @@ const AUDIO_MANIFEST = loadJsonSync("./data/audio/manifest.json");
 // Source repository: Chinese Text Project (ctext.org)
 // ---------------------------------------------------------------------------
 const TIDBIT_DATA = loadJsonSync("./data/tidbit-data.json");
-const CLASSICAL_TIDBITS_RAW = TIDBIT_DATA.classicalTidbitsRaw;
-const TIDBIT_MAX_QUOTE_CHARS = TIDBIT_DATA.tidbitMaxQuoteChars;
-const TOKEN_SYNONYMS = TIDBIT_DATA.tokenSynonyms;
-
-Object.assign(TOKEN_SYNONYMS, {
-  mr: "person",
-  miss: "person",
-  sir: "person",
-  everyone: "person",
-  child: "family",
-  children: "family",
-  brother: "family",
-  sister: "family",
-  home: "family",
-  house: "family",
-  live: "family",
-  stay: "family",
-  table: "home",
-  desk: "home",
-  chair: "home",
-  room: "home",
-  door: "home",
-  gate: "home",
-  clothes: "wear",
-  wear: "wear",
-  open: "move",
-  begin: "start",
-  start: "start",
-  finish: "end",
-  completed: "end",
-  end: "end",
-  wait: "time",
-  maybe: "ability",
-  where: "question",
-  which: "question",
-  what: "question",
-  who: "question",
-  how: "question",
-  why: "question",
-  this: "position",
-  that: "position",
-  these: "position",
-  those: "position",
-  noon: "time",
-  yesterday: "time",
-  week: "time",
-  each: "time",
-  every: "time",
-  snow: "weather",
-  class: "learn",
-  lesson: "learn",
-  introduce: "speak",
-  welcome: "polite",
-  goodbye: "polite",
-  please: "polite",
-  sorry: "polite",
-  waiter: "polite",
-  attendant: "polite",
-  restaurant: "food",
-  hotel: "home",
-  shop: "money",
-  store: "money",
-  cell: "speak",
-  bus: "move",
-  train: "move",
-  station: "move",
-  airport: "move",
-  airplane: "move",
-  road: "move",
-  return: "move",
-  exit: "move",
-  side: "position",
-  beside: "position",
-  foreign: "distance",
-  from: "position",
-  thing: "object",
-  stuff: "object",
-  matter: "object",
-  cat: "animal",
-  dog: "animal",
-  fish: "animal",
-  animal: "animal",
-  flower: "plant",
-  plant: "plant",
-  vegetable: "food",
-  tea: "drink",
-  coffee: "drink",
-  milk: "drink",
-  cup: "drink",
-  rice: "food",
-  fruit: "food",
-  apple: "food",
-  watermelon: "food",
-  egg: "food",
-  dish: "food",
-  cooked: "food",
-  birthday: "time",
-  diary: "learn",
-  pencil: "learn",
-  male: "person",
-  female: "person",
-  black: "color",
-  red: "color",
-  pretty: "beauty",
-  beautiful: "beauty",
-  most: "size",
-  long: "distance",
-  thin: "size",
-  color: "color",
-  also: "continuation",
-  then: "time",
-  because: "reason",
-  other: "contrast",
-  don: "negation",
-  t: "negation",
-  too: "size",
-  although: "contrast",
-  there: "exist",
-  have: "exist",
-  is: "exist",
-  be: "exist",
-  dance: "exercise",
-  play: "exercise",
-  watch: "time",
-  wristwatch: "time",
-  bus: "move",
-  bicycle: "move",
-  soccer: "exercise",
-  basketball: "exercise",
-  swim: "exercise",
-  washing: "clean",
-  wash: "clean",
-  open: "move",
-  close: "position",
-  sit: "position",
-  prepared: "prepare",
-  prepare: "prepare",
-  process: "time",
-  ongoing: "time",
-  briefly: "time",
-  bit: "quantity",
-  some: "quantity",
-  waiting: "time",
-  wait: "time",
+const TIDBIT_MATCHER = TidbitMatch.createTidbitMatcher({
+  tidbits: TIDBIT_DATA.classicalTidbitsRaw,
+  synonyms: TIDBIT_DATA.tokenSynonyms,
+  maxQuoteChars: TIDBIT_DATA.tidbitMaxQuoteChars,
 });
-
-function normalizeEnglishText(text) {
-  return String(text || "")
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-const RAW_STOPWORDS = new Set([
-  "a", "an", "the", "to", "of", "and", "or", "is", "are", "be", "in", "on", "at", "for", "with",
-  "from", "it", "its", "this", "that", "these", "those",
-]);
-const NOISY_MEANING_TOKENS = new Set([
-  "side", "form", "particle", "measure", "general", "possessive",
-]);
-
-function extractRawMeaningTokens(text) {
-  const normalized = normalizeEnglishText(text);
-  const tokens = new Set();
-  for (const raw of normalized.split(" ")) {
-    const tok = raw.trim();
-    if (!tok || tok.length < 2) continue;
-    if (RAW_STOPWORDS.has(tok)) continue;
-    if (NOISY_MEANING_TOKENS.has(tok)) continue;
-    tokens.add(tok);
-  }
-  return tokens;
-}
-
-function canonicalToken(token) {
-  let t = token;
-  if (TOKEN_SYNONYMS[t]) t = TOKEN_SYNONYMS[t];
-  if (t.endsWith("ing") && t.length > 5) t = t.slice(0, -3);
-  else if (t.endsWith("ed") && t.length > 4) t = t.slice(0, -2);
-  else if (t.endsWith("s") && t.length > 4) t = t.slice(0, -1);
-  if (TOKEN_SYNONYMS[t]) t = TOKEN_SYNONYMS[t];
-  return t;
-}
-
-function extractMeaningTokens(text) {
-  const normalized = normalizeEnglishText(text);
-  const tokens = new Set();
-  for (const raw of normalized.split(" ")) {
-    const tok = canonicalToken(raw.trim());
-    if (!tok || tok.length < 2) continue;
-    if (NOISY_MEANING_TOKENS.has(raw.trim())) continue;
-    tokens.add(tok);
-  }
-  return tokens;
-}
-
-function overlapCount(a, b) {
-  let count = 0;
-  for (const token of a) {
-    if (b.has(token)) count++;
-  }
-  return count;
-}
-
-const ALL_TIDBIT_CARDS = [...HSK1_VOCAB, ...RADICAL_DECK_CARDS, ...NUMBERS_DECK_CARDS];
-const CARD_MEANING_TOKENS = new Map(
-  ALL_TIDBIT_CARDS.map((card) => [card.hanzi, extractMeaningTokens(card.english)])
-);
-const CARD_RAW_MEANING_TOKENS = new Map(
-  ALL_TIDBIT_CARDS.map((card) => [card.hanzi, extractRawMeaningTokens(card.english)])
-);
-
-function normalizeHanText(text) {
-  return String(text || "").replace(/\s+/g, "");
-}
-
-const TIDBIT_META = CLASSICAL_TIDBITS_RAW.map((tidbit, index) => ({
-  tidbit,
-  index,
-  tokens: extractMeaningTokens((tidbit.relevance || []).join(" ")),
-  rawTokens: extractRawMeaningTokens((tidbit.relevance || []).join(" ")),
-  quoteText: normalizeHanText(tidbit.quote),
-  quoteLen: normalizeHanText(tidbit.quote).length,
-}));
-
-const GENERIC_CANONICAL_TOKENS = new Set([
-  "exist", "continuation", "quantity",
-]);
 
 // ---------------------------------------------------------------------------
 // Audio — local MP3s generated with edge-tts (zh-CN-XiaoxiaoNeural)
@@ -971,46 +748,8 @@ function speak(hanzi) {
   audio.play().catch(() => {});
 }
 
-const PINYIN_TONE_CHAR_MAP = {
-  "ā": ["a", 1], "á": ["a", 2], "ǎ": ["a", 3], "à": ["a", 4],
-  "ē": ["e", 1], "é": ["e", 2], "ě": ["e", 3], "è": ["e", 4],
-  "ī": ["i", 1], "í": ["i", 2], "ǐ": ["i", 3], "ì": ["i", 4],
-  "ō": ["o", 1], "ó": ["o", 2], "ǒ": ["o", 3], "ò": ["o", 4],
-  "ū": ["u", 1], "ú": ["u", 2], "ǔ": ["u", 3], "ù": ["u", 4],
-  "ǖ": ["v", 1], "ǘ": ["v", 2], "ǚ": ["v", 3], "ǜ": ["v", 4],
-  "ü": ["v", 5],
-};
-
-function pinyinSyllableToNumbered(syllable) {
-  let tone = 5;
-  let base = "";
-  const text = (syllable || "").toLowerCase();
-
-  for (const ch of text) {
-    if (PINYIN_TONE_CHAR_MAP[ch]) {
-      const [plain, detectedTone] = PINYIN_TONE_CHAR_MAP[ch];
-      base += plain;
-      if (detectedTone !== 5) tone = detectedTone;
-    } else if (/[a-z]/.test(ch)) {
-      base += ch;
-    }
-  }
-
-  if (!base) return "";
-  return `${base}${tone}`;
-}
-
-function pinyinToAudioKeys(pinyin) {
-  return (pinyin || "")
-    .replace(/['’]/g, " ")
-    .split(/\s+/)
-    .map(pinyinSyllableToNumbered)
-    .filter(Boolean);
-}
-
-// Candidate pinyin-to-anchor map. Only entries that pass English-word guardrails are used.
+// Sound anchors must use whitelisted English words.
 const PHONETIC_CONFIG = loadJsonSync("./data/phonetic-config.json");
-const PHONETIC_ANCHOR_CANDIDATES = PHONETIC_CONFIG.phoneticAnchorCandidates;
 const ENGLISH_SOUND_ANCHOR_WORDS = new Set(PHONETIC_CONFIG.englishSoundAnchorWords);
 
 function isEnglishAnchorWord(word) {
@@ -1030,21 +769,7 @@ function canonicalizeSoundAnchorPhrase(phrase) {
 }
 
 function buildIntelligibleAnchorPhrase(words) {
-  if (words.length === 0) return "";
-  if (words.length === 1) return `Think of ${words[0]}.`;
-  return `Think of ${words.join(", ")}.`;
-}
-
-function getSoundAnchor(card) {
-  const keys = pinyinToAudioKeys(card.pinyin);
-  if (keys.length === 0) return "";
-  const parts = keys.map((key) => {
-    const plain = key.replace(/[1-5]$/, "").replaceAll("v", "u");
-    return String(PHONETIC_ANCHOR_CANDIDATES[plain] || "").toUpperCase();
-  });
-  if (parts.some((part) => !part)) return "";
-  if (!parts.every((part) => isEnglishAnchorWord(part))) return "";
-  return canonicalizeSoundAnchorPhrase(buildIntelligibleAnchorPhrase(parts));
+  return words.length ? `Think of ${words.join(", ")}.` : "";
 }
 
 function mergeSoundAnchorAndStory(soundAnchor, story) {
@@ -1069,19 +794,13 @@ function mergeSoundAnchorAndStory(soundAnchor, story) {
   return `${anchor} ${text}`;
 }
 
+// Every card carries mnemonicData (enforced by scripts/test-mnemonic-curation.js).
 function normalizeMnemonicData(card) {
   const raw = card.mnemonicData;
-  if (raw && typeof raw === "object") {
-    const soundAnchor = canonicalizeSoundAnchorPhrase(raw.soundAnchor);
-    const story = String(raw.story || "").trim();
-    const components = Array.isArray(raw.components) ? raw.components : [];
-    return { soundAnchor, story, components };
-  }
-  const parsed = parseMnemonic(card);
   return {
-    soundAnchor: getSoundAnchor(card),
-    story: parsed.text,
-    components: parsed.chips.map((item) => ({ hanzi: item.hanzi, meaning: item.meaning })),
+    soundAnchor: canonicalizeSoundAnchorPhrase(raw.soundAnchor),
+    story: String(raw.story || "").trim(),
+    components: Array.isArray(raw.components) ? raw.components : [],
   };
 }
 
@@ -1102,13 +821,6 @@ function initPWA() {
 // Persistence — localStorage
 // ---------------------------------------------------------------------------
 const LEGACY_STORAGE_KEY = "chinese-flash-cards-progress";
-const DECK_STORAGE_KEYS = {
-  hanzi_to_english: "hanzi_to_english_progress",
-  english_to_hanzi: "english_to_hanzi_progress",
-  radicals_to_english: "radicals_to_english_progress",
-  numbers_to_english: "numbers_to_english_progress",
-  sentence_to_english: "sentence_to_english_progress",
-};
 const ACTIVE_DECK_STORAGE_KEY = "chinese-flash-cards-active-deck";
 const ONBOARDING_SEEN_KEY = "chinese-flash-cards-onboarding-seen";
 const TIDBIT_SALT_KEY = "chinese-flash-cards-tidbit-salt";
@@ -1168,12 +880,16 @@ function getCardId(card) {
   return card.id || card.hanzi;
 }
 
+function deckProgressKey(deckId) {
+  return `${deckId}_progress`;
+}
+
 function loadDeckProgress(deckId) {
-  return loadJson(DECK_STORAGE_KEYS[deckId], {});
+  return loadJson(deckProgressKey(deckId), {});
 }
 
 function saveDeckProgress(deckId, data) {
-  saveJson(DECK_STORAGE_KEYS[deckId], data);
+  saveJson(deckProgressKey(deckId), data);
 }
 
 function migrateLegacyProgress() {
@@ -1242,46 +958,8 @@ function escapeHtml(text) {
     .replaceAll("'", "&#39;");
 }
 
-function hashString(str) {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
-  }
-  return hash;
-}
-
 function getCulturalTidbitForCard(card) {
-  const key = card.hanzi || "";
-  const seed = hashString(`${key}|${todayStr()}|${getDailyTidbitSalt()}`);
-  const cardTokens = CARD_MEANING_TOKENS.get(key) || new Set();
-  const cardRawTokens = CARD_RAW_MEANING_TOKENS.get(key) || new Set();
-  if (cardTokens.size === 0 && cardRawTokens.size === 0) return null;
-
-  const scored = [];
-  for (const meta of TIDBIT_META) {
-    if (meta.quoteLen > TIDBIT_MAX_QUOTE_CHARS) continue;
-    const canonicalScore = overlapCount(cardTokens, meta.tokens);
-    const rawScore = overlapCount(cardRawTokens, meta.rawTokens);
-    const canonicalSpecificScore = [...cardTokens].reduce(
-      (n, token) => n + (!GENERIC_CANONICAL_TOKENS.has(token) && meta.tokens.has(token) ? 1 : 0),
-      0
-    );
-    // Require direct lexical overlap, or at least one non-generic conceptual overlap.
-    if (rawScore === 0 && canonicalSpecificScore === 0) continue;
-    const score = rawScore * 3 + canonicalSpecificScore * 2 + canonicalScore;
-    scored.push({ ...meta, score, rawScore, canonicalScore, canonicalSpecificScore });
-  }
-  if (scored.length === 0) return null;
-
-  scored.sort((a, b) => {
-    if (b.score !== a.score) return b.score - a.score;
-    if (a.quoteLen !== b.quoteLen) return a.quoteLen - b.quoteLen;
-    return a.index - b.index;
-  });
-  const topScore = scored[0].score;
-  // Keep a small pool of strong candidates to reduce repetition.
-  const best = scored.filter((item) => item.score >= topScore - 1).slice(0, 6);
-  return best[seed % best.length].tidbit;
+  return TIDBIT_MATCHER.pickTidbit(card, todayStr(), getDailyTidbitSalt());
 }
 
 function getTidbitAttribution(tidbit) {
@@ -1747,10 +1425,11 @@ function renderOnboarding() {
   html += "<h2>How Chinese Flash Cards works</h2>";
 
   html += '<div class="onboarding-section">';
-  html += "<h3>Five decks</h3>";
+  html += "<h3>The decks</h3>";
   html += "<p><strong>Hanzi → English</strong> — See a character, recall the meaning. ";
   html += "<strong>English → Hanzi</strong> — See the meaning, recall the character. ";
   html += "<strong>Radicals</strong> — Learn building blocks (e.g. 木 = wood). ";
+  html += "<strong>Numbers</strong> — Learn the number characters (e.g. 十 = ten). ";
   html += "<strong>Sentences</strong> — Practice full phrases with word-by-word glosses.</p>";
   html += "</div>";
 
@@ -2070,7 +1749,7 @@ resetBtn.addEventListener("click", () => {
   const deck = getActiveDeck();
   if (!deck) return;
   if (confirm(`Reset progress for "${deck.title}"? This cannot be undone.`)) {
-    localStorage.removeItem(DECK_STORAGE_KEYS[deck.id]);
+    localStorage.removeItem(deckProgressKey(deck.id));
     progress = {};
     startNewLessonFromProgress();
     renderRoute();

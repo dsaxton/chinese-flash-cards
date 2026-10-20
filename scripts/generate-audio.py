@@ -47,13 +47,11 @@ def collect_hanzi_entries() -> list[str]:
     with open(sentence_path, encoding="utf-8") as f:
         sdata = json.load(f)
 
+    # Every list in deck-data.json is a card section, so new decks are picked up automatically.
     entries = set()
-    for card in deck.get("vocab", []):
-        entries.add(card["hanzi"])
-    for card in deck.get("radicals", []):
-        entries.add(card["hanzi"])
-    for card in deck.get("numbers", []):
-        entries.add(card["hanzi"])
+    for section in deck.values():
+        if isinstance(section, list):
+            entries.update(card["hanzi"] for card in section)
     for card in sdata.get("sentences", []):
         entries.add(card["hanzi"])
 

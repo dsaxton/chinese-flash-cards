@@ -1,7 +1,8 @@
-const CACHE_NAME = "chinese-flash-cards-v1";
+const CACHE_NAME = "chinese-flash-cards-v2";
 const APP_SHELL = [
   "./",
   "./index.html",
+  "./tidbit-match.js",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
