@@ -4,13 +4,14 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 const { generatePhoneticHints } = require("./build-phonetic-hints");
+const { parseUnihanKPhonetic } = require("./phonetic-hint-lib");
 
 function runBuildScript(outputPath) {
   const root = path.resolve(__dirname, "..");
   const fixtureDir = path.join(root, "scripts", "fixtures", "phonetic");
   generatePhoneticHints({
     makeMeAHanzi: path.join(fixtureDir, "make-me-a-hanzi.txt"),
-    unihan: path.join(fixtureDir, "unihan-readings.txt"),
+    unihan: path.join(fixtureDir, "unihan-dictionary-like-data.txt"),
     cedict: path.join(fixtureDir, "cedict-sample.u8"),
     out: outputPath,
   });
@@ -45,7 +46,15 @@ function main() {
 
   const maEntry = findEntry(data, "吗");
   assert(maEntry, "expected 吗 entry from fixtures");
-  assert(Array.isArray(maEntry.phoneticProfile.unihanFamily), "吗 should include unihanFamily array");
+  const maFamily = maEntry.phoneticProfile.unihanFamily;
+  assert(maFamily.includes("马") && maFamily.includes("妈"), "吗 should share a kPhonetic class with 马 and 妈");
+  assert(!maFamily.includes("吗"), "吗 should not list itself in its unihanFamily");
+  assert(goodEntry.phoneticProfile.unihanFamily.includes("子"), "好 should share a kPhonetic class with 子");
+
+  // kPhonetic values are Casey class numbers with optional A-D subclass and "*" suffixes.
+  const families = parseUnihanKPhonetic("U+570B\tkPhonetic\t748 1416\nU+8753\tkPhonetic\t1416*\nU+4E4D\tkPhonetic\t10A\nU+4E8C\tkPhonetic\t10");
+  assert.deepStrictEqual(families.get("國"), ["蝓"], "classes split on spaces and ignore the * suffix");
+  assert.deepStrictEqual(families.get("乍"), [], "subclass 10A is distinct from class 10");
 
   console.log("phonetic hint pipeline test passed");
 }

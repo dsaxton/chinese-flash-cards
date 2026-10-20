@@ -38,32 +38,35 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
 
-  // Let cross-origin requests (e.g., pronunciation MP3s) pass through.
+  // Let cross-origin requests pass through.
   if (url.origin !== self.location.origin) return;
 
   const isDocument = request.mode === "navigate" || request.destination === "document";
 
+  // Network-first for everything, so index.html, scripts and data stay in sync after a deploy;
+  // the cache is only the offline fallback.
   if (isDocument) {
     event.respondWith(
       fetch(request)
-        .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put("./index.html", copy));
-          return response;
-        })
+        .then((response) => cacheIfComplete("./index.html", response))
         .catch(() => caches.match(request).then((hit) => hit || caches.match("./index.html")))
     );
     return;
   }
 
   event.respondWith(
-    caches.match(request).then((hit) => {
-      if (hit) return hit;
-      return fetch(request).then((response) => {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
-        return response;
-      });
-    })
+    fetch(request)
+      .then((response) => cacheIfComplete(request, response))
+      .catch(() => caches.match(request))
   );
 });
+
+// Only full 200 responses are cached: error pages must not replace the app shell,
+// and partial (206) media responses cannot be stored.
+function cacheIfComplete(key, response) {
+  if (response.status === 200) {
+    const copy = response.clone();
+    caches.open(CACHE_NAME).then((cache) => cache.put(key, copy)).catch(() => {});
+  }
+  return response;
+}

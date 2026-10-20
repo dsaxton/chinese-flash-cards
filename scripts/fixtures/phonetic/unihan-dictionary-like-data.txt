@@ -1,0 +1,7 @@
+# Format of Unihan_DictionaryLikeData.txt kPhonetic lines; class numbers are illustrative.
+U+5417	kPhonetic	878
+U+9A6C	kPhonetic	878
+U+5988	kPhonetic	878*
+U+597D	kPhonetic	1505
+U+5B50	kPhonetic	1505 1506A
+U+8A00	kPhonetic	1572

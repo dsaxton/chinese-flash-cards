@@ -310,7 +310,11 @@ function testAnchorNarrativeRegressions(cards) {
 
 function testAliasIntegrationRegressions(cards, anchorAliasMap) {
   const byHanzi = new Map(cards.map((card) => [card.hanzi, card]));
-  const checks = [];
+  // Stories that satisfy their anchor only through an inflected alias in phoneticAnchorAliases.
+  const checks = [
+    { hanzi: "日", expectedAlias: "reaches", anchorMustBeAbsent: true },
+    { hanzi: "学生", expectedAlias: "sings" },
+  ];
 
   for (const check of checks) {
     const card = byHanzi.get(check.hanzi);

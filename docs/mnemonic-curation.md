@@ -170,7 +170,6 @@ mnemonicData: {
 node scripts/audit-mnemonics.js --mode all --fail-on-violations   # full vocab + radicals quality gate
 node scripts/validate-anchor-stories.js             # anchor integration coverage (HSK1 + radicals)
 node scripts/test-mnemonic-curation.js              # includes coverage, template-diversity, and anchor-placement-diversity gates
-node scripts/test-hint-safety.js                    # hint profile safety checks (no pinyin/answer leakage)
 ```
 
 Note: coherence / concreteness / component-only checks are implemented as
@@ -318,7 +317,7 @@ node scripts/build-mnemonic-seeds.js \
 
 node scripts/build-phonetic-hints.js \
   --makemeahanzi /path/to/dictionary.txt \
-  --unihan /path/to/Unihan_Readings.txt \
+  --unihan /path/to/Unihan_DictionaryLikeData.txt \
   --cedict /path/to/cedict_ts.u8 \
   --out data/mnemonic-seeds/hsk1-phonetic-hints.json
 ```

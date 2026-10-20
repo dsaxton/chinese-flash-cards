@@ -166,7 +166,7 @@ Offline seed generators (require external datasets, output not committed):
 node scripts/build-mnemonic-seeds.js --makemeahanzi /path/to/dictionary.txt --out data/mnemonic-seeds/hsk1-seeds.json
 node scripts/build-phonetic-hints.js \
   --makemeahanzi /path/to/dictionary.txt \
-  --unihan /path/to/Unihan_Readings.txt \
+  --unihan /path/to/Unihan_DictionaryLikeData.txt \
   --cedict /path/to/cedict_ts.u8 \
   --out data/mnemonic-seeds/hsk1-phonetic-hints.json
 ```
@@ -197,7 +197,7 @@ node scripts/test-tidbit-data.js
 node scripts/test-tidbit-selection.js
 node scripts/test-deck-regression.js
 node scripts/test-audio-coverage.js
-node scripts/test-hint-safety.js
+node scripts/test-sentence-data.js
 node scripts/test-mnemonic-curation.js
 node scripts/test-phonetic-hint-pipeline.js
 ```

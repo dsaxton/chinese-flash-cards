@@ -899,6 +899,8 @@ function migrateLegacyProgress() {
   if (Object.keys(existing).length === 0) {
     saveDeckProgress("hanzi_to_english", legacy);
   }
+  // Migrate once; otherwise resetting the deck would re-import the legacy progress on reload.
+  localStorage.removeItem(LEGACY_STORAGE_KEY);
 }
 
 function getSavedActiveDeckId() {

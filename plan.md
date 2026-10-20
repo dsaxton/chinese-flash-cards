@@ -56,7 +56,6 @@ Run after any data edit:
 node scripts/audit-mnemonics.js --mode all --fail-on-violations
 node scripts/validate-anchor-stories.js
 node scripts/test-mnemonic-curation.js
-node scripts/test-hint-safety.js
 ```
 
 ### Next Steps

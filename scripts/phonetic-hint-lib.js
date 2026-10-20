@@ -111,9 +111,15 @@ function parseMakeMeAHanziDictionary(text) {
   return byChar;
 }
 
+// Parses kPhonetic lines from Unihan_DictionaryLikeData.txt. Values are space-separated Casey
+// phonetic class numbers (UAX #38 syntax: [1-9]\d{0,3}[A-D]?\*?), not characters. A trailing "*"
+// marks a character that has the class's phonetic without being listed under it. Returns, for each
+// character, the other characters that share at least one class with it.
 function parseUnihanKPhonetic(text) {
-  const byChar = new Map();
   const linePattern = /^U\+([0-9A-F]{4,6})\s+kPhonetic\s+(.+)$/;
+  const classPattern = /^([1-9]\d{0,3}[A-D]?)\*?$/;
+  const classesByChar = new Map();
+  const charsByClass = new Map();
 
   for (const rawLine of String(text || "").split(/\r?\n/)) {
     const line = rawLine.trim();
@@ -122,23 +128,29 @@ function parseUnihanKPhonetic(text) {
     const match = line.match(linePattern);
     if (!match) continue;
 
-    const codePoint = parseInt(match[1], 16);
-    const hanzi = String.fromCodePoint(codePoint);
-    const rawValue = match[2].trim();
-
-    const family = (rawValue.match(/[\u3400-\u9FFF]/g) || []).filter(Boolean);
-    if (family.length === 0) continue;
-
-    const existing = byChar.get(hanzi) || new Set();
-    for (const ch of family) existing.add(ch);
-    byChar.set(hanzi, existing);
+    const hanzi = String.fromCodePoint(parseInt(match[1], 16));
+    for (const token of match[2].trim().split(/\s+/)) {
+      const classMatch = token.match(classPattern);
+      if (!classMatch) continue;
+      const phoneticClass = classMatch[1];
+      if (!classesByChar.has(hanzi)) classesByChar.set(hanzi, new Set());
+      classesByChar.get(hanzi).add(phoneticClass);
+      if (!charsByClass.has(phoneticClass)) charsByClass.set(phoneticClass, new Set());
+      charsByClass.get(phoneticClass).add(hanzi);
+    }
   }
 
-  const normalized = new Map();
-  for (const [key, set] of byChar.entries()) {
-    normalized.set(key, [...set]);
+  const familyByChar = new Map();
+  for (const [hanzi, classes] of classesByChar.entries()) {
+    const family = new Set();
+    for (const phoneticClass of classes) {
+      for (const member of charsByClass.get(phoneticClass)) {
+        if (member !== hanzi) family.add(member);
+      }
+    }
+    familyByChar.set(hanzi, [...family]);
   }
-  return normalized;
+  return familyByChar;
 }
 
 function parseCedictByChar(text) {

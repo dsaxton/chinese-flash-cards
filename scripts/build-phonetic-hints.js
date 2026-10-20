@@ -42,7 +42,7 @@ function usage() {
   console.log(
     [
       "Usage:",
-      "  node scripts/build-phonetic-hints.js --makemeahanzi /path/to/dictionary.txt --unihan /path/to/Unihan_Readings.txt --cedict /path/to/cedict_ts.u8 [--out data/mnemonic-seeds/hsk1-phonetic-hints.json]",
+      "  node scripts/build-phonetic-hints.js --makemeahanzi /path/to/dictionary.txt --unihan /path/to/Unihan_DictionaryLikeData.txt --cedict /path/to/cedict_ts.u8 [--out data/mnemonic-seeds/hsk1-phonetic-hints.json]",
       "",
       "Generates reviewable per-character phonetic hint suggestions for all HSK1 characters.",
     ].join("\n")

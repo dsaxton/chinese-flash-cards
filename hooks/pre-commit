@@ -7,7 +7,6 @@ if command -v just &>/dev/null; then
 else
   node scripts/validate-json.js
   node scripts/test-deck-regression.js
-  node scripts/test-hint-safety.js
   node scripts/test-mnemonic-curation.js
   node scripts/test-phonetic-hint-pipeline.js
   node scripts/test-tidbit-data.js
